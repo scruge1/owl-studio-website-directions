@@ -1,0 +1,309 @@
+/* ======================================================================
+   PER-SAMPLE MODAL CHROME + GALLERY-CARD SHADOW DIVERSIFICATION
+   Added 2026-04-20 (late) per user correction: gallery cards already
+   varied via .u-{id} rules in unique-samples.css, but
+   — the outer .u-site box-shadow was uniform across all 10
+   — the modal's .u-full-actions, .u-full-modules, .u-full used
+     ONE rule for all 10 samples (999px pill buttons, 20px rounded
+     feature cards, identical 42px padding)
+   This file gives every sample its own modal signature + a distinct
+   drop shadow on the gallery card silhouette. Design tokens adapted
+   from design-hub/advert-web-design-samples/source-longform-sample-
+   pack.html's .site-N treatments.
+
+   SELECTOR CONTRACT
+     .u-{id}                        the GALLERY card (already styled
+                                    above in unique-samples.css; we only
+                                    override the box-shadow here)
+     .u-modal-shell.u-{id} .u-full  the MODAL stage wrapper
+     .u-modal-shell.u-{id} .u-full-actions a     modal primary CTA
+     .u-modal-shell.u-{id} .u-full-actions button  modal secondary
+     .u-modal-shell.u-{id} .u-full-modules div    3 module cards
+====================================================================== */
+
+/* ---------- 1. COPPER (warm product studio — KNOB) ---------- */
+.u-copper.u-site, .u-full-stage .u-copper {
+  box-shadow: 0 28px 80px rgba(155, 79, 34, 0.22), 0 8px 18px rgba(155, 79, 34, 0.10);
+}
+.u-modal-shell.u-copper .u-full {
+  padding: 48px 42px;
+  background: radial-gradient(circle at 82% 8%, rgba(248, 234, 217, 0.55), transparent 40%), var(--u-bg);
+}
+.u-modal-shell.u-copper .u-full-actions a,
+.u-modal-shell.u-copper .u-full-actions button {
+  border-radius: 46px 46px 4px 4px;
+  padding: 14px 26px;
+}
+.u-modal-shell.u-copper .u-full-modules div {
+  border-radius: 24px;
+  border: 0;
+  background: color-mix(in srgb, var(--u-accent) 12%, transparent);
+  box-shadow: 0 10px 26px rgba(155, 79, 34, 0.12);
+}
+
+/* ---------- 2. CHROME (dark launch — eBarista) ---------- */
+.u-chrome.u-site, .u-full-stage .u-chrome {
+  box-shadow: 0 0 90px rgba(166, 255, 45, 0.12), 0 40px 90px rgba(0, 0, 0, 0.55);
+}
+.u-modal-shell.u-chrome .u-full {
+  padding: 40px;
+  background: radial-gradient(circle at 50% -10%, rgba(166, 255, 45, 0.18), transparent 40%), #040807;
+}
+.u-modal-shell.u-chrome .u-full-actions a,
+.u-modal-shell.u-chrome .u-full-actions button {
+  border-radius: 0;
+  padding: 14px 20px;
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.u-modal-shell.u-chrome .u-full-actions button {
+  border: 1px solid rgba(166, 255, 45, 0.4);
+}
+.u-modal-shell.u-chrome .u-full-modules div {
+  border-radius: 0;
+  border: 1px solid rgba(166, 255, 45, 0.22);
+  background: rgba(166, 255, 45, 0.04);
+}
+
+/* ---------- 3. QUIET (Linear / Vercel) ---------- */
+.u-quiet.u-site, .u-full-stage .u-quiet {
+  box-shadow: 0 1px 0 rgba(130, 119, 255, 0.14), 0 18px 44px rgba(130, 119, 255, 0.10);
+}
+.u-modal-shell.u-quiet .u-full {
+  padding: 44px 40px;
+  background: linear-gradient(180deg, #0c0e14, #0e1018);
+}
+.u-modal-shell.u-quiet .u-full-actions a,
+.u-modal-shell.u-quiet .u-full-actions button {
+  border-radius: 8px;
+  padding: 11px 16px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.u-modal-shell.u-quiet .u-full-actions button {
+  border: 1px solid rgba(250, 250, 250, 0.10);
+  background: transparent;
+}
+.u-modal-shell.u-quiet .u-full-modules div {
+  border-radius: 10px;
+  border: 1px solid rgba(130, 119, 255, 0.14);
+  background: rgba(250, 250, 250, 0.02);
+  padding: 18px;
+}
+
+/* ---------- 4. TRUST (Stripe printed form) ---------- */
+.u-trust.u-site, .u-full-stage .u-trust {
+  box-shadow: 0 3px 0 rgba(12, 47, 102, 0.9), 0 16px 40px rgba(12, 47, 102, 0.14);
+  border: 1.5px solid rgba(12, 47, 102, 0.5);
+}
+.u-modal-shell.u-trust .u-full {
+  padding: 40px 44px;
+  background: linear-gradient(180deg, #ffffff, #f6f8ff);
+  border-top: 2px solid #0c2f66;
+  border-bottom: 2px solid #0c2f66;
+}
+.u-modal-shell.u-trust .u-full-actions a,
+.u-modal-shell.u-trust .u-full-actions button {
+  border-radius: 2px;
+  padding: 13px 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  box-shadow: 0 2px 0 rgba(12, 47, 102, 0.9);
+}
+.u-modal-shell.u-trust .u-full-actions button {
+  border: 1.5px solid rgba(12, 47, 102, 0.5);
+}
+.u-modal-shell.u-trust .u-full-modules div {
+  border-radius: 0;
+  border-top: 1.5px solid rgba(12, 47, 102, 0.18);
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  background: transparent;
+  padding: 20px 0 4px;
+}
+
+/* ---------- 5. EDITORIAL (Notion / magazine) ---------- */
+.u-editorial.u-site, .u-full-stage .u-editorial {
+  box-shadow: 6px 6px 0 rgba(180, 86, 62, 0.22), 0 22px 52px rgba(33, 28, 24, 0.10);
+  transform: rotate(-0.4deg);
+}
+.u-editorial.u-site:hover { transform: rotate(0deg); }
+.u-modal-shell.u-editorial .u-full {
+  padding: 56px 48px;
+  background: #fbf5e9;
+  border-left: 6px solid rgba(180, 86, 62, 0.45);
+}
+.u-modal-shell.u-editorial .u-full-actions a,
+.u-modal-shell.u-editorial .u-full-actions button {
+  border-radius: 0;
+  padding: 13px 22px;
+  font-family: var(--classic, var(--serif));
+  font-weight: 700;
+  border-bottom: 3px solid currentColor;
+}
+.u-modal-shell.u-editorial .u-full-actions button {
+  border: none;
+  border-bottom: 3px solid rgba(180, 86, 62, 0.6);
+  background: transparent;
+}
+.u-modal-shell.u-editorial .u-full-modules div {
+  border-radius: 0;
+  border: none;
+  border-top: 1px solid rgba(36, 21, 12, 0.25);
+  background: transparent;
+  padding: 22px 0 4px;
+}
+
+/* ---------- 6. GROWTH (local service poster) ---------- */
+.u-growth.u-site, .u-full-stage .u-growth {
+  box-shadow: 0 30px 70px rgba(2, 45, 30, 0.45);
+}
+.u-modal-shell.u-growth .u-full {
+  padding: 40px;
+  background: radial-gradient(circle at 85% 14%, rgba(103, 240, 169, 0.18), transparent 50%), #022d1e;
+}
+.u-modal-shell.u-growth .u-full-actions a,
+.u-modal-shell.u-growth .u-full-actions button {
+  border-radius: 26px 4px 26px 4px;
+  padding: 14px 22px;
+  font-weight: 900;
+}
+.u-modal-shell.u-growth .u-full-modules div {
+  border-radius: 18px 4px 18px 4px;
+  border: 1px solid rgba(103, 240, 169, 0.22);
+  background: rgba(103, 240, 169, 0.04);
+}
+
+/* ---------- 7. CLINIC (Apple hospitality) ---------- */
+.u-clinic.u-site, .u-full-stage .u-clinic {
+  box-shadow: 0 36px 80px rgba(140, 99, 79, 0.20);
+}
+.u-modal-shell.u-clinic .u-full {
+  padding: 52px 48px;
+  background: radial-gradient(circle at 12% 4%, #fff, transparent 40%), #f1e6d9;
+}
+.u-modal-shell.u-clinic .u-full-actions a,
+.u-modal-shell.u-clinic .u-full-actions button {
+  border-radius: 84px;
+  padding: 15px 28px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.u-modal-shell.u-clinic .u-full-actions button {
+  border: 1px solid rgba(48, 36, 30, 0.14);
+  background: transparent;
+}
+.u-modal-shell.u-clinic .u-full-modules div {
+  border-radius: 44px 16px 44px 16px;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* ---------- 8. OPS (Agent Dashboard / terminal) ---------- */
+.u-ops.u-site, .u-full-stage .u-ops {
+  box-shadow: 0 0 0 1px rgba(69, 215, 255, 0.12), inset 0 28px 40px rgba(69, 215, 255, 0.04), 0 28px 56px rgba(0, 0, 0, 0.55);
+}
+.u-modal-shell.u-ops .u-full {
+  padding: 38px;
+  background: linear-gradient(180deg, rgba(69, 215, 255, 0.04), transparent 40%), #071016;
+  border: 1px solid rgba(69, 215, 255, 0.14);
+}
+.u-modal-shell.u-ops .u-full-actions a,
+.u-modal-shell.u-ops .u-full-actions button {
+  border-radius: 6px;
+  padding: 11px 16px;
+  font-family: var(--mono);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.u-modal-shell.u-ops .u-full-actions button {
+  border: 1px solid rgba(69, 215, 255, 0.3);
+  background: transparent;
+  color: var(--u-accent);
+}
+.u-modal-shell.u-ops .u-full-modules div {
+  border-radius: 4px;
+  border: 1px solid rgba(69, 215, 255, 0.18);
+  background: rgba(69, 215, 255, 0.03);
+  font-family: var(--mono);
+}
+
+/* ---------- 9. TRADES (emergency local service) ---------- */
+.u-trades.u-site, .u-full-stage .u-trades {
+  box-shadow: 10px 10px 0 #11110f;
+}
+.u-trades.u-site:hover, .u-full-stage .u-trades:hover {
+  box-shadow: 14px 14px 0 #11110f;
+}
+.u-modal-shell.u-trades .u-full {
+  padding: 40px;
+  background:
+    repeating-linear-gradient(-45deg, transparent 0 60px, rgba(17, 17, 15, 0.04) 60px 62px),
+    #fff238;
+  border: 5px solid #11110f;
+}
+.u-modal-shell.u-trades .u-full-actions a,
+.u-modal-shell.u-trades .u-full-actions button {
+  border-radius: 0;
+  padding: 15px 24px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  border: 4px solid #11110f;
+  box-shadow: 6px 6px 0 #11110f;
+}
+.u-modal-shell.u-trades .u-full-actions button {
+  background: #fcf053;
+  color: #11110f;
+}
+.u-modal-shell.u-trades .u-full-modules div {
+  border-radius: 0;
+  border: 3px solid #11110f;
+  background: #fcf053;
+  padding: 18px;
+  box-shadow: 4px 4px 0 #11110f;
+}
+
+/* ---------- 10. HERITAGE (archive plate) ---------- */
+.u-heritage.u-site, .u-full-stage .u-heritage {
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.5), 0 2px 0 rgba(217, 168, 91, 0.35), 0 26px 60px rgba(23, 17, 13, 0.55);
+  border: 1px solid rgba(217, 168, 91, 0.35);
+}
+.u-modal-shell.u-heritage .u-full {
+  padding: 52px 48px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(217, 168, 91, 0.05), transparent 60%),
+    #17120d;
+  border-top: 1px solid rgba(217, 168, 91, 0.35);
+  border-bottom: 1px solid rgba(217, 168, 91, 0.35);
+}
+.u-modal-shell.u-heritage .u-full-actions a,
+.u-modal-shell.u-heritage .u-full-actions button {
+  border-radius: 2px;
+  padding: 13px 24px;
+  font-family: var(--classic, var(--serif));
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border: 1px solid rgba(217, 168, 91, 0.5);
+}
+.u-modal-shell.u-heritage .u-full-actions button {
+  background: transparent;
+  color: var(--u-accent);
+}
+.u-modal-shell.u-heritage .u-full-modules div {
+  border-radius: 0;
+  border: 1px solid rgba(217, 168, 91, 0.25);
+  background: transparent;
+  padding: 22px;
+  position: relative;
+}
+.u-modal-shell.u-heritage .u-full-modules div::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(217, 168, 91, 0.15);
+  pointer-events: none;
+}
