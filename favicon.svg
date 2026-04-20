@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" shape-rendering="geometricPrecision">
+  <!-- Owl Studio mark — minimal owl face. Heritage-cream background,
+       dark-ink body, warm-accent highlights. Reads at 16×16 because
+       we keep feature count low: two eyes, a beak, a chest mark. -->
+  <rect width="64" height="64" fill="#f3ecdf"/>
+  <!-- Body silhouette -->
+  <path d="M12 22 C12 12 20 6 32 6 C44 6 52 12 52 22 L52 40 C52 50 44 58 32 58 C20 58 12 50 12 40 Z"
+        fill="#11110f"/>
+  <!-- Eye whites -->
+  <circle cx="22" cy="26" r="7.5" fill="#f3ecdf"/>
+  <circle cx="42" cy="26" r="7.5" fill="#f3ecdf"/>
+  <!-- Eye pupils (amber / warm accent) -->
+  <circle cx="22" cy="26" r="3" fill="#b8563e"/>
+  <circle cx="42" cy="26" r="3" fill="#b8563e"/>
+  <!-- Beak -->
+  <path d="M32 32 L28 38 L32 40 L36 38 Z" fill="#d88947"/>
+  <!-- Chest chevron -->
+  <path d="M24 44 L32 50 L40 44" stroke="#f3ecdf" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>
