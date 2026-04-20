@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Unbounded:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: #E8E4DC;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.card {
+  width: 1200px;
+  height: 675px;
+  background: #F0EDE6;
+  border: 3px solid #1A1A1A;
+  box-shadow: 8px 8px 0px #1A1A1A;
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Topographic contour lines background */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-radial-gradient(circle at 30% 40%, transparent 0px, transparent 40px, rgba(196,184,164,0.3) 41px, transparent 42px),
+    repeating-radial-gradient(circle at 70% 60%, transparent 0px, transparent 55px, rgba(196,184,164,0.25) 56px, transparent 57px),
+    repeating-radial-gradient(circle at 50% 80%, transparent 0px, transparent 35px, rgba(196,184,164,0.2) 36px, transparent 37px),
+    repeating-radial-gradient(circle at 20% 70%, transparent 0px, transparent 45px, rgba(139,125,107,0.15) 46px, transparent 47px);
+  pointer-events: none;
+}
+
+.topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #F0EDE6;
+  background: #E63312;
+  border: 2px solid #1A1A1A;
+  padding: 4px 14px;
+}
+
+.date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: #8B7D6B;
+}
+
+h1 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 38px;
+  font-weight: 800;
+  color: #1A1A1A;
+  line-height: 1.1;
+  margin-bottom: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+h1 em {
+  font-style: normal;
+  background: #E63312;
+  color: #F0EDE6;
+  padding: 0 8px;
+  border: 2px solid #1A1A1A;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #8B7D6B;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.data-row {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+}
+
+.data-block {
+  flex: 1;
+  border: 3px solid #1A1A1A;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  background: #F0EDE6;
+  box-shadow: 5px 5px 0px #1A1A1A;
+}
+
+.data-block.mandate {
+  border-top: 6px solid #1456E8;
+}
+
+.data-block.gap {
+  border-top: 6px solid #E63312;
+}
+
+.data-block.alert {
+  background: #1A1A1A;
+  flex: 0 0 220px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 5px 0px #8B7D6B;
+}
+
+.data-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #8B7D6B;
+  margin-bottom: 8px;
+}
+
+.data-value {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.data-block.mandate .data-value { color: #1456E8; }
+.data-block.gap .data-value { color: #E63312; }
+
+.data-detail {
+  font-size: 13px;
+  color: #8B7D6B;
+  line-height: 1.6;
+}
+
+.data-detail strong {
+  color: #1A1A1A;
+  font-weight: 700;
+}
+
+.bar-visual {
+  margin-top: auto;
+  height: 24px;
+  border: 2px solid #1A1A1A;
+  position: relative;
+  background: #F0EDE6;
+}
+
+.bar-fill-blue {
+  height: 100%;
+  width: 100%;
+  background: repeating-linear-gradient(45deg, #1456E8, #1456E8 6px, #2B6AF0 6px, #2B6AF0 12px);
+}
+
+.bar-fill-red {
+  height: 100%;
+  width: 0.5%;
+  background: #E63312;
+  border-right: 2px solid #1A1A1A;
+}
+
+.alert-number {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: #E63312;
+  line-height: 1;
+}
+
+.alert-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 4px;
+}
+
+.alert-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  margin-top: 8px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 2px solid #C4B8A4;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-left { font-size: 13px; color: #8B7D6B; }
+.footer-left strong { color: #1A1A1A; }
+.footer-right { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #C4B8A4; text-transform: uppercase; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="topline">
+    <div class="tag">Airspace Infrastructure Gap</div>
+    <div class="date">FAA Data, March 2026</div>
+  </div>
+
+  <h1>820K drones broadcast. <em>Nothing listens.</em></h1>
+  <div class="subtitle">The FAA mandated transmission. They forgot the receivers.</div>
+
+  <div class="data-row">
+    <div class="data-block mandate">
+      <div class="data-label">FAA Remote ID</div>
+      <div class="data-value">820K</div>
+      <div class="data-detail">
+        <strong>Registered drones</strong> broadcasting ID, location, speed, altitude since March 2024<br>
+        433K commercial &bull; 377K recreational
+      </div>
+      <div class="bar-visual"><div class="bar-fill-blue"></div></div>
+    </div>
+
+    <div class="data-block gap">
+      <div class="data-label">Receiver Infrastructure</div>
+      <div class="data-value">~0</div>
+      <div class="data-detail">
+        <strong>No federal receiver network</strong> exists<br>
+        NJ drone panic proved the gap is critical<br>
+        Below 400ft: no surveillance capability
+      </div>
+      <div class="bar-visual"><div class="bar-fill-red"></div></div>
+    </div>
+
+    <div class="data-block alert">
+      <div class="alert-number">0%</div>
+      <div class="alert-label">Coverage</div>
+      <div class="alert-sub">U.S. low-altitude<br>airspace unmonitored</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">Counter-drone market: <strong>$4.5B</strong> today &rarr; <strong>$14.5B</strong> by 2030 (26% CAGR)</div>
+    <div class="footer-right">@FliteGrid &bull; @swarmagent2026</div>
+  </div>
+</div>
+</body>
+</html>
