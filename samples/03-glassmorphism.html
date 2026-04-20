@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glassmorphism</title>
+<style>
+/* All tokens below are read from the UI UX Pro Max catalog row for this style.
+   Primary Colors · Secondary Colors · Effects & Animation · Design System
+   Variables · CSS/Technical Keywords — see styles.csv rows for the source. */
+:root{--blur-amount: 15px;--glass-opacity: 0.15;--border-color: rgba(255;--background: vibrant color;--text-color: light/dark based on BG}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%;font-family:system-ui, -apple-system, sans-serif}
+body{background:#cccccc;color:#111111;line-height:1.55}
+.page{max-width:1120px;margin:0 auto;padding:56px 40px}
+.kicker{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;opacity:.7}
+h1{font-size:clamp(42px,5vw,72px);line-height:1.02;letter-spacing:-0.03em;margin:18px 0 22px;font-family:system-ui, -apple-system, sans-serif}
+.lede{max-width:720px;font-size:18px;opacity:0.85;margin:0 0 32px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:28px}
+.card{background:#ffffff;color:#111111;padding:26px;border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,0.14);border:none;backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.22)}
+.card h3{margin:0 0 10px;font-size:22px}
+.card p{margin:0;opacity:0.8;font-size:14px}
+.btn{display:inline-block;margin-top:8px;padding:14px 22px;border-radius:14px;background:#cccccc;color:#ffffff;font-weight:700;letter-spacing:0.01em;text-decoration:none;}
+.btn.ghost{background:transparent;color:#111111;border:1px solid #11111133}
+.tag{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;background:#0080FF;color:#ffffff;margin-right:6px}
+footer{margin-top:48px;font-size:12px;opacity:0.55}
+body{background:linear-gradient(135deg,#cccccc,#0080FF,#0a0a0a 80%)}
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="kicker">UI Style #3 · 2020s Modern</div>
+    <h1>Frosted glass, layered depth.</h1>
+    <p class="lede">Frosted glass, transparent, blurred background, layered, vibrant background, light source, depth, multi-layer.</p>
+    <div>
+      <span class="tag">2020s Modern</span>
+      <span class="tag">Modern SaaS</span>
+    </div>
+    <div class="row">
+      <div class="card">
+        <h3>Hero section</h3>
+        <p>Demo card inheriting this style's tokens — Backdrop blur (10-20px), subtle border (1px solid rgba white 0.2), light reflection, Z-depth.</p>
+        <a class="btn" href="#">Primary action →</a>
+      </div>
+      <div class="card">
+        <h3>Secondary block</h3>
+        <p>Colours, radii and shadow pulled from the catalog row.</p>
+        <a class="btn ghost" href="#">Secondary action</a>
+      </div>
+      <div class="card">
+        <h3>Proof strip</h3>
+        <p>Typography + effects per the Effects &amp; Animation column.</p>
+      </div>
+    </div>
+    <footer>
+      Sample #3 · Glassmorphism · from <code>ui-ux-pro-max/data/styles.csv</code>
+    </footer>
+  </main>
+</body>
+</html>
