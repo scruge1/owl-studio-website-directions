@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&family=Fira+Code:wght@400;500;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Share Tech Mono', monospace;
+  background: #0A0A0A;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.card {
+  width: 1200px;
+  height: 675px;
+  background: #0A0A0A;
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* CRT scanlines */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 65, 0.03) 2px,
+    rgba(0, 255, 65, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Phosphor glow ambient */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(0,255,65,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.tag {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #00FF41;
+  border: 1px solid #00802B;
+  padding: 4px 14px;
+  text-shadow: 0 0 8px rgba(0,255,65,0.5);
+}
+
+.date {
+  font-family: 'Fira Code', monospace;
+  font-size: 12px;
+  color: #00802B;
+}
+
+h1 {
+  font-family: 'VT323', monospace;
+  font-size: 52px;
+  font-weight: 400;
+  color: #00FF41;
+  line-height: 1.1;
+  margin-bottom: 4px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 4px #00FF41, 0 0 11px #00FF41, 0 0 19px rgba(0,128,43,0.5);
+}
+
+h1 em {
+  font-style: normal;
+  color: #FF6A00;
+  text-shadow: 0 0 4px #FF6A00, 0 0 11px #FF6A00, 0 0 19px rgba(153,68,0,0.5);
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #00802B;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.data-row {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+}
+
+.data-block {
+  flex: 1;
+  border: 1px solid #00802B;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0,255,65,0.02);
+}
+
+.data-block.mandate {
+  border-left: 3px solid #00FF41;
+}
+
+.data-block.gap {
+  border-left: 3px solid #FF6A00;
+}
+
+.data-block.alert {
+  border: 2px solid #FF6A00;
+  flex: 0 0 220px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,106,0,0.05);
+}
+
+.data-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #00802B;
+  margin-bottom: 8px;
+}
+
+.data-value {
+  font-family: 'VT323', monospace;
+  font-size: 64px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.data-block.mandate .data-value {
+  color: #00FF41;
+  text-shadow: 0 0 4px #00FF41, 0 0 15px rgba(0,255,65,0.4);
+}
+
+.data-block.gap .data-value {
+  color: #FF6A00;
+  text-shadow: 0 0 4px #FF6A00, 0 0 15px rgba(255,106,0,0.4);
+}
+
+.data-detail {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  color: rgba(0,255,65,0.5);
+  line-height: 1.6;
+}
+
+.data-detail strong {
+  color: #00FF41;
+}
+
+.bar-visual {
+  margin-top: auto;
+  height: 20px;
+  border: 1px solid #00802B;
+  position: relative;
+  background: #0D1A0D;
+}
+
+.bar-fill-green {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #00802B, #00FF41, #39FF14);
+  box-shadow: 0 0 10px rgba(0,255,65,0.3);
+}
+
+.bar-fill-amber {
+  height: 100%;
+  width: 0.5%;
+  background: #994400;
+  border-right: 2px solid #FF6A00;
+  box-shadow: 0 0 10px rgba(255,106,0,0.3);
+}
+
+.alert-number {
+  font-family: 'VT323', monospace;
+  font-size: 72px;
+  color: #FF6A00;
+  line-height: 1;
+  text-shadow: 0 0 8px #FF6A00, 0 0 20px rgba(255,106,0,0.4);
+}
+
+.alert-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #994400;
+  margin-top: 4px;
+}
+
+.alert-sub {
+  font-size: 12px;
+  color: rgba(255,106,0,0.5);
+  margin-top: 8px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #00802B;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-left { font-size: 13px; color: #00802B; }
+.footer-left strong { color: #00FF41; text-shadow: 0 0 4px rgba(0,255,65,0.3); }
+.footer-right { font-family: 'Fira Code', monospace; font-size: 10px; color: #0D1A0D; text-transform: uppercase; letter-spacing: 1px; }
+.footer-right { color: rgba(0,255,65,0.2); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="topline">
+    <div class="tag">// AIRSPACE SCAN</div>
+    <div class="date">SYS.FAA // 2026.03</div>
+  </div>
+
+  <h1>820K DRONES BROADCAST. <em>NOTHING LISTENS.</em></h1>
+  <div class="subtitle">> FAA mandated transmission. Receiver infrastructure: NULL_</div>
+
+  <div class="data-row">
+    <div class="data-block mandate">
+      <div class="data-label">// transmitters</div>
+      <div class="data-value">820K</div>
+      <div class="data-detail">
+        <strong>FAA Remote ID</strong> active since 2024.03.16<br>
+        Broadcasting: ID, LOC, SPD, ALT<br>
+        433K commercial // 377K recreational
+      </div>
+      <div class="bar-visual"><div class="bar-fill-green"></div></div>
+    </div>
+
+    <div class="data-block gap">
+      <div class="data-label">// receivers</div>
+      <div class="data-value">~0</div>
+      <div class="data-detail">
+        <strong>No federal receiver network</strong><br>
+        NJ drone panic: FBI blind, DHS blind<br>
+        Below 400ft: no surveillance coverage
+      </div>
+      <div class="bar-visual"><div class="bar-fill-amber"></div></div>
+    </div>
+
+    <div class="data-block alert">
+      <div class="alert-number">0%</div>
+      <div class="alert-label">coverage</div>
+      <div class="alert-sub">LOW-ALT AIRSPACE<br>UNMONITORED</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">COUNTER-DRONE MKT: <strong>$4.5B</strong> &rarr; <strong>$14.5B</strong> BY 2030 // 26% CAGR</div>
+    <div class="footer-right">@FliteGrid // @swarmagent2026</div>
+  </div>
+</div>
+</body>
+</html>
