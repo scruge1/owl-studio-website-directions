@@ -4,14 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Owl Studio · Website Directions</title>
-  <meta name="description" content="Explore ten website design directions for product, local service, SaaS, clinic, finance, trades, AI, and story-led brands.">
+  <meta name="description" content="Ten distinct starting points for a sharper website. Pick the direction that fits your business, or ask for something completely different.">
   <meta name="theme-color" content="#f3ecdf">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="apple-touch-icon" href="favicon.svg">
 
-  <!-- Open Graph · social preview when this link is shared -->
+  <!-- Open Graph · social preview when shared -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Owl Studio">
   <meta property="og:title" content="Owl Studio · Website Directions">
@@ -20,9 +19,8 @@
   <meta property="og:image" content="https://websites.owlzone.trade/renders/02-chrome-commerce.png">
   <meta property="og:image:width" content="1408">
   <meta property="og:image:height" content="740">
-  <meta property="og:image:alt" content="Dark launch-page sample, one of ten website directions">
 
-  <!-- Twitter card · same content, summary_large_image layout -->
+  <!-- Twitter card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Owl Studio · Website Directions">
   <meta name="twitter:description" content="Ten distinct starting points for a sharper website. Pick the direction that fits your business, or ask for something completely different.">
@@ -32,66 +30,915 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=DM+Sans:wght@400;500;700;900&family=Fraunces:opsz,wght@9..144,600;9..144,800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="interactive-gallery.css">
-  <link rel="stylesheet" href="unique-samples.css">
-  <link rel="stylesheet" href="unique-samples-per-id.css">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=JetBrains+Mono:wght@500;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #11110f;
+      --paper: #f4efe6;
+      --muted: #7c766a;
+      --line: rgba(18, 18, 16, 0.12);
+      --shadow: 0 30px 90px rgba(24, 18, 10, 0.14);
+      --sans: "DM Sans", sans-serif;
+      --display: "Archivo", sans-serif;
+      --serif: "Fraunces", serif;
+      --classic: "Libre Baskerville", serif;
+      --mono: "JetBrains Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(198, 124, 59, 0.18), transparent 34rem),
+        linear-gradient(135deg, #f8f3ea 0%, #ebe2d4 44%, #f9f6f0 100%);
+      color: var(--ink);
+      font-family: var(--sans);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(1440px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(248, 243, 234, 0.78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--display);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .mark span:first-child {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background:
+        linear-gradient(135deg, #1b1a16 0 48%, transparent 48%),
+        linear-gradient(45deg, #c96f32 0 52%, #f1c18e 52%);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.16);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      font: 700 11px/1 var(--mono);
+      color: #5b554c;
+      text-transform: uppercase;
+    }
+
+    .nav a {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 11px;
+      background: rgba(255, 255, 255, 0.36);
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .nav a:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .intro {
+      min-height: calc(100svh - 76px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      align-items: center;
+      gap: clamp(34px, 5vw, 82px);
+      padding: clamp(60px, 8vw, 120px) 0;
+    }
+
+    .eyebrow {
+      font: 700 12px/1 var(--mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8c5a31;
+      margin-bottom: 18px;
+    }
+
+    .intro h1 {
+      font: 900 clamp(54px, 8vw, 132px) / 0.86 var(--display);
+      letter-spacing: -0.075em;
+      margin: 0;
+      max-width: 920px;
+    }
+
+    .intro p {
+      font-size: clamp(18px, 2vw, 25px);
+      line-height: 1.35;
+      color: #4e473f;
+      max-width: 670px;
+      margin: 28px 0 0;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border-radius: 999px;
+      padding: 0 20px;
+      font-weight: 800;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      background: #11110f;
+      color: #fff9ef;
+      box-shadow: 0 16px 32px rgba(17, 17, 15, 0.16);
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.48);
+      color: #14120f;
+      box-shadow: none;
+    }
+
+    .intro-board {
+      min-height: 560px;
+      border-radius: 44px;
+      background:
+        radial-gradient(circle at 74% 22%, rgba(255, 255, 255, 0.9), transparent 8rem),
+        linear-gradient(145deg, #1d1c19 0%, #3e3026 48%, #bd7b45 100%);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      animation: rise 800ms cubic-bezier(.2,.8,.2,1) both 140ms;
+    }
+
+    .intro-board::before {
+      content: "";
+      position: absolute;
+      inset: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 32px;
+    }
+
+    .orbit {
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 50%;
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+
+    .orbit.one {
+      width: 340px;
+      height: 340px;
+      right: -80px;
+      top: 52px;
+    }
+
+    .orbit.two {
+      width: 480px;
+      height: 480px;
+      left: -190px;
+      bottom: -160px;
+      animation-delay: -2s;
+    }
+
+    .board-label {
+      position: absolute;
+      left: 42px;
+      bottom: 42px;
+      color: #fff5e8;
+      max-width: 340px;
+    }
+
+    .board-label strong {
+      display: block;
+      font: 800 48px/0.9 var(--serif);
+      letter-spacing: -0.04em;
+    }
+
+    .board-label span {
+      display: block;
+      margin-top: 16px;
+      color: rgba(255, 245, 232, 0.74);
+      line-height: 1.45;
+    }
+
+    .samples {
+      display: grid;
+      gap: 28px;
+      padding: 0 0 90px;
+    }
+
+    .sample {
+      min-height: 740px;
+      border-radius: clamp(28px, 4vw, 56px);
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+      background: var(--bg, #fff);
+      color: var(--fg, #111);
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 28%;
+    }
+
+    .sample-inner {
+      min-height: inherit;
+      padding: clamp(26px, 5vw, 70px);
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr);
+      gap: clamp(28px, 5vw, 80px);
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .sample-copy {
+      max-width: 560px;
+    }
+
+    .sample-kicker {
+      font: 800 12px/1 var(--mono);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent, currentColor);
+      margin-bottom: 18px;
+    }
+
+    .sample h2 {
+      font-family: var(--title-font, var(--display));
+      font-size: clamp(42px, 6vw, 94px);
+      line-height: 0.92;
+      letter-spacing: var(--title-track, -0.06em);
+      margin: 0;
+    }
+
+    .sample p {
+      color: var(--body, rgba(20, 20, 20, 0.68));
+      font-size: clamp(17px, 1.45vw, 21px);
+      line-height: 1.5;
+      margin: 22px 0 0;
+    }
+
+    .sample-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .mini-button {
+      min-height: 44px;
+      border-radius: 999px;
+      padding: 0 16px;
+      display: inline-flex;
+      align-items: center;
+      font-weight: 800;
+      background: var(--button-bg, var(--fg));
+      color: var(--button-fg, var(--bg));
+      border: 1px solid var(--button-border, transparent);
+    }
+
+    .mini-button.ghost {
+      background: transparent;
+      color: var(--fg);
+      border-color: var(--ghost-border, rgba(0, 0, 0, 0.14));
+    }
+
+    .notes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 34px;
+    }
+
+    .notes span {
+      font: 700 11px/1 var(--mono);
+      padding: 9px 10px;
+      border: 1px solid var(--chip-border, rgba(0, 0, 0, 0.12));
+      border-radius: 999px;
+      color: var(--chip, var(--body));
+      background: var(--chip-bg, rgba(255, 255, 255, 0.22));
+    }
+
+    .visual {
+      min-height: 510px;
+      border-radius: clamp(28px, 4vw, 48px);
+      position: relative;
+      overflow: hidden;
+      background: var(--visual-bg, rgba(255, 255, 255, 0.3));
+      border: 1px solid var(--visual-border, rgba(255, 255, 255, 0.18));
+    }
+
+    .visual::after {
+      content: attr(data-label);
+      position: absolute;
+      left: 28px;
+      bottom: 24px;
+      font: 800 12px/1 var(--mono);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--visual-label, rgba(255, 255, 255, 0.8));
+    }
+
+    .product-block {
+      position: absolute;
+      width: 42%;
+      aspect-ratio: 1;
+      border-radius: 34px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.12)),
+        var(--accent);
+      box-shadow: 0 35px 70px rgba(0, 0, 0, 0.22);
+      transform: rotate(-12deg);
+      left: 18%;
+      top: 18%;
+    }
+
+    .product-block.two {
+      width: 34%;
+      left: 50%;
+      top: 36%;
+      transform: rotate(11deg);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(0, 0, 0, 0.08)),
+        var(--accent-2, #111);
+    }
+
+    .dashboard-lines {
+      position: absolute;
+      inset: 34px;
+      display: grid;
+      grid-template-columns: 0.7fr 1fr;
+      gap: 18px;
+    }
+
+    .dash-panel {
+      border-radius: 24px;
+      background: var(--panel, rgba(255, 255, 255, 0.08));
+      border: 1px solid var(--panel-border, rgba(255, 255, 255, 0.12));
+      padding: 22px;
+      overflow: hidden;
+    }
+
+    .dash-panel.wide {
+      grid-column: 1 / -1;
+      min-height: 132px;
+    }
+
+    .metric {
+      font: 900 clamp(34px, 4vw, 62px)/0.9 var(--display);
+      letter-spacing: -0.05em;
+      color: var(--accent);
+    }
+
+    .bar {
+      height: 10px;
+      width: var(--w, 70%);
+      margin-top: 18px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .editorial-image {
+      position: absolute;
+      inset: 42px 42px 118px;
+      border-radius: 50% 50% 8px 8px;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.68), transparent 8rem),
+        linear-gradient(160deg, var(--accent), var(--accent-2, #191919));
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+    }
+
+    .route-line {
+      position: absolute;
+      height: 2px;
+      background: var(--accent);
+      transform-origin: left center;
+      opacity: 0.8;
+    }
+
+    .site-1 {
+      --bg: #f3c795;
+      --fg: #23160f;
+      --body: rgba(35, 22, 15, 0.72);
+      --accent: #9b4f22;
+      --accent-2: #f8ead9;
+      --title-font: var(--serif);
+      --visual-bg: radial-gradient(circle at 72% 20%, #ffe6c9, transparent 10rem), linear-gradient(135deg, #b76631, #f0b172);
+    }
+
+    .site-2 {
+      --bg: #090b0b;
+      --fg: #efffed;
+      --body: rgba(239, 255, 237, 0.7);
+      --accent: #baff43;
+      --accent-2: #c4c9c5;
+      --button-bg: #baff43;
+      --button-fg: #090b0b;
+      --ghost-border: rgba(186, 255, 67, 0.35);
+      --visual-bg: radial-gradient(circle at 44% 30%, rgba(186, 255, 67, 0.42), transparent 10rem), linear-gradient(145deg, #1b2020, #030404);
+      --visual-border: rgba(186, 255, 67, 0.16);
+      --chip-border: rgba(186, 255, 67, 0.22);
+      --panel: rgba(255, 255, 255, 0.05);
+      --panel-border: rgba(186, 255, 67, 0.14);
+    }
+
+    .site-3 {
+      --bg: #111113;
+      --fg: #fafafa;
+      --body: rgba(250, 250, 250, 0.68);
+      --accent: #8a8dff;
+      --button-bg: #fafafa;
+      --button-fg: #111113;
+      --ghost-border: rgba(255, 255, 255, 0.18);
+      --visual-bg: linear-gradient(145deg, #18181c, #0b0b0d);
+      --visual-border: rgba(255, 255, 255, 0.1);
+      --panel: rgba(255, 255, 255, 0.055);
+      --panel-border: rgba(255, 255, 255, 0.09);
+    }
+
+    .site-4 {
+      --bg: #f7f9ff;
+      --fg: #111a34;
+      --body: rgba(17, 26, 52, 0.66);
+      --accent: #635bff;
+      --accent-2: #00d4ff;
+      --visual-bg: linear-gradient(135deg, #eef2ff, #d7efff);
+      --title-track: -0.065em;
+    }
+
+    .site-5 {
+      --bg: #fbf7ef;
+      --fg: #211c18;
+      --body: rgba(33, 28, 24, 0.67);
+      --accent: #b43a27;
+      --accent-2: #f1d9b7;
+      --title-font: var(--classic);
+      --title-track: -0.035em;
+      --visual-bg: linear-gradient(145deg, #ead9bd, #fbf7ef);
+    }
+
+    .site-6 {
+      --bg: #06251f;
+      --fg: #f8fff7;
+      --body: rgba(248, 255, 247, 0.73);
+      --accent: #67f0a9;
+      --accent-2: #d7a34b;
+      --button-bg: #67f0a9;
+      --button-fg: #06251f;
+      --ghost-border: rgba(103, 240, 169, 0.28);
+      --visual-bg: radial-gradient(circle at 70% 20%, rgba(103, 240, 169, 0.28), transparent 10rem), linear-gradient(145deg, #0f3f33, #031713);
+      --visual-border: rgba(103, 240, 169, 0.2);
+    }
+
+    .site-7 {
+      --bg: #efe8dd;
+      --fg: #30241e;
+      --body: rgba(48, 36, 30, 0.68);
+      --accent: #a77868;
+      --accent-2: #fff8ec;
+      --title-font: var(--serif);
+      --visual-bg: linear-gradient(145deg, #caa696, #f8f0e4);
+    }
+
+    .site-8 {
+      --bg: #080d12;
+      --fg: #e8fbff;
+      --body: rgba(232, 251, 255, 0.67);
+      --accent: #45d7ff;
+      --accent-2: #ffb84d;
+      --button-bg: #45d7ff;
+      --button-fg: #080d12;
+      --ghost-border: rgba(69, 215, 255, 0.24);
+      --visual-bg: linear-gradient(145deg, #0c1720, #071017);
+      --visual-border: rgba(69, 215, 255, 0.18);
+      --panel: rgba(69, 215, 255, 0.07);
+      --panel-border: rgba(69, 215, 255, 0.16);
+    }
+
+    .site-9 {
+      --bg: #fcf053;
+      --fg: #11110f;
+      --body: rgba(17, 17, 15, 0.72);
+      --accent: #11110f;
+      --accent-2: #ff4f22;
+      --button-bg: #11110f;
+      --button-fg: #fcf053;
+      --visual-bg: repeating-linear-gradient(-45deg, #11110f 0 14px, #fcf053 14px 28px);
+      --title-track: -0.08em;
+    }
+
+    .site-10 {
+      --bg: #17120d;
+      --fg: #fff4df;
+      --body: rgba(255, 244, 223, 0.72);
+      --accent: #d9a85b;
+      --accent-2: #5a3d25;
+      --button-bg: #d9a85b;
+      --button-fg: #17120d;
+      --ghost-border: rgba(217, 168, 91, 0.24);
+      --title-font: var(--classic);
+      --title-track: -0.035em;
+      --visual-bg: linear-gradient(145deg, #2a1c12, #100b08);
+      --visual-border: rgba(217, 168, 91, 0.18);
+    }
+
+    .site-4 .visual::before,
+    .site-6 .visual::before,
+    .site-10 .visual::before {
+      content: "";
+      position: absolute;
+      inset: 52px;
+      border-radius: 36px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.5), transparent),
+        repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0 1px, transparent 1px 42px);
+      opacity: 0.7;
+    }
+
+    .site-9 .visual::before {
+      content: "24HR";
+      position: absolute;
+      inset: 36px;
+      display: grid;
+      place-items: center;
+      border: 8px solid #11110f;
+      background: #fcf053;
+      font: 900 clamp(80px, 14vw, 170px)/1 var(--display);
+      letter-spacing: -0.08em;
+      transform: rotate(-4deg);
+    }
+
+    .footer {
+      padding: 40px 0 70px;
+      color: #5c554b;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(26px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes drift {
+      from {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+      }
+      to {
+        transform: translate3d(-18px, 22px, 0) rotate(8deg);
+      }
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0.18;
+        transform: translateY(38px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 920px) {
+      .topbar {
+        position: static;
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px 0;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .intro,
+      .sample-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-board {
+        min-height: 420px;
+      }
+
+      .sample {
+        min-height: auto;
+      }
+
+      .visual {
+        min-height: 380px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
     <div class="shell topbar-inner">
-      <a class="brand" href="interactive-gallery.html">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>Owl Studio</span>
-      </a>
-      <nav class="top-actions" aria-label="Page navigation">
-        <a class="pill" href="#samples">Website styles</a>
-        <a class="pill" href="#contact">Start a project</a>
-        <a class="pill" href="mailto:callmeie@proton.me?subject=Website%20design%20project">Email us</a>
+      <a class="mark" href="#top" aria-label="Return to top"><span aria-hidden="true"></span><span>Owl Studio</span></a>
+      <nav class="nav" aria-label="Sample designs">
+        <a href="#copper">Copper</a>
+        <a href="#chrome">Chrome</a>
+        <a href="#quiet">SaaS</a>
+        <a href="#trust">Trust</a>
+        <a href="#editorial">Editorial</a>
+        <a href="#growth">Growth</a>
+        <a href="#clinic">Clinic</a>
+        <a href="#ops">Ops</a>
+        <a href="#trades">Trades</a>
+        <a href="#heritage">Heritage</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="shell hero">
+  <main id="top" class="shell">
+    <section class="intro" aria-labelledby="intro-title">
       <div>
-        <p class="eyebrow">Website design studio</p>
-        <h1>Choose a website direction before we build it around you.</h1>
-        <p>Explore ten distinct starting points for a sharper website. These are only a taste of what we can do. We can shape any style around any business, offer, market, or customer journey.</p>
-        <div class="hero-actions">
-          <a class="button" href="#samples">Explore website styles</a>
-          <a class="button secondary" href="#contact">Start a project</a>
+        <div class="eyebrow">Advert sample pack / 10 directions</div>
+        <h1 id="intro-title">Websites that do not look like templates.</h1>
+        <p>Show prospects ten clear styles: premium product, futuristic commerce, calm SaaS, professional trust, editorial, local growth, clinic, AI ops, trades, and heritage story.</p>
+        <div class="cta-row">
+          <a class="button" href="#copper">Browse samples</a>
+          <a class="button secondary" href="mailto:callmeie@proton.me?subject=Website%20design%20project">Email the studio</a>
         </div>
       </div>
-      <div class="hero-stack" aria-hidden="true">
-        <div class="poster-card one"><img src="renders/02-chrome-commerce.png" alt=""></div>
-        <div class="poster-card two"><img src="renders/06-local-growth-engine.png" alt=""></div>
-        <div class="poster-card three"><img src="renders/10-heritage-story.png" alt=""></div>
+      <div class="intro-board" aria-label="Abstract preview board">
+        <span class="orbit one"></span>
+        <span class="orbit two"></span>
+        <div class="board-label">
+          <strong>10 style routes.</strong>
+          <span>Each direction is built from the Design Hub: reference first, distinct mood, browser-ready HTML.</span>
+        </div>
       </div>
     </section>
 
-    <section id="samples" class="shell samples-intro">
-      <h2>Pick the direction that feels closest, or ask for something completely different.</h2>
-      <p>Open any style to see how a homepage could behave, what sections it would include, and how the call-to-action would guide customers. If none of these fit, we design a new direction around your business.</p>
-    </section>
+    <div class="samples">
+      <section id="copper" class="sample site-1">
+        <div class="sample-inner">
+          <div class="sample-copy">
+            <div class="sample-kicker">01 / Premium product</div>
+            <h2>Copper Product Studio</h2>
+            <p>For craft brands, makers, hardware, and premium local products that need warmth, tactility, and a polished sales page.</p>
+            <div class="sample-actions">
+              <a class="mini-button" href="#chrome">Next style</a>
+              <a class="mini-button ghost" href="#top">Back to top</a>
+            </div>
+            <div class="notes">
+              <span>KNOB inspired</span><span>Serif display</span><span>3D product slot</span>
+            </div>
+          </div>
+          <div class="visual" data-label="Hero product direction">
+            <span class="product-block"></span>
+            <span class="product-block two"></span>
+          </div>
+        </div>
+      </section>
 
-    <section class="shell gallery" id="gallery" aria-label="Interactive website samples"></section>
+      <section id="chrome" class="sample site-2">
+        <div class="sample-inner">
+          <div class="sample-copy">
+            <div class="sample-kicker">02 / Futuristic commerce</div>
+            <h2>Chrome Commerce</h2>
+            <p>For ecommerce, coffee, tech retail, and product launches that need dark atmosphere, sharp contrast, and high-end motion potential.</p>
+            <div class="sample-actions">
+              <a class="mini-button" href="#quiet">Next style</a>
+              <a class="mini-button ghost" href="#top">Back to top</a>
+            </div>
+            <div class="notes">
+              <span>eBarista inspired</span><span>Metallic dark</span><span>Green accent</span>
+            </div>
+          </div>
+          <div class="visual" data-label="Commerce hero">
+            <span class="product-block"></span>
+            <span class="product-block two"></span>
+          </div>
+        </div>
+      </section>
 
-    <section id="contact" class="shell closing">
-      <h2>Seen a direction that fits? We can shape it into your website.</h2>
-      <p>Send the style name you like, your business type, and the action you want customers to take. The first build decision is choosing the right direction.</p>
-      <div class="hero-actions">
-        <a class="button" href="mailto:callmeie@proton.me?subject=Website%20design%20project">Start by email</a>
-        <a class="button secondary" href="#samples">Compare styles again</a>
-      </div>
-    </section>
+      <section id="quiet" class="sample site-3">
+        <div class="sample-inner">
+          <div class="sample-copy">
+            <div class="sample-kicker">03 / B2B software</div>
+            <h2>Quiet SaaS</h2>
+            <p>For software, AI services, and agencies that need a serious product page with calm hierarchy and dashboard proof.</p>
+            <div class="sample-actions">
+              <a class="mini-button" href="#trust">Next style</a>
+              <a class="mini-button ghost" href="#top">Back to top</a>
+            </div>
+            <div class="notes">
+              <span>Linear inspired</span><span>Dark workspace</span><span>Low chrome</span>
+            </div>
+          </div>
+          <div class="visual" data-label="Product workspace">
+            <div class="dashboard-lines">
+              <div class="dash-panel"><div class="metric">98%</div><div class="bar" style="--w: 76%"></div></div>
+              <div class="dash-panel"><div class="metric">24m</div><div class="bar" style="--w: 54%"></div></div>
+              <div class="dash-panel wide"><div class="metric">live pipeline</div><div class="bar" style="--w: 88%"></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="trust" class="sample site-4">
+        <div class="sample-inner">
+          <div class="sample-copy">
+            <div class="sample-kicker">04 / Finance and legal</div>
+            <h2>Trust Ledger</h2>
+            <p>For accountants, finance, legal, subscriptions, and professional services where clarity and confidence matter more than decoration.</p>
+            <div class="sample-actions">
+              <a class="mini-button" href="#editorial">Next style</a>
+              <a class="mini-button ghost" href="#top">Back to top</a>
+            </div>
+            <div class="notes">
+              <span>Stripe inspired</span><span>Trust signals</span><span>Clean forms</span>
+            </div>
+          </div>
+          <div class="visual" data-label="Trust page system"></div>
+        </div>
+      </section>
+
+      <section id="editorial" class="sample site-5">
+        <div class="sample-inner">
+          <div class="sample-copy">
+            <div class="sample-kicker">05 / Thought leadership</div>
+            <h2>Editorial House</h2>
+            <p>For consultants, authors, educators, and personal brands that need credibility, long-form depth, and a homepage that reads like a publication.</p>
+            <div class="sample-actions">
+              <a class="mini-button" href="#growth">Next style</a>
+              <a class="mini-button ghost" href="#top">Back to top</a>
+            </div>
+            <div class="notes">
+              <span>Notion calm</span><span>Editorial serif</span><span>Content first</span>
+            </div>
+          </div>
+          <div class="visual" data-label="Editorial identity">
+            <div class="editorial-image"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="growth" class="sample site-6">
+        <div class="sample-inner">
+          <div class="sample-copy">
+            <div class="sample-kicker">06 / Local SEO offer</div>
+            <h2>Local Growth Engine</h2>
+            <p>For dentists, roofers, med spas, and service firms selling map-pack ranking, lead generation, and rank-and-rent pages.</p>
+            <div class="sample-actions">
+              <a class="mini-button" href="#clinic">Next style</a>
+              <a class="mini-button ghost" href="#top">Back to top</a>
+            </div>
+            <div class="notes">
+              <span>GBP playbook</span><span>Map-pack proof</span><span>Revenue first</span>
+            </div>
+          </div>
+          <div class="visual" data-label="Local rank proof">
+            <span class="route-line" style="width: 58%; left: 18%; top: 36%; transform: rotate(18deg);"></span>
+            <span class="route-line" style="width: 42%; left: 28%; top: 56%; transform: rotate(-12deg);"></span>
+            <span class="route-line" style="width: 36%; left: 42%; top: 70%; transform: rotate(7deg);"></span>
+          </div>
+        </div>
+      </section>
+
+      <section id="clinic" class="sample site-7">
+        <div class="sample-inner">
+          <div class="sample-copy">
+            <div class="sample-kicker">07 / Wellness and clinics</div>
+            <h2>Clinic Calm</h2>
+            <p>For salons, aesthetic clinics, therapists, and wellness spaces where the site must feel premium, warm, and easy to book.</p>
+            <div class="sample-actions">
+              <a class="mini-button" href="#ops">Next style</a>
+              <a class="mini-button ghost" href="#top">Back to top</a>
+            </div>
+            <div class="notes">
+              <span>Soft luxury</span><span>Booking CTA</span><span>Photo-led</span>
+            </div>
+          </div>
+          <div class="visual" data-label="Clinic booking page">
+            <div class="editorial-image"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ops" class="sample site-8">
+        <div class="sample-inner">
+          <div class="sample-copy">
+            <div class="sample-kicker">08 / AI managed service</div>
+            <h2>Agent Ops</h2>
+            <p>For AI automation, managed workflows, support desks, and internal tools that need a visible control room instead of vague AI promises.</p>
+            <div class="sample-actions">
+              <a class="mini-button" href="#trades">Next style</a>
+              <a class="mini-button ghost" href="#top">Back to top</a>
+            </div>
+            <div class="notes">
+              <span>ClawPort inspired</span><span>Live feed</span><span>Ops dashboard</span>
+            </div>
+          </div>
+          <div class="visual" data-label="Agent dashboard">
+            <div class="dashboard-lines">
+              <div class="dash-panel"><div class="metric">87</div><div class="bar" style="--w: 82%"></div></div>
+              <div class="dash-panel"><div class="metric">$0.47</div><div class="bar" style="--w: 45%"></div></div>
+              <div class="dash-panel wide"><div class="metric">approvals 02</div><div class="bar" style="--w: 64%"></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="trades" class="sample site-9">
+        <div class="sample-inner">
+          <div class="sample-copy">
+            <div class="sample-kicker">09 / Direct response local</div>
+            <h2>Bold Trades</h2>
+            <p>For builders, roofers, plumbers, and emergency services where the website needs to make the phone ring today.</p>
+            <div class="sample-actions">
+              <a class="mini-button" href="#heritage">Next style</a>
+              <a class="mini-button ghost" href="#top">Back to top</a>
+            </div>
+            <div class="notes">
+              <span>High contrast</span><span>Phone-first</span><span>No soft sell</span>
+            </div>
+          </div>
+          <div class="visual" data-label="Emergency service advert"></div>
+        </div>
+      </section>
+
+      <section id="heritage" class="sample site-10">
+        <div class="sample-inner">
+          <div class="sample-copy">
+            <div class="sample-kicker">10 / Story brand</div>
+            <h2>Heritage Story</h2>
+            <p>For family businesses, photographers, archives, venues, and hospitality brands that sell trust through history and atmosphere.</p>
+            <div class="sample-actions">
+              <a class="mini-button" href="#top">Back to top</a>
+              <a class="mini-button ghost" href="#footer">Advert copy</a>
+            </div>
+            <div class="notes">
+              <span>Archive mood</span><span>Classic serif</span><span>Warm proof</span>
+            </div>
+          </div>
+          <div class="visual" data-label="Heritage landing page"></div>
+        </div>
+      </section>
+    </div>
   </main>
 
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Expanded website sample">
-    <div class="modal-panel" id="modalPanel"></div>
-  </div>
-
-  <script src="interactive-gallery.js"></script>
-  <script src="unique-samples.js"></script>
+  <footer id="footer" class="shell footer">
+    <span>Pick a style. We adapt it to your business, write the copy, build the page, and put it live. <a href="mailto:callmeie@proton.me?subject=Website%20design%20project" style="text-decoration:underline;font-weight:700;">callmeie@proton.me</a></span>
+    <span>Owl Studio · Limerick, Ireland</span>
+  </footer>
 </body>
 </html>
