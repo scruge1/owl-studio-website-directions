@@ -87,7 +87,7 @@ Three scripts, pick the one that matches.
 
 ### 8+ out of 10 — they're ready to book
 
-> "Great. So — Pro tier is €1,299 all-in, delivered 14 days from when
+> "Great. So — Pro tier is €1,595 all-in, delivered 14 days from when
 > you send me your content. I've got a slot opening Monday.
 > If you email me now, I'll send you a 1-page brief within 24 hours
 > and we lock it in. Want me to send you the email link?"

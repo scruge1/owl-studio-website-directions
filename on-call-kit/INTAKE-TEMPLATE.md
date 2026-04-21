@@ -29,9 +29,9 @@ Gallery style they picked (pick ONE):
   [ ] 10 Retro-Futurism       (synthwave, podcast, nostalgia)
 
 Tier they're asking for:
-  [ ] Starter €499   — 7 days, single-page, 150–300 words
-  [ ] Pro €1,299     — 14 days, 5 pages, CMS + copywriting
-  [ ] Custom €2,500+ — quoted, ecommerce / SaaS / integrations
+  [ ] Starter €695   — 7 days, single-page, 150–300 words
+  [ ] Pro €1,595     — 14 days, 5 pages, CMS + copy + GBP + basic SEO
+  [ ] Custom from €2,950 — quoted, ecommerce / SaaS / integrations
 
 Hard no's (colours / imagery / tones to avoid):
                       ________________________________________________
