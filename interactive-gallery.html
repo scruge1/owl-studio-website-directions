@@ -629,22 +629,20 @@
       flex: 1;
       margin-top: 16px;
     }
-    .demo-showcase iframe {
+    /* Showcase preview — static 1440x900 PNG (same render as the gallery cards).
+       Previously a live iframe with transform:scale() which browsers rasterise
+       at the displayed size, producing a fuzzy/low-res look. A real PNG downscales
+       cleanly at any viewport. */
+    .demo-showcase img {
       position: absolute;
-      top: 0; left: 0;
-      width: 1440px;
-      height: 900px;
-      border: 0;
-      pointer-events: none;
-      background: #fff;
-      transform-origin: top left;
-      transform: scale(0.22);
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      image-rendering: auto;
     }
-    @media (min-width: 520px)  { .demo-showcase iframe { transform: scale(0.30); } }
-    @media (min-width: 720px)  { .demo-showcase iframe { transform: scale(0.40); } }
-    @media (min-width: 980px)  { .demo-showcase iframe { transform: scale(0.32); } }
-    @media (min-width: 1180px) { .demo-showcase iframe { transform: scale(0.38); } }
-    @media (min-width: 1400px) { .demo-showcase iframe { transform: scale(0.44); } }
     .demo-showcase::after {
       content: "YOUR BUSINESS HERE";
       position: absolute;
@@ -949,18 +947,21 @@
       overflow: hidden;
       /* themed miniature paints as fallback; PNG preview (if loaded) sits on top */
     }
-    /* Static PNG preview — screenshots of each sample at 1440x900.
-       Replaces the old live-iframe pattern that OOM-crashed on
-       mid-tier devices when 3-4 cards were visible simultaneously. */
+    /* Static PNG preview — 2880x1800 retina screenshots of each sample.
+       object-fit: contain so the FULL page shows with no side-cropping
+       (cover was clipping ~38px off each side). Cream background fills
+       any letterbox space from aspect mismatch so the card reads clean. */
+    .card-stage {
+      background: var(--paper);
+    }
     .card-stage .card-preview {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: top center;
       display: block;
-      background: transparent;
       z-index: 1;
     }
     /* Card-stage themed art: scale up motifs with fixed-px text for the larger canvas */
