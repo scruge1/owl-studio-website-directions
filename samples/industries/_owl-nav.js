@@ -20,11 +20,11 @@
     { slug: "03-accountant-minimalism",         name: "Chartered Accountants", style: "Numbers-forward" },
     { slug: "04-physio-neumorphism",            name: "Physiotherapy",         style: "Soft Neumorphism" },
     { slug: "05-opticians-glassmorphism",       name: "Opticians",             style: "Glassmorphism" },
-    { slug: "06-audiologist-aurora",            name: "Audiology",             style: "Aurora Calm" },
+    { slug: "06-trade-pro-dark-oled",           name: "Trade Pro",             style: "Dark OLED · Industrial" },
     { slug: "07-vet-claymorphism",              name: "Veterinary",            style: "Claymorphism" },
     { slug: "08-financial-brutalism-editorial", name: "Wealth Advisor",        style: "Editorial Brutalism" },
     { slug: "09-architects-3d",                 name: "Architects",            style: "3D Hyperrealism" },
-    { slug: "10-aesthetic-clinic-aurora-luxe",  name: "Aesthetic Clinic",      style: "Aurora Luxe" }
+    { slug: "10-local-services-brutalism",      name: "Local Services",        style: "Mondrian Brutalism" }
   ];
 
   var GALLERY_URL = "https://websites.owlzone.trade/#styles";
