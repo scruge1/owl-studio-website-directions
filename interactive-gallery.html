@@ -609,22 +609,35 @@
         repeating-linear-gradient(to bottom, transparent 0 9px, rgba(0, 255, 255, 0.45) 9px 10px),
         repeating-linear-gradient(to right, transparent 0 10%, rgba(255, 0, 110, 0.5) 10% calc(10% + 1px));
     }
+    /* Demo showcase — renders the sample as a scaled-down desktop
+       preview. Iframe at fixed 1440×900, transform-scaled to fit
+       container (mimics a laptop thumbnail). No viewport/scaling
+       mismatch, no tiny-text-on-mobile issue. */
     .demo-showcase {
       position: relative;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 1440 / 900;
       overflow: hidden;
-      background: #000;
+      background: #fff;
+      border: 1px solid rgba(11, 10, 8, 0.12);
       flex: 1;
+      margin-top: 16px;
     }
     .demo-showcase iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 1440px;
+      height: 900px;
       border: 0;
-      width: 250%;
-      height: 250%;
-      transform: scale(0.4);
-      transform-origin: top left;
       pointer-events: none;
       background: #fff;
+      transform-origin: top left;
+      transform: scale(0.22);
     }
+    @media (min-width: 520px)  { .demo-showcase iframe { transform: scale(0.30); } }
+    @media (min-width: 720px)  { .demo-showcase iframe { transform: scale(0.40); } }
+    @media (min-width: 980px)  { .demo-showcase iframe { transform: scale(0.32); } }
+    @media (min-width: 1180px) { .demo-showcase iframe { transform: scale(0.38); } }
+    @media (min-width: 1400px) { .demo-showcase iframe { transform: scale(0.44); } }
     .demo-showcase::after {
       content: "YOUR BUSINESS HERE";
       position: absolute;
@@ -634,9 +647,10 @@
       background: rgba(26, 24, 18, 0.92);
       color: var(--accent-light);
       font-family: var(--mono);
-      font-size: 13px; font-weight: 700; letter-spacing: 0.24em;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.24em;
       border: 2px dashed var(--accent-light);
       pointer-events: none;
+      z-index: 2;
     }
 
     /* ---------- WHY STRIP (3 stats) ---------- */
