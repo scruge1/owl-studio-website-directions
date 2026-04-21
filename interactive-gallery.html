@@ -316,30 +316,205 @@
       position: relative;
       aspect-ratio: 4 / 3;
       overflow: hidden;
-      background: var(--paper);
+      background: #111;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 10px 10px 8px;
-      display: flex; flex-direction: column; justify-content: space-between;
       text-decoration: none;
       color: inherit;
-      transition: transform 120ms ease, background 120ms ease;
+      display: block;
+      transition: transform 140ms ease, box-shadow 140ms ease;
     }
-    .demo-thumb:hover { transform: translateY(-2px); background: #fff; }
+    .demo-thumb:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); }
+    .demo-thumb:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; }
+    .demo-thumb .meta {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      z-index: 3;
+      padding: 10px 11px 9px;
+      display: flex; flex-direction: column; gap: 2px;
+      background: linear-gradient(to top, rgba(11, 10, 8, 0.88) 0%, rgba(11, 10, 8, 0.45) 55%, transparent 100%);
+      color: #fff;
+    }
     .demo-thumb .num {
       font-family: var(--mono);
-      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
-      color: var(--accent);
+      font-size: 9px; font-weight: 700; letter-spacing: 0.16em;
+      color: var(--accent-light);
     }
     .demo-thumb .name {
       font-family: var(--display);
       font-size: 13px; font-weight: 800; letter-spacing: -0.01em;
-      color: var(--ink);
-      line-height: 1.15;
+      color: #fff;
+      line-height: 1.1;
     }
     .demo-thumb .aud {
       font-family: var(--mono);
-      font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--muted);
+      font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    /* Themed art per direction — pure CSS, zero iframes */
+
+    /* 01 — Swiss Magazine: black rule, heavy numeral */
+    .t-01 { background: #f3f0e8; }
+    .t-01::before {
+      content: "01";
+      position: absolute;
+      left: 12px; top: 14px;
+      font-family: var(--display);
+      font-weight: 900; font-size: 72px; line-height: 0.85;
+      letter-spacing: -0.05em;
+      color: #0b0a08;
+    }
+    .t-01::after {
+      content: "";
+      position: absolute;
+      left: 12px; right: 12px; top: 10px;
+      height: 3px; background: #0b0a08;
+    }
+
+    /* 02 — Neumorphism: soft extruded disc */
+    .t-02 { background: #e4e7ed; }
+    .t-02::before {
+      content: "";
+      position: absolute;
+      left: 30%; top: 22%;
+      width: 40%; height: 52%;
+      border-radius: 50%;
+      background: #e4e7ed;
+      box-shadow: 6px 6px 14px #b8bec7, -6px -6px 14px #ffffff, inset 2px 2px 6px #ffffff, inset -3px -3px 8px #c5cbd4;
+    }
+    .t-02 .meta { background: linear-gradient(to top, rgba(58, 64, 74, 0.88) 0%, rgba(58, 64, 74, 0.35) 55%, transparent 100%); }
+
+    /* 03 — Glassmorphism: frosted panel on gradient */
+    .t-03 { background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 55%, #06b6d4 100%); }
+    .t-03::before {
+      content: "";
+      position: absolute;
+      left: 18%; top: 22%;
+      width: 64%; height: 52%;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.24);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 04 — Brutalism: raw yellow + offset block */
+    .t-04 { background: #f4e23a; }
+    .t-04::before {
+      content: "BRUT";
+      position: absolute;
+      left: 12px; top: 12px;
+      font-family: var(--mono);
+      font-weight: 900; font-size: 18px; letter-spacing: -0.02em;
+      color: #0b0a08;
+    }
+    .t-04::after {
+      content: "";
+      position: absolute;
+      right: 18px; top: 32px;
+      width: 46%; height: 30%;
+      background: #0b0a08;
+      box-shadow: -6px 6px 0 0 #f27436, -6px 6px 0 2px #0b0a08;
+    }
+
+    /* 05 — 3D Hyperrealism: glowing amber orb */
+    .t-05 { background: radial-gradient(circle at 70% 85%, #1a1812 0%, #000 70%); }
+    .t-05::before {
+      content: "";
+      position: absolute;
+      left: 26%; top: 18%;
+      width: 48%; height: 64%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 32%, #fff8ed 0%, #f2ae6c 18%, #c96f32 45%, #5a2e10 80%, #1a0c04 100%);
+      box-shadow: 0 16px 28px rgba(201, 111, 50, 0.35), inset -8px -14px 22px rgba(0, 0, 0, 0.55);
+    }
+
+    /* 06 — Vibrant Block: 4-colour grid */
+    .t-06 {
+      background:
+        linear-gradient(to right, #ff006e 0 50%, #ffd60a 50% 100%) top / 100% 50% no-repeat,
+        linear-gradient(to right, #06b6d4 0 50%, #a6ff00 50% 100%) bottom / 100% 50% no-repeat,
+        #000;
+    }
+    .t-06::after {
+      content: "";
+      position: absolute;
+      left: 48%; top: 46%;
+      width: 4%; height: 8%;
+      background: #0b0a08;
+    }
+
+    /* 07 — Dark OLED: neon accent pill */
+    .t-07 { background: #000; }
+    .t-07::before {
+      content: "";
+      position: absolute;
+      left: 22%; top: 34%;
+      width: 56%; height: 13%;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 24px rgba(201, 111, 50, 0.55), 0 0 3px var(--accent);
+    }
+    .t-07::after {
+      content: "";
+      position: absolute;
+      left: 30%; top: 55%;
+      width: 40%; height: 2px;
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    /* 08 — Claymorphism: playful chunky pills */
+    .t-08 { background: #ffeef3; }
+    .t-08::before {
+      content: "";
+      position: absolute;
+      left: 16%; top: 18%;
+      width: 40%; height: 42%;
+      border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%;
+      background: #ffb3d1;
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12), inset 4px -4px 10px rgba(255, 255, 255, 0.85), inset -4px 4px 10px rgba(201, 111, 150, 0.28);
+    }
+    .t-08::after {
+      content: "";
+      position: absolute;
+      right: 14%; top: 38%;
+      width: 28%; height: 32%;
+      border-radius: 50%;
+      background: #a5d8ff;
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12), inset 4px -4px 10px rgba(255, 255, 255, 0.9), inset -4px 4px 10px rgba(90, 130, 170, 0.3);
+    }
+    .t-08 .meta { background: linear-gradient(to top, rgba(60, 30, 50, 0.88) 0%, rgba(60, 30, 50, 0.35) 55%, transparent 100%); }
+
+    /* 09 — Aurora UI: overlapping soft gradients */
+    .t-09 {
+      background:
+        radial-gradient(ellipse at 20% 25%, rgba(168, 85, 247, 0.82) 0%, transparent 55%),
+        radial-gradient(ellipse at 82% 15%, rgba(236, 72, 153, 0.8) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 85%, rgba(56, 189, 248, 0.78) 0%, transparent 55%),
+        #0b0a26;
+    }
+
+    /* 10 — Retro-Futurism: synthwave horizon + sun */
+    .t-10 {
+      background: linear-gradient(to bottom, #ff006e 0%, #c026d3 32%, #4c1d95 58%, #1a0534 100%);
+    }
+    .t-10::before {
+      content: "";
+      position: absolute;
+      left: 28%; top: 18%;
+      width: 44%; height: 44%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 42%, #ffd60a 0%, #ff006e 62%, transparent 100%);
+    }
+    .t-10::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0; height: 42%;
+      background:
+        linear-gradient(to bottom, transparent 0%, #1a0534 95%),
+        repeating-linear-gradient(to bottom, transparent 0 9px, rgba(255, 0, 110, 0.55) 9px 10px),
+        repeating-linear-gradient(to right, transparent 0 11%, rgba(255, 0, 110, 0.55) 11% calc(11% + 1px));
     }
     .demo-showcase {
       position: relative;
@@ -1005,16 +1180,16 @@
           <div class="demo-title">You pick any style from the ten below</div>
           <p class="demo-sub">Each is a separate direction — typography, rhythm, colour system — built for a different kind of business.</p>
           <div class="demo-thumbs">
-            <a class="demo-thumb" href="samples/01-minimalism-swiss.html" target="_blank" rel="noopener"><span class="num">01</span><span class="name">Swiss Magazine</span><span class="aud">Editorial · content-led</span></a>
-            <a class="demo-thumb" href="samples/02-neumorphism.html" target="_blank" rel="noopener"><span class="num">02</span><span class="name">Neumorphism</span><span class="aud">Wellness · meditation</span></a>
-            <a class="demo-thumb" href="samples/03-glassmorphism.html" target="_blank" rel="noopener"><span class="num">03</span><span class="name">Glassmorphism</span><span class="aud">Fintech · dashboard</span></a>
-            <a class="demo-thumb" href="samples/04-brutalism.html" target="_blank" rel="noopener"><span class="num">04</span><span class="name">Brutalism</span><span class="aud">Design agency · bold</span></a>
-            <a class="demo-thumb" href="samples/05-3d-hyperrealism.html" target="_blank" rel="noopener"><span class="num">05</span><span class="name">3D Hyperrealism</span><span class="aud">Premium product</span></a>
-            <a class="demo-thumb" href="samples/06-vibrant-block.html" target="_blank" rel="noopener"><span class="num">06</span><span class="name">Vibrant Block</span><span class="aud">Startup · creative</span></a>
-            <a class="demo-thumb" href="samples/07-dark-oled.html" target="_blank" rel="noopener"><span class="num">07</span><span class="name">Dark OLED</span><span class="aud">Tech · gaming · dev</span></a>
-            <a class="demo-thumb" href="samples/08-claymorphism.html" target="_blank" rel="noopener"><span class="num">08</span><span class="name">Claymorphism</span><span class="aud">Kids · education</span></a>
-            <a class="demo-thumb" href="samples/09-aurora-ui.html" target="_blank" rel="noopener"><span class="num">09</span><span class="name">Aurora UI</span><span class="aud">Music · lifestyle</span></a>
-            <a class="demo-thumb" href="samples/10-retro-futurism.html" target="_blank" rel="noopener"><span class="num">10</span><span class="name">Retro-Futurism</span><span class="aud">Synthwave · podcast</span></a>
+            <a class="demo-thumb t-01" href="samples/01-minimalism-swiss.html" target="_blank" rel="noopener"><span class="meta"><span class="num">01</span><span class="name">Swiss Magazine</span><span class="aud">Editorial · content-led</span></span></a>
+            <a class="demo-thumb t-02" href="samples/02-neumorphism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">02</span><span class="name">Neumorphism</span><span class="aud">Wellness · meditation</span></span></a>
+            <a class="demo-thumb t-03" href="samples/03-glassmorphism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">03</span><span class="name">Glassmorphism</span><span class="aud">Fintech · dashboard</span></span></a>
+            <a class="demo-thumb t-04" href="samples/04-brutalism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">04</span><span class="name">Brutalism</span><span class="aud">Design agency · bold</span></span></a>
+            <a class="demo-thumb t-05" href="samples/05-3d-hyperrealism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">05</span><span class="name">3D Hyperrealism</span><span class="aud">Premium product</span></span></a>
+            <a class="demo-thumb t-06" href="samples/06-vibrant-block.html" target="_blank" rel="noopener"><span class="meta"><span class="num">06</span><span class="name">Vibrant Block</span><span class="aud">Startup · creative</span></span></a>
+            <a class="demo-thumb t-07" href="samples/07-dark-oled.html" target="_blank" rel="noopener"><span class="meta"><span class="num">07</span><span class="name">Dark OLED</span><span class="aud">Tech · gaming · dev</span></span></a>
+            <a class="demo-thumb t-08" href="samples/08-claymorphism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">08</span><span class="name">Claymorphism</span><span class="aud">Kids · education</span></span></a>
+            <a class="demo-thumb t-09" href="samples/09-aurora-ui.html" target="_blank" rel="noopener"><span class="meta"><span class="num">09</span><span class="name">Aurora UI</span><span class="aud">Music · lifestyle</span></span></a>
+            <a class="demo-thumb t-10" href="samples/10-retro-futurism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">10</span><span class="name">Retro-Futurism</span><span class="aud">Synthwave · podcast</span></span></a>
           </div>
           <p class="demo-sub" style="margin-top: 10px;">Each card opens the full sample in a new tab — all live, built in this repo.</p>
         </div>
