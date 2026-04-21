@@ -43,6 +43,9 @@
     if (sessionStorage.getItem("owl-nav-hidden")) return;
   } catch (e) { /* ignore */ }
 
+  // Escape hatch for screenshot/snapshot rendering — e.g. ?hide-nav=1
+  if (/[?&]hide-nav=1\b/.test(location.search)) return;
+
   var current = SAMPLES[idx];
   var prev = SAMPLES[(idx - 1 + SAMPLES.length) % SAMPLES.length];
   var next = SAMPLES[(idx + 1) % SAMPLES.length];
