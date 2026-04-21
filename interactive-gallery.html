@@ -914,7 +914,10 @@
       box-shadow: 0 18px 40px rgba(26, 24, 18, 0.10);
       overflow: hidden;
       position: relative;
-      min-height: 520px;
+      /* content-visibility defers layout/paint of off-screen cards — crucial
+         for shipping 10 live iframes without crashing the renderer */
+      content-visibility: auto;
+      contain-intrinsic-size: auto 560px;
     }
     .card-header {
       display: flex; align-items: baseline; justify-content: space-between;
@@ -937,10 +940,30 @@
     }
     .card-stage {
       position: relative;
-      flex: 1; min-height: 420px;
+      flex: 1;
+      aspect-ratio: 1440 / 900;
       overflow: hidden;
-      /* no fallback bg — each card-stage is themed via .t-XX and its own background takes over */
+      /* themed miniature paints as fallback; iframe (if loaded) sits on top */
     }
+    /* Live iframe preview — rendered at fixed desktop viewport, scaled to fit card */
+    .card-stage iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 1440px;
+      height: 900px;
+      border: 0;
+      pointer-events: none;
+      background: #fff;
+      transform-origin: top left;
+      transform: scale(0.23);
+      z-index: 1;
+    }
+    @media (min-width: 480px)  { .card-stage iframe { transform: scale(0.30); } }
+    @media (min-width: 640px)  { .card-stage iframe { transform: scale(0.40); } }
+    @media (min-width: 900px)  { .card-stage iframe { transform: scale(0.34); } }
+    @media (min-width: 1100px) { .card-stage iframe { transform: scale(0.40); } }
+    @media (min-width: 1280px) { .card-stage iframe { transform: scale(0.46); } }
+    @media (min-width: 1440px) { .card-stage iframe { transform: scale(0.50); } }
     /* Card-stage themed art: scale up motifs with fixed-px text for the larger canvas */
     /* Card-stage scale overrides (motifs sized for large canvas) */
     .card-stage.t-01::before { font-size: clamp(140px, 19vw, 220px); left: 24px; top: 30px; }
@@ -1588,6 +1611,7 @@
           <span class="kicker">01 · Swiss Editorial</span>
         </header>
         <div class="card-stage t-01">
+          <iframe src="samples/industries/01-dental-swiss.html" loading="lazy" aria-hidden="true" tabindex="-1" scrolling="no" title="01 Dental Swiss preview"></iframe>
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/industries/01-dental-swiss.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
@@ -1604,6 +1628,7 @@
           <span class="kicker">02 · Swiss Authority</span>
         </header>
         <div class="card-stage t-sol">
+          <iframe src="samples/industries/02-solicitor-swiss.html" loading="lazy" aria-hidden="true" tabindex="-1" scrolling="no" title="02 Solicitor Swiss preview"></iframe>
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/industries/02-solicitor-swiss.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
@@ -1620,6 +1645,7 @@
           <span class="kicker">03 · Numbers-forward</span>
         </header>
         <div class="card-stage t-01">
+          <iframe src="samples/industries/03-accountant-minimalism.html" loading="lazy" aria-hidden="true" tabindex="-1" scrolling="no" title="03 Accountant Minimalism preview"></iframe>
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/industries/03-accountant-minimalism.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
@@ -1636,6 +1662,7 @@
           <span class="kicker">04 · Soft Neumorphism</span>
         </header>
         <div class="card-stage t-02">
+          <iframe src="samples/industries/04-physio-neumorphism.html" loading="lazy" aria-hidden="true" tabindex="-1" scrolling="no" title="04 Physio Neumorphism preview"></iframe>
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/industries/04-physio-neumorphism.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
@@ -1652,6 +1679,7 @@
           <span class="kicker">05 · Glassmorphism</span>
         </header>
         <div class="card-stage t-03">
+          <iframe src="samples/industries/05-opticians-glassmorphism.html" loading="lazy" aria-hidden="true" tabindex="-1" scrolling="no" title="05 Opticians Glassmorphism preview"></iframe>
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/industries/05-opticians-glassmorphism.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
@@ -1668,6 +1696,7 @@
           <span class="kicker">06 · Aurora Calm</span>
         </header>
         <div class="card-stage t-09">
+          <iframe src="samples/industries/06-audiologist-aurora.html" loading="lazy" aria-hidden="true" tabindex="-1" scrolling="no" title="06 Audiologist Aurora preview"></iframe>
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/industries/06-audiologist-aurora.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
@@ -1684,6 +1713,7 @@
           <span class="kicker">07 · Claymorphism</span>
         </header>
         <div class="card-stage t-08">
+          <iframe src="samples/industries/07-vet-claymorphism.html" loading="lazy" aria-hidden="true" tabindex="-1" scrolling="no" title="07 Vet Claymorphism preview"></iframe>
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/industries/07-vet-claymorphism.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
@@ -1700,6 +1730,7 @@
           <span class="kicker">08 · Editorial Brutalism</span>
         </header>
         <div class="card-stage t-fin">
+          <iframe src="samples/industries/08-financial-brutalism-editorial.html" loading="lazy" aria-hidden="true" tabindex="-1" scrolling="no" title="08 Financial Brutalism Editorial preview"></iframe>
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/industries/08-financial-brutalism-editorial.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
@@ -1716,6 +1747,7 @@
           <span class="kicker">09 · 3D Hyperrealism</span>
         </header>
         <div class="card-stage t-05">
+          <iframe src="samples/industries/09-architects-3d.html" loading="lazy" aria-hidden="true" tabindex="-1" scrolling="no" title="09 Architects 3D preview"></iframe>
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/industries/09-architects-3d.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
@@ -1732,6 +1764,7 @@
           <span class="kicker">10 · Aurora Luxe</span>
         </header>
         <div class="card-stage t-aes">
+          <iframe src="samples/industries/10-aesthetic-clinic-aurora-luxe.html" loading="lazy" aria-hidden="true" tabindex="-1" scrolling="no" title="10 Aesthetic Clinic Aurora Luxe preview"></iframe>
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/industries/10-aesthetic-clinic-aurora-luxe.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
