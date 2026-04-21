@@ -3,58 +3,918 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Glassmorphism</title>
+<title>Aperture Capital — Portfolio Dashboard · Glassmorphism Direction</title>
+<meta name="description" content="Aperture Capital fintech portfolio dashboard — live balances, asset cards, deposits, transactions, market news, and currency conversion rendered in a layered frosted-glass direction.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* All tokens below are read from the UI UX Pro Max catalog row for this style.
-   Primary Colors · Secondary Colors · Effects & Animation · Design System
-   Variables · CSS/Technical Keywords — see styles.csv rows for the source. */
-:root{--blur-amount: 15px;--glass-opacity: 0.15;--border-color: rgba(255;--background: vibrant color;--text-color: light/dark based on BG}
-*,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;padding:0;height:100%;font-family:system-ui, -apple-system, sans-serif}
-body{background:#cccccc;color:#111111;line-height:1.55}
-.page{max-width:1120px;margin:0 auto;padding:56px 40px}
-.kicker{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;opacity:.7}
-h1{font-size:clamp(42px,5vw,72px);line-height:1.02;letter-spacing:-0.03em;margin:18px 0 22px;font-family:system-ui, -apple-system, sans-serif}
-.lede{max-width:720px;font-size:18px;opacity:0.85;margin:0 0 32px}
-.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:28px}
-.card{background:#ffffff;color:#111111;padding:26px;border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,0.14);border:none;backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.22)}
-.card h3{margin:0 0 10px;font-size:22px}
-.card p{margin:0;opacity:0.8;font-size:14px}
-.btn{display:inline-block;margin-top:8px;padding:14px 22px;border-radius:14px;background:#cccccc;color:#ffffff;font-weight:700;letter-spacing:0.01em;text-decoration:none;}
-.btn.ghost{background:transparent;color:#111111;border:1px solid #11111133}
-.tag{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;background:#0080FF;color:#ffffff;margin-right:6px}
-footer{margin-top:48px;font-size:12px;opacity:0.55}
-body{background:linear-gradient(135deg,#cccccc,#0080FF,#0a0a0a 80%)}
+  /* ——— Glassmorphism direction · fintech portfolio dashboard ——————————————————————
+     Style row No=3: backdrop-filter blur 10-20px, rgba(255,255,255,0.10–0.30),
+     1px light borders, vibrant non-purple background, layered z-depth,
+     text contrast held at ≥4.5:1 via near-white text + deliberate darkening overlay.
+     Palette pulled from styles.csv row 3: Electric Blue #0080FF, Teal #20B2AA,
+     Hot Pink #FF1493 (Neon Purple deliberately omitted — no purple→blue).
+  */
+
+  :root {
+    --bg-ink:        #061224;
+    --electric-blue: #0080FF;
+    --teal:          #20B2AA;
+    --hot-pink:      #FF1493;
+    --amber:         #FFB547;
+    --mint:          #4DE0B8;
+    --coral:         #FF6B6B;
+
+    --glass-bg:      rgba(255, 255, 255, 0.12);
+    --glass-bg-strong: rgba(255, 255, 255, 0.22);
+    --glass-border:  rgba(255, 255, 255, 0.28);
+    --glass-border-soft: rgba(255, 255, 255, 0.14);
+    --glass-shadow:  0 20px 60px rgba(4, 10, 22, 0.35), inset 0 1px 0 rgba(255,255,255,0.28);
+
+    --text-primary:  #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.78);
+    --text-muted:    rgba(255, 255, 255, 0.55);
+
+    --pos: #4DE0B8;
+    --neg: #FF6B8A;
+
+    --radius-lg: 22px;
+    --radius-md: 14px;
+    --radius-sm: 10px;
+
+    --blur: 18px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { height: 100%; }
+
+  body {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-weight: 400;
+    color: var(--text-primary);
+    background: var(--bg-ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.005em;
+  }
+
+  /* ——— Vivid non-purple background stack ————————————————————————————————————— */
+  .backdrop {
+    position: fixed; inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(ellipse 60% 50% at 12% 18%, rgba(0, 128, 255, 0.95), transparent 60%),
+      radial-gradient(ellipse 55% 45% at 88% 22%, rgba(32, 178, 170, 0.9), transparent 62%),
+      radial-gradient(ellipse 65% 55% at 78% 88%, rgba(255, 20, 147, 0.72), transparent 60%),
+      radial-gradient(ellipse 45% 40% at 22% 82%, rgba(77, 224, 184, 0.55), transparent 65%),
+      linear-gradient(135deg, #003d99 0%, #0f7a8f 42%, #c4226b 100%);
+  }
+  .backdrop::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 25% 30%, rgba(255,255,255,0.04) 0 2px, transparent 3px),
+      radial-gradient(circle at 70% 60%, rgba(255,255,255,0.03) 0 2px, transparent 3px);
+    background-size: 240px 240px, 180px 180px;
+    mix-blend-mode: overlay;
+    opacity: 0.6;
+  }
+  .noise {
+    position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.08'/></svg>");
+    opacity: 0.35;
+  }
+
+  /* ——— Glass primitive —————————————————————————————————————————————————————— */
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(var(--blur)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
+    box-shadow: var(--glass-shadow);
+    position: relative;
+  }
+  .glass::before {
+    /* top-edge light reflection */
+    content: "";
+    position: absolute;
+    top: 0; left: 12%; right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.75), transparent);
+    border-radius: 1px;
+  }
+
+  /* ——— App shell ———————————————————————————————————————————————————————————— */
+  .app {
+    display: grid;
+    grid-template-columns: 248px 1fr;
+    grid-template-rows: 68px 1fr;
+    gap: 18px;
+    padding: 18px;
+    min-height: 100vh;
+  }
+
+  /* ——— Header chrome ——————————————————————————————————————————————————————— */
+  .chrome {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 0 22px;
+    height: 68px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    min-width: 210px;
+  }
+  .brand-mark {
+    width: 38px; height: 38px;
+    border-radius: 12px;
+    background: conic-gradient(from 180deg, var(--electric-blue), var(--teal), var(--hot-pink), var(--electric-blue));
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4), 0 8px 20px rgba(0,128,255,0.35);
+    display: grid; place-items: center;
+    color: #fff; font-family: 'Fraunces'; font-weight: 700; font-size: 20px;
+  }
+  .brand-name { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  .brand-sub  { font-size: 11px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; margin-top: 2px; }
+
+  .account-switcher {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 14px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border-soft);
+    border-radius: 12px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    cursor: pointer;
+  }
+  .account-avatar {
+    width: 30px; height: 30px; border-radius: 9px;
+    background: linear-gradient(135deg, var(--hot-pink), var(--amber));
+    display: grid; place-items: center; font-weight: 700; font-size: 13px;
+  }
+  .account-name { font-weight: 600; font-size: 14px; }
+  .account-id   { font-size: 11px; color: var(--text-muted); font-family: 'JetBrains Mono'; }
+  .chev { opacity: 0.7; font-size: 12px; }
+
+  .searchbar {
+    flex: 1;
+    max-width: 420px;
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 16px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--glass-border-soft);
+    border-radius: 12px;
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+  .searchbar input { flex: 1; background: transparent; border: 0; outline: 0; color: #fff; font: inherit; }
+  .kbd { font-family: 'JetBrains Mono'; font-size: 11px; padding: 2px 8px; border: 1px solid var(--glass-border-soft); border-radius: 6px; color: var(--text-muted); }
+
+  .chrome-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+  .icon-btn {
+    width: 38px; height: 38px; border-radius: 11px;
+    display: grid; place-items: center;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--glass-border-soft);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer; font-size: 15px;
+    position: relative;
+  }
+  .icon-btn .dot { position: absolute; top: 8px; right: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--hot-pink); box-shadow: 0 0 8px var(--hot-pink); }
+
+  /* ——— Sidebar ————————————————————————————————————————————————————————————— */
+  .sidebar {
+    padding: 22px 16px;
+    display: flex; flex-direction: column;
+    gap: 22px;
+  }
+  .nav-group-label {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-muted); padding: 0 10px;
+  }
+  .nav { display: flex; flex-direction: column; gap: 4px; }
+  .nav a {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px; border-radius: 11px;
+    color: var(--text-secondary); text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    border: 1px solid transparent;
+    transition: background 180ms ease, color 180ms ease;
+  }
+  .nav a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+  .nav a.active {
+    background: rgba(255,255,255,0.22);
+    color: #fff;
+    border-color: rgba(255,255,255,0.35);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+  }
+  .nav .ic { width: 18px; opacity: 0.9; }
+  .nav .count { margin-left: auto; font-size: 11px; color: var(--text-muted); font-family: 'JetBrains Mono'; }
+
+  .promo {
+    margin-top: auto;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, rgba(255,20,147,0.35), rgba(255,181,71,0.22));
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .promo h4 { font-family: 'Fraunces'; font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .promo p  { font-size: 12px; color: var(--text-secondary); line-height: 1.4; margin-bottom: 10px; }
+  .promo button {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 9px;
+    background: rgba(255,255,255,0.9);
+    color: #0a1628;
+    border: 0; font-weight: 600; font-size: 12px;
+    cursor: pointer;
+  }
+
+  /* ——— Main ———————————————————————————————————————————————————————————————— */
+  .main {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    gap: 18px;
+    grid-template-areas:
+      "balance   converter"
+      "assets    assets"
+      "tx        news"
+      "tx        actions";
+    align-content: start;
+  }
+
+  /* --- Balance hero card --- */
+  .balance { grid-area: balance; padding: 26px 28px; display: flex; flex-direction: column; gap: 22px; }
+  .balance-head { display: flex; justify-content: space-between; align-items: flex-start; }
+  .balance-label { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-secondary); }
+  .balance-value {
+    font-family: 'Fraunces', serif;
+    font-size: 56px; font-weight: 600; line-height: 1;
+    margin-top: 8px;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.25);
+  }
+  .balance-value .cents { font-size: 28px; color: var(--text-secondary); font-weight: 500; }
+  .delta {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 10px;
+    padding: 6px 12px; border-radius: 20px;
+    background: rgba(77,224,184,0.22); color: var(--pos);
+    border: 1px solid rgba(77,224,184,0.45);
+    font-size: 13px; font-weight: 600; font-family: 'JetBrains Mono';
+  }
+  .balance-eye { font-size: 18px; opacity: 0.8; cursor: pointer; }
+
+  .balance-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .meta-box {
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--glass-border-soft);
+    border-radius: var(--radius-md);
+  }
+  .meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); }
+  .meta-val { font-family: 'JetBrains Mono'; font-size: 18px; font-weight: 600; margin-top: 6px; }
+  .meta-sub { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+  .up   { color: var(--pos); }
+  .down { color: var(--neg); }
+
+  .balance-cta { display: flex; gap: 10px; }
+  .btn {
+    padding: 12px 20px; border-radius: 12px;
+    font-weight: 600; font-size: 14px;
+    cursor: pointer; border: 1px solid var(--glass-border);
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform 120ms ease, background 180ms ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn.primary {
+    background: linear-gradient(135deg, #ffffff 0%, #e8f4ff 100%);
+    color: #082038;
+    border-color: rgba(255,255,255,0.9);
+    box-shadow: 0 10px 24px rgba(0, 128, 255, 0.35);
+  }
+  .btn.ghost {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+  }
+  .btn.pink {
+    background: linear-gradient(135deg, var(--hot-pink) 0%, #d90f7e 100%);
+    color: #fff; border-color: rgba(255,255,255,0.35);
+    box-shadow: 0 10px 24px rgba(255,20,147,0.4);
+  }
+
+  /* --- Converter --- */
+  .converter { grid-area: converter; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+  .card-head {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card-title { font-family: 'Fraunces'; font-size: 18px; font-weight: 600; }
+  .card-sub { font-size: 11px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; }
+
+  .fx-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--glass-border-soft);
+    border-radius: var(--radius-md);
+  }
+  .fx-flag {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: grid; place-items: center;
+    font-weight: 700; font-size: 12px;
+  }
+  .flag-usd { background: linear-gradient(135deg, #1d7dff, #003f99); }
+  .flag-eur { background: linear-gradient(135deg, #ffe04d, #ffb300); color: #3a2c00; }
+  .fx-code { font-family: 'JetBrains Mono'; font-weight: 600; font-size: 14px; }
+  .fx-name { font-size: 11px; color: var(--text-muted); }
+  .fx-amount {
+    margin-left: auto; width: 130px;
+    background: transparent; border: 0; outline: 0; text-align: right;
+    color: #fff; font-family: 'JetBrains Mono'; font-size: 18px; font-weight: 600;
+  }
+  .fx-swap {
+    align-self: center;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(255,255,255,0.22);
+    border: 1px solid var(--glass-border);
+    display: grid; place-items: center; cursor: pointer;
+    font-size: 14px;
+  }
+  .fx-rate { font-family: 'JetBrains Mono'; font-size: 12px; color: var(--text-secondary); display: flex; justify-content: space-between; }
+  .fx-rate .pos { color: var(--pos); }
+
+  /* --- Asset cards row --- */
+  .assets { grid-area: assets; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .asset {
+    padding: 20px;
+    display: flex; flex-direction: column; gap: 14px;
+    min-height: 210px;
+    position: relative;
+    overflow: hidden;
+  }
+  .asset .tint {
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0.35;
+    mix-blend-mode: overlay;
+  }
+  .asset.stocks  .tint { background: radial-gradient(circle at 20% 15%, rgba(0,128,255,0.8), transparent 55%); }
+  .asset.crypto  .tint { background: radial-gradient(circle at 85% 15%, rgba(255,181,71,0.8), transparent 55%); }
+  .asset.savings .tint { background: radial-gradient(circle at 20% 80%, rgba(77,224,184,0.8), transparent 55%); }
+  .asset.bonds   .tint { background: radial-gradient(circle at 85% 80%, rgba(255,20,147,0.8), transparent 55%); }
+
+  .asset-top { display: flex; align-items: center; gap: 10px; }
+  .asset-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.4);
+    display: grid; place-items: center; font-size: 16px;
+  }
+  .asset-name { font-size: 13px; color: var(--text-secondary); letter-spacing: 0.1em; text-transform: uppercase; }
+  .asset-count { font-size: 11px; color: var(--text-muted); font-family: 'JetBrains Mono'; }
+  .asset-value { font-family: 'Fraunces'; font-size: 28px; font-weight: 600; letter-spacing: -0.01em; }
+  .asset-change { font-family: 'JetBrains Mono'; font-size: 13px; font-weight: 600; }
+
+  .spark { width: 100%; height: 56px; position: relative; }
+  .spark svg { width: 100%; height: 100%; display: block; }
+
+  /* --- Transactions --- */
+  .tx { grid-area: tx; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; }
+  .tx-filters { display: flex; gap: 6px; }
+  .chip {
+    padding: 5px 12px; border-radius: 14px; font-size: 12px; font-weight: 500;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid var(--glass-border-soft);
+    cursor: pointer;
+    color: var(--text-secondary);
+  }
+  .chip.on { background: rgba(255,255,255,0.28); color: #fff; border-color: rgba(255,255,255,0.5); }
+
+  .tx-table { display: flex; flex-direction: column; }
+  .tx-row {
+    display: grid;
+    grid-template-columns: 38px 1.5fr 1fr 1fr 1fr auto;
+    gap: 12px; align-items: center;
+    padding: 12px 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 13px;
+  }
+  .tx-row:last-child { border-bottom: 0; }
+  .tx-head { font-size: 11px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.2); }
+  .tx-ico {
+    width: 32px; height: 32px; border-radius: 9px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid var(--glass-border-soft);
+    display: grid; place-items: center; font-size: 13px;
+  }
+  .tx-title { font-weight: 500; }
+  .tx-sub   { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .tx-asset { font-family: 'JetBrains Mono'; font-size: 12px; }
+  .tx-amount { font-family: 'JetBrains Mono'; font-weight: 600; text-align: right; }
+  .tx-status { font-size: 11px; padding: 3px 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center; }
+  .tx-status.ok   { background: rgba(77,224,184,0.2); color: var(--pos); border-color: rgba(77,224,184,0.45); }
+  .tx-status.pend { background: rgba(255,181,71,0.2); color: var(--amber); border-color: rgba(255,181,71,0.45); }
+  .tx-time  { font-family: 'JetBrains Mono'; font-size: 12px; color: var(--text-secondary); text-align: right; }
+
+  /* --- News strip --- */
+  .news { grid-area: news; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px; }
+  .news-item {
+    display: grid; grid-template-columns: 48px 1fr auto; gap: 12px; align-items: center;
+    padding: 10px 10px; border-radius: 12px;
+    border: 1px solid transparent;
+    transition: background 160ms ease, border 160ms ease;
+    cursor: pointer;
+  }
+  .news-item:hover { background: rgba(255,255,255,0.08); border-color: var(--glass-border-soft); }
+  .news-logo {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: grid; place-items: center;
+    font-family: 'Fraunces'; font-weight: 700; font-size: 14px;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .logo-ft { background: linear-gradient(135deg, #ff1493, #ffb547); color: #fff; }
+  .logo-bb { background: linear-gradient(135deg, #0080ff, #20b2aa); color: #fff; }
+  .logo-re { background: linear-gradient(135deg, #20b2aa, #4de0b8); color: #062722; }
+  .news-title { font-weight: 500; font-size: 13px; line-height: 1.35; }
+  .news-meta  { font-size: 11px; color: var(--text-muted); font-family: 'JetBrains Mono'; margin-top: 3px; }
+  .news-tag {
+    font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+    padding: 3px 8px; border-radius: 8px;
+    background: rgba(255,255,255,0.14); border: 1px solid var(--glass-border-soft);
+  }
+
+  /* --- Quick actions --- */
+  .actions { grid-area: actions; padding: 20px 22px; }
+  .actions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 12px; }
+  .action {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 14px; border-radius: var(--radius-md);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--glass-border-soft);
+    cursor: pointer;
+    transition: background 160ms ease;
+  }
+  .action:hover { background: rgba(255,255,255,0.2); }
+  .action .ic { font-size: 18px; }
+  .action .t { font-size: 13px; font-weight: 600; }
+  .action .s { font-size: 11px; color: var(--text-muted); }
+
+  /* ——— Responsive guardrails ————————————————————————————————————————————————— */
+  @media (max-width: 1180px) {
+    .assets { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 880px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .main { grid-template-columns: 1fr; grid-template-areas: "balance" "converter" "assets" "tx" "news" "actions"; }
+    .balance-value { font-size: 42px; }
+    .assets { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  /* Focus ring for accessibility */
+  button:focus-visible, a:focus-visible, input:focus-visible, .chip:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
 </style>
 </head>
 <body>
-  <main class="page">
-    <div class="kicker">UI Style #3 · 2020s Modern</div>
-    <h1>Frosted glass, layered depth.</h1>
-    <p class="lede">Frosted glass, transparent, blurred background, layered, vibrant background, light source, depth, multi-layer.</p>
+
+<div class="backdrop"></div>
+<div class="noise"></div>
+
+<div class="app">
+
+  <!-- ——— Chrome ————————————————————————————————————————————————————————————— -->
+  <header class="chrome glass">
+    <div class="brand">
+      <div class="brand-mark">A</div>
+      <div>
+        <div class="brand-name">Aperture Capital</div>
+        <div class="brand-sub">Portfolio · Tier II</div>
+      </div>
+    </div>
+
+    <div class="account-switcher" role="button" tabindex="0">
+      <div class="account-avatar">JK</div>
+      <div>
+        <div class="account-name">Joan Keane</div>
+        <div class="account-id">AC-7749 · Individual</div>
+      </div>
+      <span class="chev">▾</span>
+    </div>
+
+    <div class="searchbar">
+      <span>⌕</span>
+      <input type="text" placeholder="Search assets, transactions, markets…" aria-label="Search">
+      <span class="kbd">⌘K</span>
+    </div>
+
+    <div class="chrome-actions">
+      <button class="icon-btn" aria-label="Theme">◐</button>
+      <button class="icon-btn" aria-label="Notifications">🔔<span class="dot"></span></button>
+      <button class="icon-btn" aria-label="Help">?</button>
+    </div>
+  </header>
+
+  <!-- ——— Sidebar ———————————————————————————————————————————————————————————— -->
+  <aside class="sidebar glass">
     <div>
-      <span class="tag">2020s Modern</span>
-      <span class="tag">Modern SaaS</span>
+      <div class="nav-group-label">Dashboard</div>
+      <nav class="nav" aria-label="Primary">
+        <a href="#" class="active"><span class="ic">◉</span> Overview <span class="count">·</span></a>
+        <a href="#"><span class="ic">📈</span> Portfolio <span class="count">4</span></a>
+        <a href="#"><span class="ic">💱</span> Markets</a>
+        <a href="#"><span class="ic">↹</span> Transactions <span class="count">128</span></a>
+        <a href="#"><span class="ic">◎</span> Watchlist <span class="count">12</span></a>
+      </nav>
     </div>
-    <div class="row">
-      <div class="card">
-        <h3>Hero section</h3>
-        <p>Demo card inheriting this style's tokens — Backdrop blur (10-20px), subtle border (1px solid rgba white 0.2), light reflection, Z-depth.</p>
-        <a class="btn" href="#">Primary action →</a>
+
+    <div>
+      <div class="nav-group-label">Wealth</div>
+      <nav class="nav" aria-label="Wealth">
+        <a href="#"><span class="ic">✦</span> Savings Goals</a>
+        <a href="#"><span class="ic">⚖</span> Tax &amp; Reports</a>
+        <a href="#"><span class="ic">🛡</span> Insurance</a>
+      </nav>
+    </div>
+
+    <div>
+      <div class="nav-group-label">Workspace</div>
+      <nav class="nav" aria-label="Workspace">
+        <a href="#"><span class="ic">⚙</span> Settings</a>
+        <a href="#"><span class="ic">↻</span> Recurring</a>
+        <a href="#"><span class="ic">↗</span> Refer &amp; earn</a>
+      </nav>
+    </div>
+
+    <div class="promo">
+      <h4>Aperture Pro</h4>
+      <p>Unlock institutional spreads, zero FX fees and weekly private-market briefings.</p>
+      <button>Upgrade — €19 / mo</button>
+    </div>
+  </aside>
+
+  <!-- ——— Main ———————————————————————————————————————————————————————————————— -->
+  <section class="main">
+
+    <!-- Balance hero -->
+    <div class="balance glass" style="grid-area: balance">
+      <div class="balance-head">
+        <div>
+          <div class="balance-label">Total Portfolio Value · EUR</div>
+          <div class="balance-value">€284,917<span class="cents">.42</span></div>
+          <span class="delta">▲ +€3,418.20 · +1.22% today</span>
+        </div>
+        <span class="balance-eye" title="Hide balance">◎</span>
       </div>
-      <div class="card">
-        <h3>Secondary block</h3>
-        <p>Colours, radii and shadow pulled from the catalog row.</p>
-        <a class="btn ghost" href="#">Secondary action</a>
+
+      <div class="balance-meta">
+        <div class="meta-box">
+          <div class="meta-label">Invested</div>
+          <div class="meta-val">€218,440</div>
+          <div class="meta-sub">76.7% of portfolio</div>
+        </div>
+        <div class="meta-box">
+          <div class="meta-label">Cash &amp; Equivalents</div>
+          <div class="meta-val">€42,301</div>
+          <div class="meta-sub up">+ €1,200 deposit Tue</div>
+        </div>
+        <div class="meta-box">
+          <div class="meta-label">Unrealised P&amp;L</div>
+          <div class="meta-val up">+€24,176</div>
+          <div class="meta-sub">All-time · since Apr ’23</div>
+        </div>
       </div>
-      <div class="card">
-        <h3>Proof strip</h3>
-        <p>Typography + effects per the Effects &amp; Animation column.</p>
+
+      <div class="balance-cta">
+        <button class="btn primary">↓ Deposit</button>
+        <button class="btn ghost">↑ Withdraw</button>
+        <button class="btn pink">⇅ Trade</button>
+        <button class="btn ghost">⎘ Export CSV</button>
       </div>
     </div>
-    <footer>
-      Sample #3 · Glassmorphism · from <code>ui-ux-pro-max/data/styles.csv</code>
-    </footer>
-  </main>
+
+    <!-- Currency converter -->
+    <div class="converter glass" style="grid-area: converter">
+      <div class="card-head">
+        <div>
+          <div class="card-title">Currency Converter</div>
+          <div class="card-sub">Mid-market · Live</div>
+        </div>
+        <span class="chip on">EUR ⇌ USD</span>
+      </div>
+
+      <div class="fx-row">
+        <div class="fx-flag flag-eur">€</div>
+        <div>
+          <div class="fx-code">EUR</div>
+          <div class="fx-name">Euro</div>
+        </div>
+        <input class="fx-amount" value="1,000.00" aria-label="From amount">
+      </div>
+
+      <div class="fx-swap" role="button" aria-label="Swap">⇅</div>
+
+      <div class="fx-row">
+        <div class="fx-flag flag-usd">$</div>
+        <div>
+          <div class="fx-code">USD</div>
+          <div class="fx-name">US Dollar</div>
+        </div>
+        <input class="fx-amount" value="1,078.14" aria-label="To amount">
+      </div>
+
+      <div class="fx-rate">
+        <span>1 EUR = 1.07814 USD</span>
+        <span class="pos">+0.18% 24h</span>
+      </div>
+      <button class="btn primary" style="width:100%; justify-content:center;">Convert €1,000</button>
+    </div>
+
+    <!-- Asset cards -->
+    <div class="assets" style="grid-area: assets">
+
+      <div class="asset glass stocks">
+        <span class="tint"></span>
+        <div class="asset-top">
+          <div class="asset-icon">📊</div>
+          <div>
+            <div class="asset-name">Stocks</div>
+            <div class="asset-count">14 positions · ETFs &amp; single names</div>
+          </div>
+        </div>
+        <div>
+          <div class="asset-value">€128,440</div>
+          <div class="asset-change up">+2.14% · +€2,682 today</div>
+        </div>
+        <div class="spark" aria-hidden="true">
+          <svg viewBox="0 0 200 56" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%"  stop-color="#4de0b8" stop-opacity="0.55"/>
+                <stop offset="100%" stop-color="#4de0b8" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,42 L15,38 L30,40 L45,30 L60,32 L75,24 L90,28 L105,18 L120,22 L135,14 L150,18 L165,10 L180,14 L200,6 L200,56 L0,56 Z" fill="url(#g1)"/>
+            <path d="M0,42 L15,38 L30,40 L45,30 L60,32 L75,24 L90,28 L105,18 L120,22 L135,14 L150,18 L165,10 L180,14 L200,6" fill="none" stroke="#4de0b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="asset glass crypto">
+        <span class="tint"></span>
+        <div class="asset-top">
+          <div class="asset-icon">⬢</div>
+          <div>
+            <div class="asset-name">Crypto</div>
+            <div class="asset-count">6 holdings · BTC · ETH · SOL…</div>
+          </div>
+        </div>
+        <div>
+          <div class="asset-value">€41,986</div>
+          <div class="asset-change down">−0.82% · −€345 today</div>
+        </div>
+        <div class="spark" aria-hidden="true">
+          <svg viewBox="0 0 200 56" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="g2" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%"  stop-color="#ffb547" stop-opacity="0.55"/>
+                <stop offset="100%" stop-color="#ffb547" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,20 L15,24 L30,18 L45,28 L60,22 L75,36 L90,30 L105,38 L120,26 L135,40 L150,34 L165,44 L180,32 L200,40 L200,56 L0,56 Z" fill="url(#g2)"/>
+            <path d="M0,20 L15,24 L30,18 L45,28 L60,22 L75,36 L90,30 L105,38 L120,26 L135,40 L150,34 L165,44 L180,32 L200,40" fill="none" stroke="#ffb547" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="asset glass savings">
+        <span class="tint"></span>
+        <div class="asset-top">
+          <div class="asset-icon">◈</div>
+          <div>
+            <div class="asset-name">Savings</div>
+            <div class="asset-count">3 vaults · 4.12% APY avg</div>
+          </div>
+        </div>
+        <div>
+          <div class="asset-value">€72,140</div>
+          <div class="asset-change up">+0.34% · +€244 this week</div>
+        </div>
+        <div class="spark" aria-hidden="true">
+          <svg viewBox="0 0 200 56" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="g3" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%"  stop-color="#20b2aa" stop-opacity="0.55"/>
+                <stop offset="100%" stop-color="#20b2aa" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,38 L20,36 L40,34 L60,32 L80,30 L100,28 L120,26 L140,24 L160,22 L180,20 L200,18 L200,56 L0,56 Z" fill="url(#g3)"/>
+            <path d="M0,38 L20,36 L40,34 L60,32 L80,30 L100,28 L120,26 L140,24 L160,22 L180,20 L200,18" fill="none" stroke="#20b2aa" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="asset glass bonds">
+        <span class="tint"></span>
+        <div class="asset-top">
+          <div class="asset-icon">≋</div>
+          <div>
+            <div class="asset-name">Bonds</div>
+            <div class="asset-count">5 ladders · IE · DE · US Treasuries</div>
+          </div>
+        </div>
+        <div>
+          <div class="asset-value">€42,351</div>
+          <div class="asset-change up">+0.09% · +€38 today</div>
+        </div>
+        <div class="spark" aria-hidden="true">
+          <svg viewBox="0 0 200 56" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="g4" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%"  stop-color="#ff1493" stop-opacity="0.55"/>
+                <stop offset="100%" stop-color="#ff1493" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,34 L20,32 L40,34 L60,30 L80,32 L100,28 L120,30 L140,26 L160,28 L180,24 L200,26 L200,56 L0,56 Z" fill="url(#g4)"/>
+            <path d="M0,34 L20,32 L40,34 L60,30 L80,32 L100,28 L120,30 L140,26 L160,28 L180,24 L200,26" fill="none" stroke="#ff1493" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Transactions -->
+    <div class="tx glass" style="grid-area: tx">
+      <div class="card-head">
+        <div>
+          <div class="card-title">Recent Transactions</div>
+          <div class="card-sub">Last 8 · across all accounts</div>
+        </div>
+        <div class="tx-filters">
+          <span class="chip on">All</span>
+          <span class="chip">Trades</span>
+          <span class="chip">Deposits</span>
+          <span class="chip">Fees</span>
+        </div>
+      </div>
+
+      <div class="tx-table" role="table">
+        <div class="tx-row tx-head" role="row">
+          <span></span>
+          <span>Transaction</span>
+          <span>Asset</span>
+          <span>Amount</span>
+          <span>Status</span>
+          <span style="text-align:right">Date</span>
+        </div>
+
+        <div class="tx-row" role="row">
+          <div class="tx-ico">↓</div>
+          <div><div class="tx-title">SEPA deposit · Revolut IE</div><div class="tx-sub">Ref · TRANSF-88412</div></div>
+          <div class="tx-asset">EUR</div>
+          <div class="tx-amount up">+€1,200.00</div>
+          <div class="tx-status ok">Settled</div>
+          <div class="tx-time">20 Apr · 14:02</div>
+        </div>
+
+        <div class="tx-row" role="row">
+          <div class="tx-ico">⇅</div>
+          <div><div class="tx-title">Buy · iShares MSCI World</div><div class="tx-sub">12 shares @ €89.34</div></div>
+          <div class="tx-asset">IWDA.AS</div>
+          <div class="tx-amount down">−€1,072.08</div>
+          <div class="tx-status ok">Filled</div>
+          <div class="tx-time">20 Apr · 11:48</div>
+        </div>
+
+        <div class="tx-row" role="row">
+          <div class="tx-ico">⇅</div>
+          <div><div class="tx-title">Sell · Tesla Inc</div><div class="tx-sub">4 shares @ $178.12</div></div>
+          <div class="tx-asset">TSLA</div>
+          <div class="tx-amount up">+€657.14</div>
+          <div class="tx-status ok">Filled</div>
+          <div class="tx-time">19 Apr · 16:30</div>
+        </div>
+
+        <div class="tx-row" role="row">
+          <div class="tx-ico">⬢</div>
+          <div><div class="tx-title">Recurring · BTC DCA</div><div class="tx-sub">Weekly · 0.00142 BTC</div></div>
+          <div class="tx-asset">BTC</div>
+          <div class="tx-amount down">−€100.00</div>
+          <div class="tx-status pend">Pending</div>
+          <div class="tx-time">19 Apr · 09:00</div>
+        </div>
+
+        <div class="tx-row" role="row">
+          <div class="tx-ico">⚡</div>
+          <div><div class="tx-title">Dividend · Vanguard S&amp;P 500</div><div class="tx-sub">Payment · Q1 distribution</div></div>
+          <div class="tx-asset">VUAA.DE</div>
+          <div class="tx-amount up">+€84.22</div>
+          <div class="tx-status ok">Received</div>
+          <div class="tx-time">18 Apr · 10:14</div>
+        </div>
+
+        <div class="tx-row" role="row">
+          <div class="tx-ico">↑</div>
+          <div><div class="tx-title">Withdrawal · AIB current</div><div class="tx-sub">IE29 AIBK · Joan Keane</div></div>
+          <div class="tx-asset">EUR</div>
+          <div class="tx-amount down">−€2,500.00</div>
+          <div class="tx-status ok">Sent</div>
+          <div class="tx-time">17 Apr · 18:22</div>
+        </div>
+
+        <div class="tx-row" role="row">
+          <div class="tx-ico">≋</div>
+          <div><div class="tx-title">Coupon · DE 10-yr Bund</div><div class="tx-sub">Semi-annual coupon</div></div>
+          <div class="tx-asset">DE0001</div>
+          <div class="tx-amount up">+€142.08</div>
+          <div class="tx-status ok">Received</div>
+          <div class="tx-time">16 Apr · 08:00</div>
+        </div>
+
+        <div class="tx-row" role="row">
+          <div class="tx-ico">◈</div>
+          <div><div class="tx-title">Savings Vault · Rainy-day</div><div class="tx-sub">Auto-transfer · weekly</div></div>
+          <div class="tx-asset">EUR</div>
+          <div class="tx-amount down">−€250.00</div>
+          <div class="tx-status ok">Settled</div>
+          <div class="tx-time">15 Apr · 07:00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Market news strip -->
+    <div class="news glass" style="grid-area: news">
+      <div class="card-head">
+        <div>
+          <div class="card-title">Market News</div>
+          <div class="card-sub">Curated for your portfolio</div>
+        </div>
+        <span class="chip">See all</span>
+      </div>
+
+      <div class="news-item">
+        <div class="news-logo logo-ft">FT</div>
+        <div>
+          <div class="news-title">ECB signals June rate cut as euro-area inflation eases to 2.4%</div>
+          <div class="news-meta">Financial Times · 12m ago · Bonds ▲</div>
+        </div>
+        <span class="news-tag">Bonds</span>
+      </div>
+
+      <div class="news-item">
+        <div class="news-logo logo-bb">BB</div>
+        <div>
+          <div class="news-title">Big tech Q1: Alphabet &amp; Microsoft beat; Meta guidance drags Nasdaq futures</div>
+          <div class="news-meta">Bloomberg · 54m ago · US Stocks</div>
+        </div>
+        <span class="news-tag">Stocks</span>
+      </div>
+
+      <div class="news-item">
+        <div class="news-logo logo-re">RE</div>
+        <div>
+          <div class="news-title">Bitcoin holds above $62k post-halving; miners’ revenue per-TH hits 18-mo low</div>
+          <div class="news-meta">Reuters · 2h ago · Crypto ▼</div>
+        </div>
+        <span class="news-tag">Crypto</span>
+      </div>
+    </div>
+
+    <!-- Quick actions -->
+    <div class="actions glass" style="grid-area: actions">
+      <div class="card-head">
+        <div>
+          <div class="card-title">Quick Actions</div>
+          <div class="card-sub">Keyboard-friendly</div>
+        </div>
+      </div>
+      <div class="actions-grid">
+        <div class="action"><span class="ic">↓</span><span class="t">Fund account</span><span class="s">SEPA · Instant · Card</span></div>
+        <div class="action"><span class="ic">↻</span><span class="t">Schedule DCA</span><span class="s">Weekly or monthly</span></div>
+        <div class="action"><span class="ic">⚖</span><span class="t">Rebalance</span><span class="s">Drifted · 4.3% off target</span></div>
+        <div class="action"><span class="ic">📄</span><span class="t">Tax statement</span><span class="s">Irish Revenue · 2025</span></div>
+      </div>
+    </div>
+
+  </section>
+</div>
+
 </body>
 </html>

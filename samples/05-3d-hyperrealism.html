@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOCTURNE XR — Reference-Class Wireless Headphones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================
+     NOCTURNE XR — Premium Headphone Launch
+     Direction: 3D & Hyperrealism (styles.csv Row 5)
+     Palette: Deep Navy #0A1628 · Burgundy #5A1420 · Gold #C9A86A
+     Parallax: 5 fixed background layers · Smooth 340ms
+     ========================================================= */
+
+  :root{
+    --navy-900: #050B18;
+    --navy-800: #0A1628;
+    --navy-700: #112034;
+    --navy-600: #1A2E48;
+    --burgundy: #5A1420;
+    --burgundy-bright: #8B1E2E;
+    --gold: #C9A86A;
+    --gold-bright: #E4C687;
+    --gold-deep: #8C7240;
+    --ivory: #F4EEDF;
+    --ink: #E8DFC9;
+    --ease: cubic-bezier(.22,.61,.36,1);
+    --t: 340ms;
+    --perspective: 1400px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    color:var(--ink);
+    background:var(--navy-900);
+    overflow-x:hidden;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    perspective: var(--perspective);
+  }
+
+  /* ========== PARALLAX LAYERS (5 fixed, scroll-driven) ========== */
+  .layer{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform;
+  }
+  .layer-1{
+    background:
+      radial-gradient(ellipse at 20% 15%, rgba(201,168,106,0.10), transparent 55%),
+      radial-gradient(ellipse at 82% 82%, rgba(90,20,32,0.35), transparent 60%),
+      linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 45%, #06101E 100%);
+  }
+  .layer-2{
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(201,168,106,0.55), transparent 50%),
+      radial-gradient(1px 1px at 65% 70%, rgba(228,198,135,0.45), transparent 50%),
+      radial-gradient(1.5px 1.5px at 35% 80%, rgba(201,168,106,0.35), transparent 60%),
+      radial-gradient(1px 1px at 80% 18%, rgba(255,255,255,0.4), transparent 55%),
+      radial-gradient(1px 1px at 12% 65%, rgba(228,198,135,0.35), transparent 50%),
+      radial-gradient(2px 2px at 55% 40%, rgba(201,168,106,0.25), transparent 60%);
+    background-size: 800px 800px;
+    opacity:0.7;
+  }
+  .layer-3{
+    background:
+      conic-gradient(from 220deg at 75% 35%,
+        transparent 0deg,
+        rgba(90,20,32,0.20) 40deg,
+        transparent 100deg,
+        rgba(201,168,106,0.08) 200deg,
+        transparent 300deg);
+    mix-blend-mode: screen;
+    opacity:0.75;
+  }
+  .layer-4{
+    background:
+      repeating-linear-gradient(
+        104deg,
+        transparent 0px,
+        transparent 120px,
+        rgba(201,168,106,0.025) 121px,
+        rgba(201,168,106,0.025) 122px);
+    opacity:0.55;
+  }
+  .layer-5{
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.79  0 0 0 0 0.66  0 0 0 0 0.42  0 0 0 0.18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>");
+    mix-blend-mode: overlay;
+    opacity:0.45;
+  }
+
+  main, nav, footer { position: relative; z-index: 2; }
+
+  /* ========== NAV ========== */
+  nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 28px 56px;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    background: linear-gradient(180deg, rgba(5,11,24,0.78), rgba(5,11,24,0.35));
+    border-bottom: 1px solid rgba(201,168,106,0.12);
+    z-index: 50;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size: 22px;
+    letter-spacing: 0.22em;
+    color: var(--ivory);
+    text-transform: uppercase;
+  }
+  .brand span{ color: var(--gold); font-style: italic; font-weight:500; letter-spacing:0; text-transform:none;}
+  nav ul{ list-style:none; display:flex; gap:44px;}
+  nav ul a{
+    color: var(--ink);
+    text-decoration:none;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight:500;
+    transition: color var(--t) var(--ease);
+  }
+  nav ul a:hover{ color: var(--gold-bright); }
+  .nav-cta{
+    padding: 10px 22px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    border-radius: 2px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, rgba(201,168,106,0.08), rgba(201,168,106,0.02));
+    box-shadow: inset 0 1px 0 rgba(228,198,135,0.25), 0 6px 18px rgba(0,0,0,0.35);
+    transition: all var(--t) var(--ease);
+    cursor: pointer;
+  }
+  .nav-cta:hover{
+    background: linear-gradient(180deg, rgba(201,168,106,0.22), rgba(201,168,106,0.06));
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 rgba(228,198,135,0.4), 0 10px 26px rgba(0,0,0,0.5);
+  }
+
+  /* ========== HERO ========== */
+  .hero{
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 120px 80px 160px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    font-weight:500;
+    margin-bottom: 28px;
+  }
+  .eyebrow::before{
+    content: "";
+    width: 44px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+  h1.display{
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    font-size: clamp(60px, 8.2vw, 120px);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    color: var(--ivory);
+    margin-bottom: 32px;
+  }
+  h1.display em{
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 300;
+  }
+  .hero p.lede{
+    font-size: 18px;
+    max-width: 520px;
+    color: rgba(232,223,201,0.78);
+    line-height: 1.65;
+    margin-bottom: 44px;
+  }
+  .hero-cta-row{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .btn-primary{
+    padding: 18px 36px;
+    background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 50%, var(--gold-deep) 100%);
+    color: var(--navy-900);
+    border: none;
+    border-radius: 3px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    box-shadow:
+      inset 0 1px 0 rgba(255,244,210,0.6),
+      inset 0 -2px 0 rgba(90,61,20,0.4),
+      0 10px 26px rgba(0,0,0,0.55),
+      0 2px 4px rgba(0,0,0,0.5),
+      0 0 0 1px rgba(201,168,106,0.35);
+    transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+  }
+  .btn-primary:hover{
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,244,210,0.7),
+      inset 0 -2px 0 rgba(90,61,20,0.5),
+      0 18px 44px rgba(0,0,0,0.65),
+      0 4px 8px rgba(0,0,0,0.6),
+      0 0 0 1px rgba(201,168,106,0.5);
+  }
+  .btn-ghost{
+    padding: 18px 28px;
+    background: transparent;
+    color: var(--ivory);
+    border: 1px solid rgba(232,223,201,0.2);
+    border-radius: 3px;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all var(--t) var(--ease);
+  }
+  .btn-ghost:hover{ border-color: var(--gold); color: var(--gold); }
+
+  /* ========== PRODUCT (CSS/SVG-rendered) ========== */
+  .product-stage{
+    perspective: 1800px;
+    perspective-origin: 50% 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 620px;
+  }
+  .product-stage::before{
+    /* ground reflection pool */
+    content:"";
+    position:absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 460px; height: 90px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 0%, transparent 70%);
+    filter: blur(14px);
+    z-index: 0;
+  }
+  .product{
+    position: relative;
+    width: 460px;
+    height: 500px;
+    transform-style: preserve-3d;
+    transform: rotateX(6deg) rotateY(-18deg);
+    transition: transform 900ms var(--ease);
+    animation: float 6s ease-in-out infinite;
+  }
+  .product:hover{ transform: rotateX(4deg) rotateY(18deg) translateZ(20px); }
+  @keyframes float{
+    0%,100%{ transform: rotateX(6deg) rotateY(-18deg) translateY(0); }
+    50%    { transform: rotateX(6deg) rotateY(-18deg) translateY(-12px); }
+  }
+
+  /* Headband */
+  .headband{
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 330px;
+    height: 180px;
+    border-top-left-radius: 170px 170px;
+    border-top-right-radius: 170px 170px;
+    border: 14px solid;
+    border-bottom: none;
+    border-image: linear-gradient(180deg,
+      #E6E0D0 0%,
+      #B9AE94 30%,
+      #6E6450 55%,
+      #3F3825 100%) 1;
+    background: linear-gradient(180deg, rgba(201,168,106,0.08), transparent);
+    filter: drop-shadow(0 18px 22px rgba(0,0,0,0.55));
+  }
+  .headband::after{
+    content:"";
+    position: absolute;
+    top: 6px; left: 10px; right: 10px;
+    height: 4px;
+    background: linear-gradient(180deg, rgba(255,244,210,0.55), transparent);
+    border-radius: 50%;
+    filter: blur(1px);
+  }
+
+  /* Earcups (left / right) */
+  .earcup{
+    position: absolute;
+    bottom: 0;
+    width: 230px;
+    height: 270px;
+    border-radius: 50% / 45%;
+    background:
+      radial-gradient(ellipse at 35% 30%,
+        rgba(201,168,106,0.35) 0%,
+        rgba(90,20,32,0.0) 30%),
+      radial-gradient(circle at 50% 52%,
+        #2A0A10 0%,
+        #1A0508 45%,
+        #0A0105 85%);
+    box-shadow:
+      inset 0 8px 18px rgba(255,210,150,0.18),
+      inset 0 -14px 26px rgba(0,0,0,0.75),
+      0 26px 48px rgba(0,0,0,0.7),
+      0 10px 22px rgba(90,20,32,0.45),
+      0 2px 4px rgba(0,0,0,0.7);
+    border: 1px solid rgba(201,168,106,0.22);
+  }
+  .earcup.left { left: -26px; transform: rotateY(-18deg); }
+  .earcup.right{ right: -26px; transform: rotateY(18deg); }
+
+  /* Outer metal ring */
+  .ring{
+    position:absolute;
+    inset: 18px;
+    border-radius: 50% / 45%;
+    border: 2px solid;
+    border-image: conic-gradient(from 0deg,
+      #4A3E24, #C9A86A, #F0D89E, #8C7240, #4A3E24) 1;
+    box-shadow:
+      inset 0 0 22px rgba(0,0,0,0.8),
+      inset 0 2px 0 rgba(240,216,158,0.35);
+  }
+  /* Inner driver mesh */
+  .driver{
+    position:absolute;
+    inset: 42px;
+    border-radius: 50% / 45%;
+    background:
+      radial-gradient(circle at 50% 45%,
+        rgba(201,168,106,0.18) 0%,
+        rgba(20,6,10,0.95) 35%,
+        #050204 100%);
+    box-shadow:
+      inset 0 8px 18px rgba(201,168,106,0.25),
+      inset 0 -10px 20px rgba(0,0,0,0.9);
+    overflow:hidden;
+  }
+  .driver::before{
+    content:"";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 50% 50%, rgba(201,168,106,0.6), transparent 60%);
+    background-size: 6px 6px;
+    opacity: 0.55;
+  }
+  .driver::after{
+    content:"N";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 42px;
+    color: var(--gold-bright);
+    text-shadow:
+      0 0 12px rgba(201,168,106,0.5),
+      0 1px 0 rgba(0,0,0,0.9);
+  }
+
+  /* Cushion layer */
+  .cushion{
+    position:absolute;
+    inset: -6px;
+    border-radius: 50% / 45%;
+    background:
+      radial-gradient(circle at 50% 50%, transparent 58%, rgba(0,0,0,0.55) 72%, transparent 82%);
+    pointer-events:none;
+  }
+
+  /* Cable arc */
+  .cable{
+    position:absolute;
+    top: 280px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 420px;
+    height: 180px;
+    pointer-events:none;
+  }
+
+  /* ========== SECTIONS ========== */
+  section{ padding: 140px 80px; max-width: 1440px; margin: 0 auto; position: relative; }
+  .section-eyebrow{
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .section-title{
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(38px, 5vw, 68px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--ivory);
+    margin-bottom: 22px;
+    max-width: 780px;
+  }
+  .section-title em{ font-style: italic; color: var(--gold); font-weight:300; }
+  .section-lede{
+    color: rgba(232,223,201,0.68);
+    max-width: 560px;
+    font-size: 16px;
+    margin-bottom: 64px;
+  }
+
+  /* ========== SPEC GRID ========== */
+  .spec-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: rgba(201,168,106,0.18);
+    border: 1px solid rgba(201,168,106,0.28);
+  }
+  .spec{
+    padding: 56px 36px;
+    background: linear-gradient(180deg, rgba(10,22,40,0.92) 0%, rgba(5,11,24,0.95) 100%);
+    position: relative;
+    transition: transform var(--t) var(--ease);
+  }
+  .spec:hover{
+    transform: translateZ(20px) translateY(-6px);
+    background: linear-gradient(180deg, rgba(26,46,72,0.95) 0%, rgba(10,22,40,0.98) 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(201,168,106,0.25),
+      0 24px 48px rgba(0,0,0,0.55);
+  }
+  .spec-num{
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 76px;
+    line-height: 1;
+    color: var(--gold);
+    letter-spacing: -0.04em;
+    margin-bottom: 6px;
+    text-shadow:
+      0 2px 0 rgba(0,0,0,0.6),
+      0 0 40px rgba(201,168,106,0.15);
+  }
+  .spec-num sup{
+    font-size: 20px;
+    color: var(--ivory);
+    vertical-align: top;
+    margin-left: 4px;
+    letter-spacing: 0;
+  }
+  .spec-label{
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(232,223,201,0.55);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .spec-detail{
+    font-size: 14px;
+    color: rgba(232,223,201,0.78);
+    line-height: 1.55;
+  }
+
+  /* ========== COLOURWAYS (3D rotating cards) ========== */
+  .colourway-rail{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    perspective: 1400px;
+  }
+  .colourway{
+    position: relative;
+    padding: 48px 40px 40px;
+    border-radius: 6px;
+    transform-style: preserve-3d;
+    transform: rotateY(-6deg) rotateX(4deg);
+    transition: transform 600ms var(--ease), box-shadow 600ms var(--ease);
+    cursor: pointer;
+    overflow: hidden;
+    min-height: 420px;
+  }
+  .colourway:hover{
+    transform: rotateY(6deg) rotateX(-2deg) translateZ(30px);
+  }
+  .colourway.obsidian{
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(60,70,90,0.9), transparent 60%),
+      linear-gradient(160deg, #111822 0%, #050A14 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(201,168,106,0.22),
+      inset 0 0 0 1px rgba(201,168,106,0.1),
+      0 32px 60px rgba(0,0,0,0.6),
+      0 12px 24px rgba(0,0,0,0.4);
+  }
+  .colourway.burgundy{
+    background:
+      radial-gradient(ellipse at 75% 25%, rgba(160,40,60,0.55), transparent 65%),
+      linear-gradient(160deg, #3A0D16 0%, #1A060A 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(201,168,106,0.25),
+      inset 0 0 0 1px rgba(201,168,106,0.12),
+      0 32px 60px rgba(0,0,0,0.65),
+      0 12px 24px rgba(90,20,32,0.45);
+  }
+  .colourway.champagne{
+    background:
+      radial-gradient(ellipse at 30% 30%, rgba(228,198,135,0.22), transparent 65%),
+      linear-gradient(160deg, #1C1A14 0%, #0A0805 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(201,168,106,0.45),
+      inset 0 0 0 1px rgba(201,168,106,0.2),
+      0 32px 60px rgba(0,0,0,0.55),
+      0 12px 24px rgba(201,168,106,0.25);
+  }
+  .colour-swatch{
+    width: 100%;
+    height: 180px;
+    border-radius: 4px;
+    margin-bottom: 32px;
+    position: relative;
+    transform: translateZ(30px);
+  }
+  .colourway.obsidian .colour-swatch{
+    background:
+      radial-gradient(ellipse at 30% 25%, rgba(120,130,150,0.3), transparent 60%),
+      linear-gradient(145deg, #2A3240 0%, #0A0F18 60%, #050710 100%);
+    box-shadow:
+      inset 0 2px 0 rgba(255,255,255,0.15),
+      inset 0 -4px 8px rgba(0,0,0,0.8),
+      0 14px 28px rgba(0,0,0,0.55);
+  }
+  .colourway.burgundy .colour-swatch{
+    background:
+      radial-gradient(ellipse at 30% 25%, rgba(200,80,100,0.35), transparent 55%),
+      linear-gradient(145deg, #6E1A28 0%, #2A0810 60%, #120306 100%);
+    box-shadow:
+      inset 0 2px 0 rgba(255,200,210,0.2),
+      inset 0 -4px 8px rgba(0,0,0,0.8),
+      0 14px 28px rgba(90,20,32,0.5);
+  }
+  .colourway.champagne .colour-swatch{
+    background:
+      radial-gradient(ellipse at 30% 25%, rgba(255,234,180,0.55), transparent 55%),
+      linear-gradient(145deg, #B89758 0%, #6E5528 55%, #3A2C12 100%);
+    box-shadow:
+      inset 0 2px 0 rgba(255,240,200,0.5),
+      inset 0 -4px 8px rgba(0,0,0,0.6),
+      0 14px 28px rgba(201,168,106,0.4);
+  }
+  .colour-name{
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 32px;
+    color: var(--ivory);
+    margin-bottom: 6px;
+    transform: translateZ(20px);
+  }
+  .colour-code{
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+    transform: translateZ(20px);
+  }
+  .colour-detail{
+    font-size: 14px;
+    color: rgba(232,223,201,0.65);
+    line-height: 1.55;
+    transform: translateZ(15px);
+  }
+
+  /* ========== WAVEFORM SECTION ========== */
+  .sound-split{
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 96px;
+    align-items: center;
+  }
+  .waveform{
+    height: 300px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 40px 32px;
+    border-radius: 4px;
+    background:
+      linear-gradient(180deg, rgba(10,22,40,0.9), rgba(5,11,24,0.95));
+    border: 1px solid rgba(201,168,106,0.18);
+    box-shadow:
+      inset 0 1px 0 rgba(201,168,106,0.22),
+      inset 0 0 60px rgba(0,0,0,0.55),
+      0 24px 48px rgba(0,0,0,0.55);
+    position: relative;
+    overflow: hidden;
+  }
+  .waveform::before{
+    content:"";
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,106,0.35), transparent);
+  }
+  .bar{
+    flex: 1;
+    background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 45%, var(--burgundy) 100%);
+    border-radius: 2px;
+    animation: pulse 1.6s ease-in-out infinite;
+    box-shadow: 0 0 12px rgba(201,168,106,0.35);
+    min-height: 6px;
+  }
+  @keyframes pulse{
+    0%,100%{ height: 10%; opacity: 0.55; }
+    50%    { height: var(--h, 70%); opacity: 1; }
+  }
+
+  /* ========== PRESS QUOTES ========== */
+  .press-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .quote{
+    padding: 48px 36px;
+    background:
+      linear-gradient(180deg, rgba(26,46,72,0.6), rgba(10,22,40,0.9));
+    border: 1px solid rgba(201,168,106,0.14);
+    border-radius: 4px;
+    position: relative;
+    box-shadow:
+      inset 0 1px 0 rgba(201,168,106,0.18),
+      0 16px 32px rgba(0,0,0,0.5);
+    transition: transform var(--t) var(--ease);
+  }
+  .quote:hover{ transform: translateY(-6px); }
+  .quote::before{
+    content:"\201C";
+    position: absolute;
+    top: 10px;
+    left: 22px;
+    font-family: 'Fraunces', serif;
+    font-size: 80px;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.35;
+  }
+  .quote p{
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.4;
+    color: var(--ivory);
+    margin: 30px 0 26px;
+    letter-spacing: -0.005em;
+  }
+  .attribution{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(201,168,106,0.18);
+  }
+  .attribution strong{
+    color: var(--gold);
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .attribution span{
+    color: rgba(232,223,201,0.55);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ========== PRE-ORDER CTA ========== */
+  .preorder{
+    padding: 120px 80px;
+    background:
+      radial-gradient(ellipse at 30% 30%, rgba(90,20,32,0.4), transparent 60%),
+      radial-gradient(ellipse at 75% 70%, rgba(201,168,106,0.14), transparent 60%),
+      linear-gradient(180deg, #050B18 0%, #0A1628 100%);
+    border-top: 1px solid rgba(201,168,106,0.22);
+    border-bottom: 1px solid rgba(201,168,106,0.22);
+    position: relative;
+    overflow: hidden;
+  }
+  .preorder-inner{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .counter{
+    display: flex;
+    gap: 16px;
+    margin: 40px 0;
+  }
+  .counter-box{
+    flex: 1;
+    padding: 22px 18px;
+    border-radius: 4px;
+    background: linear-gradient(180deg, rgba(10,22,40,0.95), rgba(5,11,24,0.98));
+    border: 1px solid rgba(201,168,106,0.22);
+    box-shadow:
+      inset 0 1px 0 rgba(201,168,106,0.22),
+      inset 0 -2px 0 rgba(0,0,0,0.6),
+      0 10px 24px rgba(0,0,0,0.55);
+    text-align: center;
+  }
+  .counter-num{
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 42px;
+    color: var(--gold-bright);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-shadow: 0 2px 0 rgba(0,0,0,0.5);
+  }
+  .counter-label{
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(232,223,201,0.5);
+    margin-top: 8px;
+  }
+  .price-card{
+    padding: 48px;
+    border-radius: 4px;
+    background:
+      linear-gradient(160deg, rgba(90,20,32,0.35), rgba(10,22,40,0.85));
+    border: 1px solid rgba(201,168,106,0.3);
+    box-shadow:
+      inset 0 1px 0 rgba(201,168,106,0.4),
+      inset 0 0 0 1px rgba(201,168,106,0.1),
+      0 32px 64px rgba(0,0,0,0.6),
+      0 12px 24px rgba(90,20,32,0.4);
+    text-align: center;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(4deg);
+  }
+  .price-edition{
+    font-size: 11px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .price-main{
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 72px;
+    color: var(--ivory);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .price-main sup{ font-size: 24px; color: var(--gold); vertical-align: top; margin-right: 4px; }
+  .price-note{
+    font-size: 13px;
+    color: rgba(232,223,201,0.55);
+    margin-bottom: 32px;
+  }
+
+  /* ========== FAQ ACCORDION ========== */
+  .faq-list{ max-width: 860px; }
+  .faq{
+    border-bottom: 1px solid rgba(201,168,106,0.14);
+  }
+  .faq summary{
+    list-style: none;
+    padding: 32px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color var(--t) var(--ease);
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    color: var(--ivory);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{
+    content:"+";
+    font-family: 'Work Sans';
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--gold);
+    transition: transform var(--t) var(--ease);
+    margin-left: 16px;
+    line-height: 1;
+  }
+  .faq[open] summary::after{ transform: rotate(45deg); }
+  .faq summary:hover{ color: var(--gold); }
+  .faq-body{
+    padding: 0 0 36px;
+    color: rgba(232,223,201,0.72);
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 680px;
+  }
+
+  /* ========== FOOTER ========== */
+  footer{
+    padding: 80px 80px 40px;
+    border-top: 1px solid rgba(201,168,106,0.14);
+    background: linear-gradient(180deg, var(--navy-900), #020610);
+  }
+  .footer-grid{
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+  }
+  footer h4{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+  }
+  footer ul{ list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  footer a{
+    color: rgba(232,223,201,0.65);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    transition: color var(--t) var(--ease);
+  }
+  footer a:hover{ color: var(--gold-bright); }
+  .footer-bottom{
+    max-width: 1440px;
+    margin: 60px auto 0;
+    padding-top: 28px;
+    border-top: 1px solid rgba(201,168,106,0.1);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(232,223,201,0.4);
+  }
+  .footer-mark{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    text-transform: none;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1100px){
+    .hero{ grid-template-columns: 1fr; padding: 80px 40px; }
+    .product-stage{ min-height: 480px; }
+    .product{ transform: scale(0.85) rotateX(6deg) rotateY(-18deg); }
+    .spec-grid{ grid-template-columns: repeat(2, 1fr); }
+    .colourway-rail{ grid-template-columns: 1fr; }
+    .sound-split{ grid-template-columns: 1fr; gap: 40px; }
+    .press-grid{ grid-template-columns: 1fr; }
+    .preorder-inner{ grid-template-columns: 1fr; }
+    .footer-grid{ grid-template-columns: 1fr 1fr; }
+    nav{ padding: 20px 28px; }
+    nav ul{ display: none; }
+    section{ padding: 80px 32px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- 5 PARALLAX LAYERS (fixed, JS-scroll-driven) -->
+  <div class="layer layer-1" data-speed="0.05"></div>
+  <div class="layer layer-2" data-speed="0.18"></div>
+  <div class="layer layer-3" data-speed="0.32"></div>
+  <div class="layer layer-4" data-speed="0.55"></div>
+  <div class="layer layer-5" data-speed="0.85"></div>
+
+  <nav>
+    <div class="brand">NOCTURNE<span>·xr</span></div>
+    <ul>
+      <li><a href="#specs">Specifications</a></li>
+      <li><a href="#colourways">Editions</a></li>
+      <li><a href="#sound">How It Sounds</a></li>
+      <li><a href="#press">Press</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <button class="nav-cta">Reserve · 1,284 left</button>
+  </nav>
+
+  <main>
+    <!-- ========================= HERO ========================= -->
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Flagship · Limited Reference Edition · 2026</div>
+        <h1 class="display">A quieter<br><em>resonance.</em><br>A richer room.</h1>
+        <p class="lede">Fifteen years of analogue mastering, rebuilt in a 42 mm beryllium driver. NOCTURNE XR is the headphone our mastering engineers wanted but could never buy. Limited to 3,000 numbered pairs worldwide.</p>
+        <div class="hero-cta-row">
+          <button class="btn-primary">Reserve for &euro;40</button>
+          <button class="btn-ghost">Read the whitepaper</button>
+        </div>
+      </div>
+
+      <div class="product-stage">
+        <div class="product" id="product">
+          <div class="headband"></div>
+
+          <div class="earcup left">
+            <div class="ring"></div>
+            <div class="driver"></div>
+            <div class="cushion"></div>
+          </div>
+
+          <div class="earcup right">
+            <div class="ring"></div>
+            <div class="driver"></div>
+            <div class="cushion"></div>
+          </div>
+
+          <svg class="cable" viewBox="0 0 420 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="cableGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#3F3825"/>
+                <stop offset="50%" stop-color="#C9A86A"/>
+                <stop offset="100%" stop-color="#3F3825"/>
+              </linearGradient>
+              <filter id="cableShadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+              </filter>
+            </defs>
+            <path d="M30 20 Q 210 200 390 20" stroke="#000" stroke-opacity="0.55" stroke-width="7" fill="none" transform="translate(0,6)" filter="url(#cableShadow)"/>
+            <path d="M30 20 Q 210 200 390 20" stroke="url(#cableGrad)" stroke-width="5" fill="none"/>
+            <path d="M30 20 Q 210 200 390 20" stroke="rgba(255,244,210,0.55)" stroke-width="1" fill="none"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= SPECS ========================= -->
+    <section id="specs">
+      <div class="section-eyebrow">The Instrument</div>
+      <h2 class="section-title">Engineered like an <em>heirloom,</em> measured like a lab.</h2>
+      <p class="section-lede">Every specification below is certified on a GRAS 45CA head simulator. No marketing-curve massaging.</p>
+
+      <div class="spec-grid">
+        <div class="spec">
+          <div class="spec-num">268<sup>g</sup></div>
+          <div class="spec-label">Weight</div>
+          <div class="spec-detail">Magnesium yoke, aluminium gimbal, merino lambskin cushions. Balanced to vanish within twenty minutes.</div>
+        </div>
+        <div class="spec">
+          <div class="spec-num">42<sup>mm</sup></div>
+          <div class="spec-label">Drivers</div>
+          <div class="spec-detail">Pure beryllium foil dome, neodymium ring motor. Distortion &lt; 0.08% at 94 dB across the vocal band.</div>
+        </div>
+        <div class="spec">
+          <div class="spec-num">68<sup>hr</sup></div>
+          <div class="spec-label">Battery</div>
+          <div class="spec-detail">ANC off &middot; 42 hr with hybrid ANC. Ten-minute quick charge yields five listening hours.</div>
+        </div>
+        <div class="spec">
+          <div class="spec-num">7</div>
+          <div class="spec-label">Codecs</div>
+          <div class="spec-detail">LDAC &middot; aptX Lossless &middot; LC3 &middot; Auracast &middot; SBC &middot; AAC &middot; USB-C 24/192 wired bypass.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= COLOURWAYS ========================= -->
+    <section id="colourways">
+      <div class="section-eyebrow">Three Editions</div>
+      <h2 class="section-title">A finish for every <em>listening room.</em></h2>
+      <p class="section-lede">Each colourway is hand-finished in a small atelier outside Copenhagen. Serial number engraved on the inside of the right yoke.</p>
+
+      <div class="colourway-rail">
+        <article class="colourway obsidian">
+          <div class="colour-swatch"></div>
+          <div class="colour-name">Obsidian Tide</div>
+          <div class="colour-code">NX-01 · Deep Navy</div>
+          <p class="colour-detail">Anodised gunmetal hardware, jet-black leather band, brushed sapphire accents on the driver cap.</p>
+        </article>
+        <article class="colourway burgundy">
+          <div class="colour-swatch"></div>
+          <div class="colour-name">Cellar Burgundy</div>
+          <div class="colour-code">NX-02 · Vintner</div>
+          <p class="colour-detail">Oxblood aluminium, cognac-stained lambskin, brass rivets. Ages like a good leather strap.</p>
+        </article>
+        <article class="colourway champagne">
+          <div class="colour-swatch"></div>
+          <div class="colour-name">Champagne Dusk</div>
+          <div class="colour-code">NX-03 · 24K Gilt</div>
+          <p class="colour-detail">PVD 24-karat rose-gold plating, ivory merino cushions, mother-of-pearl logo inlay. 400 pairs only.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========================= SOUND ========================= -->
+    <section id="sound">
+      <div class="section-eyebrow">How It Sounds</div>
+      <div class="sound-split">
+        <div>
+          <h2 class="section-title">Honest across<br>the <em>entire spectrum.</em></h2>
+          <p class="section-lede">+/- 1.8 dB deviation from the Harman 2019 target between 20 Hz and 10 kHz. Sub-bass that settles rather than booms. Treble that extends without ever turning aggressive.</p>
+          <button class="btn-ghost">Download the measurement PDF</button>
+        </div>
+        <div class="waveform" id="waveform">
+          <!-- 40 bars, JS-animated offsets -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= PRESS ========================= -->
+    <section id="press">
+      <div class="section-eyebrow">Reviewed</div>
+      <h2 class="section-title">Early reviews from <em>engineers,</em> not influencers.</h2>
+
+      <div class="press-grid">
+        <article class="quote">
+          <p>The NOCTURNE XR is the first closed-back under &euro;2K I would happily master on. The stage is unnervingly accurate.</p>
+          <div class="attribution">
+            <strong>Audio Science Review</strong>
+            <span>Amir Majidimehr, Reference Measurement Suite</span>
+          </div>
+        </article>
+        <article class="quote">
+          <p>Weightless on the skull, weighty in the low end. If Dieter Rams had designed headphones in 2026, they would look and feel like this.</p>
+          <div class="attribution">
+            <strong>Stereophile</strong>
+            <span>Jim Austin, January 2026 Feature</span>
+          </div>
+        </article>
+        <article class="quote">
+          <p>I have reviewed every flagship that shipped this decade. NOCTURNE XR is the one I did not want to return at the end of the week.</p>
+          <div class="attribution">
+            <strong>The Absolute Sound</strong>
+            <span>Robert Harley, Issue 346</span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================= PRE-ORDER ========================= -->
+  <section class="preorder">
+    <div class="preorder-inner">
+      <div>
+        <div class="section-eyebrow">Open Until Reservations Close</div>
+        <h2 class="section-title">1,284 of 3,000 remain.</h2>
+        <p class="section-lede">A fully refundable &euro;40 reservation holds your serial number. First shipments depart Copenhagen June 18th.</p>
+        <div class="counter" id="counter">
+          <div class="counter-box"><div class="counter-num" data-target="42">00</div><div class="counter-label">Days</div></div>
+          <div class="counter-box"><div class="counter-num" data-target="18">00</div><div class="counter-label">Hours</div></div>
+          <div class="counter-box"><div class="counter-num" data-target="47">00</div><div class="counter-label">Minutes</div></div>
+          <div class="counter-box"><div class="counter-num" data-target="12">00</div><div class="counter-label">Seconds</div></div>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="price-edition">Reference Edition &middot; Numbered</div>
+        <div class="price-main"><sup>&euro;</sup>1,840</div>
+        <div class="price-note">Including hardshell travel case, balanced XLR &amp; USB-C cables, and lifetime driver recalibration.</div>
+        <button class="btn-primary" style="width:100%;padding:20px;">Reserve a Pair</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= FAQ ========================= -->
+  <section id="faq">
+    <div class="section-eyebrow">Before You Reserve</div>
+    <h2 class="section-title">Every question worth <em>asking.</em></h2>
+
+    <div class="faq-list">
+      <details class="faq" open>
+        <summary>When will my pair actually arrive?</summary>
+        <div class="faq-body">The first 500 pairs ship June 18, 2026 from Copenhagen. Reservations 501&ndash;3000 ship in fortnightly tranches through December. You will be notified with tracking four days before your pair leaves the atelier.</div>
+      </details>
+      <details class="faq">
+        <summary>Is the &euro;40 reservation refundable?</summary>
+        <div class="faq-body">Completely. We hold your serial number for seventy-two hours once we contact you for final payment. If you pass, the &euro;40 returns to your card within three business days and the slot passes to the next person in queue.</div>
+      </details>
+      <details class="faq">
+        <summary>What is the warranty?</summary>
+        <div class="faq-body">Five years, parts and labour. Drivers are individually measured before shipment and we keep your measurement file on record for lifetime recalibration &mdash; a service unique to NOCTURNE.</div>
+      </details>
+      <details class="faq">
+        <summary>Can I audition before committing?</summary>
+        <div class="faq-body">Yes. We have partnered with eleven dealers across Europe, North America and Japan. Enter your postal code during checkout and we will route you to the nearest private demo room.</div>
+      </details>
+      <details class="faq">
+        <summary>How does NOCTURNE compare to Focal Utopia or Sennheiser HD 800S?</summary>
+        <div class="faq-body">NOCTURNE is closed-back with active noise cancellation and full wireless, which makes direct comparison to open-back references unfair. Against closed-back flagships (Sony MDR-Z1R, Focal Stellia, DCA Stealth) our measurements sit within a hair of the best, at roughly half the price.</div>
+      </details>
+      <details class="faq">
+        <summary>What codecs does it actually support?</summary>
+        <div class="faq-body">LDAC, aptX Lossless, LC3 and Auracast are supported natively. Wired USB-C bypass delivers true 24-bit / 192 kHz with zero Bluetooth involvement &mdash; recommended for critical listening.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ========================= FOOTER ========================= -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-mark">NOCTURNE &middot; Copenhagen</div>
+        <p style="max-width:360px;color:rgba(232,223,201,0.55);font-size:13px;line-height:1.6;margin-top:18px;">
+          A small atelier making reference-class audio hardware for people who still listen to entire albums.
+        </p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#specs">Specifications</a></li>
+          <li><a href="#colourways">Editions</a></li>
+          <li><a href="#sound">Measurements</a></li>
+          <li><a href="#">Accessories</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Atelier</h4>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#press">Press</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#">Dealers</a></li>
+          <li><a href="#">Recalibration</a></li>
+          <li><a href="#">Warranty</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Nocturne Acoustics ApS &middot; Copenhagen</span>
+      <span>Handmade in Denmark</span>
+    </div>
+  </footer>
+
+<script>
+  /* ===== 1. Parallax: 5 fixed layers react to scroll ===== */
+  const layers = document.querySelectorAll('.layer');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking){
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        layers.forEach(layer => {
+          const speed = parseFloat(layer.dataset.speed);
+          layer.style.transform = `translate3d(0, ${ -y * speed }px, 0)`;
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  /* ===== 2. Waveform bars (40, randomized heights + staggered delay) ===== */
+  (function(){
+    const wf = document.getElementById('waveform');
+    if (!wf) return;
+    const N = 40;
+    for (let i=0;i<N;i++){
+      const b = document.createElement('div');
+      b.className = 'bar';
+      // pseudo-natural envelope, louder in the midband
+      const m = Math.sin((i/N)*Math.PI);
+      const h = 20 + m*60 + Math.random()*18;
+      b.style.setProperty('--h', h + '%');
+      b.style.animationDelay = (i * 40) + 'ms';
+      b.style.animationDuration = (1400 + Math.random()*600) + 'ms';
+      wf.appendChild(b);
+    }
+  })();
+
+  /* ===== 3. Product tilt follows pointer ===== */
+  (function(){
+    const p = document.getElementById('product');
+    if (!p) return;
+    const stage = p.parentElement;
+    stage.addEventListener('pointermove', (e) => {
+      const r = stage.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width - 0.5;
+      const ny = (e.clientY - r.top)  / r.height - 0.5;
+      p.style.transition = 'transform 340ms cubic-bezier(.22,.61,.36,1)';
+      p.style.animation = 'none';
+      p.style.transform = `rotateX(${6 - ny*14}deg) rotateY(${ -18 + nx*32 }deg) translateZ(10px)`;
+    });
+    stage.addEventListener('pointerleave', () => {
+      p.style.transition = 'transform 900ms cubic-bezier(.22,.61,.36,1)';
+      p.style.animation = 'float 6s ease-in-out infinite';
+      p.style.transform = '';
+    });
+  })();
+
+  /* ===== 4. Countdown — fake but credible ===== */
+  (function(){
+    const boxes = document.querySelectorAll('#counter .counter-num');
+    let d = 42, h = 18, m = 47, s = 12;
+    function pad(n){ return n < 10 ? '0' + n : '' + n; }
+    function paint(){
+      boxes[0].textContent = pad(d);
+      boxes[1].textContent = pad(h);
+      boxes[2].textContent = pad(m);
+      boxes[3].textContent = pad(s);
+    }
+    paint();
+    setInterval(() => {
+      s--;
+      if (s < 0){ s = 59; m--; }
+      if (m < 0){ m = 59; h--; }
+      if (h < 0){ h = 23; d--; }
+      if (d < 0){ d = 0; s = 0; m = 0; h = 0; }
+      paint();
+    }, 1000);
+  })();
+</script>
+
+</body>
+</html>

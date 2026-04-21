@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BLOK/WRKS — A Studio Launch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================
+     BLOK/WRKS — vibrant + block-based (No=6 from styles.csv)
+     Neon green · electric purple · vivid pink · cyan · sunburst
+     Scroll-snap bars. Animated halftone/dot backgrounds.
+     No nested rounding. 48px+ gaps. 32px+ type.
+     ========================================================= */
+
+  :root{
+    --green: #00ff6a;    /* neon green */
+    --purple:#7a00ff;    /* electric purple */
+    --pink:  #ff2d87;    /* vivid pink */
+    --cyan:  #00e0ff;    /* bright cyan */
+    --sun:   #ffcc00;    /* sunburst */
+    --ink:   #0a0a0a;
+    --bone:  #f4f0e6;
+    --ease:  cubic-bezier(.2,.8,.2,1);
+    --dur:   250ms;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  html{ scroll-behavior:smooth; scroll-snap-type: y mandatory; }
+  body{
+    font-family:'Space Mono', ui-monospace, monospace;
+    background: var(--ink);
+    color: var(--bone);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection{ background: var(--green); color: var(--ink); }
+
+  /* ---------- shared block scaffolding ---------- */
+  .block{
+    position: relative;
+    min-height: 100vh;
+    width: 100vw;
+    display: grid;
+    align-content: center;
+    padding: 96px 6vw;
+    gap: 64px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  @media (max-width: 760px){
+    .block{ padding: 72px 22px; gap: 48px; }
+  }
+
+  .block__tag{
+    font-family:'Space Mono',monospace;
+    font-size: 13px;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    opacity:.9;
+  }
+  .display{
+    font-family:'Unbounded', sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 0.86;
+    margin: 0;
+  }
+
+  /* ---------- animated dot / halftone layer ---------- */
+  .dots{
+    position:absolute; inset:-20%;
+    background-image: radial-gradient(currentColor 1.5px, transparent 2px);
+    background-size: 28px 28px;
+    opacity: .18;
+    animation: driftDots 22s linear infinite;
+    pointer-events:none;
+    z-index: 0;
+  }
+  .halftone{
+    position:absolute; inset:-30%;
+    background-image: radial-gradient(currentColor 2.5px, transparent 3px);
+    background-size: 44px 44px;
+    mask: radial-gradient(circle at 50% 50%, #000 40%, transparent 75%);
+    opacity: .25;
+    animation: pulseTone 9s ease-in-out infinite alternate;
+    pointer-events:none;
+    z-index: 0;
+  }
+  @keyframes driftDots{
+    0%  { transform: translate3d(0,0,0); }
+    100%{ transform: translate3d(-28px,-28px,0); }
+  }
+  @keyframes pulseTone{
+    from { transform: scale(1);   opacity:.15; }
+    to   { transform: scale(1.2); opacity:.35; }
+  }
+
+  /* ---------- NAV (free-floating chip) ---------- */
+  .nav{
+    position: fixed;
+    top: 24px; left: 24px; right: 24px;
+    display:flex; justify-content: space-between; align-items:center;
+    z-index: 40;
+    font-size: 14px;
+    mix-blend-mode: difference;
+    color: #fff;
+    letter-spacing:.2em;
+    text-transform: uppercase;
+  }
+  .nav a{ color:inherit; text-decoration:none; margin-left: 28px; }
+  .nav a:hover{ color: var(--green); }
+  .nav__logo{ font-family:'Unbounded'; font-weight:900; letter-spacing:0; font-size:22px; }
+
+  /* =========================================================
+     1) HERO — rotating slogan, neon green ground
+     ========================================================= */
+  #hero{ background: var(--green); color: var(--ink); }
+  #hero .dots{ color: var(--ink); }
+
+  .hero__eyebrow{
+    display:flex; justify-content:space-between; align-items:center;
+    gap: 48px; flex-wrap: wrap;
+    font-size: 14px; letter-spacing:.3em; text-transform:uppercase;
+    z-index: 2;
+  }
+  .hero__big{
+    position: relative; z-index: 2;
+    font-size: clamp(64px, 14vw, 240px);
+  }
+  .hero__big span{ display:block; }
+  .hero__slash{ color: var(--purple); }
+
+  .rotor{
+    display:inline-block;
+    height: 1em;
+    overflow:hidden;
+    vertical-align: top;
+    color: var(--purple);
+  }
+  .rotor ul{
+    list-style:none; margin:0; padding:0;
+    animation: rot 9s steps(1) infinite;
+  }
+  .rotor li{ height: 1em; line-height:1; }
+  @keyframes rot{
+    0%,  18% { transform: translateY(0); }
+    22%, 40% { transform: translateY(-1em); }
+    44%, 62% { transform: translateY(-2em); }
+    66%, 84% { transform: translateY(-3em); }
+    88%,100% { transform: translateY(0); }
+  }
+
+  .hero__meta{
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+    font-size: 14px; z-index: 2;
+  }
+  .hero__meta b{ display:block; font-size: 32px; font-family:'Unbounded'; letter-spacing:-.02em; }
+  @media (max-width: 820px){ .hero__meta{ grid-template-columns: repeat(2,1fr); } }
+
+  /* =========================================================
+     2) SERVICES — 6 chunky duotone blocks
+     ========================================================= */
+  #services{ background: var(--ink); color: var(--bone); }
+  #services .dots{ color: var(--bone); }
+
+  .services__head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap: 48px; flex-wrap: wrap; z-index:2;
+  }
+  .services__head h2{
+    font-family:'Unbounded'; font-weight:900; font-size: clamp(48px, 8vw, 120px);
+    margin:0; letter-spacing:-.02em; line-height:.9;
+  }
+  .services__grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    z-index:2;
+  }
+  @media (max-width: 980px){ .services__grid{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 620px){ .services__grid{ grid-template-columns: 1fr; } }
+
+  .svc{
+    position: relative;
+    min-height: 320px;
+    padding: 40px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    overflow:hidden;
+    transition: transform var(--dur) var(--ease), background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+    cursor: pointer;
+  }
+  .svc__num{
+    font-family:'Unbounded'; font-weight:900;
+    font-size: clamp(96px, 12vw, 180px);
+    line-height: .8; letter-spacing:-.04em;
+  }
+  .svc__word{
+    font-family:'Unbounded'; font-weight:800;
+    font-size: 36px; letter-spacing:-.01em; line-height:1;
+    margin:0;
+  }
+  .svc__desc{
+    font-size: 14px; opacity:.8; max-width: 32ch; margin: 16px 0 0;
+  }
+  .svc .halftone{ color: currentColor; }
+  .svc:hover{ transform: translateY(-4px); }
+
+  .svc--a{ background: var(--purple); color: var(--green); }
+  .svc--a:hover{ background: var(--green); color: var(--purple); }
+  .svc--b{ background: var(--pink);   color: var(--sun); }
+  .svc--b:hover{ background: var(--sun);   color: var(--pink); }
+  .svc--c{ background: var(--cyan);   color: var(--ink); }
+  .svc--c:hover{ background: var(--ink);   color: var(--cyan); }
+  .svc--d{ background: var(--sun);    color: var(--purple); }
+  .svc--d:hover{ background: var(--purple);color: var(--sun); }
+  .svc--e{ background: var(--green);  color: var(--ink); }
+  .svc--e:hover{ background: var(--ink);   color: var(--green); }
+  .svc--f{ background: var(--bone);   color: var(--pink); }
+  .svc--f:hover{ background: var(--pink);  color: var(--bone); }
+
+  /* =========================================================
+     3) STATS — animated ring counters
+     ========================================================= */
+  #stats{ background: var(--purple); color: var(--sun); }
+  #stats .halftone{ color: var(--sun); }
+
+  .stats__head h2{
+    font-family:'Unbounded'; font-weight:900; font-size: clamp(48px, 8vw, 120px);
+    margin:0; letter-spacing:-.02em; line-height:.9; z-index:2; position:relative;
+  }
+  .stats__grid{
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+    z-index:2; position:relative;
+  }
+  @media (max-width: 980px){ .stats__grid{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 560px){ .stats__grid{ grid-template-columns: 1fr; } }
+
+  .ring{
+    position:relative; width: 100%; aspect-ratio: 1/1;
+    max-width: 260px;
+  }
+  .ring svg{ width:100%; height:100%; transform: rotate(-90deg); }
+  .ring circle{ fill:none; stroke-width: 14; }
+  .ring .track{ stroke: rgba(0,0,0,.25); }
+  .ring .bar{
+    stroke: var(--green);
+    stroke-linecap: square;
+    stroke-dasharray: 628;
+    stroke-dashoffset: 628;
+    animation: fillRing 2s var(--ease) forwards;
+    animation-delay: .4s;
+  }
+  .ring--2 .bar{ stroke: var(--cyan);  --target: 188; }
+  .ring--3 .bar{ stroke: var(--pink);  --target: 75; }
+  .ring--4 .bar{ stroke: var(--sun);   --target: 420; }
+  .ring--1 .bar{ stroke: var(--green); --target: 283; }
+
+  @keyframes fillRing{
+    to { stroke-dashoffset: var(--target, 120); }
+  }
+  .ring__num{
+    position:absolute; inset:0;
+    display:grid; place-content:center;
+    font-family:'Unbounded'; font-weight:900;
+    font-size: clamp(36px, 5vw, 64px);
+    color: var(--bone);
+    letter-spacing:-.03em;
+  }
+  .ring__label{
+    display:block; margin-top: 24px;
+    font-size: 13px; letter-spacing:.3em; text-transform:uppercase;
+    color: var(--green);
+  }
+
+  /* counter number rolling */
+  .count{ display:inline-block; }
+
+  /* =========================================================
+     4) CASE STUDY CAROUSEL — pink ground
+     ========================================================= */
+  #cases{ background: var(--pink); color: var(--ink); }
+  #cases .dots{ color: var(--ink); }
+
+  .cases__head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap: 48px; flex-wrap: wrap; z-index:2;
+  }
+  .cases__head h2{
+    font-family:'Unbounded'; font-weight:900; font-size: clamp(48px, 8vw, 120px);
+    margin:0; letter-spacing:-.02em; line-height:.9;
+  }
+
+  .carousel{
+    position:relative; z-index:2;
+    overflow: hidden;
+    width: 100%;
+    mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  }
+  .track{
+    display:flex;
+    gap: 48px;
+    width: max-content;
+    animation: slide 38s linear infinite;
+  }
+  .carousel:hover .track{ animation-play-state: paused; }
+  @keyframes slide{
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .case{
+    flex: 0 0 auto;
+    width: 420px;
+    min-height: 320px;
+    padding: 32px;
+    background: var(--ink);
+    color: var(--cyan);
+    display:flex; flex-direction:column; justify-content:space-between;
+    transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .case:nth-child(2n){ background: var(--purple); color: var(--green); }
+  .case:nth-child(3n){ background: var(--sun);    color: var(--ink); }
+  .case:hover{ background: var(--green); color: var(--ink); transform: translateY(-4px); }
+
+  .case__yr{
+    font-family:'Space Mono'; font-size:14px; letter-spacing:.3em; text-transform:uppercase;
+  }
+  .case__name{
+    font-family:'Unbounded'; font-weight:900;
+    font-size: 44px; line-height:.9; letter-spacing:-.02em;
+    margin:16px 0 0;
+  }
+  .case__meta{
+    display:flex; justify-content:space-between; font-size:13px; letter-spacing:.2em; text-transform:uppercase;
+    margin-top: 24px; opacity:.9;
+  }
+
+  /* =========================================================
+     5) JOBS strip — cyan bar
+     ========================================================= */
+  #jobs{ background: var(--cyan); color: var(--ink); }
+  #jobs .halftone{ color: var(--ink); }
+
+  .jobs__head{
+    display:flex; justify-content:space-between; align-items:center;
+    gap: 32px; flex-wrap:wrap; z-index:2; position:relative;
+  }
+  .jobs__head h2{
+    font-family:'Unbounded'; font-weight:900;
+    font-size: clamp(44px, 7vw, 96px);
+    margin:0; letter-spacing:-.02em; line-height:.9;
+  }
+  .chip{
+    display:inline-flex; align-items:center; gap:12px;
+    padding: 14px 22px;
+    background: var(--ink); color: var(--green);
+    font-family:'Space Mono'; font-size:16px; letter-spacing:.18em;
+    text-transform:uppercase;
+    text-decoration:none;
+    transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .chip:hover{ background: var(--green); color: var(--ink); transform: translate(-2px,-2px); }
+  .chip .dot{
+    width: 10px; height:10px; background: var(--pink); border-radius:50%;
+    box-shadow: 0 0 0 0 rgba(255,45,135,.7);
+    animation: blink 1.4s ease-out infinite;
+  }
+  @keyframes blink{
+    0%  { box-shadow: 0 0 0 0 rgba(255,45,135,.7); }
+    70% { box-shadow: 0 0 0 14px rgba(255,45,135,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(255,45,135,0); }
+  }
+
+  .jobs__list{
+    list-style:none; padding:0; margin:0;
+    z-index:2; position:relative;
+    border-top: 2px solid var(--ink);
+  }
+  .jobs__list li{
+    display:grid;
+    grid-template-columns: 80px 1fr auto auto;
+    align-items:center;
+    gap: 32px;
+    padding: 28px 0;
+    border-bottom: 2px solid var(--ink);
+    font-family:'Space Mono'; font-size:16px;
+    transition: padding var(--dur) var(--ease), color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+    cursor: pointer;
+  }
+  .jobs__list li:hover{ padding-left: 24px; background: var(--ink); color: var(--cyan); }
+  .jobs__list .role{
+    font-family:'Unbounded'; font-weight:800;
+    font-size: 32px; letter-spacing:-.01em;
+  }
+  .jobs__list .no{
+    font-family:'Unbounded'; font-weight:900; font-size: 48px; letter-spacing:-.03em;
+  }
+  @media (max-width: 720px){
+    .jobs__list li{ grid-template-columns: 56px 1fr; }
+    .jobs__list li > :nth-child(3),
+    .jobs__list li > :nth-child(4){ display:none; }
+    .jobs__list .role{ font-size: 24px; }
+  }
+
+  /* =========================================================
+     6) CTA — fat bottom, sunburst
+     ========================================================= */
+  #cta{ background: var(--sun); color: var(--ink); }
+  #cta .dots{ color: var(--ink); }
+
+  .cta__mega{
+    font-family:'Unbounded'; font-weight:900;
+    font-size: clamp(72px, 18vw, 320px);
+    line-height: .82; letter-spacing:-.04em; margin:0;
+    z-index:2; position:relative;
+  }
+  .cta__mega em{
+    font-style: normal;
+    color: var(--purple);
+    background: var(--ink);
+    padding: 0 .12em;
+    display: inline-block;
+  }
+  .cta__row{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:48px; flex-wrap:wrap;
+    z-index:2; position:relative;
+  }
+  .cta__btn{
+    display:inline-flex; align-items:center; gap: 20px;
+    padding: 28px 40px;
+    background: var(--ink); color: var(--sun);
+    font-family:'Unbounded'; font-weight:900; font-size: 32px;
+    letter-spacing:-.01em; text-decoration:none;
+    transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .cta__btn:hover{ background: var(--purple); color: var(--green); transform: translate(-3px,-3px); }
+  .cta__btn svg{ width: 28px; height: 28px; }
+
+  .cta__meta{
+    font-family:'Space Mono'; font-size: 14px; letter-spacing:.24em; text-transform:uppercase;
+    line-height: 1.8; text-align:right;
+  }
+
+  /* footer strip */
+  .ticker{
+    background: var(--ink); color: var(--green);
+    font-family:'Unbounded'; font-weight:800; font-size: 32px;
+    letter-spacing:-.01em;
+    overflow:hidden; white-space:nowrap;
+    padding: 24px 0;
+    border-top: 4px solid var(--green);
+  }
+  .ticker__track{
+    display:inline-block;
+    padding-left: 100%;
+    animation: tickerMove 28s linear infinite;
+  }
+  .ticker__track span{ margin: 0 48px; }
+  .ticker__track i{ color: var(--pink); font-style:normal; }
+  @keyframes tickerMove{
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+
+  /* reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+    html{ scroll-snap-type: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" aria-label="primary">
+  <div class="nav__logo">BLOK/WRKS</div>
+  <div>
+    <a href="#services">WORK</a>
+    <a href="#cases">INDEX</a>
+    <a href="#jobs">JOIN</a>
+    <a href="#cta">TALK</a>
+  </div>
+</nav>
+
+<!-- ============ 1 · HERO ============ -->
+<section class="block" id="hero" aria-label="intro">
+  <div class="dots" aria-hidden="true"></div>
+
+  <div class="hero__eyebrow">
+    <span>EST. 2026 / DUBLIN — LISBON</span>
+    <span>NOW OPEN / STUDIO 01</span>
+    <span class="block__tag">NO. 006</span>
+  </div>
+
+  <h1 class="display hero__big" id="hero-title">
+    <span>WE MAKE</span>
+    <span>
+      <span class="rotor" aria-hidden="true">
+        <ul>
+          <li>LOUD</li>
+          <li>WEIRD</li>
+          <li>FAST</li>
+          <li>BRANDS</li>
+        </ul>
+      </span>
+    </span>
+    <span><span class="hero__slash">/</span> BLOCKS.</span>
+  </h1>
+
+  <div class="hero__meta" aria-label="studio facts">
+    <div><b>06</b>DISCIPLINES</div>
+    <div><b>12</b>FOUNDERS IN</div>
+    <div><b>48H</b>FIRST DRAFT</div>
+    <div><b>∞</b>OPINIONS, FREE</div>
+  </div>
+</section>
+
+<!-- ============ 2 · SERVICES ============ -->
+<section class="block" id="services" aria-label="services">
+  <div class="dots" aria-hidden="true"></div>
+
+  <div class="services__head">
+    <span class="block__tag">§ 02 — WHAT WE DO</span>
+    <h2>SIX BIG<br/>LOUD THINGS.</h2>
+  </div>
+
+  <div class="services__grid">
+    <article class="svc svc--a">
+      <div class="halftone" aria-hidden="true"></div>
+      <div class="svc__num">01</div>
+      <div>
+        <h3 class="svc__word">BRAND</h3>
+        <p class="svc__desc">Names, marks, manifestos. If it fits on a t-shirt, we made it.</p>
+      </div>
+    </article>
+
+    <article class="svc svc--b">
+      <div class="halftone" aria-hidden="true"></div>
+      <div class="svc__num">02</div>
+      <div>
+        <h3 class="svc__word">MOTION</h3>
+        <p class="svc__desc">Frames that earn the scroll. Launch reels, idents, social bangers.</p>
+      </div>
+    </article>
+
+    <article class="svc svc--c">
+      <div class="halftone" aria-hidden="true"></div>
+      <div class="svc__num">03</div>
+      <div>
+        <h3 class="svc__word">WEB</h3>
+        <p class="svc__desc">Sites that feel like physical objects. Typography-first, shipped fast.</p>
+      </div>
+    </article>
+
+    <article class="svc svc--d">
+      <div class="halftone" aria-hidden="true"></div>
+      <div class="svc__num">04</div>
+      <div>
+        <h3 class="svc__word">FILM</h3>
+        <p class="svc__desc">30-second films for founders who hate talking heads.</p>
+      </div>
+    </article>
+
+    <article class="svc svc--e">
+      <div class="halftone" aria-hidden="true"></div>
+      <div class="svc__num">05</div>
+      <div>
+        <h3 class="svc__word">PRINT</h3>
+        <p class="svc__desc">Posters, zines, merch. Ink on paper still beats pixels.</p>
+      </div>
+    </article>
+
+    <article class="svc svc--f">
+      <div class="halftone" aria-hidden="true"></div>
+      <div class="svc__num">06</div>
+      <div>
+        <h3 class="svc__word">STRATEGY</h3>
+        <p class="svc__desc">The fight, the wedge, the positioning. Then back to making.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 3 · STATS RINGS ============ -->
+<section class="block" id="stats" aria-label="studio stats">
+  <div class="halftone" aria-hidden="true"></div>
+
+  <div class="stats__head">
+    <span class="block__tag">§ 03 — BY THE NUMBERS</span>
+    <h2>COUNT IT.</h2>
+  </div>
+
+  <div class="stats__grid" role="list">
+    <div class="ring ring--1" role="listitem">
+      <svg viewBox="0 0 220 220" aria-hidden="true">
+        <circle class="track" cx="110" cy="110" r="100"></circle>
+        <circle class="bar"   cx="110" cy="110" r="100"></circle>
+      </svg>
+      <div class="ring__num"><span class="count" data-target="54">0</span>+</div>
+      <span class="ring__label">Launches shipped</span>
+    </div>
+    <div class="ring ring--2" role="listitem">
+      <svg viewBox="0 0 220 220" aria-hidden="true">
+        <circle class="track" cx="110" cy="110" r="100"></circle>
+        <circle class="bar"   cx="110" cy="110" r="100"></circle>
+      </svg>
+      <div class="ring__num"><span class="count" data-target="92">0</span>%</div>
+      <span class="ring__label">On time / on brief</span>
+    </div>
+    <div class="ring ring--3" role="listitem">
+      <svg viewBox="0 0 220 220" aria-hidden="true">
+        <circle class="track" cx="110" cy="110" r="100"></circle>
+        <circle class="bar"   cx="110" cy="110" r="100"></circle>
+      </svg>
+      <div class="ring__num"><span class="count" data-target="12">0</span></div>
+      <span class="ring__label">Awards on the shelf</span>
+    </div>
+    <div class="ring ring--4" role="listitem">
+      <svg viewBox="0 0 220 220" aria-hidden="true">
+        <circle class="track" cx="110" cy="110" r="100"></circle>
+        <circle class="bar"   cx="110" cy="110" r="100"></circle>
+      </svg>
+      <div class="ring__num"><span class="count" data-target="28">0</span></div>
+      <span class="ring__label">Humans on deck</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 · CASE STUDIES ============ -->
+<section class="block" id="cases" aria-label="case studies">
+  <div class="dots" aria-hidden="true"></div>
+
+  <div class="cases__head">
+    <span class="block__tag">§ 04 — RECENT WORK</span>
+    <h2>THE INDEX.</h2>
+  </div>
+
+  <div class="carousel" aria-label="case study carousel">
+    <div class="track">
+      <!-- first copy -->
+      <article class="case"><span class="case__yr">2026 / 001</span><h3 class="case__name">HONEST DONUT CO.</h3><div class="case__meta"><span>BRAND</span><span>DUBLIN</span></div></article>
+      <article class="case"><span class="case__yr">2026 / 002</span><h3 class="case__name">MIRRORCLUB FM</h3><div class="case__meta"><span>WEB · IDENT</span><span>BERLIN</span></div></article>
+      <article class="case"><span class="case__yr">2026 / 003</span><h3 class="case__name">NORTHWEST OYSTERS</h3><div class="case__meta"><span>PACKAGING</span><span>SLIGO</span></div></article>
+      <article class="case"><span class="case__yr">2025 / 014</span><h3 class="case__name">LATE BLOOMER</h3><div class="case__meta"><span>CAMPAIGN</span><span>LISBON</span></div></article>
+      <article class="case"><span class="case__yr">2025 / 011</span><h3 class="case__name">OK COMPUTERS</h3><div class="case__meta"><span>WEB</span><span>REMOTE</span></div></article>
+      <article class="case"><span class="case__yr">2025 / 008</span><h3 class="case__name">LOUD FESTIVAL</h3><div class="case__meta"><span>BRAND · FILM</span><span>CORK</span></div></article>
+      <!-- duplicate for seamless loop -->
+      <article class="case"><span class="case__yr">2026 / 001</span><h3 class="case__name">HONEST DONUT CO.</h3><div class="case__meta"><span>BRAND</span><span>DUBLIN</span></div></article>
+      <article class="case"><span class="case__yr">2026 / 002</span><h3 class="case__name">MIRRORCLUB FM</h3><div class="case__meta"><span>WEB · IDENT</span><span>BERLIN</span></div></article>
+      <article class="case"><span class="case__yr">2026 / 003</span><h3 class="case__name">NORTHWEST OYSTERS</h3><div class="case__meta"><span>PACKAGING</span><span>SLIGO</span></div></article>
+      <article class="case"><span class="case__yr">2025 / 014</span><h3 class="case__name">LATE BLOOMER</h3><div class="case__meta"><span>CAMPAIGN</span><span>LISBON</span></div></article>
+      <article class="case"><span class="case__yr">2025 / 011</span><h3 class="case__name">OK COMPUTERS</h3><div class="case__meta"><span>WEB</span><span>REMOTE</span></div></article>
+      <article class="case"><span class="case__yr">2025 / 008</span><h3 class="case__name">LOUD FESTIVAL</h3><div class="case__meta"><span>BRAND · FILM</span><span>CORK</span></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 · JOBS ============ -->
+<section class="block" id="jobs" aria-label="jobs">
+  <div class="halftone" aria-hidden="true"></div>
+
+  <div class="jobs__head">
+    <div>
+      <span class="block__tag">§ 05 — CAREERS</span>
+      <h2>WE ARE<br/>HIRING.</h2>
+    </div>
+    <a class="chip" href="#cta">
+      <span class="dot" aria-hidden="true"></span>
+      LIVE — 4 ROLES OPEN
+    </a>
+  </div>
+
+  <ul class="jobs__list" role="list">
+    <li>
+      <span class="no">01</span>
+      <span class="role">Senior Brand Designer</span>
+      <span>FULL-TIME</span>
+      <span>DUBLIN / HYBRID</span>
+    </li>
+    <li>
+      <span class="no">02</span>
+      <span class="role">Motion Lead</span>
+      <span>FULL-TIME</span>
+      <span>REMOTE EU</span>
+    </li>
+    <li>
+      <span class="no">03</span>
+      <span class="role">Strategy Director</span>
+      <span>FULL-TIME</span>
+      <span>LISBON</span>
+    </li>
+    <li>
+      <span class="no">04</span>
+      <span class="role">Studio Intern — 2026 cohort</span>
+      <span>PAID</span>
+      <span>DUBLIN</span>
+    </li>
+  </ul>
+</section>
+
+<!-- ============ 6 · CTA ============ -->
+<section class="block" id="cta" aria-label="get in touch">
+  <div class="dots" aria-hidden="true"></div>
+
+  <h2 class="cta__mega">
+    LET'S<br/>
+    MAKE <em>LOUD</em><br/>
+    THINGS.
+  </h2>
+
+  <div class="cta__row">
+    <a class="cta__btn" href="mailto:hello@blokwrks.studio">
+      HELLO@BLOKWRKS.STUDIO
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6"/>
+      </svg>
+    </a>
+    <address class="cta__meta">
+      BLOK/WRKS STUDIO<br/>
+      3 NORTH WALL QUAY<br/>
+      D01 XF28 · DUBLIN · IE<br/>
+      +353 1 000 0000
+    </address>
+  </div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span>NOW OPEN <i>/</i></span>
+    <span>STUDIO 01 <i>/</i></span>
+    <span>DUBLIN · LISBON · BERLIN <i>/</i></span>
+    <span>BUILT FOR LAUNCHES <i>/</i></span>
+    <span>NEW WORK 2026 <i>/</i></span>
+    <span>HIRING 4 ROLES <i>/</i></span>
+    <span>NOW OPEN <i>/</i></span>
+    <span>STUDIO 01 <i>/</i></span>
+    <span>DUBLIN · LISBON · BERLIN <i>/</i></span>
+    <span>BUILT FOR LAUNCHES <i>/</i></span>
+  </div>
+</div>
+
+<script>
+  // --- ring counters: animate 0 -> target when stats block enters viewport ---
+  (function(){
+    const counters = document.querySelectorAll('.count');
+    if(!counters.length) return;
+
+    const animate = (el) => {
+      const target = parseInt(el.dataset.target || '0', 10);
+      const dur = 1600;
+      const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min(1, (now - start) / dur);
+        // ease-out cubic
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.floor(eased * target).toString();
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = target.toString();
+      };
+      requestAnimationFrame(tick);
+    };
+
+    if (!('IntersectionObserver' in window)){
+      counters.forEach(animate);
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          animate(e.target);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(c => io.observe(c));
+  })();
+
+  // --- set ring bar stroke-dashoffset targets for keyframe animation ---
+  (function(){
+    // circumference = 2 * PI * r (r=100) -> ~628
+    const C = 2 * Math.PI * 100;
+    const values = [ .55, .70, .30, .82 ]; // ring 1..4 fill ratios
+    document.querySelectorAll('.ring').forEach((ring, i) => {
+      const bar = ring.querySelector('.bar');
+      if (!bar) return;
+      const ratio = values[i] ?? .5;
+      const offset = C * (1 - ratio);
+      bar.style.setProperty('--target', offset.toFixed(1));
+      bar.style.strokeDasharray = C.toFixed(1);
+      bar.style.strokeDashoffset = C.toFixed(1);
+    });
+  })();
+</script>
+</body>
+</html>
