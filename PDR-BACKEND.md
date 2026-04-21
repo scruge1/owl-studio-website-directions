@@ -441,3 +441,114 @@ Once approved:
 3. Then Day 2-5 proceed in order
 
 Days are real working days, not parallel dispatch. This is our own infrastructure — we build it once, carefully, not via N-agent fan-out.
+
+---
+
+## 15. OSS swaps (approved 2026-04-21 — supersedes service picks in §2, §4, §10, §13)
+
+Every paid service in the original plan that has a genuinely equivalent
+OSS alternative has been swapped. The closed services that remain are
+kept only where regulation, deliverability, or CDN network make OSS
+self-host meaningfully worse for the client — not because of ops laziness.
+
+### 15.1 What changed
+
+| Role | Original pick | New pick | Why OSS wins here |
+|---|---|---|---|
+| CMS (Pro tier) | Sanity Cloud | **Payload CMS** (MIT) | Same feature bar — admin UI, field types, live preview, roles. Runs on Node + Postgres. No per-seat pricing. Scoped editor accounts per client. |
+| Uptime monitoring | UptimeRobot | **Uptime Kuma** (MIT) | Better UI, more integrations (Slack/Discord/Telegram/webhook), unlimited monitors, <100MB RAM. |
+| Analytics | Plausible Cloud | **Umami** (MIT) OR **Plausible Community Edition** (AGPL) | Plausible Cloud *is* Plausible CE — only the hosting differs. Umami is the lightest swap; same 1-line script, privacy-first, no cookie banner. |
+| Bookings (Custom tier) | Cal.com Cloud | **Cal.com self-hosted** (AGPL) | Cal.com Cloud *is* Cal.com self-hosted — only the hosting differs. Full multi-tenant built-in. |
+| Credentials vault | 1Password | **Vaultwarden** (GPL) | Lightweight Rust server fork of Bitwarden. One container. Shared vaults + team features match 1Password. |
+| Error monitoring (if/when added) | Sentry | **GlitchTip** (MIT) | Drop-in Sentry-compatible — uses the same Sentry SDK on the client. Self-hosted. |
+
+### 15.2 What stays closed (pragmatic reasons, not ops savings)
+
+| Role | Kept | Why |
+|---|---|---|
+| Card processing | **Stripe** | Regulated acquirer; no OSS equivalent for real EU card/SEPA payments. Mollie is the alternative if Stripe becomes a blocker — also not OSS. |
+| Transactional email | **Resend / Postmark** (or AWS SES) | Self-hosting SMTP *is* possible (Postal is OSS) but deliverability is a multi-month dark art: domain reputation, SPF/DKIM/DMARC, IP warm-up, reverse-DNS. Client forms landing in spam kills the business. Pay for deliverability-as-a-service. |
+| CDN + static hosting | **Cloudflare Pages** + **R2** | Free, unlimited bandwidth, free egress, fastest TTFB globally. No self-host matches this without significant spend. |
+| Hosting platform (short-term) | **Render** free tier | Keeps ops small while we're <3 paying clients. At 3+ clients or €20+/mo spend, migrate everything to a single **Hetzner CPX11 €4/mo** VPS running **Coolify** (MIT, one-click OSS-Heroku) which hosts every service above. |
+
+### 15.3 Updated architecture (replaces §2 diagram)
+
+```
+Hetzner CPX11 €4/mo  (or Render free tier until we outgrow it)
+  └── Coolify (OSS Heroku-alike)
+       ├── FastAPI (our /owl/* routes — CallMeIE extension)
+       ├── Payload CMS        (Pro-tier client content; per-client editor seats)
+       ├── Umami              (analytics — one instance, multi-site)
+       ├── Cal.com            (self-hosted — Custom-tier bookings)
+       ├── Uptime Kuma        (monitoring all client sites + our backend)
+       ├── Vaultwarden        (credentials vault, shared per-client)
+       ├── GlitchTip          (error monitoring for our backend)
+       └── Postgres 16        (one instance, schema-per-service)
+
+External / closed (regulation, deliverability, CDN):
+  - Stripe           (card/SEPA payments — required)
+  - Resend           (transactional email — deliverability)
+  - Cloudflare Pages (client site hosting — free, CDN moat)
+  - Cloudflare R2    (backup + attachment storage — free egress)
+  - Domain registrar (client-owned — Porkbun, GoDaddy, etc.)
+```
+
+### 15.4 Licence caveats
+
+- **Cal.com (AGPL)** — if we modify and offer as a service, we publish modifications. We won't be modifying it. No practical constraint.
+- **Plausible CE (AGPL)** — same. Using Umami instead (MIT) avoids this entirely.
+- **Vaultwarden (GPL)**, **Uptime Kuma (MIT)**, **Payload (MIT)**, **GlitchTip (MIT)**, **Umami (MIT)** — permissive or copyleft, no practical constraints on how we use them internally.
+
+### 15.5 Updated cost model at 10 clients
+
+| Line item | Monthly |
+|---|---|
+| Hetzner CPX11 (or Render Starter after free tier) | €4 (Hetzner) / €7 (Render) |
+| All 7 OSS services (on the same box) | €0 |
+| Stripe transaction fees | 1.4% + €0.25/EU card |
+| Resend (first 3,000 emails/mo free, then $20/mo for 50k) | €0 – €18 |
+| UptimeRobot → replaced by Uptime Kuma | €0 |
+| Sanity → replaced by Payload | €0 |
+| Plausible Cloud → replaced by Umami | €0 |
+| Cal.com Cloud → replaced by self-hosted | €0 |
+| 1Password → replaced by Vaultwarden | €0 |
+| **Total fixed monthly infra** | **€4-€25 all-in** (down from ~€15-€30 in original PDR) |
+| **MRR from 10 Growth care plans** | **€950** |
+| **Gross margin on recurring** | **>97%** |
+
+### 15.6 Deploy order (revised from §9)
+
+The OSS swaps only affect *which* service implements each role — the Day 1 - Day 5 scope in §9 is unchanged. Deploy the stack in this order:
+
+1. **Day 1** — `POST /owl/submit` route on existing Render FastAPI (no new infra yet)
+2. **Day 2** — `/owl/admin?token=` client dashboard (HTML template on existing FastAPI)
+3. **Day 3** — Stripe products + webhook handler
+4. **Day 4** — `/owl/care/ticket` + SLA logic + PDF report generator
+5. **Day 5** — Onboarding CLI + first run against Rathborne Dental sample
+6. **Day 6 (new, OSS-first)** — Provision Hetzner CPX11 + Coolify; deploy Postgres, Uptime Kuma, Vaultwarden on the box; wire Uptime Kuma to monitor the Render FastAPI + websites.owlzone.trade + callmeie.ie
+7. **Day 7 (new)** — Deploy Payload CMS + Umami on the same Coolify box; create the first Payload project for Rathborne Dental as the Pro-tier prototype
+8. **Day 8 (new)** — Migrate the Render FastAPI off Render onto the same Coolify box; shut down Render; total infra spend = €4/mo
+
+Days 6-8 only happen if Day 1-5 land cleanly. If Render free tier holds us fine for the first 2 paying clients, the migration can defer months.
+
+### 15.7 Decision record (appended)
+
+- **All infrastructure is OSS-first.** Closed services are used only where regulation, deliverability, or CDN network justifies them.
+- **Payload over Sanity** for Pro-tier CMS.
+- **Uptime Kuma over UptimeRobot** for monitoring.
+- **Umami over Plausible Cloud** for analytics (simpler, MIT).
+- **Self-hosted Cal.com** over Cal.com Cloud for Custom-tier bookings.
+- **Vaultwarden over 1Password** for credentials vaults.
+- **GlitchTip over Sentry** if/when error monitoring is added.
+- **Hetzner + Coolify** as the long-term host, migrated to once Render cost/scale makes it sensible.
+
+### 15.8 "Build it on ourselves first, then rinse-and-repeat for clients"
+
+The deployment itself is a tested recipe. We wire every service to
+**our own sites first** — websites.owlzone.trade and callmeie.ie — so
+the whole pipeline is proven working before any client onboard. The
+deployment commands, configs, and gotchas get captured in
+`DEPLOYMENT-PLAYBOOK.md` alongside this PDR. That playbook becomes the
+one-page onboarding recipe: when client N comes in, we run the same
+commands, with their site_id and their lead_email, and 20 minutes later
+they're fully wired.
