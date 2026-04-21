@@ -195,3 +195,11 @@ for ethics). Track only `#samples` clicks, modal opens, and the
 - Porkbun DNS dashboard: owned by scruge1
 - Contact inbox: callmeie@proton.me
 - Parent routing: `C:/Users/a33_s/Desktop/claude MCPs/New repos/CLAUDE.md`
+
+---
+
+## Operational state
+
+**Canonical infrastructure reference:** `INFRA.md` in this repo (mirror of `../INFRA-OWL-STUDIO.md`).
+Every secret location, every service, every deploy endpoint, every runbook lives there.
+When anything changes in infra, update INFRA.md in the same commit — no exceptions.
