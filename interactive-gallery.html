@@ -1228,6 +1228,74 @@
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; animation: none !important; }
     }
+
+    /* Contact form in final CTA — POSTs to /owl/submit */
+    .contact-or {
+      margin: 28px auto 12px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+    }
+    .contact-form {
+      max-width: 620px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-align: left;
+    }
+    .contact-form .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 560px) { .contact-form .cf-row { grid-template-columns: 1fr; } }
+    .contact-form label { display: flex; flex-direction: column; gap: 6px; }
+    .contact-form label span {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .contact-form input,
+    .contact-form textarea {
+      font-family: var(--body);
+      font-size: 15px;
+      color: var(--ink);
+      background: #fff;
+      border: 2px solid var(--line);
+      padding: 12px 14px;
+      border-radius: 2px;
+      transition: border-color 140ms ease;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .contact-form textarea { resize: vertical; min-height: 96px; }
+    .contact-form .cf-hp {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+    .contact-form .cf-foot {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .contact-form .cf-status {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .contact-form .cf-status.ok { color: var(--accent); }
+    .contact-form .cf-status.err { color: #a0162b; }
   </style>
 </head>
 <body>
@@ -1860,6 +1928,20 @@
         <a class="btn accent" href="mailto:callmeie@proton.me?subject=%E2%82%AC99%20style-match%20audit&body=Business%20name%3A%0AWhat%20the%20site%20needs%20to%20do%3A%0ACompetitor%2Freference%20sites%20you%20like%3A">Order the €99 audit</a>
         <a class="btn secondary" href="mailto:callmeie@proton.me?subject=Website%20project%20%E2%80%94%20ready%20to%20book">Email the studio</a>
       </div>
+
+      <p class="contact-or">or, if you&apos;d rather not open an email client —</p>
+      <form class="contact-form" data-owl aria-label="Quick contact form">
+        <div class="cf-row">
+          <label><span>Name</span><input type="text" name="name" required autocomplete="name"></label>
+          <label><span>Email</span><input type="email" name="email" required autocomplete="email"></label>
+        </div>
+        <label><span>Business + what you&apos;re after</span><textarea name="message" rows="4" required placeholder="e.g. Limerick dental practice, Pro tier, leaning Swiss editorial, launch by end of May."></textarea></label>
+        <input type="text" name="nickname" class="cf-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="cf-foot">
+          <button type="submit" class="btn primary cf-submit">Send the brief</button>
+          <span class="cf-status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
     </section>
 
   </main>
@@ -1868,6 +1950,38 @@
     <span>Pick a tier. Pick a style. Go live in a week or two. <a href="mailto:callmeie@proton.me?subject=Website%20design%20project">callmeie@proton.me</a></span>
     <span>Owl Studio · Limerick, Ireland · Est. 2026</span>
   </footer>
+
+  <!-- Owl Studio backend wiring — POSTs any <form data-owl> to /owl/submit -->
+  <script>
+  document.querySelectorAll('form[data-owl]').forEach(f => {
+    const status = f.querySelector('.cf-status');
+    const btn = f.querySelector('button[type=submit]');
+    f.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (btn) { btn.disabled = true; btn.dataset.oldText = btn.textContent; btn.textContent = 'Sending…'; }
+      if (status) { status.className = 'cf-status'; status.textContent = ''; }
+      const fd = Object.fromEntries(new FormData(f));
+      try {
+        const r = await fetch('https://callmeie.onrender.com/owl/submit', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({site_id: 'owl-studio-sales', form_data: fd, submitted_from: location.href})
+        });
+        const j = await r.json();
+        if (j.ok) {
+          f.reset();
+          if (status) { status.className = 'cf-status ok'; status.textContent = j.message || 'Sent — we\'ll reply within 24 hours.'; }
+          if (btn) { btn.textContent = 'Sent ✓'; setTimeout(() => { btn.disabled = false; btn.textContent = btn.dataset.oldText || 'Send the brief'; }, 4000); }
+        } else {
+          throw new Error(j.detail || 'submit failed');
+        }
+      } catch (err) {
+        if (status) { status.className = 'cf-status err'; status.textContent = 'Something went wrong — please email callmeie@proton.me directly.'; }
+        if (btn) { btn.disabled = false; btn.textContent = btn.dataset.oldText || 'Send the brief'; }
+      }
+    });
+  });
+  </script>
 
 </body>
 </html>
