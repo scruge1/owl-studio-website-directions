@@ -834,25 +834,22 @@
       overflow: hidden;
       background: #000;
     }
-    .card-stage iframe {
-      border: 0;
-      width: 200%;
-      height: 200%;
-      transform: scale(0.5);
-      transform-origin: top left;
-      pointer-events: none;
-      background: #fff;
-      display: block;
-    }
+    /* Card-stage themed art: scale up motifs with fixed-px text for the larger canvas */
+    .card-stage.t-01::before { font-size: clamp(120px, 18vw, 200px); left: 20px; top: 22px; }
+    .card-stage.t-01::after { left: 20px; right: 20px; top: 16px; height: 5px; }
+    .card-stage.t-04::before { font-size: clamp(34px, 5vw, 52px); left: 22px; top: 22px; }
+    .card-stage.t-04::after { right: 28px; top: 72px; box-shadow: -10px 10px 0 0 #f27436, -10px 10px 0 3px #0b0a08; }
+    .card-stage.t-07::after { height: 3px; }
+
     .card-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, transparent 52%, rgba(0, 0, 0, 0.32) 100%);
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 16px;
-      opacity: 0;
-      transition: opacity 220ms ease;
+      position: absolute; left: 0; right: 0; bottom: 0;
+      display: flex; flex-direction: column;
+      padding: 18px 18px 16px;
+      background: linear-gradient(to top, rgba(11, 10, 8, 0.78) 0%, rgba(11, 10, 8, 0.35) 55%, transparent 100%);
+      z-index: 2;
     }
-    .card:hover .card-overlay { opacity: 1; }
+    .card-overlay .card-cta { transition: transform 140ms ease; }
+    .card:hover .card-overlay .card-cta.primary { transform: translateY(-2px); }
     .card-cta-row { display: flex; gap: 10px; flex-wrap: wrap; }
     .card-cta {
       font-family: var(--mono);
@@ -1459,8 +1456,7 @@
           <h2>Minimalism / Swiss</h2>
           <span class="kicker">01 · Online magazine</span>
         </header>
-        <div class="card-stage">
-          <iframe src="samples/01-minimalism-swiss.html" title="Minimalism Swiss sample" loading="lazy"></iframe>
+        <div class="card-stage t-01">
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/01-minimalism-swiss.html" target="_blank" rel="noreferrer">Open full page ↗</a>
@@ -1476,8 +1472,7 @@
           <h2>Neumorphism</h2>
           <span class="kicker">02 · Meditation app</span>
         </header>
-        <div class="card-stage">
-          <iframe src="samples/02-neumorphism.html" title="Neumorphism sample" loading="lazy"></iframe>
+        <div class="card-stage t-02">
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/02-neumorphism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
@@ -1493,8 +1488,7 @@
           <h2>Glassmorphism</h2>
           <span class="kicker">03 · Fintech dashboard</span>
         </header>
-        <div class="card-stage">
-          <iframe src="samples/03-glassmorphism.html" title="Glassmorphism sample" loading="lazy"></iframe>
+        <div class="card-stage t-03">
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/03-glassmorphism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
@@ -1510,8 +1504,7 @@
           <h2>Brutalism</h2>
           <span class="kicker">04 · Design agency portfolio</span>
         </header>
-        <div class="card-stage">
-          <iframe src="samples/04-brutalism.html" title="Brutalism sample" loading="lazy"></iframe>
+        <div class="card-stage t-04">
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/04-brutalism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
@@ -1527,8 +1520,7 @@
           <h2>3D &amp; Hyperrealism</h2>
           <span class="kicker">05 · Premium headphones</span>
         </header>
-        <div class="card-stage">
-          <iframe src="samples/05-3d-hyperrealism.html" title="3D Hyperrealism sample" loading="lazy"></iframe>
+        <div class="card-stage t-05">
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/05-3d-hyperrealism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
@@ -1544,8 +1536,7 @@
           <h2>Vibrant &amp; Block</h2>
           <span class="kicker">06 · Startup launch page</span>
         </header>
-        <div class="card-stage">
-          <iframe src="samples/06-vibrant-block.html" title="Vibrant Block sample" loading="lazy"></iframe>
+        <div class="card-stage t-06">
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/06-vibrant-block.html" target="_blank" rel="noreferrer">Open full page ↗</a>
@@ -1561,8 +1552,7 @@
           <h2>Dark Mode (OLED)</h2>
           <span class="kicker">07 · Gaming platform</span>
         </header>
-        <div class="card-stage">
-          <iframe src="samples/07-dark-oled.html" title="Dark OLED sample" loading="lazy"></iframe>
+        <div class="card-stage t-07">
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/07-dark-oled.html" target="_blank" rel="noreferrer">Open full page ↗</a>
@@ -1578,8 +1568,7 @@
           <h2>Claymorphism</h2>
           <span class="kicker">08 · Kids education app</span>
         </header>
-        <div class="card-stage">
-          <iframe src="samples/08-claymorphism.html" title="Claymorphism sample" loading="lazy"></iframe>
+        <div class="card-stage t-08">
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/08-claymorphism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
@@ -1595,8 +1584,7 @@
           <h2>Aurora UI</h2>
           <span class="kicker">09 · Music streaming</span>
         </header>
-        <div class="card-stage">
-          <iframe src="samples/09-aurora-ui.html" title="Aurora UI sample" loading="lazy"></iframe>
+        <div class="card-stage t-09">
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/09-aurora-ui.html" target="_blank" rel="noreferrer">Open full page ↗</a>
@@ -1612,8 +1600,7 @@
           <h2>Retro-Futurism</h2>
           <span class="kicker">10 · Synthwave podcast</span>
         </header>
-        <div class="card-stage">
-          <iframe src="samples/10-retro-futurism.html" title="Retro-Futurism sample" loading="lazy"></iframe>
+        <div class="card-stage t-10">
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/10-retro-futurism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
