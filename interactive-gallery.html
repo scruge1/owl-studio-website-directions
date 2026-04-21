@@ -919,7 +919,7 @@
       box-shadow: 0 18px 40px rgba(26, 24, 18, 0.10);
       overflow: hidden;
       position: relative;
-      min-height: 520px;
+      /* card height is driven by header + stage (stage matches image aspect) */
     }
     .card-header {
       display: flex; align-items: baseline; justify-content: space-between;
@@ -942,24 +942,21 @@
     }
     .card-stage {
       position: relative;
-      flex: 1;
-      min-height: 420px;
+      width: 100%;
+      aspect-ratio: 1440 / 900;
       overflow: hidden;
-      /* themed miniature paints as fallback; PNG preview (if loaded) sits on top */
-    }
-    /* Static PNG preview — 2880x1800 retina screenshots of each sample.
-       object-fit: contain so the FULL page shows with no side-cropping
-       (cover was clipping ~38px off each side). Cream background fills
-       any letterbox space from aspect mismatch so the card reads clean. */
-    .card-stage {
       background: var(--paper);
+      /* aspect matches the 2880x1800 preview PNG natively — no letterbox, no crop */
     }
+    /* Static 2880x1800 PNG preview. The .card-stage now has aspect-ratio
+       1440/900 matching the PNG exactly — object-fit: cover fills edge-
+       to-edge with zero crop and zero letterbox on every viewport. */
     .card-stage .card-preview {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       object-position: top center;
       display: block;
       z-index: 1;
