@@ -22,11 +22,11 @@
     "03-accountant-minimalism":         { site_id: "magee-co-demo",                business: "Magee & Co." },
     "04-physio-neumorphism":            { site_id: "quay-physio-demo",             business: "The Quay Physio" },
     "05-opticians-glassmorphism":       { site_id: "callanan-opticians-demo",      business: "Callanan Opticians" },
-    "06-audiologist-aurora":            { site_id: "hear-clear-demo",              business: "Hear Clear Audiology" },
+    "06-trade-pro-dark-oled":            { site_id: "murphy-plumbing-demo",              business: "Murphy Plumbing & Heating" },
     "07-vet-claymorphism":              { site_id: "main-street-vets-demo",        business: "Main Street Vets" },
     "08-financial-brutalism-editorial": { site_id: "kelleher-wealth-demo",         business: "Kelleher Wealth" },
     "09-architects-3d":                 { site_id: "carroll-osuilleabhain-demo",   business: "Carroll O Suilleabhain Architects" },
-    "10-aesthetic-clinic-aurora-luxe":  { site_id: "molyneux-aesthetics-demo",     business: "Molyneux Aesthetics" }
+    "10-local-services-brutalism":  { site_id: "clear-out-limerick-demo",     business: "Clear-Out Limerick" }
   };
 
   var path = (location.pathname || "").split("?")[0].split("#")[0];

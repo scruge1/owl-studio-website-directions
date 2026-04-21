@@ -36,11 +36,11 @@ SITES = [
     {"slug": "03-accountant-minimalism",         "site_id": "magee-co-demo",               "display_name": "Magee & Co. (sample)",               "tier": "pro",     "care_tier": "essential",  "lead_email": "callmeie@proton.me", "lead_sms": "+353857863564"},
     {"slug": "04-physio-neumorphism",            "site_id": "quay-physio-demo",            "display_name": "The Quay Physio (sample)",           "tier": "pro",     "care_tier": None,          "lead_email": "callmeie@proton.me", "lead_sms": "+353857863564"},
     {"slug": "05-opticians-glassmorphism",       "site_id": "callanan-opticians-demo",     "display_name": "Callanan Opticians (sample)",        "tier": "pro",     "care_tier": None,          "lead_email": "callmeie@proton.me", "lead_sms": "+353857863564"},
-    {"slug": "06-audiologist-aurora",            "site_id": "hear-clear-demo",             "display_name": "Hear Clear Audiology (sample)",      "tier": "pro",     "care_tier": None,          "lead_email": "callmeie@proton.me", "lead_sms": "+353857863564"},
+    {"slug": "06-audiologist-aurora",            "site_id": "murphy-plumbing-demo",             "display_name": "Hear Clear Audiology (sample)",      "tier": "pro",     "care_tier": None,          "lead_email": "callmeie@proton.me", "lead_sms": "+353857863564"},
     {"slug": "07-vet-claymorphism",              "site_id": "main-street-vets-demo",       "display_name": "Main Street Vets (sample)",          "tier": "pro",     "care_tier": None,          "lead_email": "callmeie@proton.me", "lead_sms": "+353857863564"},
     {"slug": "08-financial-brutalism-editorial", "site_id": "kelleher-wealth-demo",        "display_name": "Kelleher Wealth (sample)",           "tier": "custom",  "care_tier": None,          "lead_email": "callmeie@proton.me", "lead_sms": "+353857863564"},
     {"slug": "09-architects-3d",                 "site_id": "carroll-osuilleabhain-demo",  "display_name": "Carroll Ó Súilleabháin (sample)",    "tier": "custom",  "care_tier": None,          "lead_email": "callmeie@proton.me", "lead_sms": "+353857863564"},
-    {"slug": "10-aesthetic-clinic-aurora-luxe",  "site_id": "molyneux-aesthetics-demo",    "display_name": "Molyneux Aesthetics (sample)",       "tier": "custom",  "care_tier": "concierge",  "lead_email": "callmeie@proton.me", "lead_sms": "+353857863564"},
+    {"slug": "10-aesthetic-clinic-aurora-luxe",  "site_id": "clear-out-limerick-demo",    "display_name": "Molyneux Aesthetics (sample)",       "tier": "custom",  "care_tier": "concierge",  "lead_email": "callmeie@proton.me", "lead_sms": "+353857863564"},
 ]
 
 
