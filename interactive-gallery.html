@@ -310,8 +310,9 @@
       background: #000;
       padding: 8px;
     }
-    @media (max-width: 900px) { .demo-thumbs { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 500px) { .demo-thumbs { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 900px) { .demo-thumbs { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    @media (max-width: 640px) { .demo-thumbs { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 6px; } }
+    @media (max-width: 380px) { .demo-thumbs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     .demo-thumb {
       position: relative;
       aspect-ratio: 4 / 3;
@@ -341,8 +342,10 @@
     }
     .demo-thumb .name {
       font-family: var(--display);
-      font-size: 13px; font-weight: 800; letter-spacing: -0.01em;
+      font-size: 12px; font-weight: 800; letter-spacing: -0.01em;
       color: #fff;
+      overflow-wrap: anywhere;
+      line-height: 1.1;
       line-height: 1.1;
     }
     .demo-thumb .aud {
@@ -914,10 +917,7 @@
       box-shadow: 0 18px 40px rgba(26, 24, 18, 0.10);
       overflow: hidden;
       position: relative;
-      /* content-visibility defers layout/paint of off-screen cards — crucial
-         for shipping 10 live iframes without crashing the renderer */
-      content-visibility: auto;
-      contain-intrinsic-size: auto 560px;
+      min-height: 520px;
     }
     .card-header {
       display: flex; align-items: baseline; justify-content: space-between;
@@ -941,9 +941,9 @@
     .card-stage {
       position: relative;
       flex: 1;
-      aspect-ratio: 1440 / 900;
+      min-height: 420px;
       overflow: hidden;
-      /* themed miniature paints as fallback; iframe (if loaded) sits on top */
+      /* themed miniature paints as fallback; PNG preview (if loaded) sits on top */
     }
     /* Static PNG preview — screenshots of each sample at 1440x900.
        Replaces the old live-iframe pattern that OOM-crashed on
