@@ -1,0 +1,196 @@
+{
+  "slug": "rathborne-dental",
+  "display_name": "Rathborne Dental",
+  "vertical": "dental",
+  "template": "01-dental-swiss",
+  "tagline": "General, cosmetic and implant dentistry in Ashtown, Dublin 15",
+  "address": {
+    "line1": "Rathborne Village",
+    "line2": "Ashtown",
+    "city": "Dublin 15",
+    "eircode": "D15 P2C3",
+    "country": "Ireland"
+  },
+  "map_link": "https://maps.google.com/?q=Rathborne+Village+Ashtown+Dublin+15",
+  "phone": "01 555 0148",
+  "phone_tel": "+35315550148",
+  "email": "hello@rathbornedental.ie",
+  "whatsapp": null,
+  "booking_url": null,
+  "hours": [
+    { "label": "Mon-Fri",    "value": "08:30-17:30" },
+    { "label": "Sat",        "value": "09:00-13:00" },
+    { "label": "Sun",        "value": "closed" },
+    { "label": "Emergency",  "value": "triage by phone, same day" }
+  ],
+  "status_pill": "Accepting new patients - next available Tue 29 Apr 2026",
+  "established_year": 2014,
+  "kicker": "RATHBORNE VILLAGE - ASHTOWN - DUBLIN 15",
+  "issue_label": "EST. 2014 - ISSUE NO. 12",
+  "hero": {
+    "headline_prefix": "Careful dentistry,",
+    "headline_emphasis": "quietly practised.",
+    "body": "General, cosmetic and implant dentistry in Ashtown, Dublin 15. Three dentists, one hygiene team, published fees, and a waiting room that isn't trying to sell you anything.",
+    "primary_cta":   { "label": "Book first appointment", "href": "#book" },
+    "secondary_cta": { "label": "Call the practice",     "href": "tel:+35315550148" }
+  },
+  "team": [
+    {
+      "name": "Dr. Aoife Ni Dhalaigh",
+      "credentials": "BDS (NUI), MFDS RCSI",
+      "qualified_year": 2009,
+      "role": "Principal dentist",
+      "interest": "implantology & full-mouth rehabilitation",
+      "bio": "Aoife opened Rathborne Dental in 2014 after seven years in practices in Galway and south Dublin. She places every implant in the practice and leads on full-mouth rehabilitation cases."
+    },
+    {
+      "name": "Dr. Conor Whelan",
+      "credentials": "BDentSc (TCD)",
+      "qualified_year": 2015,
+      "role": "Dentist",
+      "interest": "Invisalign & clear aligners",
+      "bio": "Conor handles all orthodontic planning at Rathborne and is an accredited Invisalign provider. He trained at Trinity and spent four years in a busy North Dublin practice before joining in 2019."
+    },
+    {
+      "name": "Dr. Priya Raghavan",
+      "credentials": "BDS (UCC), MClinDent (RCSI)",
+      "qualified_year": 2018,
+      "role": "Dentist",
+      "interest": "children's dentistry & nervous patients",
+      "bio": "Priya leads on children's care and nervous-patient cases. She completed a clinical master's at RCSI in paediatric dentistry and works with referrals from GPs and schools in the area."
+    }
+  ],
+  "services": [
+    {
+      "kicker": "GENERAL DENTISTRY",
+      "title": "Examinations, fillings, hygiene",
+      "body": "Standard six-monthly care with two-film intraoral X-rays at the first visit. We flag everything we see, quote before we treat, and never sell you what you don't need.",
+      "fees": [
+        { "label": "Examination & two X-rays",       "price": "from EUR 60" },
+        { "label": "Hygiene (scale & polish)",       "price": "from EUR 95" },
+        { "label": "Composite filling (one surface)", "price": "from EUR 140" }
+      ]
+    },
+    {
+      "kicker": "COSMETIC",
+      "title": "Whitening, bonding, veneers",
+      "body": "In-chair whitening takes 90 minutes. Composite bonding is a single visit. Porcelain veneers are two visits spread over two weeks with a try-in.",
+      "fees": [
+        { "label": "Composite bonding (per tooth)",  "price": "from EUR 180" },
+        { "label": "In-chair whitening (both arches)","price": "EUR 395" },
+        { "label": "Porcelain veneer (per tooth)",   "price": "from EUR 850" }
+      ]
+    },
+    {
+      "kicker": "INVISALIGN",
+      "title": "Clear aligners",
+      "body": "Digital scan at consultation, full treatment plan shared with you before any commitment. Most Lite cases finish in 5-6 months; full treatment 12-18 months.",
+      "fees": [
+        { "label": "Invisalign i7 (limited)",  "price": "from EUR 2,200" },
+        { "label": "Invisalign full treatment", "price": "from EUR 3,500" }
+      ]
+    },
+    {
+      "kicker": "IMPLANTS",
+      "title": "Single implants and bridges",
+      "body": "Straumann and Neodent systems. Every case starts with a CBCT scan on-site. Healing time of three to four months is built into the plan and the price - no surprise add-ons at the restorative stage.",
+      "fees": [
+        { "label": "Single implant (placement + crown)", "price": "from EUR 2,400" },
+        { "label": "Implant bridge",                     "price": "quoted per case" }
+      ]
+    },
+    {
+      "kicker": "EMERGENCY",
+      "title": "Same-day triage",
+      "body": "Ring before 10am weekdays for same-day triage. We will see you the same day if clinically urgent; consultation first, treatment planned with a quote before anything is done.",
+      "fees": [
+        { "label": "Emergency triage consultation", "price": "EUR 95" }
+      ]
+    },
+    {
+      "kicker": "CHILDREN",
+      "title": "First visits & PRSI-covered care",
+      "body": "Children eligible for PRSI Treatment Benefit get their annual exam free. We also work with GP referrals and school dental referrals. First visits from age 2-3.",
+      "fees": [
+        { "label": "Children's exam (PRSI-covered)", "price": "free for eligible children" },
+        { "label": "Paediatric filling",             "price": "from EUR 85" }
+      ]
+    }
+  ],
+  "insurance": [
+    "VHI",
+    "Laya Healthcare",
+    "Irish Life Health",
+    "PRSI Treatment Benefit"
+  ],
+  "testimonials": [
+    {
+      "quote": "Aoife rebuilt three molars I'd been hiding for a decade. She quoted the whole thing on the first visit, to the euro, and it didn't move.",
+      "author": "Cian",
+      "town": "Ashtown"
+    },
+    {
+      "quote": "We brought our six-year-old to Priya after a bad experience elsewhere. He now asks when we're going back.",
+      "author": "Niamh",
+      "town": "Castleknock"
+    },
+    {
+      "quote": "I came in for a check-up and left with a proper plan for the work I'd been putting off, written down, priced to the euro. No pressure, no up-sell.",
+      "author": "Liam",
+      "town": "Phoenix Park"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do you take medical cards?",
+      "a": "We don't dispense treatment under the Medical Card scheme, but we do accept PRSI Treatment Benefit for exams and scale/polish. Bring your card to the first visit and we'll process it for you."
+    },
+    {
+      "q": "How long is a first visit?",
+      "a": "45 minutes. Full intra-oral exam, two bitewing X-rays, gum health screening, and a written treatment plan with prices."
+    },
+    {
+      "q": "Can I get a quote before I commit?",
+      "a": "Yes - that's the point. Every treatment plan is written, itemised and priced to the euro before anything is done."
+    }
+  ],
+  "registration": {
+    "body": "Dental Council of Ireland",
+    "number": "DC-12345",
+    "url": "https://dentalcouncil.ie"
+  },
+  "gdpr": {
+    "contact_email": "privacy@rathbornedental.ie",
+    "retention": "We retain clinical records for 8 years per DPC guidance, 12 years for minors."
+  },
+  "policies": [
+    { "label": "Privacy policy",        "href": "/privacy" },
+    { "label": "Appointments & cancellations", "href": "/appointments" },
+    { "label": "Complaints procedure",  "href": "/complaints" }
+  ],
+  "brand": {
+    "style_tokens": "01-dental-swiss",
+    "accent": "#B38B6D",
+    "logo_svg": null,
+    "og_image": null
+  },
+  "owl_studio": {
+    "site_id": "rathborne-dental-demo",
+    "tier": "pro",
+    "care_tier": "growth",
+    "live_url": "https://rathbornedental.ie",
+    "hosted_at": "cloudflare-pages",
+    "launched_date": "2026-04-21"
+  },
+  "completeness": {
+    "identity":    "full",
+    "hero":        "full",
+    "team":        "full",
+    "services":    "full",
+    "testimonials":"full",
+    "insurance":   "full",
+    "faq":         "full",
+    "registration":"full",
+    "brand":       "default"
+  }
+}

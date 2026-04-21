@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rathborne Dental — General, cosmetic and implant dentistry in Ashtown, Dublin 15</title>
+<meta name="description" content="General, cosmetic and implant dentistry in Ashtown, Dublin 15" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* ui-ux-pro-max Row 1 — Minimalism / Swiss — Rathborne-Dental tokenised template */
+:root{
+  --ink: #000000; --paper: #FFFFFF; --cream: #F5F1E8; --grey: #808080;
+  --taupe: #B38B6D;
+  --display: "Archivo Black","Helvetica Neue",sans-serif;
+  --serif: "Fraunces", Georgia, serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{font-family:var(--serif);color:var(--ink);background:var(--paper);line-height:1.5;max-width:100vw;overflow-x:hidden;}
+img,video,svg,canvas{max-width:100%;}
+.shell{max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,56px);}
+.rule{height:3px;background:var(--ink);margin:0;}
+.rule--taupe{height:2px;background:var(--taupe);margin:0;}
+
+/* topbar */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:1px solid var(--ink);}
+.wordmark{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:-0.01em;}
+.wordmark em{font-style:italic;color:var(--taupe);font-weight:400;}
+.topbar-actions{display:flex;gap:24px;align-items:center;font-family:var(--mono);font-size:12px;}
+.topbar-actions a{color:var(--ink);text-decoration:none;}
+.topbar-cta{background:var(--ink);color:var(--paper);padding:10px 16px;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;}
+
+/* hero */
+.hero{padding:clamp(60px,10vw,140px) 0 clamp(40px,6vw,100px);display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:end;}
+@media (max-width: 900px){.hero{grid-template-columns:1fr;}}
+.hero-main .kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--grey);margin-bottom:clamp(40px,5vw,60px);}
+.hero-main h1{font-family:var(--serif);font-weight:300;font-size:clamp(48px,8vw,128px);line-height:0.94;letter-spacing:-0.03em;}
+.hero-main h1 em{font-style:italic;font-weight:300;}
+.hero-main .lede{font-family:var(--serif);font-size:clamp(17px,1.4vw,20px);max-width:520px;margin:clamp(28px,3vw,40px) 0 clamp(28px,3vw,40px);line-height:1.55;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:16px 24px;text-decoration:none;display:inline-block;}
+.btn--primary{background:var(--ink);color:var(--paper);border-top:2px solid var(--taupe);}
+.btn--secondary{background:transparent;color:var(--ink);border:2px solid var(--ink);}
+
+.hero-aside .issue{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;color:var(--grey);margin-bottom:16px;}
+.hero-aside .status{border:1px solid var(--ink);padding:16px 18px;margin-bottom:40px;font-family:var(--mono);font-size:12px;line-height:1.5;}
+.hero-aside .status::before{content:"";display:inline-block;width:6px;height:6px;background:var(--taupe);border-radius:50%;margin-right:8px;vertical-align:middle;}
+.hero-aside .hours{font-family:var(--mono);font-size:11px;color:var(--grey);}
+.hero-aside .hours div{margin-bottom:6px;color:var(--ink);}
+
+/* section labels */
+.section-strip{display:grid;grid-template-columns:repeat(3,1fr);border-top:3px solid var(--ink);padding-top:20px;margin-top:80px;}
+.section-strip > span{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;color:var(--ink);}
+
+/* team */
+.team{padding:clamp(60px,8vw,120px) 0;}
+.team-title{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--grey);margin-bottom:40px;}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,48px);}
+@media (max-width:900px){.team-grid{grid-template-columns:1fr;}}
+.team-card{border-top:2px solid var(--ink);padding-top:16px;}
+.team-card h3{font-family:var(--serif);font-size:24px;font-weight:400;margin-bottom:4px;}
+.team-card .credentials{font-family:var(--mono);font-size:11px;color:var(--grey);margin-bottom:16px;letter-spacing:0.06em;}
+.team-card .role{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--taupe);margin-bottom:16px;}
+.team-card p{font-size:15px;line-height:1.55;}
+
+/* services */
+.services{padding:clamp(60px,8vw,120px) 0;background:var(--cream);}
+.services-title{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--grey);margin-bottom:20px;}
+.services h2{font-family:var(--serif);font-weight:300;font-size:clamp(36px,5vw,72px);line-height:0.95;letter-spacing:-0.02em;margin-bottom:60px;max-width:800px;}
+.service-article{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(24px,3vw,48px);padding:48px 0;border-top:2px solid var(--ink);}
+@media (max-width:900px){.service-article{grid-template-columns:1fr;}}
+.service-article .kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--taupe);font-weight:600;}
+.service-article h3{font-family:var(--serif);font-size:clamp(26px,3vw,36px);font-weight:400;margin:8px 0 0;}
+.service-article .body{font-size:16px;line-height:1.6;margin-bottom:24px;}
+.service-article .fees{font-family:var(--mono);font-size:14px;}
+.service-article .fees li{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dotted var(--ink);list-style:none;}
+.service-article .fees li .price{font-weight:600;color:var(--ink);}
+
+/* footer */
+footer{padding:48px 0;border-top:3px solid var(--ink);font-family:var(--mono);font-size:11px;color:var(--grey);line-height:1.6;}
+footer .reg{color:var(--ink);margin-bottom:12px;}
+footer .reg b{font-weight:600;}
+footer a{color:var(--ink);text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<header class="topbar shell">
+  <span class="wordmark">Rathborne Dental <em>Dental</em></span>
+  <div class="topbar-actions">
+    <a href="tel:+35315550148">01 555 0148</a>
+    <a class="topbar-cta" href="#book">BOOK AN APPOINTMENT</a>
+  </div>
+</header>
+
+<section class="hero shell">
+  <div class="hero-main">
+    <div class="kicker">RATHBORNE VILLAGE - ASHTOWN - DUBLIN 15</div>
+    <h1>Careful dentistry,<br />quietly practised.</h1>
+    <p class="lede">General, cosmetic and implant dentistry in Ashtown, Dublin 15. Three dentists, one hygiene team, published fees, and a waiting room that isn&#39;t trying to sell you anything.</p>
+    <div class="hero-ctas">
+      <a class="btn btn--primary"   href="#book">Book first appointment</a>
+      <a class="btn btn--secondary" href="tel:+35315550148">Call the practice</a>
+    </div>
+  </div>
+  <aside class="hero-aside">
+    <div class="issue">EST. 2014 - ISSUE NO. 12</div>
+    <div class="status">Accepting new patients - next available Tue 29 Apr 2026</div>
+    <div class="hours">
+      <div>Mon-Fri 08:30-17:30</div><div>Sat 09:00-13:00</div><div>Sun closed</div><div>Emergency triage by phone, same day</div>
+    </div>
+  </aside>
+</section>
+
+<div class="rule"></div>
+
+<section class="services">
+  <div class="shell">
+    <div class="services-title">01 - SERVICES & FEES</div>
+    <h2>Everything we do. Every price, published.</h2>
+    
+    <article class="service-article">
+      <div>
+        <div class="kicker">GENERAL DENTISTRY</div>
+        <h3>Examinations, fillings, hygiene</h3>
+      </div>
+      <div>
+        <p class="body">Standard six-monthly care with two-film intraoral X-rays at the first visit. We flag everything we see, quote before we treat, and never sell you what you don&#39;t need.</p>
+        <ul class="fees">
+          {{#loop fees}}<li><span></span><span class="price"></span></li>
+    <article class="service-article">
+      <div>
+        <div class="kicker">COSMETIC</div>
+        <h3>Whitening, bonding, veneers</h3>
+      </div>
+      <div>
+        <p class="body">In-chair whitening takes 90 minutes. Composite bonding is a single visit. Porcelain veneers are two visits spread over two weeks with a try-in.</p>
+        <ul class="fees">
+          {{#loop fees}}<li><span></span><span class="price"></span></li>
+    <article class="service-article">
+      <div>
+        <div class="kicker">INVISALIGN</div>
+        <h3>Clear aligners</h3>
+      </div>
+      <div>
+        <p class="body">Digital scan at consultation, full treatment plan shared with you before any commitment. Most Lite cases finish in 5-6 months; full treatment 12-18 months.</p>
+        <ul class="fees">
+          {{#loop fees}}<li><span></span><span class="price"></span></li>
+    <article class="service-article">
+      <div>
+        <div class="kicker">IMPLANTS</div>
+        <h3>Single implants and bridges</h3>
+      </div>
+      <div>
+        <p class="body">Straumann and Neodent systems. Every case starts with a CBCT scan on-site. Healing time of three to four months is built into the plan and the price - no surprise add-ons at the restorative stage.</p>
+        <ul class="fees">
+          {{#loop fees}}<li><span></span><span class="price"></span></li>
+    <article class="service-article">
+      <div>
+        <div class="kicker">EMERGENCY</div>
+        <h3>Same-day triage</h3>
+      </div>
+      <div>
+        <p class="body">Ring before 10am weekdays for same-day triage. We will see you the same day if clinically urgent; consultation first, treatment planned with a quote before anything is done.</p>
+        <ul class="fees">
+          {{#loop fees}}<li><span></span><span class="price"></span></li>
+    <article class="service-article">
+      <div>
+        <div class="kicker">CHILDREN</div>
+        <h3>First visits &amp; PRSI-covered care</h3>
+      </div>
+      <div>
+        <p class="body">Children eligible for PRSI Treatment Benefit get their annual exam free. We also work with GP referrals and school dental referrals. First visits from age 2-3.</p>
+        <ul class="fees">
+          {{#loop fees}}<li><span></span><span class="price"></span></li>
+        </ul>
+      </div>
+    </article>
+    {{/loop}}
+  </div>
+</section>
+
+<section class="team shell">
+  <div class="team-title">02 - OUR DENTISTS</div>
+  <div class="team-grid">
+    
+    <div class="team-card">
+      <div class="role">Principal dentist</div>
+      <h3>Dr. Aoife Ni Dhalaigh</h3>
+      <div class="credentials">BDS (NUI), MFDS RCSI - qualified 2009</div>
+      <p>Aoife opened Rathborne Dental in 2014 after seven years in practices in Galway and south Dublin. She places every implant in the practice and leads on full-mouth rehabilitation cases.</p>
+    </div>
+    
+    <div class="team-card">
+      <div class="role">Dentist</div>
+      <h3>Dr. Conor Whelan</h3>
+      <div class="credentials">BDentSc (TCD) - qualified 2015</div>
+      <p>Conor handles all orthodontic planning at Rathborne and is an accredited Invisalign provider. He trained at Trinity and spent four years in a busy North Dublin practice before joining in 2019.</p>
+    </div>
+    
+    <div class="team-card">
+      <div class="role">Dentist</div>
+      <h3>Dr. Priya Raghavan</h3>
+      <div class="credentials">BDS (UCC), MClinDent (RCSI) - qualified 2018</div>
+      <p>Priya leads on children&#39;s care and nervous-patient cases. She completed a clinical master&#39;s at RCSI in paediatric dentistry and works with referrals from GPs and schools in the area.</p>
+    </div>
+    
+  </div>
+</section>
+
+<footer class="shell">
+  <div class="reg">
+    <b>Dental Council of Ireland</b> - Reg. DC-12345
+  </div>
+  <div>
+    Rathborne Dental - Rathborne Village, Ashtown, Dublin 15, D15 P2C3<br />
+    <a href="tel:+35315550148">01 555 0148</a> - <a href="mailto:hello@rathbornedental.ie">hello@rathbornedental.ie</a>
+  </div>
+  <div style="margin-top:12px;">
+    <a href="/privacy">Privacy policy</a> &nbsp; <a href="/appointments">Appointments &amp; cancellations</a> &nbsp; <a href="/complaints">Complaints procedure</a> &nbsp; 
+  </div>
+  <div style="margin-top:20px;font-size:10px;opacity:0.6;">
+    Built by Owl Studio &middot; <a href="https://websites.owlzone.trade">websites.owlzone.trade</a>
+  </div>
+</footer>
+
+</body>
+</html>
