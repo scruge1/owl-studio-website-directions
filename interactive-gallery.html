@@ -469,66 +469,126 @@
     }
     .card-cta.primary { background: var(--accent); color: var(--paper); border-color: var(--accent); }
 
-    /* ---------- 7. SAMPLE PROJECT ---------- */
-    .sample-proj {
+    /* ---------- CARE PLANS ---------- */
+    .care {
       padding: clamp(40px, 5vw, 70px) 0;
       border-top: 1px solid var(--line);
     }
-    .sample-proj .disclaimer {
-      font-family: var(--mono);
-      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--accent-dark);
-      background: rgba(201, 111, 50, 0.10);
-      display: inline-block;
-      padding: 6px 12px;
-      margin-bottom: 20px;
-    }
-    .sample-card {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-      gap: 32px;
-      background: #fff;
+    .care-billing-toggle {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 4px;
       border: 1px solid var(--line);
-      padding: 38px;
-      align-items: center;
-    }
-    @media (max-width: 900px) { .sample-card { grid-template-columns: 1fr; } }
-    .sample-card h3 {
-      margin: 0 0 12px;
-      font-family: var(--display);
-      font-weight: 900; letter-spacing: -0.03em;
-      font-size: clamp(26px, 3vw, 40px);
-    }
-    .sample-card p {
-      margin: 0 0 14px;
-      font-size: 15px;
-      color: var(--ink);
-      opacity: 0.8;
-    }
-    .sample-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      padding: 20px;
-      background: var(--paper);
-    }
-    .sample-stat .k {
+      background: rgba(255, 255, 255, 0.55);
+      border-radius: 999px;
+      margin: 10px 0 22px;
       font-family: var(--mono);
-      font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase;
+    }
+    .care-billing-toggle label {
+      padding: 8px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 140ms ease, color 140ms ease;
       color: var(--muted);
-      margin-bottom: 4px;
     }
-    .sample-stat .v {
-      font-family: var(--display);
-      font-size: 22px; font-weight: 800;
-      color: var(--ink);
-      letter-spacing: -0.02em;
+    .care-billing-toggle input { display: none; }
+    .care-billing-toggle input:checked + label {
+      background: var(--ink); color: var(--paper);
     }
-    .sample-stat .v em {
+    .care-billing-toggle .save {
+      padding: 8px 12px;
       color: var(--accent);
-      font-style: normal;
-      font-size: 26px;
+      font-size: 10px;
+    }
+    .care-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 10px;
+    }
+    @media (max-width: 900px) { .care-grid { grid-template-columns: 1fr; } }
+    .care-card {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      padding: 28px;
+      display: flex; flex-direction: column;
+      position: relative;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+    .care-card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(26, 24, 18, 0.10); }
+    .care-card.popular {
+      background: linear-gradient(180deg, #fff 0%, #fff9f0 100%);
+      border: 2px solid var(--accent);
+      box-shadow: 0 18px 40px rgba(201, 111, 50, 0.14);
+    }
+    .care-card .tag {
+      position: absolute;
+      top: -12px; left: 20px;
+      background: var(--accent); color: var(--paper);
+      font-family: var(--mono);
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+    }
+    .care-name {
+      font-family: var(--mono);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .care-price-block { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+    .care-price {
+      font-family: var(--display);
+      font-size: 52px; font-weight: 900; letter-spacing: -0.04em;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .care-price small {
+      font-size: 15px; font-weight: 500; letter-spacing: 0;
+      color: var(--muted);
+      font-family: var(--sans);
+    }
+    .care-price-alt {
+      display: block;
+      margin-top: 8px;
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    /* switch visible price by toggle state */
+    .care-card .yearly { display: none; }
+    body.billing-yearly .care-card .monthly { display: none; }
+    body.billing-yearly .care-card .yearly { display: block; }
+    .care-card ul {
+      list-style: none; padding: 0; margin: 0 0 22px;
+      display: flex; flex-direction: column; gap: 10px;
+      font-size: 14px;
+      flex: 1;
+    }
+    .care-card ul li {
+      padding-left: 22px;
+      position: relative;
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    .care-card ul li::before {
+      content: "";
+      position: absolute; left: 0; top: 7px;
+      width: 12px; height: 6px;
+      border-left: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      transform: rotate(-45deg);
+    }
+    .care-card .btn { justify-content: center; width: 100%; }
+    .care-note {
+      font-family: var(--mono);
+      font-size: 11px; letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-top: 22px;
+      text-transform: uppercase;
     }
 
     /* ---------- 8. TRUST BAR ---------- */
@@ -652,6 +712,7 @@
       </a>
       <nav class="nav-row" aria-label="Page sections">
         <a class="nav-link" href="#pricing">Pricing</a>
+        <a class="nav-link" href="#care">Care</a>
         <a class="nav-link" href="#process">Process</a>
         <a class="nav-link" href="#styles">Styles</a>
         <a class="nav-link" href="#faq">FAQ</a>
@@ -745,6 +806,68 @@
         </article>
 
       </div>
+    </section>
+
+    <!-- ========== CARE PLANS (optional monthly / yearly) ========== -->
+    <section class="shell care" id="care">
+      <div class="section-label">Don't want to touch it · optional monthly care</div>
+      <h2 class="section-h2">Hand it off. We run the site for you.</h2>
+      <p class="section-sub">
+        Most SMB owners hate editing a website once it's live. These
+        optional plans start after handover — you never open the CMS.
+        Cancel with 30 days' notice. Pause if the business slows down.
+      </p>
+
+      <div class="care-billing-toggle" role="group" aria-label="Billing cycle">
+        <input type="radio" id="bill-monthly" name="billing" checked onclick="document.body.classList.remove('billing-yearly')">
+        <label for="bill-monthly">Monthly</label>
+        <input type="radio" id="bill-yearly" name="billing" onclick="document.body.classList.add('billing-yearly')">
+        <label for="bill-yearly">Yearly</label>
+        <span class="save">save ~17%</span>
+      </div>
+
+      <div class="care-grid">
+
+        <article class="care-card">
+          <div class="care-name">Care</div>
+          <div class="care-price-block">
+            <div class="monthly"><span class="care-price">€39<small>/month</small></span><span class="care-price-alt">Billed €39 on the 1st each month</span></div>
+            <div class="yearly"><span class="care-price">€399<small>/year</small></span><span class="care-price-alt">Equivalent to €33.25/month · save €69</span></div>
+          </div>
+          <ul>
+            <li>Hosting, SSL, daily backups — all handled</li>
+            <li>Uptime monitoring — we know before you do</li>
+            <li>One small update per month (phone number, image swap, hours, seasonal copy)</li>
+            <li>Security patches and CMS updates as they land</li>
+            <li>Email response within 24 hours</li>
+            <li>Cancel or pause with 30 days' notice</li>
+          </ul>
+          <a class="btn primary" href="mailto:callmeie@proton.me?subject=Care%20plan%20%E2%80%94%20%E2%82%AC39%2Fmo%20or%20%E2%82%AC399%2Fyr&body=Project%20tier%20I'm%20booking%3A%0ABusiness%20name%3A%0ABilling%20preference%3A%20monthly%20%2F%20yearly">Add Care to my project</a>
+        </article>
+
+        <article class="care-card popular">
+          <span class="tag">Most chosen</span>
+          <div class="care-name">Care+</div>
+          <div class="care-price-block">
+            <div class="monthly"><span class="care-price">€99<small>/month</small></span><span class="care-price-alt">Billed €99 on the 1st each month</span></div>
+            <div class="yearly"><span class="care-price">€990<small>/year</small></span><span class="care-price-alt">Equivalent to €82.50/month · save €198</span></div>
+          </div>
+          <ul>
+            <li>Everything in Care, plus:</li>
+            <li>Up to 4 content updates per month — a new page, blog post, special offer, seasonal campaign</li>
+            <li>Quarterly SEO review + fixes (meta, schema, page speed, broken links)</li>
+            <li>Google Business Profile kept in sync with the site</li>
+            <li>Monthly 1-page report: traffic, contacts, top pages, what to fix</li>
+            <li>WhatsApp / email response within 8 working hours</li>
+          </ul>
+          <a class="btn accent" href="mailto:callmeie@proton.me?subject=Care%2B%20plan%20%E2%80%94%20%E2%82%AC99%2Fmo%20or%20%E2%82%AC990%2Fyr&body=Project%20tier%20I'm%20booking%3A%0ABusiness%20name%3A%0ABilling%20preference%3A%20monthly%20%2F%20yearly">Add Care+ to my project</a>
+        </article>
+
+      </div>
+
+      <p class="care-note">
+        Both plans start after handover · No setup fee · Yearly billing pre-paid, save two months · All prices ex VAT
+      </p>
     </section>
 
     <!-- ========== 4. THREE ENTRY POINTS ========== -->
@@ -1018,40 +1141,6 @@
 
     </section>
 
-    <!-- ========== 7. SAMPLE PROJECT ========== -->
-    <section class="shell sample-proj">
-      <div class="section-label">Sample project · how a Pro build looks</div>
-      <div class="disclaimer">
-        Sample walkthrough — not a current client. Numbers drawn from clinic-website industry benchmarks.
-      </div>
-      <div class="sample-card">
-        <div>
-          <h3>Murphy&apos;s Dental — Limerick single-location practice</h3>
-          <p>
-            <strong>Brief:</strong> A modern site where same-day booking is
-            the primary CTA. Old site was a WordPress theme from 2018.
-          </p>
-          <p>
-            <strong>Delivered:</strong> Pro tier · 14 days · 5 pages ·
-            online booking embedded via the existing practice-management
-            system · GDPR-compliant patient form · accessibility pass.
-          </p>
-          <p>
-            <strong>Style chosen:</strong> Clinic Calm direction (adapted
-            from gallery sample #2 — Neumorphism — softened for healthcare
-            context). Book a free 20-min call with the same setup and
-            we&apos;ll generate your own preview on the spot.
-          </p>
-        </div>
-        <div class="sample-stats">
-          <div class="sample-stat"><div class="k">Delivery</div><div class="v">14 days</div></div>
-          <div class="sample-stat"><div class="k">All-in fee</div><div class="v">€1,299</div></div>
-          <div class="sample-stat"><div class="k">Pages built</div><div class="v">5</div></div>
-          <div class="sample-stat"><div class="k">Modelled lift</div><div class="v"><em>3.2×</em></div></div>
-        </div>
-      </div>
-    </section>
-
     <!-- ========== 8. TRUST BAR ========== -->
     <aside class="trust">
       <div class="shell trust-row">
@@ -1059,16 +1148,23 @@
         <span><span class="dot"></span>Response within 24 hours</span>
         <span><span class="dot"></span>Source code yours · no lock-in</span>
         <span><span class="dot"></span>GDPR-ready · Irish hosting option</span>
-        <span><span class="dot"></span>One all-in fee · no monthly tax</span>
+        <span><span class="dot"></span>Care plans optional · cancel with 30 days</span>
       </div>
     </aside>
 
     <!-- ========== 9. FAQ ========== -->
     <section class="shell faq" id="faq">
-      <div class="section-label">FAQ · the six we get most</div>
+      <div class="section-label">FAQ · the seven we get most</div>
       <h2 class="section-h2">Objections, handled up front.</h2>
 
       <div class="faq-list">
+
+        <details class="q">
+          <summary>Do I have to update the site myself?</summary>
+          <div class="a">
+            No, and you don't have to decide now. After handover you can either open the CMS and do it yourself (every tier includes a 15-minute walkthrough), or add a monthly <a href="#care">Care</a> (€39/mo · €399/yr) or Care+ (€99/mo · €990/yr) plan and we do it for you. Care plans are optional, start after handover, and cancel with 30 days' notice. No setup fee, no auto-renew traps.
+          </div>
+        </details>
 
         <details class="q">
           <summary>Can I see real examples before booking?</summary>
