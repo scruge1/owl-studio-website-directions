@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Quay Physio &middot; Kilkenny Chartered Physiotherapy</title>
+<meta name="description" content="The Quay Physio — chartered physiotherapy on Patrick Street, Kilkenny. Sports injury, post-surgical rehab, pelvic health. ISCP registered. VHI, Laya, Irish Life, GloHealth approved." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================
+     THE QUAY PHYSIO — Neumorphic Physiotherapy Practice
+     Style No=2 Neumorphism
+     Palette: Soft Blue base #dbe7f2 / Pastel pink + mint accents
+     Carved-into-plane aesthetic. No hard rules. No flat blocks.
+     ========================================================= */
+
+  :root {
+    --bg-page: #dbe7f2;
+    --bg-surface: #e3ecf5;
+    --bg-card: #e8eff7;
+    --bg-recess: #d4e0ec;
+
+    --accent-pink: #e8c4d2;
+    --accent-pink-deep: #d8a6b8;
+    --accent-mint: #b8d8c9;
+    --accent-mint-deep: #96c0ab;
+    --accent-blue: #8fb5d9;
+
+    --text-strong: #3a4a5c;
+    --text-body: #5a6b7d;
+    --text-mute: #8a9aac;
+
+    --shadow-soft: 8px 8px 18px #b8c8d8, -6px -6px 14px rgba(255,255,255,0.95);
+    --shadow-soft-sm: 4px 4px 10px #b8c8d8, -3px -3px 8px rgba(255,255,255,0.9);
+    --shadow-soft-lg: 12px 12px 28px #b0c0d0, -9px -9px 22px rgba(255,255,255,0.95);
+    --shadow-inset: inset 3px 3px 6px rgba(151,170,190,0.4), inset -3px -3px 8px rgba(255,255,255,0.9);
+    --shadow-inset-deep: inset 5px 5px 12px rgba(151,170,190,0.5), inset -5px -5px 12px rgba(255,255,255,0.95);
+
+    --radius-sm: 14px;
+    --radius: 20px;
+    --radius-lg: 28px;
+    --radius-xl: 36px;
+
+    --ease: cubic-bezier(.4,.0,.2,1);
+    --trans: 200ms var(--ease);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+
+  body {
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    background:
+      radial-gradient(1200px 700px at 10% 0%, #e8eef5 0%, transparent 60%),
+      radial-gradient(900px 600px at 90% 100%, #d1dfec 0%, transparent 60%),
+      var(--bg-page);
+    color: var(--text-body);
+    line-height: 1.55;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    padding: 28px 20px 48px;
+  }
+
+  .shell { max-width: 1160px; margin: 0 auto; position: relative; }
+
+  /* ====================== TOPBAR ====================== */
+  .topbar {
+    background: var(--bg-surface);
+    border-radius: 999px;
+    padding: 14px 26px 14px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 56px;
+  }
+  .wordmark {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px;
+    letter-spacing: -0.01em; color: var(--text-strong);
+    text-decoration: none; display: inline-flex; align-items: baseline; gap: 4px;
+  }
+  .wordmark em { font-style: italic; font-weight: 300; color: var(--text-body); }
+  .topbar__nav { display: flex; align-items: center; gap: 18px; margin-left: auto; }
+  .topbar__nav a {
+    color: var(--text-body); text-decoration: none; font-size: 14px;
+    font-weight: 500; letter-spacing: 0.005em; transition: color var(--trans);
+  }
+  .topbar__nav a:hover { color: var(--text-strong); }
+  .topbar__phone {
+    font-family: 'Fraunces', serif; font-weight: 400; font-style: italic;
+    font-size: 16px; color: var(--text-strong); text-decoration: none;
+    padding: 8px 18px; border-radius: 999px;
+    box-shadow: var(--shadow-inset); transition: var(--trans);
+  }
+  .topbar__phone:hover { color: var(--accent-pink-deep); }
+  .topbar__cta {
+    background: var(--accent-pink); color: var(--text-strong);
+    padding: 11px 22px; border-radius: 999px; text-decoration: none;
+    font-size: 14px; font-weight: 600; letter-spacing: 0.005em;
+    box-shadow: 5px 5px 12px #c9a9b8, -4px -4px 10px rgba(255,255,255,0.7);
+    transition: var(--trans);
+  }
+  .topbar__cta:hover {
+    box-shadow: inset 3px 3px 8px rgba(201,169,184,0.55), inset -3px -3px 8px rgba(255,255,255,0.7);
+  }
+
+  /* ====================== HERO ====================== */
+  .hero { padding: 48px 24px 72px; }
+  .hero__kicker {
+    display: inline-block; font-family: 'Manrope', sans-serif;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--text-mute);
+    padding: 10px 20px; border-radius: 999px;
+    box-shadow: var(--shadow-inset); margin-bottom: 28px;
+  }
+  .hero__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 56px; align-items: center; }
+  @media (max-width: 900px) { .hero__grid { grid-template-columns: 1fr; gap: 36px; } }
+  .hero h1 {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: clamp(34px, 5vw, 54px); line-height: 1.08;
+    letter-spacing: -0.015em; color: var(--text-strong); margin-bottom: 22px;
+  }
+  .hero h1 em { font-style: italic; font-weight: 300; color: var(--text-body); }
+  .hero p.lede {
+    font-size: 17px; line-height: 1.65; color: var(--text-body);
+    max-width: 520px; margin-bottom: 32px;
+  }
+  .hero__cta { display: inline-flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 30px; border-radius: 999px;
+    font-family: 'Manrope', sans-serif; font-size: 15px; font-weight: 600;
+    letter-spacing: 0.005em; text-decoration: none; cursor: pointer;
+    border: none; transition: var(--trans);
+  }
+  .btn--primary {
+    background: var(--accent-pink); color: var(--text-strong);
+    box-shadow: 7px 7px 16px #c9a9b8, -6px -6px 14px rgba(255,255,255,0.75);
+  }
+  .btn--primary:hover {
+    box-shadow: inset 4px 4px 10px rgba(201,169,184,0.55), inset -4px -4px 10px rgba(255,255,255,0.75);
+  }
+  .btn--ghost { background: var(--bg-surface); color: var(--text-strong); box-shadow: var(--shadow-soft-sm); }
+  .btn--ghost:hover { box-shadow: var(--shadow-inset); }
+
+  .hero__card {
+    background: var(--bg-card); border-radius: var(--radius-lg);
+    padding: 32px; box-shadow: var(--shadow-soft-lg); position: relative;
+  }
+  .hero__card h3 {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+    font-size: 18px; color: var(--text-strong); margin-bottom: 8px;
+  }
+  .hero__card p { font-size: 14px; color: var(--text-body); line-height: 1.65; }
+  .hero__card .status {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--text-strong);
+    background: var(--bg-surface); padding: 8px 14px; border-radius: 999px;
+    box-shadow: var(--shadow-inset); margin-bottom: 18px;
+  }
+  .hero__card .status::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent-mint-deep); box-shadow: 0 0 0 3px rgba(184,216,201,0.35);
+  }
+  .hero__card .stat {
+    margin-top: 22px; padding-top: 20px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+  .hero__card .stat__cell { padding: 14px 16px; border-radius: var(--radius-sm); box-shadow: var(--shadow-inset); }
+  .hero__card .stat__num {
+    font-family: 'Fraunces', serif; font-size: 26px;
+    color: var(--text-strong); font-weight: 400; line-height: 1;
+  }
+  .hero__card .stat__label {
+    margin-top: 6px; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--text-mute);
+  }
+
+  /* ====================== SECTION HEADINGS ====================== */
+  section { padding: 72px 0; }
+  .section__kicker {
+    display: inline-block; font-family: 'Manrope', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--text-mute);
+    padding: 9px 18px; border-radius: 999px;
+    box-shadow: var(--shadow-inset); margin-bottom: 20px;
+  }
+  .section__title {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: clamp(28px, 3.6vw, 40px); line-height: 1.12;
+    letter-spacing: -0.015em; color: var(--text-strong);
+    margin-bottom: 14px; max-width: 680px;
+  }
+  .section__title em { font-style: italic; font-weight: 300; color: var(--text-body); }
+  .section__intro { font-size: 16px; max-width: 620px; color: var(--text-body); margin-bottom: 44px; }
+
+  /* ====================== INJURY SELECTOR ====================== */
+  .selector {
+    background: var(--bg-surface); border-radius: var(--radius-xl);
+    padding: 48px 40px; box-shadow: var(--shadow-inset-deep);
+  }
+  .selector__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 900px) { .selector__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .selector__grid { grid-template-columns: 1fr; } }
+
+  .injury {
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 22px 18px; background: var(--bg-card);
+    border-radius: var(--radius); box-shadow: var(--shadow-soft);
+    color: var(--text-strong); font-family: 'Manrope', sans-serif;
+    font-size: 14px; font-weight: 600; letter-spacing: 0.005em;
+    text-decoration: none; min-height: 82px; line-height: 1.3;
+    transition: var(--trans); cursor: pointer; border: none;
+  }
+  .injury:hover { box-shadow: var(--shadow-inset); color: var(--accent-pink-deep); }
+  .injury__num {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+    color: var(--text-mute); font-size: 13px; margin-right: 10px;
+  }
+
+  /* ====================== APPROACH ====================== */
+  .approach__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 820px) { .approach__grid { grid-template-columns: 1fr; } }
+  .approach__card {
+    background: var(--bg-surface); border-radius: var(--radius-lg);
+    padding: 36px 32px; box-shadow: var(--shadow-inset); min-height: 240px;
+  }
+  .approach__num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--bg-card); box-shadow: var(--shadow-soft-sm);
+    font-family: 'Fraunces', serif; font-size: 18px;
+    color: var(--text-strong); margin-bottom: 22px;
+  }
+  .approach__card h3 {
+    font-family: 'Fraunces', serif; font-weight: 400; font-size: 22px;
+    color: var(--text-strong); letter-spacing: -0.005em;
+    line-height: 1.25; margin-bottom: 12px;
+  }
+  .approach__card h3 em { font-style: italic; font-weight: 300; color: var(--text-body); }
+  .approach__card p { font-size: 15px; color: var(--text-body); line-height: 1.65; }
+
+  /* ====================== CLINICIANS ====================== */
+  .clin__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  @media (max-width: 820px) { .clin__grid { grid-template-columns: 1fr; } }
+  .clin {
+    background: var(--bg-card); border-radius: var(--radius-lg);
+    padding: 40px 36px; box-shadow: var(--shadow-soft-lg);
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .clin__head { display: flex; align-items: center; gap: 20px; }
+  .clin__avatar {
+    width: 76px; height: 76px; border-radius: 50%;
+    background: linear-gradient(145deg, #eef4fa, #cfdbe7);
+    box-shadow: var(--shadow-soft);
+    display: grid; place-items: center;
+    font-family: 'Fraunces', serif; font-weight: 400; font-size: 26px;
+    color: var(--text-strong); letter-spacing: 0.02em;
+  }
+  .clin__name {
+    font-family: 'Fraunces', serif; font-weight: 400; font-size: 24px;
+    line-height: 1.15; color: var(--text-strong); letter-spacing: -0.005em;
+  }
+  .clin__role {
+    margin-top: 4px; font-size: 13px; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--text-mute); font-weight: 500;
+  }
+  .clin__bio { font-size: 15px; color: var(--text-body); line-height: 1.7; }
+  .clin__creds { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+  .cred {
+    font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.04em; color: var(--text-strong);
+    padding: 8px 14px; border-radius: 999px;
+    background: var(--bg-surface); box-shadow: var(--shadow-inset);
+  }
+
+  /* ====================== PITCH-SIDE ====================== */
+  .pitch {
+    background: var(--bg-surface); border-radius: var(--radius-xl);
+    padding: 48px 44px; box-shadow: var(--shadow-soft-lg);
+  }
+  .pitch__grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 44px; align-items: start; }
+  @media (max-width: 820px) { .pitch__grid { grid-template-columns: 1fr; } }
+  .pitch__h {
+    font-family: 'Fraunces', serif; font-weight: 400; font-size: 22px;
+    color: var(--text-strong); margin-bottom: 14px; letter-spacing: -0.005em;
+  }
+  .pitch__p { font-size: 14px; line-height: 1.7; color: var(--text-body); }
+  .pitch__teams { display: flex; flex-wrap: wrap; gap: 12px; }
+  .team {
+    font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600;
+    color: var(--text-strong); padding: 12px 20px; border-radius: 999px;
+    background: var(--bg-card); box-shadow: var(--shadow-soft-sm);
+    letter-spacing: 0.005em;
+  }
+  .team__season {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+    font-size: 12px; color: var(--text-mute); margin-left: 8px;
+  }
+
+  /* ====================== SERVICES ====================== */
+  .services {
+    background: var(--bg-surface); border-radius: var(--radius-xl);
+    padding: 52px 44px; box-shadow: var(--shadow-inset-deep); position: relative;
+  }
+  .services::before {
+    content: ""; position: absolute; top: 44px; right: 44px;
+    width: 90px; height: 90px; border-radius: 50%;
+    background: var(--accent-mint);
+    box-shadow: 5px 5px 14px #9bbfae, -4px -4px 12px rgba(255,255,255,0.7);
+    opacity: 0.55;
+  }
+  .service {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; padding: 18px 26px; background: var(--bg-card);
+    border-radius: 999px; box-shadow: var(--shadow-soft); margin-bottom: 14px;
+  }
+  .service__name {
+    font-family: 'Manrope', sans-serif; font-size: 15px; font-weight: 600;
+    color: var(--text-strong); letter-spacing: 0.005em;
+  }
+  .service__dur {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+    font-size: 13px; color: var(--text-mute); margin-left: 10px;
+  }
+  .service__price {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 19px;
+    color: var(--text-strong); letter-spacing: -0.005em;
+    padding: 6px 16px; border-radius: 999px;
+    box-shadow: var(--shadow-inset); white-space: nowrap;
+  }
+  .service__price em {
+    font-style: italic; font-weight: 300; font-size: 13px;
+    color: var(--text-mute); margin-right: 4px;
+  }
+
+  /* ====================== INSURANCE ====================== */
+  .insurance {
+    background: var(--bg-card); border-radius: var(--radius-lg);
+    padding: 44px 40px; box-shadow: var(--shadow-soft-lg);
+  }
+  .insurance p { font-size: 16px; color: var(--text-body); max-width: 720px; margin-bottom: 22px; line-height: 1.7; }
+  .insurance__logos { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px; }
+  .ins-tag {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 16px;
+    color: var(--text-strong); padding: 12px 22px; border-radius: 999px;
+    background: var(--bg-surface); box-shadow: var(--shadow-inset);
+    letter-spacing: -0.005em;
+  }
+  .ins-tag em {
+    font-style: italic; font-weight: 300; color: var(--text-body);
+    margin-left: 6px; font-size: 13px;
+  }
+
+  /* ====================== BOOKING ====================== */
+  .booking__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+  @media (max-width: 820px) { .booking__grid { grid-template-columns: 1fr; } }
+  .booking__card {
+    background: var(--bg-card); border-radius: var(--radius-lg);
+    padding: 36px; box-shadow: var(--shadow-soft-lg);
+  }
+  .booking__card h3 {
+    font-family: 'Fraunces', serif; font-weight: 400; font-size: 22px;
+    color: var(--text-strong); margin-bottom: 22px; letter-spacing: -0.005em;
+  }
+  .booking__card h3 em { font-style: italic; font-weight: 300; color: var(--text-body); }
+  .slot-day {
+    font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-mute); margin: 18px 0 12px;
+  }
+  .slots { display: flex; flex-wrap: wrap; gap: 10px; }
+  .slot {
+    font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600;
+    color: var(--text-strong); padding: 11px 18px; border-radius: 999px;
+    background: var(--bg-surface); box-shadow: var(--shadow-soft-sm);
+    cursor: pointer; border: none; transition: var(--trans);
+  }
+  .slot:hover { box-shadow: var(--shadow-inset); }
+  .slot--taken {
+    color: var(--text-mute); box-shadow: var(--shadow-inset);
+    text-decoration: line-through; cursor: not-allowed;
+  }
+
+  .address-block { font-size: 15px; color: var(--text-body); line-height: 1.8; }
+  .address-block strong {
+    display: block; font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 18px; color: var(--text-strong);
+    margin-bottom: 8px; letter-spacing: -0.005em;
+  }
+  .address-block a { color: var(--text-strong); text-decoration: none; font-weight: 600; }
+  .hours { margin-top: 22px; padding: 20px 24px; border-radius: var(--radius); box-shadow: var(--shadow-inset); }
+  .hours__row {
+    display: flex; justify-content: space-between;
+    font-size: 14px; padding: 6px 0; color: var(--text-body);
+  }
+  .hours__row strong { color: var(--text-strong); font-weight: 600; font-family: 'Manrope', sans-serif; }
+  .hours__row em {
+    font-style: italic; font-weight: 300; font-family: 'Fraunces', serif;
+    color: var(--text-mute); font-size: 13px;
+  }
+  .note-box { padding: 20px 22px; border-radius: var(--radius); box-shadow: var(--shadow-inset); }
+  .note-box p { font-size: 13px; color: var(--text-body); line-height: 1.7; }
+  .note-box strong {
+    font-family: 'Fraunces', serif; font-weight: 500; color: var(--text-strong);
+    font-size: 14px; letter-spacing: -0.005em;
+  }
+
+  /* ====================== FOOTER ====================== */
+  footer.foot {
+    margin-top: 48px; padding: 40px 36px;
+    background: var(--bg-surface); border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-soft);
+  }
+  .foot__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 36px; align-items: start; }
+  @media (max-width: 820px) { .foot__grid { grid-template-columns: 1fr; } }
+  .foot__wordmark {
+    font-family: 'Fraunces', serif; font-weight: 400; font-size: 24px;
+    color: var(--text-strong); letter-spacing: -0.005em; margin-bottom: 14px;
+  }
+  .foot__wordmark em { font-style: italic; font-weight: 300; color: var(--text-body); }
+  .foot__blurb { font-size: 14px; color: var(--text-body); line-height: 1.7; max-width: 380px; }
+  .foot__col h5 {
+    font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text-mute); margin-bottom: 12px;
+  }
+  .foot__col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .foot__col a { font-size: 14px; color: var(--text-body); text-decoration: none; transition: color var(--trans); }
+  .foot__col a:hover { color: var(--text-strong); }
+
+  .foot__regs { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .reg {
+    font-family: 'Manrope', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-strong);
+    padding: 9px 16px; border-radius: 999px;
+    background: var(--bg-card); box-shadow: var(--shadow-inset);
+  }
+  .foot__copy {
+    margin-top: 24px; padding-top: 20px; font-size: 12px; color: var(--text-mute);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+
+  /* ====================== MOBILE TIDY ====================== */
+  @media (max-width: 720px) {
+    .topbar { padding: 12px 18px; gap: 12px; border-radius: 36px; flex-wrap: wrap; }
+    .topbar__nav { display: none; }
+    .topbar__phone { font-size: 14px; padding: 7px 14px; }
+    .topbar__cta { padding: 9px 16px; font-size: 13px; }
+    .selector { padding: 32px 20px; border-radius: var(--radius-lg); }
+    .services, .pitch { padding: 32px 20px; border-radius: var(--radius-lg); }
+    .services::before { display: none; }
+    .service { flex-wrap: wrap; border-radius: var(--radius); padding: 16px 20px; }
+    .service__price { font-size: 16px; }
+    .hero { padding: 24px 4px 40px; }
+    section { padding: 48px 0; }
+  }
+</style>
+
+<!-- mobile-fit-safety -->
+<style>
+html { overflow-x: hidden; }
+body { max-width: 100vw; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+* { min-width: 0; }
+img, video, iframe, svg, canvas { max-width: 100%; height: auto; display: block; }
+@media (max-width: 640px) {
+  [class*="grid"], [class*="cols"], [class*="row"], [class*="columns"] {
+    grid-template-columns: 1fr !important;
+    flex-direction: column !important;
+  }
+  [class*="container"] { max-width: 100% !important; padding-inline: 16px !important; }
+  section, header, main, footer, article, aside, nav {
+    max-width: 100% !important;
+    padding-inline: clamp(12px, 4vw, 24px) !important;
+  }
+  h1 { font-size: clamp(30px, 8vw, 44px) !important; line-height: 1.05 !important; }
+  h2 { font-size: clamp(24px, 6vw, 34px) !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ==================================================== TOPBAR -->
+  <header class="topbar" role="banner">
+    <a href="#" class="wordmark">The Quay <em>Physio</em></a>
+    <nav class="topbar__nav" aria-label="Primary">
+      <a href="#approach">Approach</a>
+      <a href="#clinicians">Clinicians</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#book">Visit</a>
+    </nav>
+    <a class="topbar__phone" href="tel:+353565550184">056 555 0184</a>
+    <a class="topbar__cta" href="#book">Book appointment</a>
+  </header>
+
+  <!-- ==================================================== HERO -->
+  <section class="hero" aria-labelledby="hero-h">
+    <span class="hero__kicker">Patrick St &middot; Kilkenny &middot; Est. 2016</span>
+    <div class="hero__grid">
+      <div>
+        <h1 id="hero-h">Recovery, <em>not</em> workout culture.</h1>
+        <p class="lede">
+          Chartered physiotherapy in the middle of Kilkenny. An hour with one
+          physiotherapist, hands&ndash;on work paired with exercise, and a clear
+          plan for what you do between visits. No packages you have to finish.
+          You&rsquo;re discharged when you&rsquo;re fit.
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#book">Book first appointment</a>
+          <a class="btn btn--ghost" href="#approach">How it works</a>
+        </div>
+      </div>
+
+      <aside class="hero__card" aria-label="Practice status">
+        <span class="status">Accepting new patients</span>
+        <h3>Next available this week</h3>
+        <p>Two chartered physiotherapists on the rota. Next available slot is
+           Thursday at 4:40pm with Eoin, or Friday at 11:20am with Ciara.</p>
+        <div class="stat">
+          <div class="stat__cell">
+            <div class="stat__num">60<span style="font-size:14px;color:var(--text-mute)">&nbsp;min</span></div>
+            <div class="stat__label">First session</div>
+          </div>
+          <div class="stat__cell">
+            <div class="stat__num">2</div>
+            <div class="stat__label">Chartered physios</div>
+          </div>
+          <div class="stat__cell">
+            <div class="stat__num">4</div>
+            <div class="stat__label">Insurers approved</div>
+          </div>
+          <div class="stat__cell">
+            <div class="stat__num">9</div>
+            <div class="stat__label">Years on Patrick St</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============================================ INJURY SELECTOR -->
+  <section id="what" aria-labelledby="what-h">
+    <span class="section__kicker">01 &middot; What&rsquo;s bothering you</span>
+    <h2 class="section__title" id="what-h">Tell us where it <em>hurts</em> &mdash; we&rsquo;ll pair you with the right physio.</h2>
+    <p class="section__intro">
+      Pick what fits closest. Each option pre&ndash;fills your booking request
+      so we can put you with the clinician who sees your issue most weeks
+      &mdash; you don&rsquo;t end up explaining the same history twice.
+    </p>
+
+    <div class="selector">
+      <div class="selector__grid" role="list">
+        <a class="injury" href="#book?reason=lower-back" role="listitem"><span><span class="injury__num">01</span>Lower back pain</span></a>
+        <a class="injury" href="#book?reason=shoulder" role="listitem"><span><span class="injury__num">02</span>Shoulder pain</span></a>
+        <a class="injury" href="#book?reason=sports-injury" role="listitem"><span><span class="injury__num">03</span>Sports injury</span></a>
+        <a class="injury" href="#book?reason=post-surgical" role="listitem"><span><span class="injury__num">04</span>Post&ndash;surgical rehab</span></a>
+        <a class="injury" href="#book?reason=pelvic-health" role="listitem"><span><span class="injury__num">05</span>Pelvic health</span></a>
+        <a class="injury" href="#book?reason=knee" role="listitem"><span><span class="injury__num">06</span>Knee (ACL / meniscus)</span></a>
+        <a class="injury" href="#book?reason=neck-headache" role="listitem"><span><span class="injury__num">07</span>Neck &amp; headaches</span></a>
+        <a class="injury" href="#book?reason=pregnancy" role="listitem"><span><span class="injury__num">08</span>Pregnancy / post&ndash;natal</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== APPROACH -->
+  <section id="approach" aria-labelledby="approach-h">
+    <span class="section__kicker">02 &middot; Our approach</span>
+    <h2 class="section__title" id="approach-h">Three things we do <em>differently</em>.</h2>
+    <p class="section__intro">
+      Most of what patients tell us they wanted from a physio in the past
+      &mdash; time, continuity, honesty &mdash; sits in the three blocks below.
+      None of it is clever. It&rsquo;s just how the practice has always been run.
+    </p>
+
+    <div class="approach__grid">
+      <div class="approach__card">
+        <div class="approach__num">I</div>
+        <h3>One hour per session.</h3>
+        <p>
+          First appointment is sixty minutes, follow&ndash;ups are forty&ndash;five.
+          You get the full time with the physiotherapist &mdash; no shared
+          treatment rooms, no handing you off to an assistant for the
+          exercise half. One patient, one clinician, one hour.
+        </p>
+      </div>
+      <div class="approach__card">
+        <div class="approach__num">II</div>
+        <h3>Hands&ndash;on <em>plus</em> exercise.</h3>
+        <p>
+          Manual therapy alone wears off. Exercise alone without guidance
+          often re&ndash;injures. Every session pairs the two &mdash; hands&ndash;on
+          work to settle tissue, then a small set of exercises (two or three,
+          not twenty) that you actually do between visits.
+        </p>
+      </div>
+      <div class="approach__card">
+        <div class="approach__num">III</div>
+        <h3>Discharged when you&rsquo;re fit.</h3>
+        <p>
+          No block&ndash;of&ndash;six or block&ndash;of&ndash;ten packages. You come back
+          for the sessions you need and stop when the issue is resolved.
+          Most people finish in three to five visits. If you need only one,
+          you pay for only one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== CLINICIANS -->
+  <section id="clinicians" aria-labelledby="clin-h">
+    <span class="section__kicker">03 &middot; Who you&rsquo;ll see</span>
+    <h2 class="section__title" id="clin-h">Two chartered physiotherapists, <em>no rotating locums</em>.</h2>
+    <p class="section__intro">
+      You&rsquo;re seen by the same physio from first visit to discharge.
+      Both are members of the Irish Society of Chartered Physiotherapists
+      (MISCP) and registered with CORU, the state regulator.
+    </p>
+
+    <div class="clin__grid">
+      <article class="clin">
+        <div class="clin__head">
+          <div class="clin__avatar">EK</div>
+          <div>
+            <div class="clin__name">Eoin Kavanagh</div>
+            <div class="clin__role">Principal physiotherapist</div>
+          </div>
+        </div>
+        <p class="clin__bio">
+          Founded the practice in 2016 after eight years in hospital
+          outpatients and county GAA rooms. Special interest in sports
+          injury and post&ndash;op ACL rehab; still covers Kilkenny county
+          panels at championship level. Sees most of the knee, shoulder
+          and running&ndash;injury caseload.
+        </p>
+        <div class="clin__creds">
+          <span class="cred">MISCP</span>
+          <span class="cred">CORU registered</span>
+          <span class="cred">BSc Physio &middot; RCSI 2011</span>
+          <span class="cred">Sports &amp; ACL</span>
+        </div>
+      </article>
+
+      <article class="clin">
+        <div class="clin__head">
+          <div class="clin__avatar">CM</div>
+          <div>
+            <div class="clin__name">Ciara Moore</div>
+            <div class="clin__role">Senior physiotherapist</div>
+          </div>
+        </div>
+        <p class="clin__bio">
+          Joined in 2019 from Holles Street. Postgraduate MSc in Women&rsquo;s
+          Health from RCSI &mdash; pelvic health, pregnancy&ndash;related back and
+          pelvic girdle pain, post&ndash;natal return to running, and mastitis
+          management. Ciara sees most of the pelvic health and pregnancy
+          caseload.
+        </p>
+        <div class="clin__creds">
+          <span class="cred">MISCP</span>
+          <span class="cred">CORU registered</span>
+          <span class="cred">BSc Physio &middot; UCD 2015</span>
+          <span class="cred">MSc Women&rsquo;s Health</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ==================================================== PITCH-SIDE -->
+  <section id="teams" aria-labelledby="pitch-h">
+    <span class="section__kicker">04 &middot; Pitch&ndash;side &amp; teams</span>
+    <h2 class="section__title" id="pitch-h">Covered weekends: <em>the clubs we look after</em>.</h2>
+    <p class="section__intro">
+      Most weeks one of us is on the line somewhere in south Leinster.
+      These are the clubs we hold a standing arrangement with &mdash; match
+      cover, pre&ndash;season screens, and first&ndash;port&ndash;of&ndash;call rehab
+      for anything that picks up through the season.
+    </p>
+
+    <div class="pitch">
+      <div class="pitch__grid">
+        <div>
+          <h3 class="pitch__h">Current panel cover</h3>
+          <p class="pitch__p">
+            Pitch&ndash;side match cover is billed flat per event. Pre&ndash;season
+            team screens and in&ndash;season injury management for panel players
+            are arranged directly with the club secretary.
+          </p>
+        </div>
+        <div class="pitch__teams">
+          <span class="team">Kilkenny GAA U21 <span class="team__season">2025&ndash;26</span></span>
+          <span class="team">Rower&ndash;Inistioge GAA <span class="team__season">senior hurlers</span></span>
+          <span class="team">Castlecomer RFC <span class="team__season">1st XV</span></span>
+          <span class="team">Kilkenny County Harriers <span class="team__season">AC</span></span>
+          <span class="team">St Canice&rsquo;s Camogie <span class="team__season">senior</span></span>
+          <span class="team">Bennettsbridge GAA <span class="team__season">minor</span></span>
+          <span class="team">Kilkenny City Harriers <span class="team__season">juvenile</span></span>
+          <span class="team">Mooncoin GAA <span class="team__season">intermediate</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== SERVICES -->
+  <section id="pricing" aria-labelledby="price-h">
+    <span class="section__kicker">05 &middot; Services &amp; fees</span>
+    <h2 class="section__title" id="price-h">Published fees, <em>no bundles</em>.</h2>
+    <p class="section__intro">
+      Pay per session. We issue a full Med&nbsp;1 receipt on the day &mdash;
+      most of what you spend here is tax&ndash;deductible against your PAYE.
+      Insured? Skip past to the next section.
+    </p>
+
+    <div class="services">
+      <div class="service">
+        <div>
+          <span class="service__name">Initial consultation + first treatment</span>
+          <span class="service__dur">60 min</span>
+        </div>
+        <span class="service__price"><em>&euro;</em>85</span>
+      </div>
+      <div class="service">
+        <div>
+          <span class="service__name">Follow&ndash;up session</span>
+          <span class="service__dur">45 min</span>
+        </div>
+        <span class="service__price"><em>&euro;</em>70</span>
+      </div>
+      <div class="service">
+        <div>
+          <span class="service__name">Dry needling</span>
+          <span class="service__dur">add&ndash;on to session</span>
+        </div>
+        <span class="service__price"><em>+&euro;</em>15</span>
+      </div>
+      <div class="service">
+        <div>
+          <span class="service__name">Shockwave therapy</span>
+          <span class="service__dur">incl. session</span>
+        </div>
+        <span class="service__price"><em>&euro;</em>110</span>
+      </div>
+      <div class="service">
+        <div>
+          <span class="service__name">Custom orthotics</span>
+          <span class="service__dur">incl. assessment + device</span>
+        </div>
+        <span class="service__price"><em>from &euro;</em>350</span>
+      </div>
+      <div class="service">
+        <div>
+          <span class="service__name">Pitch&ndash;side match cover</span>
+          <span class="service__dur">per event</span>
+        </div>
+        <span class="service__price"><em>from &euro;</em>180</span>
+      </div>
+      <div class="service" style="margin-bottom:0">
+        <div>
+          <span class="service__name">Post&ndash;op rehab plan</span>
+          <span class="service__dur">6&ndash;session block</span>
+        </div>
+        <span class="service__price"><em>&euro;</em>385</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== INSURANCE -->
+  <section id="insurance" aria-labelledby="ins-h">
+    <span class="section__kicker">06 &middot; Insurance &amp; claims</span>
+    <h2 class="section__title" id="ins-h">Approved provider for the <em>four major insurers</em>.</h2>
+
+    <div class="insurance">
+      <p>
+        We&rsquo;re an approved physiotherapy provider for VHI, Laya Healthcare,
+        Irish Life Health and GloHealth &mdash; which covers the large majority
+        of Irish private medical policies. Bring your policy number on the
+        first visit; we&rsquo;ll submit the claim for you.
+      </p>
+      <p>
+        Uninsured? A Med&nbsp;1 receipt is issued the day of every appointment.
+        Twenty per cent of your physiotherapy spend comes back through the
+        year&ndash;end tax return.
+      </p>
+      <div class="insurance__logos">
+        <span class="ins-tag">VHI <em>Healthcare</em></span>
+        <span class="ins-tag">Laya <em>Healthcare</em></span>
+        <span class="ins-tag">Irish Life <em>Health</em></span>
+        <span class="ins-tag">GloHealth</span>
+        <span class="ins-tag">Med 1 <em>receipts</em></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== BOOKING -->
+  <section id="book" aria-labelledby="book-h">
+    <span class="section__kicker">07 &middot; Book &amp; visit</span>
+    <h2 class="section__title" id="book-h">Pick a time, <em>or just call</em>.</h2>
+    <p class="section__intro">
+      Slot availability for the next working week is below. These are live
+      placeholders &mdash; press one and it puts a request in to reception;
+      we confirm back within the hour during clinic time.
+    </p>
+
+    <div class="booking__grid">
+      <div class="booking__card">
+        <h3>This <em>week</em>&rsquo;s openings</h3>
+
+        <div class="slot-day">Tuesday 22 Apr</div>
+        <div class="slots">
+          <button class="slot slot--taken" disabled>09:00</button>
+          <button class="slot">10:30</button>
+          <button class="slot slot--taken" disabled>12:00</button>
+          <button class="slot">14:15</button>
+          <button class="slot">15:40</button>
+          <button class="slot slot--taken" disabled>17:00</button>
+        </div>
+
+        <div class="slot-day">Wednesday 23 Apr</div>
+        <div class="slots">
+          <button class="slot">08:40</button>
+          <button class="slot slot--taken" disabled>10:00</button>
+          <button class="slot">11:20</button>
+          <button class="slot">13:30</button>
+          <button class="slot">16:15</button>
+        </div>
+
+        <div class="slot-day">Thursday 24 Apr</div>
+        <div class="slots">
+          <button class="slot slot--taken" disabled>09:20</button>
+          <button class="slot slot--taken" disabled>10:40</button>
+          <button class="slot">12:30</button>
+          <button class="slot">14:00</button>
+          <button class="slot">16:40</button>
+          <button class="slot">18:00</button>
+        </div>
+
+        <div class="slot-day">Friday 25 Apr</div>
+        <div class="slots">
+          <button class="slot">08:30</button>
+          <button class="slot">11:20</button>
+          <button class="slot slot--taken" disabled>13:00</button>
+          <button class="slot">15:00</button>
+        </div>
+
+        <div class="slot-day">Saturday 26 Apr</div>
+        <div class="slots">
+          <button class="slot">09:30</button>
+          <button class="slot">10:45</button>
+          <button class="slot slot--taken" disabled>12:00</button>
+        </div>
+
+        <div class="note-box" style="margin-top:26px;">
+          <p><strong>Emergency &amp; out&ndash;of&ndash;hours.</strong><br />
+          Call reception first &mdash; if it&rsquo;s acute we&rsquo;ll squeeze you in the
+          same day. Outside clinic hours, leave a voicemail and we return
+          before 9am the next morning.</p>
+        </div>
+      </div>
+
+      <div class="booking__card">
+        <h3>Where you&rsquo;re <em>coming</em>.</h3>
+
+        <div class="address-block">
+          <strong>The Quay Physio</strong>
+          14 Patrick Street<br />
+          Kilkenny R95 T2C4<br /><br />
+          <a href="tel:+353565550184">056 555 0184</a><br />
+          <a href="mailto:reception@thequayphysio.ie">reception@thequayphysio.ie</a>
+        </div>
+
+        <div class="hours">
+          <div class="hours__row"><strong>Mon&ndash;Thu</strong><span>08:00 &ndash; 19:00</span></div>
+          <div class="hours__row"><strong>Friday</strong><span>08:00 &ndash; 18:00</span></div>
+          <div class="hours__row"><strong>Saturday</strong><span>09:00 &ndash; 13:00</span></div>
+          <div class="hours__row"><strong>Sunday</strong><em>closed</em></div>
+          <div class="hours__row"><strong>Bank holidays</strong><em>emergency cover only</em></div>
+        </div>
+
+        <div class="note-box" style="margin-top:22px;">
+          <p><strong>Parking &amp; access.</strong><br />
+          On the Patrick Street one&ndash;way. Paid on&ndash;street parking directly
+          outside or at Market Yard (2 min walk). Ground floor, step&ndash;free
+          entrance, accessible treatment room.</p>
+        </div>
+
+        <div style="margin-top:22px;">
+          <a class="btn btn--primary" href="tel:+353565550184" style="width:100%;justify-content:center;">
+            Call reception &middot; 056 555 0184
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== FOOTER -->
+  <footer class="foot" role="contentinfo">
+    <div class="foot__grid">
+      <div>
+        <div class="foot__wordmark">The Quay <em>Physio</em></div>
+        <p class="foot__blurb">
+          Chartered physiotherapy on Patrick Street since 2016.
+          Sports injury, post&ndash;surgical rehab, pelvic health and general
+          musculoskeletal care for Kilkenny and south Leinster.
+        </p>
+        <div class="foot__regs">
+          <span class="reg">ISCP member</span>
+          <span class="reg">CORU reg. PT011284</span>
+          <span class="reg">Practice insurance &middot; AXA</span>
+          <span class="reg">GDPR compliant</span>
+        </div>
+      </div>
+
+      <div class="foot__col">
+        <h5>Practice</h5>
+        <ul>
+          <li><a href="#approach">Our approach</a></li>
+          <li><a href="#clinicians">Clinicians</a></li>
+          <li><a href="#teams">Teams we cover</a></li>
+          <li><a href="#pricing">Fees</a></li>
+          <li><a href="#insurance">Insurance</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+353565550184">056 555 0184</a></li>
+          <li><a href="mailto:reception@thequayphysio.ie">reception@thequayphysio.ie</a></li>
+          <li><a href="#book">Book a slot</a></li>
+          <li><a href="#book">Directions</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot__copy">
+      <span>&copy; 2016&ndash;2026 The Quay Physio Ltd. Registered in Ireland 612384.</span>
+      <span>14 Patrick Street, Kilkenny R95 T2C4</span>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

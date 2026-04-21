@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hear Clear Audiology — Maynooth, Co. Kildare</title>
+<meta name="description" content="Independent audiology clinic in Maynooth. Free 20-minute hearing screening, full assessments, hearing aids from Oticon, Phonak, Widex, Signia and Starkey. Home visits available." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&display=swap" rel="stylesheet">
+
+<style>
+/* Hear Clear Audiology — Aurora UI, accessibility-forward
+   Reference: ui-ux-pro-max styles.csv Row 9 (Aurora UI)
+   Tuned for older clientele (60+): 18-19px body, AA/AAA contrast,
+   large tap targets, calm aurora gradients. */
+
+:root {
+  --ink: #070714; --bg: #1a1538; --bg-2: #231b4a;
+  --paper: #f7f3ff; --paper-dim: rgba(247,243,255,0.82); --paper-mute: rgba(247,243,255,0.64);
+  --violet: #7c3aff; --blue: #0080ff; --cyan: #00ffff;
+  --pink: #ff1493; --magenta: #ff00cc; --teal: #00e0c6;
+  --card-bg: rgba(247,243,255,0.08); --card-border: rgba(247,243,255,0.16);
+  --card-border-strong: rgba(247,243,255,0.28);
+  --radius-card: 18px; --radius-pill: 999px;
+  --fs-body: 19px; --lh-body: 1.65;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0; background: var(--bg); color: var(--paper);
+  font-family: 'Sora', system-ui, -apple-system, sans-serif;
+  font-size: var(--fs-body); line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+body { position: relative; overflow-x: hidden; min-height: 100vh; }
+
+/* Aurora background — large, soft, subtle (not nightclub) */
+.aurora-field {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(1200px 800px at 10% 5%, rgba(124,58,255,0.45), transparent 60%),
+    radial-gradient(1100px 700px at 90% 15%, rgba(0,128,255,0.32), transparent 65%),
+    radial-gradient(1000px 900px at 85% 85%, rgba(255,20,147,0.26), transparent 65%),
+    radial-gradient(900px 700px at 15% 90%, rgba(0,224,198,0.22), transparent 60%),
+    radial-gradient(800px 600px at 50% 50%, rgba(255,0,204,0.18), transparent 70%);
+  filter: blur(8px);
+}
+.aurora-veil {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(7,7,20,0.08), rgba(7,7,20,0.18) 40%, rgba(7,7,20,0.42)),
+    radial-gradient(1600px 1000px at 50% 0%, transparent, rgba(7,7,20,0.35));
+}
+main, header, footer { position: relative; z-index: 1; }
+
+/* Layout */
+.wrap { width: min(1200px, 92vw); margin: 0 auto; }
+
+/* Topbar */
+.topbar { padding: 18px 0; position: sticky; top: 0; z-index: 20; }
+.topbar::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: -1;
+  background:
+    radial-gradient(400px 160px at 20% 50%, rgba(124,58,255,0.25), transparent 70%),
+    radial-gradient(400px 160px at 80% 50%, rgba(255,20,147,0.20), transparent 70%);
+}
+.topbar-pill {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; padding: 14px 22px;
+  background: rgba(7,7,20,0.82); border: 1px solid rgba(247,243,255,0.18);
+  border-radius: 18px; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+}
+.wordmark {
+  display: flex; align-items: center; gap: 14px;
+  font-weight: 700; font-size: 20px; letter-spacing: -0.01em;
+  color: var(--paper); text-decoration: none;
+}
+.wordmark-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--violet), var(--pink) 50%, var(--cyan));
+  box-shadow: 0 0 16px rgba(124,58,255,0.6);
+}
+.wordmark-sub {
+  font-weight: 400; font-size: 15px; color: var(--paper-dim);
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.topbar-nav { display: flex; gap: 26px; align-items: center; }
+.topbar-nav a {
+  color: var(--paper-dim); text-decoration: none;
+  font-size: 17px; font-weight: 500; transition: color .2s;
+}
+.topbar-nav a:hover, .topbar-nav a:focus { color: var(--paper); outline: none; }
+
+.topbar-phone {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 22px; color: #fff; font-weight: 700; font-size: 19px;
+  text-decoration: none; border-radius: var(--radius-pill);
+  letter-spacing: 0.01em; white-space: nowrap;
+  background: linear-gradient(135deg, var(--violet), var(--pink));
+  box-shadow: 0 6px 18px rgba(255,20,147,0.32);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.topbar-phone:hover, .topbar-phone:focus {
+  transform: translateY(-1px); outline: none;
+  box-shadow: 0 8px 22px rgba(255,20,147,0.44);
+}
+.topbar-phone-label {
+  font-size: 13px; font-weight: 500; opacity: 0.85;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+/* Hero */
+.hero { padding: 80px 0 100px; }
+.status-pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 18px; margin-bottom: 28px;
+  background: rgba(0,224,198,0.16); border: 1px solid rgba(0,224,198,0.45);
+  color: #a8ffee; font-size: 16px; font-weight: 600;
+  border-radius: var(--radius-pill); letter-spacing: 0.02em;
+}
+.status-pill::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--teal); box-shadow: 0 0 10px var(--teal);
+}
+.hero h1 {
+  font-family: 'Sora', sans-serif; font-size: clamp(42px, 6.5vw, 76px);
+  line-height: 1.05; font-weight: 700; letter-spacing: -0.025em;
+  margin: 0 0 28px; color: var(--paper); max-width: 18ch;
+}
+.hero h1 .grad {
+  background: linear-gradient(135deg, #c8b3ff, #ff8ed0 50%, #a8ffee);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-lead {
+  font-size: 22px; line-height: 1.55; color: var(--paper-dim);
+  max-width: 58ch; margin: 0 0 40px;
+}
+.cta-row { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 18px 32px; font-size: 19px; font-weight: 600; text-decoration: none;
+  border-radius: var(--radius-pill); border: none; cursor: pointer;
+  min-height: 56px; transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--violet), var(--pink));
+  color: #fff; box-shadow: 0 10px 28px rgba(124,58,255,0.4);
+}
+.btn-primary:hover, .btn-primary:focus {
+  transform: translateY(-2px); outline: none;
+  box-shadow: 0 14px 34px rgba(124,58,255,0.52);
+}
+.btn-secondary {
+  background: rgba(247,243,255,0.10); color: var(--paper);
+  border: 2px solid rgba(247,243,255,0.32);
+}
+.btn-secondary:hover, .btn-secondary:focus {
+  background: rgba(247,243,255,0.18); border-color: rgba(247,243,255,0.5); outline: none;
+}
+.hero-meta {
+  margin-top: 48px; display: flex; flex-wrap: wrap; gap: 36px;
+  color: var(--paper-dim); font-size: 17px;
+}
+.hero-meta strong { color: var(--paper); font-weight: 600; }
+
+/* Sections */
+section { padding: 90px 0; position: relative; }
+.section-eyebrow {
+  display: inline-block; font-size: 15px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #a8ffee; margin-bottom: 16px;
+}
+.section-eyebrow.violet { color: #c8b3ff; }
+.section-eyebrow.pink   { color: #ff8ed0; }
+h2.section-title {
+  font-family: 'Sora', sans-serif; font-size: clamp(32px, 4.2vw, 50px);
+  line-height: 1.12; font-weight: 700; letter-spacing: -0.02em;
+  margin: 0 0 24px; color: var(--paper); max-width: 22ch;
+}
+.section-intro {
+  font-size: 20px; color: var(--paper-dim);
+  max-width: 62ch; line-height: 1.55; margin: 0 0 56px;
+}
+
+/* Signs grid (3x2, cyan aurora border) */
+.signs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.sign-card {
+  padding: 32px 28px; background: var(--card-bg);
+  border: 1px solid var(--card-border); border-radius: var(--radius-card);
+  position: relative; overflow: hidden;
+  transition: border-color .25s, transform .25s;
+}
+.sign-card::before {
+  content: ""; position: absolute; inset: -1px;
+  border-radius: inherit; padding: 1px; opacity: 0.6; pointer-events: none;
+  background: linear-gradient(135deg, rgba(0,255,255,0.45), transparent 50%, rgba(124,58,255,0.32));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+}
+.sign-card:hover { border-color: var(--card-border-strong); transform: translateY(-2px); }
+.sign-number {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(0,255,255,0.14); border: 1px solid rgba(0,255,255,0.45);
+  color: #a8ffee; font-weight: 700; font-size: 18px; margin-bottom: 18px;
+}
+.sign-card h3 {
+  font-size: 21px; line-height: 1.35; font-weight: 600;
+  margin: 0 0 10px; color: var(--paper);
+}
+.sign-card p { font-size: 17px; line-height: 1.55; color: var(--paper-dim); margin: 0; }
+
+/* Appointment flow (4 steps) */
+.flow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.flow-step {
+  padding: 36px 28px; background: var(--card-bg);
+  border: 1px solid var(--card-border); border-radius: var(--radius-card);
+  position: relative;
+}
+.flow-circle {
+  width: 62px; height: 62px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; font-weight: 700; color: var(--paper); margin-bottom: 24px;
+  background: radial-gradient(circle at 30% 30%, rgba(124,58,255,0.85), rgba(255,20,147,0.6));
+  box-shadow: 0 0 24px rgba(124,58,255,0.45), inset 0 0 12px rgba(255,255,255,0.2);
+}
+.flow-step h3 { font-size: 21px; line-height: 1.3; margin: 0 0 12px; color: var(--paper); font-weight: 600; }
+.flow-step p { color: var(--paper-dim); margin: 0; font-size: 17px; line-height: 1.55; }
+.flow-note {
+  display: inline-block; margin-top: 14px; padding: 6px 14px;
+  background: rgba(0,224,198,0.14); border: 1px solid rgba(0,224,198,0.4);
+  color: #a8ffee; border-radius: var(--radius-pill);
+  font-size: 14px; font-weight: 600; letter-spacing: 0.02em;
+}
+
+/* Brands (magenta aurora border) */
+.brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+.brand-card {
+  padding: 34px 28px; background: var(--card-bg);
+  border: 1px solid var(--card-border); border-radius: var(--radius-card);
+  position: relative; overflow: hidden;
+  transition: transform .25s, border-color .25s;
+}
+.brand-card::after {
+  content: ""; position: absolute; inset: -1px;
+  border-radius: inherit; padding: 1px; opacity: 0.55; pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,0,204,0.45), transparent 40%, rgba(124,58,255,0.38));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+}
+.brand-card:hover { transform: translateY(-3px); border-color: var(--card-border-strong); }
+.brand-name {
+  font-size: 26px; font-weight: 700; letter-spacing: -0.015em;
+  margin: 0 0 14px; color: var(--paper);
+}
+.brand-card p { color: var(--paper-dim); margin: 0 0 14px; font-size: 17px; line-height: 1.55; }
+.brand-tag {
+  display: inline-block; font-size: 14px; padding: 5px 12px;
+  background: rgba(255,20,147,0.14); border: 1px solid rgba(255,20,147,0.4);
+  color: #ffc2e0; border-radius: var(--radius-pill);
+  font-weight: 600; margin-right: 8px; margin-top: 6px;
+}
+.brand-pricing {
+  margin-top: 48px; padding: 34px 32px;
+  background: rgba(124,58,255,0.12); border: 1px solid rgba(124,58,255,0.38);
+  border-radius: var(--radius-card);
+}
+.brand-pricing h3 { font-size: 22px; margin: 0 0 12px; color: var(--paper); font-weight: 600; }
+.brand-pricing p { font-size: 18px; line-height: 1.6; color: var(--paper); margin: 0 0 10px; }
+.brand-pricing p:last-child { margin-bottom: 0; color: var(--paper-dim); font-size: 17px; }
+.brand-pricing strong { color: #c8b3ff; font-weight: 600; }
+
+/* Services & fees */
+.fees-table {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: var(--radius-card); overflow: hidden;
+}
+.fees-row {
+  display: grid; grid-template-columns: 1.6fr 1fr; gap: 24px;
+  padding: 24px 28px; align-items: center;
+  border-bottom: 1px solid rgba(247,243,255,0.10);
+}
+.fees-row:last-child { border-bottom: none; }
+.fees-row:hover { background: rgba(247,243,255,0.04); }
+.fees-label { font-size: 19px; font-weight: 600; color: var(--paper); }
+.fees-label span {
+  display: block; font-weight: 400; font-size: 16px;
+  color: var(--paper-dim); margin-top: 4px;
+}
+.fees-price {
+  font-size: 22px; font-weight: 700; color: #c8b3ff;
+  text-align: right; letter-spacing: -0.01em;
+}
+.fees-note {
+  margin-top: 28px; padding: 22px 26px;
+  background: rgba(0,224,198,0.10); border: 1px solid rgba(0,224,198,0.32);
+  border-radius: 14px; color: var(--paper); font-size: 17px; line-height: 1.6;
+}
+.fees-note strong { color: #a8ffee; font-weight: 600; }
+
+/* Audiologist bio */
+.bio-wrap { display: grid; grid-template-columns: 320px 1fr; gap: 56px; align-items: start; }
+.bio-portrait {
+  aspect-ratio: 4 / 5; padding: 26px;
+  border: 1px solid var(--card-border-strong); border-radius: 22px;
+  display: flex; align-items: flex-end; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, rgba(124,58,255,0.3), rgba(255,20,147,0.25) 50%, rgba(0,224,198,0.2));
+}
+.bio-portrait::before {
+  content: ""; position: absolute; inset: 0; filter: blur(6px);
+  background:
+    radial-gradient(400px 300px at 30% 20%, rgba(124,58,255,0.5), transparent 70%),
+    radial-gradient(400px 300px at 80% 80%, rgba(255,0,204,0.35), transparent 70%);
+}
+.bio-portrait-name {
+  position: relative; font-family: 'Fraunces', serif;
+  font-size: 26px; color: var(--paper); font-weight: 500;
+  line-height: 1.2; letter-spacing: -0.01em;
+}
+.bio-portrait-name span {
+  display: block; font-family: 'Sora', sans-serif;
+  font-size: 15px; font-weight: 500; color: var(--paper-dim);
+  margin-top: 6px; letter-spacing: 0.03em;
+}
+.bio-text h2 { margin-bottom: 16px; }
+.bio-paragraph {
+  font-family: 'Fraunces', serif; font-size: 20px; line-height: 1.7;
+  color: var(--paper); margin: 0 0 22px; font-weight: 400;
+}
+.bio-paragraph:last-child { margin-bottom: 0; }
+.bio-creds { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.bio-cred {
+  padding: 8px 16px; background: rgba(124,58,255,0.14);
+  border: 1px solid rgba(124,58,255,0.38); color: #c8b3ff;
+  font-size: 15px; font-weight: 600;
+  border-radius: var(--radius-pill); letter-spacing: 0.01em;
+}
+
+/* Home visits & accessibility */
+.access-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.access-card {
+  padding: 34px 30px; background: var(--card-bg);
+  border: 1px solid var(--card-border); border-radius: var(--radius-card);
+  position: relative; overflow: hidden;
+}
+.access-card::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--violet), var(--pink), var(--cyan));
+  opacity: 0.7;
+}
+.access-card h3 {
+  font-size: 22px; font-weight: 600; margin: 0 0 14px;
+  color: var(--paper); line-height: 1.3;
+}
+.access-card p { color: var(--paper-dim); font-size: 17px; line-height: 1.6; margin: 0 0 12px; }
+.access-card p:last-child { margin-bottom: 0; }
+.access-card strong { color: var(--paper); font-weight: 600; }
+.access-card .price-note {
+  display: inline-block; margin-top: 8px; padding: 6px 14px;
+  background: rgba(247,243,255,0.10); border: 1px solid rgba(247,243,255,0.22);
+  color: var(--paper); font-size: 15px; font-weight: 600;
+  border-radius: var(--radius-pill);
+}
+
+/* Contact / book */
+.book-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.book-info h3 { font-size: 22px; font-weight: 600; color: var(--paper); margin: 0 0 18px; }
+.book-info p { color: var(--paper); font-size: 18px; line-height: 1.65; margin: 0 0 14px; }
+.book-info p:last-child { margin-bottom: 0; }
+.book-info a {
+  color: #a8ffee; text-decoration: underline;
+  text-underline-offset: 3px; font-weight: 600;
+}
+.book-info a:hover { color: var(--cyan); }
+.book-hours {
+  margin-top: 28px; padding: 24px 26px;
+  background: rgba(7,7,20,0.5); border: 1px solid var(--card-border);
+  border-radius: var(--radius-card);
+}
+.book-hours h4 {
+  font-size: 17px; font-weight: 600; color: var(--paper);
+  margin: 0 0 12px; letter-spacing: 0.03em; text-transform: uppercase;
+}
+.book-hours dl {
+  margin: 0; display: grid; grid-template-columns: auto 1fr;
+  gap: 8px 18px; font-size: 17px;
+}
+.book-hours dt { color: var(--paper-dim); font-weight: 500; }
+.book-hours dd { color: var(--paper); font-weight: 500; margin: 0; }
+.book-preferred {
+  margin-top: 22px; padding: 18px 22px;
+  background: rgba(124,58,255,0.14); border: 1px solid rgba(124,58,255,0.42);
+  border-radius: 14px; color: var(--paper); font-size: 17px; line-height: 1.55;
+}
+.book-preferred strong { color: #c8b3ff; font-weight: 600; }
+
+/* Form */
+.book-form {
+  padding: 36px 34px; background: var(--card-bg);
+  border: 1px solid var(--card-border-strong); border-radius: var(--radius-card);
+}
+.form-row { margin-bottom: 22px; }
+.form-row label {
+  display: block; font-size: 16px; font-weight: 600;
+  color: var(--paper); margin-bottom: 8px; letter-spacing: 0.01em;
+}
+.form-row input, .form-row textarea, .form-row select {
+  width: 100%; padding: 16px 18px;
+  background: rgba(7,7,20,0.55); border: 1px solid var(--card-border-strong);
+  border-radius: 12px; color: var(--paper);
+  font-size: 18px; font-family: inherit; min-height: 54px;
+}
+.form-row textarea { min-height: 120px; resize: vertical; }
+.form-row input:focus, .form-row textarea:focus, .form-row select:focus {
+  outline: none; border-color: rgba(124,58,255,0.65);
+  box-shadow: 0 0 0 3px rgba(124,58,255,0.25);
+}
+.form-submit { width: 100%; margin-top: 8px; }
+.form-note { font-size: 15px; color: var(--paper-dim); margin-top: 18px; line-height: 1.55; }
+
+/* Footer */
+footer {
+  padding: 60px 0 48px; border-top: 1px solid var(--card-border);
+  margin-top: 80px; position: relative; z-index: 1;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 44px; }
+.footer-brand .wordmark { margin-bottom: 14px; }
+.footer-brand p {
+  color: var(--paper-dim); font-size: 16px; line-height: 1.6;
+  margin: 0; max-width: 36ch;
+}
+.footer-col h4 {
+  font-size: 14px; font-weight: 600; color: var(--paper);
+  margin: 0 0 16px; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.footer-col a, .footer-col span {
+  display: block; color: var(--paper-dim);
+  font-size: 16px; text-decoration: none;
+  margin-bottom: 10px; transition: color .2s;
+}
+.footer-col a:hover { color: var(--paper); }
+.footer-badges {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  padding: 26px 0 22px; border-top: 1px solid var(--card-border);
+}
+.footer-badge {
+  padding: 8px 16px; background: rgba(247,243,255,0.06);
+  border: 1px solid var(--card-border); border-radius: var(--radius-pill);
+  font-size: 14px; color: var(--paper-dim); font-weight: 500; letter-spacing: 0.01em;
+}
+.footer-fine { font-size: 14px; color: var(--paper-mute); line-height: 1.6; max-width: 85ch; }
+.footer-fine a { color: var(--paper-dim); text-decoration: underline; text-underline-offset: 2px; }
+.footer-fine a:hover { color: var(--paper); }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .signs-grid { grid-template-columns: repeat(2, 1fr); }
+  .flow-grid { grid-template-columns: repeat(2, 1fr); }
+  .access-grid { grid-template-columns: 1fr; }
+  .bio-wrap { grid-template-columns: 1fr; }
+  .bio-portrait { max-width: 320px; }
+  .book-wrap { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  :root { --fs-body: 18px; }
+  .topbar-pill { flex-direction: column; gap: 14px; padding: 14px; }
+  .topbar-nav { order: 3; gap: 18px; flex-wrap: wrap; justify-content: center; }
+  .topbar-phone { width: 100%; justify-content: center; font-size: 20px; padding: 16px 22px; }
+  .hero { padding: 48px 0 64px; }
+  .hero h1 { font-size: clamp(36px, 9vw, 54px); }
+  .hero-lead { font-size: 19px; }
+  .cta-row { flex-direction: column; align-items: stretch; }
+  .btn { width: 100%; }
+  .signs-grid, .flow-grid { grid-template-columns: 1fr; }
+  section { padding: 64px 0; }
+  h2.section-title { font-size: clamp(28px, 7vw, 40px); }
+  .fees-row { grid-template-columns: 1fr; gap: 4px; padding: 20px; }
+  .fees-price { text-align: left; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .book-form { padding: 26px 22px; }
+}
+
+/* mobile-fit-safety */
+@media (max-width: 480px) {
+  html, body { font-size: 17px; }
+  img, svg, video { max-width: 100%; height: auto; }
+  table, pre { display: block; overflow-x: auto; }
+  .wrap { width: calc(100vw - 28px); }
+  * { max-width: 100%; }
+}
+
+/* A11y */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid #a8ffee; outline-offset: 2px;
+}
+</style>
+</head>
+<body>
+
+<div class="aurora-field" aria-hidden="true"></div>
+<div class="aurora-veil" aria-hidden="true"></div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="wrap">
+    <div class="topbar-pill">
+      <a href="#" class="wordmark" aria-label="Hear Clear Audiology home">
+        <span class="wordmark-dot" aria-hidden="true"></span>
+        <span>Hear Clear Audiology</span>
+        <span class="wordmark-sub">Maynooth</span>
+      </a>
+      <nav class="topbar-nav" aria-label="Primary">
+        <a href="#signs">Signs</a>
+        <a href="#expect">What to expect</a>
+        <a href="#aids">Hearing aids</a>
+        <a href="#fees">Fees</a>
+        <a href="#book">Book</a>
+      </nav>
+      <a class="topbar-phone" href="tel:+35315550624" aria-label="Call Hear Clear Audiology on 01 555 0624">
+        <span>
+          <span class="topbar-phone-label">Call us</span>
+          01 555 0624
+        </span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="status-pill">FREE hearing screening &mdash; 20 minutes</span>
+    <h1>Independent hearing care on <span class="grad">Main Street, Maynooth</span>.</h1>
+    <p class="hero-lead">
+      We test your hearing, explain what the results mean in plain English, and
+      only recommend a hearing aid if you actually need one. Free 20-minute
+      screening with no obligation. Full assessments from &euro;75.
+    </p>
+    <div class="cta-row">
+      <a href="#book" class="btn btn-primary">Book your hearing check</a>
+      <a href="tel:+35315550624" class="btn btn-secondary">or phone 01 555 0624</a>
+    </div>
+    <div class="hero-meta">
+      <div><strong>Open</strong> Mon&ndash;Fri, Saturday mornings</div>
+      <div><strong>HSE Treatment Benefit Scheme</strong> registered</div>
+      <div><strong>Home visits</strong> available</div>
+      <div><strong>Wheelchair accessible</strong></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SIGNS YOU NEED A TEST -->
+<section id="signs">
+  <div class="wrap">
+    <span class="section-eyebrow">Worth booking a test</span>
+    <h2 class="section-title">Signs you may need a hearing test.</h2>
+    <p class="section-intro">
+      Most hearing loss happens gradually, and the people around us notice it
+      before we do. If any of the six points below sound familiar, a free
+      20-minute screening will tell you where you stand.
+    </p>
+
+    <div class="signs-grid">
+      <div class="sign-card">
+        <div class="sign-number" aria-hidden="true">1</div>
+        <h3>You ask people to repeat themselves often</h3>
+        <p>Especially in busy rooms, on the phone, or when someone is speaking from behind you. If &ldquo;sorry, what did you say?&rdquo; has become a habit, it&rsquo;s worth checking.</p>
+      </div>
+      <div class="sign-card">
+        <div class="sign-number" aria-hidden="true">2</div>
+        <h3>The TV is too loud for others in the room</h3>
+        <p>Family or a partner regularly asks you to turn the volume down. You can hear the TV clearly, but they find it uncomfortable. That gap is a useful early indicator.</p>
+      </div>
+      <div class="sign-card">
+        <div class="sign-number" aria-hidden="true">3</div>
+        <h3>Ringing, buzzing, or hissing in the ears</h3>
+        <p>Tinnitus often accompanies hearing loss and is very treatable. If you hear a tone that isn&rsquo;t coming from outside, we can help you understand why and what to do about it.</p>
+      </div>
+      <div class="sign-card">
+        <div class="sign-number" aria-hidden="true">4</div>
+        <h3>Missing the start of sentences in meetings</h3>
+        <p>You catch the middle and the end but the first few words slip past. This is a classic pattern of high-frequency loss and is often the first thing patients mention at work.</p>
+      </div>
+      <div class="sign-card">
+        <div class="sign-number" aria-hidden="true">5</div>
+        <h3>Struggling to follow conversation in restaurants</h3>
+        <p>Background noise makes it hard to separate voices from clatter. If you dread dinners out or sit quietly while others chat, your hearing may be doing more work than it should.</p>
+      </div>
+      <div class="sign-card">
+        <div class="sign-number" aria-hidden="true">6</div>
+        <h3>Children or grandchildren sound mumbled</h3>
+        <p>Higher-pitched voices go first with age-related hearing loss. If adult voices are fine but small children and women&rsquo;s voices are harder to follow, that pattern is worth testing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- WHAT TO EXPECT -->
+<section id="expect">
+  <div class="wrap">
+    <span class="section-eyebrow violet">Your visit</span>
+    <h2 class="section-title">What to expect at your appointment.</h2>
+    <p class="section-intro">
+      We run on time, we explain every step, and we never pressure anyone into
+      buying a hearing aid. Here is what your visit will look like from the
+      moment you walk in.
+    </p>
+
+    <div class="flow-grid">
+      <div class="flow-step">
+        <div class="flow-circle" aria-hidden="true">1</div>
+        <h3>Arrival &amp; paperwork</h3>
+        <p>You&rsquo;ll be met at reception, offered tea or water, and asked to fill in a one-page medical history. Arrive ten minutes before your slot the first time.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle" aria-hidden="true">2</div>
+        <h3>Hearing screening</h3>
+        <p>A 20-minute screening with pure-tone audiometry. You listen through headphones and raise your hand when you hear each tone. Painless and straightforward.</p>
+        <span class="flow-note">Free &mdash; no obligation</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle" aria-hidden="true">3</div>
+        <h3>Full assessment if needed</h3>
+        <p>If the screening suggests hearing loss, we book a 45-minute full assessment. This includes speech-in-noise testing, tympanometry, and a plain-English explanation of the audiogram.</p>
+        <span class="flow-note">&euro;75 &mdash; one-time</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle" aria-hidden="true">4</div>
+        <h3>Treatment options &mdash; no pressure</h3>
+        <p>We walk through your options: wait-and-watch, lifestyle changes, or a hearing aid if clinically indicated. You take the information home. No same-day sales tactics, ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- HEARING AIDS -->
+<section id="aids">
+  <div class="wrap">
+    <span class="section-eyebrow pink">Brands we fit</span>
+    <h2 class="section-title">Hearing aids we fit.</h2>
+    <p class="section-intro">
+      We are independent, which means we fit five major manufacturers and
+      choose the right device for your hearing and your life &mdash; not the
+      one that pays us the most commission.
+    </p>
+
+    <div class="brands-grid">
+      <div class="brand-card">
+        <h3 class="brand-name">Oticon</h3>
+        <p>Danish manufacturer, strong performance in open listening environments. Our most-fitted brand for social, active patients who dine out or attend church regularly.</p>
+        <span class="brand-tag">Open-sound processing</span>
+        <span class="brand-tag">Rechargeable</span>
+      </div>
+      <div class="brand-card">
+        <h3 class="brand-name">Phonak</h3>
+        <p>Swiss manufacturer known for phone-call clarity via direct Bluetooth. A strong choice if you are still working, on calls, or spend time with grandchildren over video.</p>
+        <span class="brand-tag">Bluetooth calls</span>
+        <span class="brand-tag">Universal connectivity</span>
+      </div>
+      <div class="brand-card">
+        <h3 class="brand-name">Widex</h3>
+        <p>Also Danish, particularly good for patients who enjoy music or are sensitive to artificial-sounding amplification. Natural tone, gentle compression.</p>
+        <span class="brand-tag">Natural sound</span>
+        <span class="brand-tag">Music-friendly</span>
+      </div>
+      <div class="brand-card">
+        <h3 class="brand-name">Signia</h3>
+        <p>German engineering, strong in speech-in-noise situations. Good for patients whose main complaint is group conversation in cafes or restaurants.</p>
+        <span class="brand-tag">Speech focus</span>
+        <span class="brand-tag">Slim-fit models</span>
+      </div>
+      <div class="brand-card">
+        <h3 class="brand-name">Starkey</h3>
+        <p>American manufacturer with strong AI-based sound classification and fall detection. Popular with patients who live alone and value built-in health features.</p>
+        <span class="brand-tag">Fall detection</span>
+        <span class="brand-tag">AI classification</span>
+      </div>
+    </div>
+
+    <div class="brand-pricing">
+      <h3>Plain-English pricing.</h3>
+      <p><strong>From &euro;1,800 per ear</strong> for entry-level digital aids, <strong>up to &euro;3,400 per ear</strong> for premium AI-adjusted models. You pay per ear because most patients need two, but single-ear fittings are available if that&rsquo;s what your hearing test shows.</p>
+      <p>Most <strong>Irish Life Health</strong> and <strong>VHI</strong> policies cover &euro;760 per aid every four years. Bring your policy number and we process the claim for you &mdash; no paperwork on your side.</p>
+      <p>If you are on <strong>PRSI Class A, E, H, P or S</strong>, the HSE Treatment Benefit Scheme adds another &euro;500 per aid every four years. We check your entitlement at the assessment.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- SERVICES & FEES -->
+<section id="fees">
+  <div class="wrap">
+    <span class="section-eyebrow">Fees</span>
+    <h2 class="section-title">Services &amp; fees.</h2>
+    <p class="section-intro">
+      No hidden charges. The price you see is the price you pay, and we
+      tell you before any appointment whether it&rsquo;s billable or
+      covered by your benefit entitlement.
+    </p>
+
+    <div class="fees-table">
+      <div class="fees-row">
+        <div class="fees-label">Full hearing assessment<span>45 minutes, pure-tone + speech-in-noise + tympanometry</span></div>
+        <div class="fees-price">&euro;75</div>
+      </div>
+      <div class="fees-row">
+        <div class="fees-label">Tinnitus consultation<span>60 minutes, includes tinnitus matching and management plan</span></div>
+        <div class="fees-price">&euro;90</div>
+      </div>
+      <div class="fees-row">
+        <div class="fees-label">Earwax removal by microsuction<span>One ear / both ears &mdash; usually same-day</span></div>
+        <div class="fees-price">&euro;75 / &euro;120</div>
+      </div>
+      <div class="fees-row">
+        <div class="fees-label">Custom musicians&rsquo; earplugs<span>Moulded impressions taken in clinic, filters fitted to your use</span></div>
+        <div class="fees-price">&euro;185 / pair</div>
+      </div>
+      <div class="fees-row">
+        <div class="fees-label">Swimming plugs<span>Custom-moulded for watertight fit, suitable for children and adults</span></div>
+        <div class="fees-price">&euro;95 / pair</div>
+      </div>
+      <div class="fees-row">
+        <div class="fees-label">Cochlear implant rehabilitation (private)<span>Post-implant mapping and therapy sessions, 60 minutes each</span></div>
+        <div class="fees-price">from &euro;250</div>
+      </div>
+    </div>
+
+    <div class="fees-note">
+      <strong>Free 20-minute screening:</strong>
+      Every patient is entitled to one free screening to establish whether a
+      full assessment is needed. We will not charge for a screening that
+      turns out to be normal.
+    </div>
+  </div>
+</section>
+
+
+<!-- AUDIOLOGIST BIO -->
+<section id="team">
+  <div class="wrap">
+    <div class="bio-wrap">
+      <div class="bio-portrait" aria-hidden="true">
+        <div class="bio-portrait-name">
+          Dr. Maeve Fitzgerald
+          <span>Principal Audiologist</span>
+        </div>
+      </div>
+      <div class="bio-text">
+        <span class="section-eyebrow violet">Your audiologist</span>
+        <h2 class="section-title">Dr. Maeve Fitzgerald, PhD.</h2>
+        <p class="bio-paragraph">
+          Maeve qualified with a BSc in Audiology from University College
+          Cork in 2007 and completed her PhD at UCC in 2013, where her
+          thesis focused on paediatric hearing loss in rural Munster.
+          Before opening Hear Clear in Maynooth in 2017, she worked in
+          the audiology department at Temple Street Children&rsquo;s
+          Hospital and later in private practice in Galway.
+        </p>
+        <p class="bio-paragraph">
+          She is a full member of the Irish Society of Hearing Aid
+          Audiologists (MISHAA) and completes a minimum of thirty hours
+          of continuing education every year, usually split between the
+          British Society of Audiology conference and manufacturer-led
+          paediatric training. She particularly enjoys fitting
+          first-time hearing-aid patients and working with children on
+          the autism spectrum.
+        </p>
+        <p class="bio-paragraph">
+          Maeve lives in Kilcock with her husband and two daughters.
+          Outside the clinic she runs a monthly hearing-awareness talk
+          at Maynooth library (free, no booking needed, usually the
+          second Wednesday of each month). If you would prefer to meet
+          her informally before booking an appointment, that is a good
+          place to do so.
+        </p>
+        <div class="bio-creds">
+          <span class="bio-cred">BSc Audiology, UCC 2007</span>
+          <span class="bio-cred">PhD Audiology, UCC 2013</span>
+          <span class="bio-cred">MISHAA member</span>
+          <span class="bio-cred">Paediatric certified</span>
+          <span class="bio-cred">Cochlear implant rehab trained</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- HOME VISITS & ACCESSIBILITY -->
+<section id="access">
+  <div class="wrap">
+    <span class="section-eyebrow pink">We come to you</span>
+    <h2 class="section-title">Home visits &amp; accessibility.</h2>
+    <p class="section-intro">
+      Not everyone can easily travel to a clinic. We try to remove that
+      barrier wherever possible &mdash; by visiting you at home, or by
+      making sure the clinic itself is comfortable for every patient.
+    </p>
+
+    <div class="access-grid">
+      <div class="access-card">
+        <h3>Home hearing assessments</h3>
+        <p>Suitable for housebound patients, recent stroke or hip replacement recovery, or anyone for whom a clinic visit is impractical. Full portable audiometry equipment, same quality of assessment as in-clinic.</p>
+        <p>We cover all of <strong>Kildare, Meath, North Dublin and West Wicklow</strong> for home visits. Bookings usually available within 7 days.</p>
+        <span class="price-note">&euro;150 + &euro;0.50/km mileage from Maynooth</span>
+      </div>
+      <div class="access-card">
+        <h3>Wheelchair access at the clinic</h3>
+        <p>Level access at the Main Street entrance, no steps inside. Accessible WC on the ground floor. Our consult room doorway is <strong>92&thinsp;cm wide</strong> and accommodates most standard and powered wheelchairs.</p>
+        <p>Parking: two designated accessible spaces directly outside the clinic on Main Street (free with a disabled parking badge).</p>
+      </div>
+      <div class="access-card">
+        <h3>Hearing-loop-compatible consult rooms</h3>
+        <p>Both consult rooms have a <strong>T-coil induction loop</strong> fitted. If you already wear a hearing aid with a T-setting, you can use it during the consultation instead of relying on the room acoustics.</p>
+        <p>We also offer live captions on a tablet for patients who find speech-reading easier than relying on residual hearing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BOOK -->
+<section id="book">
+  <div class="wrap">
+    <span class="section-eyebrow">Book or ring us</span>
+    <h2 class="section-title">Book an appointment, or simply phone us.</h2>
+    <p class="section-intro">
+      Fill in the form below and we will come back to you within one
+      working day. If you would rather speak to a person, the phone
+      number is at the top of every page &mdash; we prefer that too.
+    </p>
+
+    <div class="book-wrap">
+      <div class="book-info">
+        <h3>Hear Clear Audiology</h3>
+        <p>47 Main Street,<br>Maynooth,<br>Co. Kildare, W23 VC27</p>
+        <p>
+          Phone: <a href="tel:+35315550624">01 555 0624</a><br>
+          Email: <a href="mailto:reception@hearclear.ie">reception@hearclear.ie</a>
+        </p>
+        <div class="book-hours">
+          <h4>Opening hours</h4>
+          <dl>
+            <dt>Mon &ndash; Thu</dt><dd>9:00 am &ndash; 5:30 pm</dd>
+            <dt>Friday</dt><dd>9:00 am &ndash; 4:00 pm</dd>
+            <dt>Saturday</dt><dd>10:00 am &ndash; 1:00 pm</dd>
+            <dt>Sunday</dt><dd>Closed</dd>
+          </dl>
+        </div>
+        <div class="book-preferred">
+          <strong>Preferred first contact:</strong>
+          phone during opening hours. We answer the phone ourselves (no
+          automated menus) and can usually book you in within the same week.
+        </div>
+      </div>
+
+      <form class="book-form" onsubmit="event.preventDefault(); alert('Demo form — in production this would submit to reception@hearclear.ie');">
+        <div class="form-row">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="form-row">
+          <label for="phone">Phone number</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="e.g. 087 123 4567" required>
+        </div>
+        <div class="form-row">
+          <label for="email">Email (optional)</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.ie">
+        </div>
+        <div class="form-row">
+          <label for="reason">What would you like help with?</label>
+          <select id="reason" name="reason">
+            <option>Free 20-minute screening</option>
+            <option>Full hearing assessment</option>
+            <option>Tinnitus consultation</option>
+            <option>Earwax removal</option>
+            <option>Hearing aid advice / follow-up</option>
+            <option>Home visit</option>
+            <option>Something else &mdash; I&rsquo;ll explain below</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="notes">Anything else we should know?</label>
+          <textarea id="notes" name="notes" placeholder="e.g. preferred times, mobility needs, which ear, etc."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">Send booking request</button>
+        <p class="form-note">
+          We reply within one working day. For urgent matters (sudden hearing
+          loss, severe vertigo, acute ear pain) please telephone us directly
+          or attend your GP.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="wordmark">
+          <span class="wordmark-dot" aria-hidden="true"></span>
+          <span>Hear Clear Audiology</span>
+        </a>
+        <p>Independent audiology clinic serving Maynooth, North Kildare and surrounding counties since 2017. Member of the Irish Society of Hearing Aid Audiologists.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Clinic</h4>
+        <a href="#signs">Signs of hearing loss</a>
+        <a href="#expect">What to expect</a>
+        <a href="#aids">Hearing aids</a>
+        <a href="#fees">Services &amp; fees</a>
+        <a href="#team">Our audiologist</a>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <span>47 Main Street</span>
+        <span>Maynooth</span>
+        <span>Co. Kildare, W23 VC27</span>
+        <a href="tel:+35315550624">01 555 0624</a>
+        <a href="mailto:reception@hearclear.ie">reception@hearclear.ie</a>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <a href="#access">Home visits</a>
+        <a href="#access">Accessibility</a>
+        <a href="#book">Book appointment</a>
+        <a href="#">Privacy policy</a>
+        <a href="#">Complaints procedure</a>
+      </div>
+    </div>
+
+    <div class="footer-badges">
+      <span class="footer-badge">ISHAA member</span>
+      <span class="footer-badge">HSE Treatment Benefit Scheme registered</span>
+      <span class="footer-badge">GDPR compliant</span>
+      <span class="footer-badge">T-coil loops fitted</span>
+      <span class="footer-badge">Wheelchair accessible</span>
+    </div>
+
+    <p class="footer-fine">
+      This website aims to meet WCAG 2.2 AA and, where possible, AAA contrast.
+      If any content on this site is hard for you to read or use, please tell
+      us on <a href="tel:+35315550624">01 555 0624</a> or
+      <a href="mailto:reception@hearclear.ie">reception@hearclear.ie</a> and we
+      will fix it. Hear Clear Audiology Ltd is registered in Ireland (company
+      number 612&thinsp;884). VAT IE3612884MH. All prices shown include VAT
+      where applicable.
+      <br><br>
+      &copy; 2017&ndash;2026 Hear Clear Audiology. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
