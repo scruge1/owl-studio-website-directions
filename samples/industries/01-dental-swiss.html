@@ -1,0 +1,1047 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rathborne Dental — General, cosmetic and implant dentistry · Ashtown, Dublin 15</title>
+<meta name="description" content="Rathborne Dental is a three-dentist practice in Rathborne Village, Ashtown, Dublin 15. Published fees, VHI/Laya/Irish Life accepted, Invisalign and implants. Accepting new patients." />
+<meta name="robots" content="index,follow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  /* --- tokens: ui-ux-pro-max Row 1, Minimalism / Swiss ------------------ */
+  :root {
+    --ink: #000000;
+    --paper: #ffffff;
+    --cream: #f5f1e8;
+    --grey: #808080;
+    --taupe: #b38b6d;
+    --rule: #000000;
+    --spacing: 2rem;
+    --radius: 0;
+    --display: "Fraunces", Georgia, "Times New Roman", serif;
+    --caps: "Archivo Black", "Arial Black", system-ui, sans-serif;
+    --mono: "JetBrains Mono", "Menlo", "Consolas", monospace;
+    --max: 1280px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.55;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--taupe); }
+
+  hr.rule {
+    border: 0;
+    border-top: 2px solid var(--ink);
+    margin: 0;
+  }
+  hr.rule--taupe {
+    border-top: 2px solid var(--taupe);
+    max-width: 96px;
+    margin: 0;
+  }
+  hr.rule--thin {
+    border-top: 1px solid var(--ink);
+    margin: 0;
+  }
+
+  .mono {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .mono--grey { color: var(--grey); }
+
+  .shell {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding-inline: var(--spacing);
+  }
+
+  /* --- topbar ---------------------------------------------------------- */
+  .topbar {
+    border-bottom: 1px solid var(--ink);
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .topbar__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-block: 14px;
+  }
+  .wordmark {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+  }
+  .wordmark em { font-style: italic; color: var(--taupe); }
+  .topbar__meta {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+  }
+  .topbar__phone {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .topbar__cta {
+    font-family: var(--caps);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    border: 1px solid var(--ink);
+  }
+  .topbar__cta:hover { background: var(--paper); color: var(--ink); }
+
+  /* --- hero ------------------------------------------------------------ */
+  .hero {
+    padding-block: clamp(3rem, 8vw, 7rem) clamp(2.5rem, 6vw, 5rem);
+    border-bottom: 2px solid var(--ink);
+  }
+  .hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 3rem;
+    align-items: end;
+  }
+  .hero__kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(48px, 9vw, 128px);
+    line-height: 0.94;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .hero__sub {
+    font-family: var(--display);
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.45;
+    color: var(--ink);
+    max-width: 42ch;
+    margin-top: 2rem;
+  }
+  .hero__aside {
+    padding-top: 1rem;
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    border: 1px solid var(--ink);
+    padding: 8px 14px;
+    background: var(--paper);
+  }
+  .status__dot {
+    width: 8px;
+    height: 8px;
+    background: var(--taupe);
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .hero__cta {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+  .btn {
+    font-family: var(--caps);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 26px;
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    display: inline-block;
+  }
+  .btn--solid { background: var(--ink); color: var(--paper); }
+  .btn--solid:hover { background: var(--taupe); border-color: var(--taupe); color: var(--paper); }
+  .btn--ghost { background: var(--paper); color: var(--ink); }
+  .btn--ghost:hover { background: var(--ink); color: var(--paper); }
+  .hero__rule { margin-top: 3rem; }
+
+  /* --- first visit strip ----------------------------------------------- */
+  .firstvisit {
+    padding-block: clamp(3rem, 6vw, 5rem);
+    border-bottom: 1px solid var(--ink);
+  }
+  .firstvisit__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+  .fv__col h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.15;
+    margin: 1rem 0 1rem;
+    letter-spacing: -0.01em;
+  }
+  .fv__col p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0 0 0.75em;
+  }
+  .fv__col .mono { display: block; margin-bottom: 0.5rem; }
+
+  /* --- services -------------------------------------------------------- */
+  .services {
+    padding-block: clamp(3.5rem, 7vw, 6rem);
+    border-bottom: 2px solid var(--ink);
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 3rem;
+    margin-bottom: 3.5rem;
+    align-items: end;
+  }
+  .section-head__label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .section-head h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(36px, 4.2vw, 60px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .section-head h2 em { font-style: italic; }
+
+  .service {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr) 260px;
+    gap: 3rem;
+    padding-block: 2.25rem;
+    border-top: 1px solid var(--ink);
+    align-items: start;
+  }
+  .service:last-of-type { border-bottom: 1px solid var(--ink); }
+  .service__num {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+  }
+  .service__num span { color: var(--grey); display: block; margin-top: 4px; text-transform: uppercase; font-weight: 400; }
+  .service__body h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(26px, 2.4vw, 34px);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.9rem;
+  }
+  .service__body h3 em { font-style: italic; }
+  .service__body p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 0 0.8em;
+    max-width: 54ch;
+  }
+  .service__fees {
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--ink);
+  }
+  .fee {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 6px;
+    position: relative;
+    padding-block: 2px;
+  }
+  .fee__label {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .fee__label::after {
+    content: " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .";
+    color: var(--grey);
+    margin-left: 6px;
+  }
+  .fee__value {
+    font-weight: 500;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  /* --- team ------------------------------------------------------------ */
+  .team {
+    padding-block: clamp(3.5rem, 7vw, 6rem);
+    background: var(--cream);
+    border-bottom: 2px solid var(--ink);
+  }
+  .team__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+  .bio {
+    border-top: 1px solid var(--ink);
+    padding-top: 1.5rem;
+  }
+  .bio__mark {
+    width: 96px;
+    height: 96px;
+    border: 1px solid var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    background: var(--paper);
+  }
+  .bio__mark svg { display: block; }
+  .bio h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.15;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+  .bio__cred {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--grey);
+    margin-bottom: 1.1rem;
+    line-height: 1.55;
+  }
+  .bio p {
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin: 0 0 0.75em;
+  }
+  .bio__interest {
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  /* --- testimonials ---------------------------------------------------- */
+  .voices {
+    padding-block: clamp(4rem, 8vw, 7rem);
+    background: var(--cream);
+    border-bottom: 2px solid var(--ink);
+  }
+  .voices__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.5rem;
+    margin-top: 3rem;
+  }
+  .quote blockquote {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(22px, 2vw, 28px);
+    line-height: 1.3;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.005em;
+  }
+  .quote blockquote::before { content: "\201C"; margin-right: 2px; }
+  .quote blockquote::after { content: "\201D"; }
+  .quote cite {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-style: normal;
+    color: var(--grey);
+    display: block;
+    padding-top: 1rem;
+    border-top: 1px solid var(--ink);
+  }
+
+  /* --- fees ------------------------------------------------------------ */
+  .fees {
+    padding-block: clamp(3.5rem, 7vw, 6rem);
+    border-bottom: 2px solid var(--ink);
+  }
+  .fees__note {
+    font-size: 15px;
+    color: var(--grey);
+    max-width: 60ch;
+    margin: 0 0 3rem;
+  }
+  .fees__group {
+    margin-bottom: 2.5rem;
+  }
+  .fees__group h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 22px;
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .fees__list {
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 2;
+  }
+
+  /* --- hours + location ------------------------------------------------ */
+  .hours {
+    padding-block: clamp(3.5rem, 7vw, 6rem);
+    border-bottom: 2px solid var(--ink);
+  }
+  .hours__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  .hours__table {
+    font-family: var(--mono);
+    font-size: 13px;
+    border-top: 1px solid var(--ink);
+  }
+  .hours__row {
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    padding-block: 12px;
+    border-bottom: 1px solid var(--ink);
+    align-items: baseline;
+  }
+  .hours__row--closed { color: var(--grey); }
+  .hours__day { letter-spacing: 0.08em; text-transform: uppercase; }
+  .hours__note { color: var(--grey); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .hours__time { font-weight: 500; }
+
+  .addr p { margin: 0 0 0.5em; line-height: 1.5; }
+  .addr__street { font-family: var(--display); font-size: 18px; }
+  .addr__eircode { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; color: var(--grey); display: block; margin-top: 0.25rem; }
+
+  .mapcard {
+    margin-top: 2rem;
+    border: 1px solid var(--ink);
+    background: var(--cream);
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+  }
+  .mapcard__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(0,0,0,0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .mapcard__street {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 62%;
+    height: 2px;
+    background: var(--ink);
+  }
+  .mapcard__street--2 {
+    top: auto;
+    bottom: 26%;
+    left: 18%;
+    right: 0;
+    height: 1px;
+    background: var(--ink);
+    opacity: 0.5;
+  }
+  .mapcard__marker {
+    position: absolute;
+    left: 42%;
+    top: 54%;
+    width: 14px;
+    height: 14px;
+    background: var(--taupe);
+    border: 2px solid var(--ink);
+    transform: translate(-50%, -50%);
+  }
+  .mapcard__tag {
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    padding: 6px 10px;
+  }
+  .mapcard__scale {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  /* --- book strip ------------------------------------------------------ */
+  .book {
+    padding-block: clamp(4rem, 8vw, 7rem);
+    background: var(--ink);
+    color: var(--paper);
+    border-bottom: 2px solid var(--ink);
+  }
+  .book .section-head__label,
+  .book .hero__kicker { color: #bbb; }
+  .book h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0 0 2rem;
+    max-width: 18ch;
+  }
+  .book h2 em { font-style: italic; color: var(--taupe); }
+  .book p { max-width: 50ch; font-size: 17px; line-height: 1.55; color: #ddd; margin: 0 0 2rem; }
+  .book .btn--ghost { background: transparent; color: var(--paper); border-color: var(--paper); }
+  .book .btn--ghost:hover { background: var(--paper); color: var(--ink); }
+  .book .btn--solid { background: var(--taupe); border-color: var(--taupe); color: var(--ink); }
+  .book .btn--solid:hover { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+
+  /* --- footer ---------------------------------------------------------- */
+  .foot {
+    padding-block: clamp(3rem, 5vw, 4rem);
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.7;
+    letter-spacing: 0.04em;
+  }
+  .foot__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  .foot h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin: 0 0 1rem;
+    font-weight: 500;
+  }
+  .foot a { display: block; padding-block: 3px; text-decoration: none; }
+  .foot a:hover { color: var(--taupe); }
+  .foot__bottom {
+    border-top: 1px solid var(--ink);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    color: var(--grey);
+  }
+  .foot__reg {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  /* --- responsive ------------------------------------------------------ */
+  @media (max-width: 980px) {
+    .hero__grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero__aside { padding-top: 0; }
+    .firstvisit__grid { grid-template-columns: 1fr; gap: 2rem; }
+    .section-head { grid-template-columns: 1fr; gap: 1rem; }
+    .service { grid-template-columns: 1fr; gap: 1.25rem; padding-block: 1.75rem; }
+    .service__fees { border-top: 1px dashed var(--ink); padding-top: 1rem; }
+    .team__grid, .voices__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hours__grid { grid-template-columns: 1fr; gap: 2rem; }
+    .foot__grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .topbar__row { flex-wrap: wrap; gap: 12px; }
+    .topbar__meta { gap: 12px; width: 100%; justify-content: space-between; }
+    .foot__grid { grid-template-columns: 1fr; }
+    .hours__row { grid-template-columns: 100px 1fr auto; font-size: 12px; }
+  }
+</style>
+
+<!-- mobile-fit-safety -->
+<style>
+html { overflow-x: hidden; }
+body { max-width: 100vw; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+* { min-width: 0; }
+img, video, iframe, svg, canvas { max-width: 100%; height: auto; display: block; }
+@media (max-width: 640px) {
+  [class*="grid"], [class*="cols"], [class*="row"], [class*="columns"] {
+    grid-template-columns: 1fr !important;
+    flex-direction: column !important;
+  }
+  [class*="container"] { max-width: 100% !important; padding-inline: 16px !important; }
+  section, header, main, footer, article, aside, nav {
+    max-width: 100% !important;
+    padding-inline: clamp(12px, 4vw, 24px) !important;
+  }
+  h1 { font-size: clamp(30px, 8vw, 44px) !important; line-height: 1.05 !important; }
+  h2 { font-size: clamp(24px, 6vw, 34px) !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ TOPBAR -->
+<header class="topbar">
+  <div class="shell topbar__row">
+    <a href="#" class="wordmark">Rathborne <em>Dental</em></a>
+    <div class="topbar__meta">
+      <a class="topbar__phone" href="tel:+35315550148">01 555 0148</a>
+      <a class="topbar__cta" href="#book">Book an appointment</a>
+    </div>
+  </div>
+</header>
+
+<!-- =============================================================== HERO -->
+<section class="hero">
+  <div class="shell">
+    <div class="hero__kicker">
+      <span>Rathborne Village · Ashtown · Dublin 15</span>
+      <span>Est. 2014 · Issue no. 12</span>
+    </div>
+
+    <div class="hero__grid">
+      <div>
+        <h1>Careful dentistry,<br />quietly <em>practised</em>.</h1>
+        <p class="hero__sub">General, cosmetic and implant dentistry in Ashtown, Dublin 15. Three dentists, one hygiene team, published fees, and a waiting room that isn&rsquo;t trying to sell you anything.</p>
+
+        <div class="hero__cta">
+          <a class="btn btn--solid" href="#book">Book first appointment</a>
+          <a class="btn btn--ghost" href="tel:+35315550148">Call the practice</a>
+        </div>
+
+        <hr class="rule rule--taupe hero__rule" />
+      </div>
+
+      <aside class="hero__aside">
+        <span class="status"><span class="status__dot" aria-hidden="true"></span>Accepting new patients &middot; next available Tue 29 Apr 2026</span>
+        <p class="mono mono--grey" style="margin-top:1.25rem; line-height:1.8;">
+          Mon&ndash;Fri 08:30&ndash;17:30<br />
+          Sat 09:00&ndash;13:00<br />
+          Emergency triage by phone, same day
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================== FIRST VISIT ---- -->
+<section class="firstvisit">
+  <div class="shell">
+    <div class="firstvisit__grid">
+      <div class="fv__col">
+        <span class="mono mono--grey">01 &middot; What to expect</span>
+        <h3>Forty minutes, no upsell.</h3>
+        <p>A new&ndash;patient exam covers a full soft&ndash;tissue check, two bitewing X&ndash;rays, a written treatment plan and, if nothing pressing is found, a hygiene appointment booked on the way out. You will leave with a printed plan and a cost for every line item on it.</p>
+      </div>
+      <div class="fv__col">
+        <span class="mono mono--grey">02 &middot; Fees &amp; insurance</span>
+        <h3>We publish every price.</h3>
+        <p>We accept VHI, Laya Healthcare and Irish Life Health direct claims, and we complete PRSI Treatment Benefit forms at reception. Card payments over the counter. No dental finance, no &ldquo;smile makeover&rdquo; packages.</p>
+      </div>
+      <div class="fv__col">
+        <span class="mono mono--grey">03 &middot; What to bring</span>
+        <h3>Three things, that&rsquo;s it.</h3>
+        <p>Your PPS number if you want us to claim your PRSI exam. Your insurance membership number if you have one. And the name and dose of any medication you take &mdash; we ask because bisphosphonates and anticoagulants change how we treat you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================= SERVICES -->
+<section class="services" id="services">
+  <div class="shell">
+    <div class="section-head">
+      <span class="section-head__label">&sect; Services offered</span>
+      <h2>Six things we do <em>well</em>, nothing we don&rsquo;t.</h2>
+    </div>
+
+    <article class="service">
+      <div class="service__num">01<span>General</span></div>
+      <div class="service__body">
+        <h3>Examinations, hygiene &amp; <em>everyday</em> fillings.</h3>
+        <p>The long tail of dental work: six&ndash;monthly checks, scale and polish with the hygienist, composite fillings, crowns on molars that have seen better decades. The dentistry you hope you only need.</p>
+      </div>
+      <div class="service__fees">
+        <div class="fee"><span class="fee__label">Exam &amp; two X&ndash;rays</span><span class="fee__value">from &euro;60</span></div>
+        <div class="fee"><span class="fee__label">Hygienist (45 min)</span><span class="fee__value">from &euro;95</span></div>
+        <div class="fee"><span class="fee__label">Composite filling</span><span class="fee__value">from &euro;140</span></div>
+        <div class="fee"><span class="fee__label">Porcelain crown</span><span class="fee__value">from &euro;850</span></div>
+      </div>
+    </article>
+
+    <article class="service">
+      <div class="service__num">02<span>Cosmetic</span></div>
+      <div class="service__body">
+        <h3>Bonding, whitening and veneers &mdash; <em>conservatively</em>.</h3>
+        <p>We prefer composite bonding to veneers where the tooth allows it: less drilling, reversible, a fraction of the price. When porcelain is right, we work with a small ceramist in Dublin who shapes each unit by hand.</p>
+      </div>
+      <div class="service__fees">
+        <div class="fee"><span class="fee__label">Composite bonding</span><span class="fee__value">from &euro;180/tooth</span></div>
+        <div class="fee"><span class="fee__label">In&ndash;chair whitening</span><span class="fee__value">&euro;395</span></div>
+        <div class="fee"><span class="fee__label">Take&ndash;home whitening</span><span class="fee__value">&euro;220</span></div>
+        <div class="fee"><span class="fee__label">Porcelain veneer</span><span class="fee__value">from &euro;850/tooth</span></div>
+      </div>
+    </article>
+
+    <article class="service">
+      <div class="service__num">03<span>Invisalign</span></div>
+      <div class="service__body">
+        <h3>Clear aligners, fitted by <em>Dr.&nbsp;Whelan</em>.</h3>
+        <p>Dr. Conor Whelan is a Platinum Invisalign provider with 400+ finished cases. Initial iTero scan and planning are included in the treatment fee. We quote the total on consultation &mdash; no &ldquo;from&rdquo; price that quietly doubles.</p>
+      </div>
+      <div class="service__fees">
+        <div class="fee"><span class="fee__label">Invisalign consultation</span><span class="fee__value">&euro;75</span></div>
+        <div class="fee"><span class="fee__label">Invisalign i7 (limited)</span><span class="fee__value">from &euro;2,200</span></div>
+        <div class="fee"><span class="fee__label">Invisalign full</span><span class="fee__value">from &euro;3,500</span></div>
+        <div class="fee"><span class="fee__label">Fixed retainer (per arch)</span><span class="fee__value">&euro;150</span></div>
+      </div>
+    </article>
+
+    <article class="service">
+      <div class="service__num">04<span>Implants</span></div>
+      <div class="service__body">
+        <h3>Single teeth, bridges, full&ndash;arch <em>rehabilitation</em>.</h3>
+        <p>Dr. Aoife N&iacute; Dh&aacute;laigh places all our implants, using Straumann and Neodent systems. Every case starts with a CBCT scan on&ndash;site. Healing time of three to four months is built into the plan and the price &mdash; no surprise add&ndash;ons at the restorative stage.</p>
+      </div>
+      <div class="service__fees">
+        <div class="fee"><span class="fee__label">Implant consultation &amp; CBCT</span><span class="fee__value">&euro;175</span></div>
+        <div class="fee"><span class="fee__label">Single implant + crown</span><span class="fee__value">from &euro;2,400</span></div>
+        <div class="fee"><span class="fee__label">Implant&ndash;retained bridge</span><span class="fee__value">quoted</span></div>
+        <div class="fee"><span class="fee__label">Bone graft (if required)</span><span class="fee__value">from &euro;450</span></div>
+      </div>
+    </article>
+
+    <article class="service">
+      <div class="service__num">05<span>Emergency</span></div>
+      <div class="service__body">
+        <h3>Same&ndash;day triage for <em>acute</em> pain.</h3>
+        <p>Call before 10am on a weekday and we will see you that day, usually within three hours. The triage visit gets you out of pain and into a plan &mdash; definitive treatment may be booked for a longer appointment later in the week.</p>
+      </div>
+      <div class="service__fees">
+        <div class="fee"><span class="fee__label">Emergency triage (30 min)</span><span class="fee__value">&euro;95</span></div>
+        <div class="fee"><span class="fee__label">Temporary filling / dressing</span><span class="fee__value">included</span></div>
+        <div class="fee"><span class="fee__label">Extraction (simple)</span><span class="fee__value">from &euro;165</span></div>
+        <div class="fee"><span class="fee__label">Root canal (molar)</span><span class="fee__value">from &euro;650</span></div>
+      </div>
+    </article>
+
+    <article class="service">
+      <div class="service__num">06<span>Children</span></div>
+      <div class="service__body">
+        <h3>First visits from age two, without the <em>sticker</em> theatre.</h3>
+        <p>Dr. Priya Raghavan sees the children of the practice. PRSI&ndash;covered checkups are free for eligible children under the scheme. We don&rsquo;t use bribery, we don&rsquo;t stage the appointment with props &mdash; we let children sit in the chair, ask questions, and leave whenever they like on the first visit.</p>
+      </div>
+      <div class="service__fees">
+        <div class="fee"><span class="fee__label">PRSI child checkup</span><span class="fee__value">free (if eligible)</span></div>
+        <div class="fee"><span class="fee__label">Private child checkup</span><span class="fee__value">&euro;45</span></div>
+        <div class="fee"><span class="fee__label">Fissure sealant (per tooth)</span><span class="fee__value">&euro;45</span></div>
+        <div class="fee"><span class="fee__label">Paediatric filling</span><span class="fee__value">from &euro;85</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================== TEAM -->
+<section class="team" id="team">
+  <div class="shell">
+    <div class="section-head">
+      <span class="section-head__label">&sect; The practice</span>
+      <h2>Three dentists. No <em>associates</em> passing through.</h2>
+    </div>
+
+    <div class="team__grid">
+      <article class="bio">
+        <div class="bio__mark" aria-hidden="true">
+          <svg width="64" height="64" viewBox="0 0 64 64">
+            <text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="34" fill="#000">A</text>
+          </svg>
+        </div>
+        <h3>Dr. Aoife N&iacute; Dh&aacute;laigh</h3>
+        <p class="bio__cred">BDS (NUI) &middot; MFDS RCSI &middot; qualified 2009 &middot; principal</p>
+        <p>Aoife opened Rathborne Dental in 2014 after seven years in practices in Galway and south Dublin. She places every implant in the practice and leads on full&ndash;mouth rehabilitation cases.</p>
+        <p class="bio__interest">&sect; implantology &middot; full&ndash;mouth rehabilitation</p>
+      </article>
+
+      <article class="bio">
+        <div class="bio__mark" aria-hidden="true">
+          <svg width="64" height="64" viewBox="0 0 64 64">
+            <text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="34" fill="#000">C</text>
+          </svg>
+        </div>
+        <h3>Dr. Conor Whelan</h3>
+        <p class="bio__cred">BDentSc (TCD) &middot; qualified 2015 &middot; Invisalign Platinum</p>
+        <p>Conor finished his training in the Dublin Dental University Hospital and joined the practice in 2019. He runs our orthodontics clinic and looks after the anxious patients referred over from his Trinity days.</p>
+        <p class="bio__interest">&sect; Invisalign &middot; clear aligner orthodontics</p>
+      </article>
+
+      <article class="bio">
+        <div class="bio__mark" aria-hidden="true">
+          <svg width="64" height="64" viewBox="0 0 64 64">
+            <text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="34" fill="#000">P</text>
+          </svg>
+        </div>
+        <h3>Dr. Priya Raghavan</h3>
+        <p class="bio__cred">BDS (UCC) &middot; MClinDent RCSI &middot; qualified 2018</p>
+        <p>Priya trained in Cork and completed a master&rsquo;s in paediatric dentistry at the Royal College of Surgeons in Ireland. She sees most of the children registered with the practice and all of our nervous adult patients.</p>
+        <p class="bio__interest">&sect; children&rsquo;s dentistry &middot; nervous patients</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= TESTIMONIALS -->
+<section class="voices">
+  <div class="shell">
+    <div class="section-head">
+      <span class="section-head__label">&sect; What patients say</span>
+      <h2>Three voices, <em>verbatim</em>.</h2>
+    </div>
+
+    <div class="voices__grid">
+      <figure class="quote">
+        <blockquote>Aoife rebuilt three molars I&rsquo;d been hiding for a decade. She quoted the whole thing on the first visit, to the euro, and it didn&rsquo;t move.</blockquote>
+        <cite>Niamh &middot; Castleknock</cite>
+      </figure>
+      <figure class="quote">
+        <blockquote>My son is six and genuinely asks when the next appointment is. That was not my experience of going to the dentist as a child.</blockquote>
+        <cite>Dermot &middot; Ashtown</cite>
+      </figure>
+      <figure class="quote">
+        <blockquote>Conor talked me out of veneers and into bonding. A third of the price, reversible, done in an afternoon. I wish more dentists worked that way.</blockquote>
+        <cite>Sarah &middot; Phibsborough</cite>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== FEES -->
+<section class="fees" id="fees">
+  <div class="shell">
+    <div class="section-head">
+      <span class="section-head__label">&sect; Complete price list</span>
+      <h2>Published fees, <em>updated</em> 01 Jan 2026.</h2>
+    </div>
+
+    <p class="fees__note">The prices below are what you will be charged at reception. Insurance reimbursement, where applicable, is paid back to you or claimed directly by us &mdash; we will tell you which at the treatment&ndash;planning stage. Complex cases are always quoted individually before work begins.</p>
+
+    <div class="fees__group">
+      <h3>General</h3>
+      <div class="fees__list">
+        <div class="fee"><span class="fee__label">New&ndash;patient exam &amp; two X&ndash;rays</span><span class="fee__value">&euro;60</span></div>
+        <div class="fee"><span class="fee__label">Recall exam (existing patient)</span><span class="fee__value">&euro;45</span></div>
+        <div class="fee"><span class="fee__label">Hygienist appointment (45 min)</span><span class="fee__value">&euro;95</span></div>
+        <div class="fee"><span class="fee__label">Composite filling (one surface)</span><span class="fee__value">&euro;140</span></div>
+        <div class="fee"><span class="fee__label">Composite filling (two surfaces)</span><span class="fee__value">&euro;175</span></div>
+        <div class="fee"><span class="fee__label">Porcelain crown</span><span class="fee__value">&euro;850</span></div>
+        <div class="fee"><span class="fee__label">Extraction (simple)</span><span class="fee__value">&euro;165</span></div>
+      </div>
+    </div>
+
+    <div class="fees__group">
+      <h3>Cosmetic &amp; orthodontics</h3>
+      <div class="fees__list">
+        <div class="fee"><span class="fee__label">Composite bonding (per tooth)</span><span class="fee__value">&euro;180</span></div>
+        <div class="fee"><span class="fee__label">In&ndash;chair whitening (single visit)</span><span class="fee__value">&euro;395</span></div>
+        <div class="fee"><span class="fee__label">Take&ndash;home whitening</span><span class="fee__value">&euro;220</span></div>
+        <div class="fee"><span class="fee__label">Porcelain veneer (per tooth)</span><span class="fee__value">&euro;850</span></div>
+        <div class="fee"><span class="fee__label">Invisalign i7 (limited)</span><span class="fee__value">&euro;2,200</span></div>
+        <div class="fee"><span class="fee__label">Invisalign full treatment</span><span class="fee__value">&euro;3,500</span></div>
+      </div>
+    </div>
+
+    <div class="fees__group">
+      <h3>Implants &amp; restorative</h3>
+      <div class="fees__list">
+        <div class="fee"><span class="fee__label">Consultation + CBCT scan</span><span class="fee__value">&euro;175</span></div>
+        <div class="fee"><span class="fee__label">Single implant + porcelain crown</span><span class="fee__value">&euro;2,400</span></div>
+        <div class="fee"><span class="fee__label">Bone graft (site dependent)</span><span class="fee__value">from &euro;450</span></div>
+        <div class="fee"><span class="fee__label">Root canal treatment (molar)</span><span class="fee__value">&euro;650</span></div>
+        <div class="fee"><span class="fee__label">Night guard (hard, custom)</span><span class="fee__value">&euro;240</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================= HOURS + LOCATION -->
+<section class="hours" id="visit">
+  <div class="shell">
+    <div class="section-head">
+      <span class="section-head__label">&sect; Hours &amp; location</span>
+      <h2>Ten minutes&rsquo; walk from <em>Ashtown</em> station.</h2>
+    </div>
+
+    <div class="hours__grid">
+      <div>
+        <div class="hours__table">
+          <div class="hours__row"><span class="hours__day">Mon</span><span class="hours__note">General &amp; implant</span><span class="hours__time">08:30 &mdash; 17:30</span></div>
+          <div class="hours__row"><span class="hours__day">Tue</span><span class="hours__note">General &amp; Invisalign</span><span class="hours__time">08:30 &mdash; 17:30</span></div>
+          <div class="hours__row"><span class="hours__day">Wed</span><span class="hours__note">Hygiene &amp; paediatric</span><span class="hours__time">08:30 &mdash; 17:30</span></div>
+          <div class="hours__row"><span class="hours__day">Thu</span><span class="hours__note">Late night &middot; last apt 19:30</span><span class="hours__time">10:00 &mdash; 20:00</span></div>
+          <div class="hours__row"><span class="hours__day">Fri</span><span class="hours__note">General &amp; emergency</span><span class="hours__time">08:30 &mdash; 17:30</span></div>
+          <div class="hours__row"><span class="hours__day">Sat</span><span class="hours__note">Hygiene only</span><span class="hours__time">09:00 &mdash; 13:00</span></div>
+          <div class="hours__row hours__row--closed"><span class="hours__day">Sun</span><span class="hours__note">Emergency line</span><span class="hours__time">Closed</span></div>
+        </div>
+        <p class="mono mono--grey" style="margin-top:1.5rem;">Bank holidays &mdash; closed. For pain outside hours, leave a voicemail and we will call back by 08:30.</p>
+      </div>
+
+      <div class="addr">
+        <p class="addr__street">Rathborne Dental</p>
+        <p>Unit 4, Rathborne Village<br />Ashtown, Dublin 15<br /><span class="addr__eircode">D15 P2C3</span></p>
+        <p style="margin-top:1.25rem;"><a href="tel:+35315550148">01 555 0148</a><br /><a href="mailto:hello@rathbornedental.ie">hello@rathbornedental.ie</a></p>
+
+        <div class="mapcard" aria-label="Stylised map of practice location in Rathborne Village, Ashtown">
+          <div class="mapcard__grid"></div>
+          <div class="mapcard__street"></div>
+          <div class="mapcard__street mapcard__street--2"></div>
+          <div class="mapcard__tag">Rathborne Village</div>
+          <div class="mapcard__marker"></div>
+          <div class="mapcard__scale">N &middot; 50m</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== BOOK -->
+<section class="book" id="book">
+  <div class="shell">
+    <div class="hero__kicker"><span>&sect; Book an appointment</span><span>Response within one working day</span></div>
+    <h2>Pick a time that <em>suits</em> you.</h2>
+    <p>Call reception, email, or walk in if you&rsquo;re local. We keep emergency slots open every weekday morning and we will tell you honestly if we&rsquo;re not the right practice for what you need.</p>
+    <div class="hero__cta">
+      <a class="btn btn--solid" href="tel:+35315550148">Call 01 555 0148</a>
+      <a class="btn btn--ghost" href="mailto:hello@rathbornedental.ie?subject=New%20patient%20enquiry">Email the practice</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER -->
+<footer class="foot">
+  <div class="shell">
+    <div class="foot__grid">
+      <div>
+        <h4>Rathborne Dental</h4>
+        <p style="margin:0 0 0.75em;">Unit 4, Rathborne Village<br />Ashtown, Dublin 15, D15 P2C3</p>
+        <p style="margin:0;"><a href="tel:+35315550148">01 555 0148</a><br /><a href="mailto:hello@rathbornedental.ie">hello@rathbornedental.ie</a></p>
+      </div>
+      <div>
+        <h4>Practice</h4>
+        <a href="#services">Services</a>
+        <a href="#team">Dentists</a>
+        <a href="#fees">Fees</a>
+        <a href="#visit">Hours &amp; location</a>
+        <a href="#book">Book</a>
+      </div>
+      <div>
+        <h4>Insurance</h4>
+        <a href="#fees">VHI</a>
+        <a href="#fees">Laya Healthcare</a>
+        <a href="#fees">Irish Life Health</a>
+        <a href="#fees">PRSI Treatment Benefit</a>
+      </div>
+      <div>
+        <h4>Policies</h4>
+        <a href="#">Patient privacy notice</a>
+        <a href="#">Practice complaints policy (PDF)</a>
+        <a href="#">Cancellation &amp; fees policy</a>
+        <a href="#">Cookie settings</a>
+      </div>
+    </div>
+
+    <hr class="rule rule--thin" />
+
+    <div class="foot__bottom">
+      <div>
+        <span class="foot__reg">Dental Council of Ireland &middot; Reg. No. DC&ndash;12345</span><br />
+        <span style="color:var(--grey);">All clinicians on the Dental Register at www.dentalcouncil.ie.</span>
+      </div>
+      <div style="text-align:right;">
+        <span>&copy; 2014&ndash;2026 Rathborne Dental Ltd.</span><br />
+        <span>Data controller under the Data Protection Acts 1988&ndash;2018 &amp; GDPR.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // progressive enhancement: smooth scroll for in-page CTAs on older Safari
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href');
+      if (id.length > 1) {
+        var el = document.querySelector(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.pushState(null, '', id);
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
