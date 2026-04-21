@@ -1,0 +1,4 @@
+# Generated per-client sites. Keep Rathborne Dental as reference; gitignore others.
+*/
+!rathborne-dental/
+!.gitignore
