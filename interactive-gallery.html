@@ -316,26 +316,30 @@
       position: relative;
       aspect-ratio: 4 / 3;
       overflow: hidden;
-      background: #fff;
+      background: var(--paper);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 10px 10px 8px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 120ms ease, background 120ms ease;
     }
-    .demo-thumb iframe {
-      border: 0;
-      width: 500%;
-      height: 500%;
-      transform: scale(0.2);
-      transform-origin: top left;
-      pointer-events: none;
-      background: #fff;
-      display: block;
-    }
-    .demo-thumb .lbl {
-      position: absolute; left: 4px; top: 4px;
+    .demo-thumb:hover { transform: translateY(-2px); background: #fff; }
+    .demo-thumb .num {
       font-family: var(--mono);
-      font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 2px 5px;
-      background: rgba(0, 0, 0, 0.65);
-      color: #fff;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      color: var(--accent);
+    }
+    .demo-thumb .name {
+      font-family: var(--display);
+      font-size: 13px; font-weight: 800; letter-spacing: -0.01em;
+      color: var(--ink);
+      line-height: 1.15;
+    }
+    .demo-thumb .aud {
+      font-family: var(--mono);
+      font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted);
     }
     .demo-showcase {
       position: relative;
@@ -1000,18 +1004,19 @@
           <div class="demo-num">01</div>
           <div class="demo-title">You pick any style from the ten below</div>
           <p class="demo-sub">Each is a separate direction — typography, rhythm, colour system — built for a different kind of business.</p>
-          <div class="demo-thumbs" aria-hidden="true">
-            <div class="demo-thumb"><iframe src="samples/01-minimalism-swiss.html" loading="lazy" tabindex="-1"></iframe><span class="lbl">01</span></div>
-            <div class="demo-thumb"><iframe src="samples/02-neumorphism.html" loading="lazy" tabindex="-1"></iframe><span class="lbl">02</span></div>
-            <div class="demo-thumb"><iframe src="samples/03-glassmorphism.html" loading="lazy" tabindex="-1"></iframe><span class="lbl">03</span></div>
-            <div class="demo-thumb"><iframe src="samples/04-brutalism.html" loading="lazy" tabindex="-1"></iframe><span class="lbl">04</span></div>
-            <div class="demo-thumb"><iframe src="samples/05-3d-hyperrealism.html" loading="lazy" tabindex="-1"></iframe><span class="lbl">05</span></div>
-            <div class="demo-thumb"><iframe src="samples/06-vibrant-block.html" loading="lazy" tabindex="-1"></iframe><span class="lbl">06</span></div>
-            <div class="demo-thumb"><iframe src="samples/07-dark-oled.html" loading="lazy" tabindex="-1"></iframe><span class="lbl">07</span></div>
-            <div class="demo-thumb"><iframe src="samples/08-claymorphism.html" loading="lazy" tabindex="-1"></iframe><span class="lbl">08</span></div>
-            <div class="demo-thumb"><iframe src="samples/09-aurora-ui.html" loading="lazy" tabindex="-1"></iframe><span class="lbl">09</span></div>
-            <div class="demo-thumb"><iframe src="samples/10-retro-futurism.html" loading="lazy" tabindex="-1"></iframe><span class="lbl">10</span></div>
+          <div class="demo-thumbs">
+            <a class="demo-thumb" href="samples/01-minimalism-swiss.html" target="_blank" rel="noopener"><span class="num">01</span><span class="name">Swiss Magazine</span><span class="aud">Editorial · content-led</span></a>
+            <a class="demo-thumb" href="samples/02-neumorphism.html" target="_blank" rel="noopener"><span class="num">02</span><span class="name">Neumorphism</span><span class="aud">Wellness · meditation</span></a>
+            <a class="demo-thumb" href="samples/03-glassmorphism.html" target="_blank" rel="noopener"><span class="num">03</span><span class="name">Glassmorphism</span><span class="aud">Fintech · dashboard</span></a>
+            <a class="demo-thumb" href="samples/04-brutalism.html" target="_blank" rel="noopener"><span class="num">04</span><span class="name">Brutalism</span><span class="aud">Design agency · bold</span></a>
+            <a class="demo-thumb" href="samples/05-3d-hyperrealism.html" target="_blank" rel="noopener"><span class="num">05</span><span class="name">3D Hyperrealism</span><span class="aud">Premium product</span></a>
+            <a class="demo-thumb" href="samples/06-vibrant-block.html" target="_blank" rel="noopener"><span class="num">06</span><span class="name">Vibrant Block</span><span class="aud">Startup · creative</span></a>
+            <a class="demo-thumb" href="samples/07-dark-oled.html" target="_blank" rel="noopener"><span class="num">07</span><span class="name">Dark OLED</span><span class="aud">Tech · gaming · dev</span></a>
+            <a class="demo-thumb" href="samples/08-claymorphism.html" target="_blank" rel="noopener"><span class="num">08</span><span class="name">Claymorphism</span><span class="aud">Kids · education</span></a>
+            <a class="demo-thumb" href="samples/09-aurora-ui.html" target="_blank" rel="noopener"><span class="num">09</span><span class="name">Aurora UI</span><span class="aud">Music · lifestyle</span></a>
+            <a class="demo-thumb" href="samples/10-retro-futurism.html" target="_blank" rel="noopener"><span class="num">10</span><span class="name">Retro-Futurism</span><span class="aud">Synthwave · podcast</span></a>
           </div>
+          <p class="demo-sub" style="margin-top: 10px;">Each card opens the full sample in a new tab — all live, built in this repo.</p>
         </div>
         <div class="demo-panel">
           <div class="demo-num">02</div>
