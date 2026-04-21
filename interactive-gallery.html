@@ -3,41 +3,60 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Owl Studio · Website Directions</title>
-  <meta name="description" content="Ten genuinely different website styles, each hand-built. Pick any direction, or ask for something completely different.">
+  <title>Owl Studio · Websites that sell, in 7 days, from €499 · Limerick</title>
+  <meta name="description" content="All-in websites for Irish SMBs — €499 Starter, €1,299 Pro, €2,500+ Custom. Pick one of 10 styles, we adapt, build, host and hand over the keys in 7–14 days.">
   <meta name="theme-color" content="#f3ecdf">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="apple-touch-icon" href="favicon.svg">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Owl Studio">
-  <meta property="og:title" content="Owl Studio · Website Directions">
-  <meta property="og:description" content="Ten genuinely different website styles — hand-built, live, browseable.">
+  <meta property="og:title" content="Owl Studio · Websites from €499, in 7 days">
+  <meta property="og:description" content="Pick one of 10 styles. Bring your business. We adapt it, write copy, build, host, and hand over. 7–14 days. Limerick, Ireland.">
   <meta property="og:url" content="https://websites.owlzone.trade/">
   <meta property="og:image" content="https://websites.owlzone.trade/renders/02-chrome-commerce.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Owl Studio · Website Directions">
-  <meta name="twitter:description" content="Ten genuinely different website styles — hand-built, live, browseable.">
+  <meta name="twitter:title" content="Owl Studio · Websites from €499, in 7 days">
+  <meta name="twitter:description" content="Pick one of 10 styles. Bring your business. We adapt it, build, host and hand over. 7–14 days. Limerick, Ireland.">
   <meta name="twitter:image" content="https://websites.owlzone.trade/renders/02-chrome-commerce.png">
-  <link rel="canonical" href="https://websites.owlzone.trade/interactive-gallery.html">
+  <link rel="canonical" href="https://websites.owlzone.trade/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    /* Owl Studio wrapper only. Each sample card hosts an <iframe> that
-       loads one of the ten standalone hand-built pages in /samples/.
-       The wrapper intentionally does not theme the samples — every
-       sample keeps its own fonts, colours, layout. The visual clash
-       between cards is the point: "we can build any of these". */
+    /* ------------------------------------------------------------------
+       Owl Studio sales page.
+       Sections (in order):
+         1. topbar
+         2. hero + pricing-anchor line
+         3. tier offer (3 priced cards)
+         4. three entry points (free call / €99 audit / email)
+         5. process (4 numbered steps)
+         6. gallery (10 iframe cards — unchanged)
+         7. sample project (aspirational, clearly labelled)
+         8. trust bar
+         9. FAQ (6 × <details>)
+        10. final CTA
+        11. footer
+       The gallery section intentionally does not theme its samples —
+       every sample keeps its own fonts, colours, layout. The visual
+       clash between cards IS the sales pitch ("we build any of these").
+    ------------------------------------------------------------------- */
 
     :root {
       --ink: #1a1812;
       --paper: #f3ecdf;
+      --cream: #f8f3ea;
       --accent: #c96f32;
+      --accent-dark: #9a4e1e;
+      --accent-light: #f1c18e;
       --muted: rgba(26, 24, 18, 0.62);
+      --faint: rgba(26, 24, 18, 0.08);
       --line: rgba(26, 24, 18, 0.12);
+      --ok: #1f6a3c;
       --sans: "DM Sans", system-ui, sans-serif;
       --display: "Archivo", sans-serif;
       --serif: "Fraunces", serif;
+      --mono: "JetBrains Mono", monospace;
     }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -45,29 +64,32 @@
       margin: 0;
       background:
         radial-gradient(circle at 12% -10%, rgba(201, 111, 50, 0.14), transparent 40%),
-        linear-gradient(180deg, #f8f3ea 0%, #ede3d1 100%);
+        linear-gradient(180deg, var(--cream) 0%, #ede3d1 100%);
       color: var(--ink);
       font-family: var(--sans);
+      line-height: 1.55;
     }
     a { color: inherit; text-decoration: none; }
 
     .shell { width: min(1440px, calc(100% - 40px)); margin: 0 auto; }
 
+    /* ---------- 1. TOPBAR ---------- */
     .topbar {
       position: sticky; top: 0; z-index: 30;
       backdrop-filter: blur(18px);
-      background: rgba(243, 236, 223, 0.82);
+      background: rgba(243, 236, 223, 0.86);
       border-bottom: 1px solid var(--line);
     }
     .topbar-inner {
       min-height: 72px;
       display: flex; align-items: center; justify-content: space-between;
-      gap: 20px;
+      gap: 20px; flex-wrap: wrap;
     }
     .mark {
       display: inline-flex; align-items: center; gap: 12px;
       font-family: var(--display);
       font-weight: 900; letter-spacing: -0.04em; text-transform: uppercase;
+      font-size: 15px;
     }
     .mark-badge {
       width: 36px; height: 36px;
@@ -78,57 +100,310 @@
       box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
       transform: rotate(-3deg);
     }
+    .nav-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .nav-link {
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 8px 2px;
+    }
+    .nav-link:hover { color: var(--ink); }
     .top-cta {
-      font-family: "JetBrains Mono", monospace;
+      font-family: var(--mono);
       font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 10px 16px;
+      padding: 11px 18px;
       background: var(--ink); color: var(--paper);
       border-radius: 2px;
       box-shadow: 0 3px 0 var(--accent);
+      transition: transform 140ms ease, box-shadow 140ms ease;
     }
+    .top-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 0 var(--accent); }
 
-    .intro {
-      padding: clamp(50px, 8vw, 110px) 0 clamp(30px, 5vw, 60px);
-    }
-    .intro .eyebrow {
-      font-family: "JetBrains Mono", monospace;
+    /* ---------- 2. HERO ---------- */
+    .hero { padding: clamp(50px, 8vw, 110px) 0 clamp(34px, 5vw, 60px); }
+    .hero .eyebrow {
+      font-family: var(--mono);
       font-size: 11px; font-weight: 700;
       letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--accent);
     }
-    .intro h1 {
+    .hero h1 {
       font-family: var(--display);
-      font-weight: 900; letter-spacing: -0.06em;
-      font-size: clamp(42px, 7vw, 98px);
-      line-height: 0.92;
+      font-weight: 900; letter-spacing: -0.055em;
+      font-size: clamp(44px, 7vw, 108px);
+      line-height: 0.94;
       margin: 18px 0 22px;
-      max-width: 960px;
+      max-width: 1080px;
     }
-    .intro p {
-      max-width: 640px;
-      font-size: clamp(17px, 1.6vw, 21px);
-      line-height: 1.5;
-      color: var(--muted);
-      margin: 0;
-    }
-    .intro p em {
+    .hero h1 em {
       font-style: italic;
+      font-family: var(--serif);
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .hero .lede {
+      max-width: 680px;
+      font-size: clamp(17px, 1.6vw, 21px);
       color: var(--ink);
+      opacity: 0.78;
+      margin: 0 0 28px;
+    }
+    .hero-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+    .btn {
+      font-family: var(--mono);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 15px 22px;
+      border-radius: 2px;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      min-height: 48px;
+      border: 0;
+      cursor: pointer;
+    }
+    .btn.primary {
+      background: var(--ink); color: var(--paper);
+      box-shadow: 0 3px 0 var(--accent);
+    }
+    .btn.primary:hover { transform: translateY(-1px); box-shadow: 0 5px 0 var(--accent); }
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.4);
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+    .btn.secondary:hover { background: #fff; }
+    .btn.accent {
+      background: var(--accent); color: var(--paper);
+      box-shadow: 0 3px 0 var(--ink);
+    }
+    .btn.accent:hover { transform: translateY(-1px); box-shadow: 0 5px 0 var(--ink); }
+    .hero-meta {
+      display: inline-flex; gap: 14px; align-items: center;
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 6px;
+    }
+    .hero-meta .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--ok); box-shadow: 0 0 10px rgba(31, 106, 60, 0.5); }
+
+    /* ---------- 3. TIER OFFER ---------- */
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .section-h2 {
+      font-family: var(--display);
+      font-size: clamp(30px, 3.4vw, 50px);
+      font-weight: 900; letter-spacing: -0.03em;
+      line-height: 1.04;
+      margin: 0 0 10px;
+      max-width: 800px;
+    }
+    .section-sub {
+      font-size: clamp(15px, 1.3vw, 18px);
+      color: var(--muted);
+      margin: 0 0 32px;
+      max-width: 680px;
     }
 
+    .tiers {
+      padding: clamp(26px, 4vw, 50px) 0;
+      border-top: 1px solid var(--line);
+    }
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 18px;
+    }
+    @media (max-width: 980px) { .tier-grid { grid-template-columns: 1fr; } }
+
+    .tier {
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 28px;
+      display: flex; flex-direction: column;
+      position: relative;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+    .tier:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(26, 24, 18, 0.10); }
+    .tier.popular {
+      background: linear-gradient(180deg, #fff 0%, #fff9f0 100%);
+      border: 2px solid var(--accent);
+      box-shadow: 0 18px 40px rgba(201, 111, 50, 0.14);
+    }
+    .tier .tag {
+      position: absolute;
+      top: -12px; left: 20px;
+      background: var(--accent); color: var(--paper);
+      font-family: var(--mono);
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 2px;
+    }
+    .tier-name {
+      font-family: var(--mono);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .tier-price {
+      font-family: var(--display);
+      font-size: 56px; font-weight: 900; letter-spacing: -0.04em;
+      color: var(--ink);
+      line-height: 1;
+      margin: 6px 0 4px;
+    }
+    .tier-price small {
+      font-size: 15px; font-weight: 500; letter-spacing: 0;
+      color: var(--muted);
+      font-family: var(--sans);
+    }
+    .tier-timeline {
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .tier ul {
+      list-style: none; padding: 0; margin: 0 0 24px;
+      display: flex; flex-direction: column; gap: 12px;
+      font-size: 14px;
+      flex: 1;
+    }
+    .tier ul li {
+      padding-left: 22px;
+      position: relative;
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    .tier ul li::before {
+      content: "";
+      position: absolute; left: 0; top: 7px;
+      width: 12px; height: 6px;
+      border-left: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      transform: rotate(-45deg);
+    }
+    .tier .btn { justify-content: center; width: 100%; }
+    .tier-fine {
+      font-family: var(--mono);
+      font-size: 10px; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 24px;
+      padding: 12px 16px;
+      background: rgba(0, 0, 0, 0.02);
+      border-left: 2px solid var(--line);
+    }
+
+    /* ---------- 4. THREE ENTRY POINTS ---------- */
+    .entries {
+      padding: clamp(40px, 5vw, 70px) 0;
+      border-top: 1px solid var(--line);
+    }
+    .entry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 22px;
+    }
+    @media (max-width: 980px) { .entry-grid { grid-template-columns: 1fr; } }
+    .entry {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid var(--line);
+      padding: 26px 26px 28px;
+      display: flex; flex-direction: column;
+      position: relative;
+    }
+    .entry-num {
+      font-family: var(--display);
+      font-weight: 900; font-size: 58px; line-height: 1;
+      color: var(--accent-light);
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+    }
+    .entry h3 {
+      margin: 0 0 8px;
+      font-family: var(--display);
+      font-size: 22px; font-weight: 800; letter-spacing: -0.015em;
+    }
+    .entry .price-note {
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .entry p {
+      margin: 0 0 18px;
+      font-size: 14.5px;
+      color: var(--ink);
+      opacity: 0.82;
+      flex: 1;
+    }
+    .entry .btn { align-self: flex-start; }
+
+    /* ---------- 5. PROCESS ---------- */
+    .process {
+      padding: clamp(40px, 5vw, 70px) 0;
+      border-top: 1px solid var(--line);
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    @media (max-width: 1000px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .steps { grid-template-columns: 1fr; } }
+    .step {
+      padding: 22px 22px 22px 22px;
+      border-top: 3px solid var(--accent);
+      background: rgba(255, 255, 255, 0.55);
+    }
+    .step-no {
+      font-family: var(--mono);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .step h3 {
+      margin: 0 0 8px;
+      font-family: var(--display);
+      font-size: 18px; font-weight: 800; letter-spacing: -0.01em;
+    }
+    .step p {
+      margin: 0;
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ---------- 6. GALLERY (unchanged) ---------- */
+    .gallery-intro {
+      padding: clamp(40px, 5vw, 70px) 0 clamp(10px, 2vw, 20px);
+      border-top: 1px solid var(--line);
+    }
     .gallery {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 26px;
-      padding: 30px 0 100px;
+      padding: 10px 0 40px;
     }
     @media (max-width: 900px) { .gallery { grid-template-columns: 1fr; } }
-
-    /* Each card is a simple frame + live iframe. Intentionally minimal
-       so the sample inside dominates. The card chrome (background,
-       header row) lives in front-of/behind the iframe with no shared
-       visual language with the sample. */
     .card {
       display: flex; flex-direction: column;
       background: #fff;
@@ -152,7 +427,7 @@
       font-size: 18px;
     }
     .card-header .kicker {
-      font-family: "JetBrains Mono", monospace;
+      font-family: var(--mono);
       font-size: 10px; font-weight: 700;
       letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--muted);
@@ -164,16 +439,12 @@
       background: #000;
     }
     .card-stage iframe {
-      /* Scale down the real hand-built page so the whole design is
-         visible inside the card. The iframe's content is pointer-events
-         disabled; the click overlay on top opens the full-size
-         standalone page. */
       border: 0;
-      width: 200%;           /* compensate for scale */
+      width: 200%;
       height: 200%;
       transform: scale(0.5);
       transform-origin: top left;
-      pointer-events: none;  /* click goes through to .card-overlay */
+      pointer-events: none;
       background: #fff;
       display: block;
     }
@@ -186,11 +457,9 @@
       transition: opacity 220ms ease;
     }
     .card:hover .card-overlay { opacity: 1; }
-    .card-cta-row {
-      display: flex; gap: 10px; flex-wrap: wrap;
-    }
+    .card-cta-row { display: flex; gap: 10px; flex-wrap: wrap; }
     .card-cta {
-      font-family: "JetBrains Mono", monospace;
+      font-family: var(--mono);
       font-size: 11px; font-weight: 700;
       letter-spacing: 0.1em; text-transform: uppercase;
       padding: 10px 14px;
@@ -198,22 +467,178 @@
       border: 1px solid rgba(255, 255, 255, 0.8);
       border-radius: 2px;
     }
-    .card-cta.primary {
-      background: var(--accent); color: var(--paper);
-      border-color: var(--accent);
+    .card-cta.primary { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+
+    /* ---------- 7. SAMPLE PROJECT ---------- */
+    .sample-proj {
+      padding: clamp(40px, 5vw, 70px) 0;
+      border-top: 1px solid var(--line);
+    }
+    .sample-proj .disclaimer {
+      font-family: var(--mono);
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent-dark);
+      background: rgba(201, 111, 50, 0.10);
+      display: inline-block;
+      padding: 6px 12px;
+      margin-bottom: 20px;
+    }
+    .sample-card {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+      gap: 32px;
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 38px;
+      align-items: center;
+    }
+    @media (max-width: 900px) { .sample-card { grid-template-columns: 1fr; } }
+    .sample-card h3 {
+      margin: 0 0 12px;
+      font-family: var(--display);
+      font-weight: 900; letter-spacing: -0.03em;
+      font-size: clamp(26px, 3vw, 40px);
+    }
+    .sample-card p {
+      margin: 0 0 14px;
+      font-size: 15px;
+      color: var(--ink);
+      opacity: 0.8;
+    }
+    .sample-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      padding: 20px;
+      background: var(--paper);
+    }
+    .sample-stat .k {
+      font-family: var(--mono);
+      font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .sample-stat .v {
+      font-family: var(--display);
+      font-size: 22px; font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    .sample-stat .v em {
+      color: var(--accent);
+      font-style: normal;
+      font-size: 26px;
     }
 
-    .footer {
-      padding: 50px 0 80px;
+    /* ---------- 8. TRUST BAR ---------- */
+    .trust {
+      padding: 24px 0;
       border-top: 1px solid var(--line);
-      font-size: 14px;
-      color: var(--muted);
-      display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.45);
     }
-    .footer a { color: var(--accent); text-decoration: underline; font-weight: 700; }
+    .trust-row {
+      display: flex; flex-wrap: wrap; gap: 22px 36px;
+      align-items: center; justify-content: center;
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .trust-row span { display: inline-flex; align-items: center; gap: 8px; }
+    .trust-row .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--accent); }
+
+    /* ---------- 9. FAQ ---------- */
+    .faq { padding: clamp(40px, 5vw, 70px) 0; }
+    .faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 900px; margin-top: 22px; }
+    details.q {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid var(--line);
+      padding: 0;
+    }
+    details.q[open] { background: #fff; }
+    details.q summary {
+      padding: 18px 22px;
+      cursor: pointer;
+      list-style: none;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px;
+      font-family: var(--display);
+      font-size: 17px; font-weight: 700; letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    details.q summary::-webkit-details-marker { display: none; }
+    details.q summary::after {
+      content: "+";
+      font-family: var(--mono);
+      font-weight: 700; font-size: 22px;
+      color: var(--accent);
+      transition: transform 200ms ease;
+    }
+    details.q[open] summary::after { content: "×"; transform: rotate(0deg); }
+    details.q .a {
+      padding: 0 22px 22px;
+      font-size: 15px;
+      color: var(--ink);
+      opacity: 0.82;
+      line-height: 1.6;
+    }
+
+    /* ---------- 10. FINAL CTA ---------- */
+    .final {
+      margin: clamp(40px, 5vw, 70px) 0;
+      padding: clamp(40px, 6vw, 80px) clamp(28px, 5vw, 60px);
+      background:
+        radial-gradient(circle at 10% 20%, rgba(201, 111, 50, 0.28), transparent 60%),
+        linear-gradient(135deg, #1a1812 0%, #2a2319 70%, #1a1812 100%);
+      color: var(--paper);
+      border-radius: 0;
+    }
+    .final .section-label { color: var(--accent-light); }
+    .final h2 {
+      font-family: var(--display);
+      font-size: clamp(32px, 4.4vw, 62px);
+      font-weight: 900; letter-spacing: -0.04em;
+      line-height: 1.02;
+      margin: 8px 0 18px;
+      color: var(--paper);
+    }
+    .final h2 em { font-style: italic; font-family: var(--serif); color: var(--accent-light); }
+    .final p {
+      max-width: 640px;
+      color: rgba(248, 243, 234, 0.78);
+      font-size: clamp(15px, 1.3vw, 18px);
+      margin: 0 0 28px;
+    }
+    .final-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .final .btn.primary {
+      background: var(--accent);
+      color: var(--paper);
+      box-shadow: 0 3px 0 var(--accent-light);
+    }
+    .final .btn.secondary {
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid rgba(248, 243, 234, 0.35);
+    }
+
+    /* ---------- 11. FOOTER ---------- */
+    .footer {
+      padding: 40px 0 60px;
+      display: flex; justify-content: space-between; gap: 20px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer a {
+      color: var(--accent);
+      text-decoration: underline;
+      font-weight: 700;
+    }
 
     @media (prefers-reduced-motion: reduce) {
-      .card-overlay { transition: none; opacity: 1; }
+      * { transition: none !important; animation: none !important; }
     }
   </style>
 </head>
@@ -225,202 +650,492 @@
         <span class="mark-badge" aria-hidden="true"></span>
         <span>Owl Studio</span>
       </a>
-      <a class="top-cta" href="mailto:callmeie@proton.me?subject=Website%20design%20project">Email the studio →</a>
+      <nav class="nav-row" aria-label="Page sections">
+        <a class="nav-link" href="#pricing">Pricing</a>
+        <a class="nav-link" href="#process">Process</a>
+        <a class="nav-link" href="#styles">Styles</a>
+        <a class="nav-link" href="#faq">FAQ</a>
+        <a class="top-cta" href="mailto:callmeie@proton.me?subject=Free%2020-min%20style-match%20call">Book a free call →</a>
+      </nav>
     </div>
   </header>
 
   <main id="top">
-    <section class="shell intro">
-      <div class="eyebrow">Advert sample pack</div>
-      <h1>Ten directions. None of them look like each other.</h1>
-      <p>
-        Every card below was generated directly from a row in the
-        <em>UI UX Pro Max</em> skill catalog (84 styles, each carrying its
-        own colours, fonts, radii, shadows, and effects as ready CSS tokens). Hover a
-        card to open it full-size. The clash between them is the point: pick
-        any direction, or describe a different one, and we build it around
-        your business.
+
+    <!-- ========== 2. HERO ========== -->
+    <section class="shell hero">
+      <div class="eyebrow">Owl Studio · Limerick, Ireland</div>
+      <h1>Websites that sell, in <em>7 days</em>, from <em>€499</em>.</h1>
+      <p class="lede">
+        Pick one of ten styles below. Bring your business. We adapt it,
+        write the copy, build the page, host it on Cloudflare, and hand
+        you the keys. One all-in fee. No monthly trap. No design
+        committee.
+      </p>
+      <div class="hero-cta-row">
+        <a class="btn accent" href="#pricing">See the three tiers ↓</a>
+        <a class="btn secondary" href="mailto:callmeie@proton.me?subject=Free%2020-min%20style-match%20call">Book a free 20-min call</a>
+      </div>
+      <div class="hero-meta">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Booking from May 2026 · 3 Pro slots open · Response within 24 h</span>
+      </div>
+    </section>
+
+    <!-- ========== 3. TIERS ========== -->
+    <section class="shell tiers" id="pricing">
+      <div class="section-label">Pricing · three tiers · one all-in fee</div>
+      <h2 class="section-h2">Pick a tier, not a subscription.</h2>
+      <p class="section-sub">
+        Every tier includes hosting, SSL, a contact form that emails you,
+        mobile + desktop builds, and a GDPR banner. The source code is
+        yours. No lock-in, no platform tax.
+      </p>
+
+      <div class="tier-grid">
+
+        <article class="tier">
+          <div class="tier-name">Starter</div>
+          <div class="tier-price">€499<small> all-in</small></div>
+          <div class="tier-timeline">Live in 7 days</div>
+          <ul>
+            <li>Single long landing page, adapted from any of the ten gallery styles</li>
+            <li>Your 150–300 words + up to 6 photos woven in</li>
+            <li>Mobile, tablet, desktop builds</li>
+            <li>Contact form → direct to your inbox</li>
+            <li>1 year hosting on Cloudflare Pages, SSL, GDPR banner</li>
+            <li>1 round of revisions before handover</li>
+          </ul>
+          <a class="btn primary" href="mailto:callmeie@proton.me?subject=Starter%20website%20%E2%80%94%20%E2%82%AC499">Start a Starter</a>
+          <div class="tier-fine">For trades, cafés, clinics, single-service pages. Add copy writing for +€150.</div>
+        </article>
+
+        <article class="tier popular">
+          <span class="tag">Most popular</span>
+          <div class="tier-name">Pro</div>
+          <div class="tier-price">€1,299<small> all-in</small></div>
+          <div class="tier-timeline">Live in 14 days</div>
+          <ul>
+            <li>5-page site — home, about, services, blog, contact</li>
+            <li>Custom adaptation of any gallery style to your brand</li>
+            <li>Lightweight CMS so you can post updates yourself (Sanity or Payload, both open-source)</li>
+            <li>Copy written for you — homepage + services + about</li>
+            <li>Basic SEO — meta tags, schema markup, XML sitemap, Google Analytics</li>
+            <li>2 years hosting, SSL, GDPR, automatic backups</li>
+            <li>2 rounds of revisions</li>
+          </ul>
+          <a class="btn accent" href="mailto:callmeie@proton.me?subject=Pro%20website%20%E2%80%94%20%E2%82%AC1299">Start a Pro</a>
+          <div class="tier-fine">Where most Limerick SMBs land. Online bookings, Stripe checkout, or e-commerce is Custom tier.</div>
+        </article>
+
+        <article class="tier">
+          <div class="tier-name">Custom</div>
+          <div class="tier-price">from €2,500<small> quoted</small></div>
+          <div class="tier-timeline">Timeline quoted per brief</div>
+          <ul>
+            <li>Online shop with Stripe, inventory, shipping rules</li>
+            <li>SaaS / user accounts, dashboards, auth</li>
+            <li>Multi-language or multi-location</li>
+            <li>Bespoke integrations (CRM, booking, POS, payroll)</li>
+            <li>Whatever your business actually needs</li>
+            <li>Scoped together in a paid €99 style-match audit first</li>
+          </ul>
+          <a class="btn primary" href="mailto:callmeie@proton.me?subject=Custom%20project%20%E2%80%94%20scoping%20call">Book a scoping call</a>
+          <div class="tier-fine">The €99 audit is credited against the final Custom invoice if you book within 30 days.</div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========== 4. THREE ENTRY POINTS ========== -->
+    <section class="shell entries">
+      <div class="section-label">Three ways to start</div>
+      <h2 class="section-h2">No cold outreach. No long sales cycle.</h2>
+      <p class="section-sub">
+        Pick whichever matches how you like to work. All three land in
+        the same inbox and get a human reply within 24 hours.
+      </p>
+
+      <div class="entry-grid">
+
+        <article class="entry">
+          <div class="entry-num">01</div>
+          <h3>Free 20-min style-match call</h3>
+          <div class="price-note">Free · 20 minutes · Google Meet or phone</div>
+          <p>
+            You describe your business. We open the design toolkit live on
+            the call and generate a real preview of <em>your</em> website in
+            the style you&apos;re leaning towards — you see exactly what
+            you&apos;d get before paying a cent. No follow-up unless you
+            ask for one.
+          </p>
+          <a class="btn primary" href="mailto:callmeie@proton.me?subject=Free%2020-min%20style-match%20call&body=Business%20name%3A%0ALocation%3A%0AWebsite%20(if%20any)%3A%0AStyle%20I'm%20leaning%20towards%3A%0APreferred%20day%2Ftime%3A">Book a slot</a>
+        </article>
+
+        <article class="entry">
+          <div class="entry-num">02</div>
+          <h3>€99 style-match audit</h3>
+          <div class="price-note">€99 · 48-hour delivery · PDF report</div>
+          <p>
+            You email us a short brief (business, goal, sites you like).
+            Within 48 hours you get a 1-page PDF: which of the ten styles
+            fits you and why, a proposed colour &amp; typography plan, a
+            firm quote, and a suggested launch date. The €99 is credited
+            against any project you book within 30 days.
+          </p>
+          <a class="btn accent" href="mailto:callmeie@proton.me?subject=%E2%82%AC99%20style-match%20audit&body=Business%20name%3A%0ALocation%3A%0AWebsite%20(if%20any)%3A%0AWhat%20the%20site%20needs%20to%20do%3A%0ACompetitor%2Freference%20sites%20you%20like%3A">Order the €99 audit</a>
+        </article>
+
+        <article class="entry">
+          <div class="entry-num">03</div>
+          <h3>Skip the preamble</h3>
+          <div class="price-note">Free · reply in 24 h · tier + quote + date</div>
+          <p>
+            If you already know what you want, just tell us: business name,
+            which tier (Starter / Pro / Custom), which gallery style, and
+            your deadline if you have one. Within 24 hours you get a
+            yes/no, a firm quote, and a concrete delivery date — or a
+            clean referral if it&apos;s not for us.
+          </p>
+          <a class="btn secondary" href="mailto:callmeie@proton.me?subject=Website%20project%20%E2%80%94%20ready%20to%20book&body=Business%20name%3A%0ATier%3A%20Starter%20%2F%20Pro%20%2F%20Custom%0AGallery%20style%3A%0ADeadline%3A%0ANotes%3A">Email the studio</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========== 5. PROCESS ========== -->
+    <section class="shell process" id="process">
+      <div class="section-label">How it works · day by day</div>
+      <h2 class="section-h2">Four steps. Most projects handed over in one fortnight or less.</h2>
+
+      <ol class="steps" style="list-style:none; padding:0; margin:0;">
+        <li class="step">
+          <div class="step-no">Day 0</div>
+          <h3>You browse &amp; pick</h3>
+          <p>Scroll to the styles below, open any in full, pick the direction. Or book the free call and we match one to your business.</p>
+        </li>
+        <li class="step">
+          <div class="step-no">Day 1</div>
+          <h3>You get a brief + quote</h3>
+          <p>A 1-page brief lands in your inbox within 24 hours: pages, copy outline, firm all-in quote, and the exact delivery date.</p>
+        </li>
+        <li class="step">
+          <div class="step-no">Days 2–7 (or 2–14)</div>
+          <h3>We build in the open</h3>
+          <p>Every 2–3 days you get a preview link. Nudge the direction if you want. No weekly status-call ceremony.</p>
+        </li>
+        <li class="step">
+          <div class="step-no">Handover day</div>
+          <h3>Live, keys yours</h3>
+          <p>We deploy to your domain, hand over the admin login, cover hosting for the period above, and you&apos;re live. Source code is yours.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ========== 6. GALLERY ========== -->
+    <section class="shell gallery-intro" id="styles">
+      <div class="section-label">Ten styles · every card a real working page</div>
+      <h2 class="section-h2">Pick the direction that feels closest. We adapt it to you.</h2>
+      <p class="section-sub">
+        Each card below is a full hand-built page — hover to open any one
+        full-screen. Nothing here is a mock-up. The visual clash between
+        them is deliberate: we build in any of these directions, or in
+        one you describe that isn&apos;t here.
       </p>
     </section>
 
     <section class="shell gallery" aria-label="Ten website samples">
 
-      <!-- 1. GLASS MORPHISM -->
+      <!-- 1. MINIMALISM SWISS -->
       <article class="card">
         <header class="card-header">
           <h2>Minimalism / Swiss</h2>
           <span class="kicker">01 · Online magazine</span>
         </header>
         <div class="card-stage">
-          <iframe src="samples/01-minimalism-swiss.html" title="Glass Morphism sample" loading="lazy"></iframe>
+          <iframe src="samples/01-minimalism-swiss.html" title="Minimalism Swiss sample" loading="lazy"></iframe>
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/01-minimalism-swiss.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20the%20Minimalism%20Swiss%20style">Build this style</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Minimalism%20Swiss%20style">Build this style</a>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- 2. BRUTALIST RAW -->
+      <!-- 2. NEUMORPHISM -->
       <article class="card">
         <header class="card-header">
           <h2>Neumorphism</h2>
           <span class="kicker">02 · Meditation app</span>
         </header>
         <div class="card-stage">
-          <iframe src="samples/02-neumorphism.html" title="Brutalist Raw sample" loading="lazy"></iframe>
+          <iframe src="samples/02-neumorphism.html" title="Neumorphism sample" loading="lazy"></iframe>
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/02-neumorphism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20the%20Neumorphism%20style">Build this style</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Neumorphism%20style">Build this style</a>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- 3. DARK CHROME -->
+      <!-- 3. GLASSMORPHISM -->
       <article class="card">
         <header class="card-header">
           <h2>Glassmorphism</h2>
           <span class="kicker">03 · Fintech dashboard</span>
         </header>
         <div class="card-stage">
-          <iframe src="samples/03-glassmorphism.html" title="Dark Chrome sample" loading="lazy"></iframe>
+          <iframe src="samples/03-glassmorphism.html" title="Glassmorphism sample" loading="lazy"></iframe>
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/03-glassmorphism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20the%20Glassmorphism%20style">Build this style</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Glassmorphism%20style">Build this style</a>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- 4. SILVER EDITORIAL -->
+      <!-- 4. BRUTALISM -->
       <article class="card">
         <header class="card-header">
           <h2>Brutalism</h2>
           <span class="kicker">04 · Design agency portfolio</span>
         </header>
         <div class="card-stage">
-          <iframe src="samples/04-brutalism.html" title="Silver Editorial sample" loading="lazy"></iframe>
+          <iframe src="samples/04-brutalism.html" title="Brutalism sample" loading="lazy"></iframe>
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/04-brutalism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20the%20Brutalism%20style">Build this style</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Brutalism%20style">Build this style</a>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- 5. INDUSTRIAL -->
-      <article class="card">
-        <header class="card-header">
-          <h2>Vibrant &amp; Block</h2>
-          <span class="kicker">06 · Startup launch page</span>
-        </header>
-        <div class="card-stage">
-          <iframe src="samples/06-vibrant-block.html" title="Industrial sample" loading="lazy"></iframe>
-          <div class="card-overlay">
-            <div class="card-cta-row">
-              <a class="card-cta primary" href="samples/06-vibrant-block.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20the%20Vibrant%20Block%20style">Build this style</a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- 6. THERMAL IMAGING -->
-      <article class="card">
-        <header class="card-header">
-          <h2>Dark Mode (OLED)</h2>
-          <span class="kicker">07 · Gaming platform</span>
-        </header>
-        <div class="card-stage">
-          <iframe src="samples/07-dark-oled.html" title="Thermal Imaging sample" loading="lazy"></iframe>
-          <div class="card-overlay">
-            <div class="card-cta-row">
-              <a class="card-cta primary" href="samples/07-dark-oled.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20the%20Dark%20Mode%20OLED%20style">Build this style</a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- 7. PHOSPHOR TERMINAL -->
-      <article class="card">
-        <header class="card-header">
-          <h2>Claymorphism</h2>
-          <span class="kicker">08 · Kids education app</span>
-        </header>
-        <div class="card-stage">
-          <iframe src="samples/08-claymorphism.html" title="Phosphor Terminal sample" loading="lazy"></iframe>
-          <div class="card-overlay">
-            <div class="card-cta-row">
-              <a class="card-cta primary" href="samples/08-claymorphism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20the%20Claymorphism%20style">Build this style</a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- 8. TOPOGRAPHIC -->
-      <article class="card">
-        <header class="card-header">
-          <h2>Aurora UI</h2>
-          <span class="kicker">09 · Music streaming</span>
-        </header>
-        <div class="card-stage">
-          <iframe src="samples/09-aurora-ui.html" title="Aurora%20UI sample" loading="lazy"></iframe>
-          <div class="card-overlay">
-            <div class="card-cta-row">
-              <a class="card-cta primary" href="samples/09-aurora-ui.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20the%20Aurora%20UI%20style">Build this style</a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- 9. APPLE BENTO DARK -->
-      <article class="card">
-        <header class="card-header">
-          <h2>Retro-Futurism</h2>
-          <span class="kicker">10 · Synthwave podcast</span>
-        </header>
-        <div class="card-stage">
-          <iframe src="samples/10-retro-futurism.html" title="Apple Bento Dark sample" loading="lazy"></iframe>
-          <div class="card-overlay">
-            <div class="card-cta-row">
-              <a class="card-cta primary" href="samples/10-retro-futurism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20the%20Retro-Futurism%20style">Build this style</a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- 10. APPLE BENTO LIGHT -->
+      <!-- 5. 3D / HYPERREALISM -->
       <article class="card">
         <header class="card-header">
           <h2>3D &amp; Hyperrealism</h2>
           <span class="kicker">05 · Premium headphones</span>
         </header>
         <div class="card-stage">
-          <iframe src="samples/05-3d-hyperrealism.html" title="Apple Bento Light sample" loading="lazy"></iframe>
+          <iframe src="samples/05-3d-hyperrealism.html" title="3D Hyperrealism sample" loading="lazy"></iframe>
           <div class="card-overlay">
             <div class="card-cta-row">
               <a class="card-cta primary" href="samples/05-3d-hyperrealism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20the%203D%20Hyperrealism%20style">Build this style</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%203D%20Hyperrealism%20style">Build this style</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6. VIBRANT BLOCK -->
+      <article class="card">
+        <header class="card-header">
+          <h2>Vibrant &amp; Block</h2>
+          <span class="kicker">06 · Startup launch page</span>
+        </header>
+        <div class="card-stage">
+          <iframe src="samples/06-vibrant-block.html" title="Vibrant Block sample" loading="lazy"></iframe>
+          <div class="card-overlay">
+            <div class="card-cta-row">
+              <a class="card-cta primary" href="samples/06-vibrant-block.html" target="_blank" rel="noreferrer">Open full page ↗</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Vibrant%20Block%20style">Build this style</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7. DARK OLED -->
+      <article class="card">
+        <header class="card-header">
+          <h2>Dark Mode (OLED)</h2>
+          <span class="kicker">07 · Gaming platform</span>
+        </header>
+        <div class="card-stage">
+          <iframe src="samples/07-dark-oled.html" title="Dark OLED sample" loading="lazy"></iframe>
+          <div class="card-overlay">
+            <div class="card-cta-row">
+              <a class="card-cta primary" href="samples/07-dark-oled.html" target="_blank" rel="noreferrer">Open full page ↗</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Dark%20Mode%20OLED%20style">Build this style</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8. CLAYMORPHISM -->
+      <article class="card">
+        <header class="card-header">
+          <h2>Claymorphism</h2>
+          <span class="kicker">08 · Kids education app</span>
+        </header>
+        <div class="card-stage">
+          <iframe src="samples/08-claymorphism.html" title="Claymorphism sample" loading="lazy"></iframe>
+          <div class="card-overlay">
+            <div class="card-cta-row">
+              <a class="card-cta primary" href="samples/08-claymorphism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Claymorphism%20style">Build this style</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 9. AURORA UI -->
+      <article class="card">
+        <header class="card-header">
+          <h2>Aurora UI</h2>
+          <span class="kicker">09 · Music streaming</span>
+        </header>
+        <div class="card-stage">
+          <iframe src="samples/09-aurora-ui.html" title="Aurora UI sample" loading="lazy"></iframe>
+          <div class="card-overlay">
+            <div class="card-cta-row">
+              <a class="card-cta primary" href="samples/09-aurora-ui.html" target="_blank" rel="noreferrer">Open full page ↗</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Aurora%20UI%20style">Build this style</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 10. RETRO-FUTURISM -->
+      <article class="card">
+        <header class="card-header">
+          <h2>Retro-Futurism</h2>
+          <span class="kicker">10 · Synthwave podcast</span>
+        </header>
+        <div class="card-stage">
+          <iframe src="samples/10-retro-futurism.html" title="Retro-Futurism sample" loading="lazy"></iframe>
+          <div class="card-overlay">
+            <div class="card-cta-row">
+              <a class="card-cta primary" href="samples/10-retro-futurism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Retro-Futurism%20style">Build this style</a>
             </div>
           </div>
         </div>
       </article>
 
     </section>
+
+    <!-- ========== 7. SAMPLE PROJECT ========== -->
+    <section class="shell sample-proj">
+      <div class="section-label">Sample project · how a Pro build looks</div>
+      <div class="disclaimer">
+        Sample walkthrough — not a current client. Numbers drawn from clinic-website industry benchmarks.
+      </div>
+      <div class="sample-card">
+        <div>
+          <h3>Murphy&apos;s Dental — Limerick single-location practice</h3>
+          <p>
+            <strong>Brief:</strong> A modern site where same-day booking is
+            the primary CTA. Old site was a WordPress theme from 2018.
+          </p>
+          <p>
+            <strong>Delivered:</strong> Pro tier · 14 days · 5 pages ·
+            online booking embedded via the existing practice-management
+            system · GDPR-compliant patient form · accessibility pass.
+          </p>
+          <p>
+            <strong>Style chosen:</strong> Clinic Calm direction (adapted
+            from gallery sample #2 — Neumorphism — softened for healthcare
+            context). Book a free 20-min call with the same setup and
+            we&apos;ll generate your own preview on the spot.
+          </p>
+        </div>
+        <div class="sample-stats">
+          <div class="sample-stat"><div class="k">Delivery</div><div class="v">14 days</div></div>
+          <div class="sample-stat"><div class="k">All-in fee</div><div class="v">€1,299</div></div>
+          <div class="sample-stat"><div class="k">Pages built</div><div class="v">5</div></div>
+          <div class="sample-stat"><div class="k">Modelled lift</div><div class="v"><em>3.2×</em></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 8. TRUST BAR ========== -->
+    <aside class="trust">
+      <div class="shell trust-row">
+        <span><span class="dot"></span>Owner-operated · Limerick, Ireland</span>
+        <span><span class="dot"></span>Response within 24 hours</span>
+        <span><span class="dot"></span>Source code yours · no lock-in</span>
+        <span><span class="dot"></span>GDPR-ready · Irish hosting option</span>
+        <span><span class="dot"></span>One all-in fee · no monthly tax</span>
+      </div>
+    </aside>
+
+    <!-- ========== 9. FAQ ========== -->
+    <section class="shell faq" id="faq">
+      <div class="section-label">FAQ · the six we get most</div>
+      <h2 class="section-h2">Objections, handled up front.</h2>
+
+      <div class="faq-list">
+
+        <details class="q">
+          <summary>Can I see real examples before booking?</summary>
+          <div class="a">
+            Yes. The ten styles in the gallery above are real hand-built pages — click any to open full-screen. They are the production-quality bar. If you want one built for <em>your</em> business before you decide, either book the free 20-min style-match call (we generate a preview on the call) or order the €99 audit (you get a written brief back in 48 hours).
+          </div>
+        </details>
+
+        <details class="q">
+          <summary>How long does a Starter really take?</summary>
+          <div class="a">
+            Seven calendar days from the day you send us your content — text, photos, logo, business details. If your content isn&apos;t ready that&apos;s the delay, not our build time. We give you a 1-page content brief template as soon as you book, so there&apos;s no guessing what to send.
+          </div>
+        </details>
+
+        <details class="q">
+          <summary>Do you write the copy?</summary>
+          <div class="a">
+            Pro and Custom include copy for the main pages — home, about, services. You review and tweak. Starter assumes you send 150–300 words of your own. If you want us to write Starter copy too, add €150 — that covers up to 600 words across the single page.
+          </div>
+        </details>
+
+        <details class="q">
+          <summary>Can I move the site / change the CMS later?</summary>
+          <div class="a">
+            Yes. Pro uses Sanity or Payload CMS — both open-source, fully exportable, no vendor lock-in. The source code is yours from day one (GitHub repo transferred on handover). If you want to move hosts after the included period, it&apos;s a standard deploy-anywhere static site plus a content export.
+          </div>
+        </details>
+
+        <details class="q">
+          <summary>What if I don&apos;t like the result?</summary>
+          <div class="a">
+            We build in the open with a preview link every 2–3 days. If you hate the direction by day 3 of a Pro build, we switch styles at no extra cost. Starter ships with 1 revision round included after the first preview; Pro ships with 2. If after that you still want a full rebuild, we either refund or rebuild once more at 50% — you pick.
+          </div>
+        </details>
+
+        <details class="q">
+          <summary>Do you handle photos and imagery?</summary>
+          <div class="a">
+            We embed yours if you send them. If you don&apos;t have any, we source royalty-free from Lummi AI or Unsplash with your sign-off. If you want bespoke illustration or custom photography, that&apos;s a Custom-tier scope item — we&apos;ll quote it in the €99 audit or the scoping call.
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- ========== 10. FINAL CTA ========== -->
+    <section class="shell final">
+      <div class="section-label">Next slot · May 2026</div>
+      <h2>Take a slot, or wait.<br>One <em>Pro</em> project per fortnight.</h2>
+      <p>
+        Owner-operated, so the work stays tight and the queue stays
+        honest. If we&apos;re full, we&apos;ll tell you on the call —
+        never drag a prospect along.
+      </p>
+      <div class="final-row">
+        <a class="btn primary" href="mailto:callmeie@proton.me?subject=Free%2020-min%20style-match%20call&body=Business%20name%3A%0ALocation%3A%0AWebsite%20(if%20any)%3A%0AStyle%20I'm%20leaning%20towards%3A%0APreferred%20day%2Ftime%3A">Book the free 20-min call</a>
+        <a class="btn accent" href="mailto:callmeie@proton.me?subject=%E2%82%AC99%20style-match%20audit&body=Business%20name%3A%0AWhat%20the%20site%20needs%20to%20do%3A%0ACompetitor%2Freference%20sites%20you%20like%3A">Order the €99 audit</a>
+        <a class="btn secondary" href="mailto:callmeie@proton.me?subject=Website%20project%20%E2%80%94%20ready%20to%20book">Email the studio</a>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer shell">
-    <span>Pick a style. We adapt it to your business, write the copy, build the page, and put it live. <a href="mailto:callmeie@proton.me?subject=Website%20design%20project">callmeie@proton.me</a></span>
-    <span>Owl Studio · Limerick, Ireland</span>
+    <span>Pick a tier. Pick a style. Go live in a week or two. <a href="mailto:callmeie@proton.me?subject=Website%20design%20project">callmeie@proton.me</a></span>
+    <span>Owl Studio · Limerick, Ireland · Est. 2026</span>
   </footer>
 
 </body>
