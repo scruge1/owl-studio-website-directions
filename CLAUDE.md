@@ -43,7 +43,7 @@ browses ten website "directions" (distinct visual/structural styles),
 picks one that fits, and emails the studio to start a project.
 
 - **Live (HTTP)**: http://websites.owlzone.trade/
-- **Live (HTTPS)**: pending cert issuance — see "HTTPS status" below
+- **Live (HTTPS)**: https://websites.owlzone.trade (cert approved, enforced, expires 2026-07-20)
 - **GitHub**: https://github.com/scruge1/owl-studio-website-directions
 - **Deploy model**: GitHub Pages (legacy, `main` branch, `/` root)
 - **Domain**: Porkbun — `websites.owlzone.trade` CNAME → `scruge1.github.io`
@@ -79,41 +79,34 @@ inspect:
 
 **Typography**: Archivo, DM Sans, Fraunces, JetBrains Mono (Google Fonts).
 
-## HTTPS status (as of handoff)
+## HTTPS status (resolved 2026-04-21)
 
 ```
-status:                   built
-cname:                    websites.owlzone.trade
-https_enforced:           false
-protected_domain_state:   None      ← cert not yet issued
-build_type:               legacy
+status:                    built
+cname:                     websites.owlzone.trade
+https_enforced:            true
+https_certificate.state:   approved
+https_certificate.expires: 2026-07-20
+build_type:                legacy
 ```
 
-DNS has propagated cleanly (1.1.1.1, 8.8.8.8, 9.9.9.9 all return
-GitHub Pages IPv6 addresses). There is no CAA record blocking
-Let's Encrypt. GitHub simply hasn't completed Let's Encrypt issuance.
+Cert auto-issued by GitHub Pages (Let's Encrypt). Sister site
+`callmeie.ie` also approved + enforced, expires 2026-07-02. Both
+return 200 over HTTPS. No action needed until renewal — GitHub
+rotates Let's Encrypt certs automatically ~30 days before expiry.
 
-Typical wait: 5 min – several hours after DNS is live. Codex
-confirmed DNS at roughly the same time as commit, so the cert should
-arrive on its own. If more than ~24h elapses:
+Recovery recipe if a future cert stalls >24h after DNS change:
 
-1. Remove custom domain via GitHub Pages settings (or via
-   `gh api /repos/scruge1/owl-studio-website-directions/pages -X PUT
-   --input -` with `{"cname": null}`)
-2. Wait ~30s
-3. Re-add the CNAME (same endpoint with `{"cname": "websites.owlzone.trade"}`)
-
-This forces GitHub to re-kick the cert flow.
-
-To test when it's ready:
 ```bash
-curl -s -o /dev/null -w "%{http_code}\n" https://websites.owlzone.trade/
-# 200 means cert issued
-```
-
-Then enable enforcement:
-```bash
-gh api repos/scruge1/owl-studio-website-directions/pages -X PUT \
+# 1. drop CNAME to re-kick Let's Encrypt
+gh api /repos/scruge1/owl-studio-website-directions/pages -X PUT \
+  --input - <<<'{"cname": null}'
+sleep 30
+# 2. re-add custom domain
+gh api /repos/scruge1/owl-studio-website-directions/pages -X PUT \
+  --input - <<<'{"cname": "websites.owlzone.trade"}'
+# 3. once cert approved, enforce
+gh api /repos/scruge1/owl-studio-website-directions/pages -X PUT \
   --input - <<<'{"https_enforced": true}'
 ```
 
@@ -156,11 +149,10 @@ SEO sitemap. Worth verifying once HTTPS is live.
 
 ## Next punch-list (P0 → P5)
 
-### P0 — HTTPS live + enforcement
+### P0 — HTTPS live + enforcement — DONE 2026-04-21
 
-Wait for GitHub cert → enable `https_enforced: true` → verify browser
-padlock. Poll with the curl check above every ~30 min. If nothing in
-24h, do the CNAME re-add dance.
+Cert approved + enforced on both websites.owlzone.trade (exp 2026-07-20)
+and callmeie.ie (exp 2026-07-02). Auto-renewed by GitHub Pages.
 
 ### P1 — Social preview cards (OG + Twitter)
 
