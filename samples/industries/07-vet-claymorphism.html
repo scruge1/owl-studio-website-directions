@@ -1,0 +1,1423 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Main Street Vets · Carrick-on-Shannon, Co. Leitrim</title>
+<meta name="description" content="A village vet in Carrick-on-Shannon, Co. Leitrim. Small animals at the practice, farm call-outs across Leitrim, and 24hr shared emergency cover with Sligo and Roscommon." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+
+<style>
+/* ------------------------------------------------------------------
+   Main Street Vets — claymorphism industry sample
+   Village vet, Carrick-on-Shannon, Co. Leitrim
+   Palette + shapes per row 8 of ui-ux-pro-max styles.csv
+   ------------------------------------------------------------------ */
+
+:root{
+  --peach:#ffd5c2;
+  --peach-2:#ffbfa3;
+  --sky:#c6e4ff;
+  --sky-2:#a2cdff;
+  --mint:#c8f0d7;
+  --mint-2:#9de4b8;
+  --lilac:#e3d3ff;
+  --lilac-2:#c9aefb;
+  --butter:#fff2b3;
+  --butter-2:#ffe077;
+  --ink:#0b0a08;
+  --ink-soft:#2a2622;
+  --paper:#fff8d6;
+  --stroke:3px solid var(--ink);
+  --stroke-fat:4px solid var(--ink);
+  --radius-a:28px 14px 28px 14px;
+  --radius-b:36px 22px 36px 22px;
+  --radius-c:18px 32px 18px 32px;
+  --radius-pill:999px;
+  --shadow-clay:0 10px 18px rgba(0,0,0,0.12),
+                inset 4px -4px 10px rgba(255,255,255,0.85),
+                inset -4px 4px 10px rgba(190,100,70,0.28);
+  --shadow-clay-lift:0 16px 26px rgba(0,0,0,0.18),
+                    inset 4px -4px 12px rgba(255,255,255,0.9),
+                    inset -4px 4px 12px rgba(190,100,70,0.32);
+  --shadow-press:inset 4px 4px 10px rgba(120,60,30,0.25),
+                 inset -4px -4px 10px rgba(255,255,255,0.8),
+                 0 4px 8px rgba(0,0,0,0.06);
+  --t-display:"Baloo 2", "Fredoka", system-ui, sans-serif;
+  --t-body:"Fraunces", Georgia, serif;
+  --t-mono:"JetBrains Mono", ui-monospace, monospace;
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+
+body{
+  font-family:var(--t-body);
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(255,191,163,0.35), transparent 42%),
+    radial-gradient(circle at 88% 6%, rgba(162,205,255,0.32), transparent 44%),
+    radial-gradient(circle at 82% 96%, rgba(157,228,184,0.32), transparent 44%),
+    radial-gradient(circle at 8% 92%, rgba(201,174,251,0.28), transparent 44%),
+    var(--butter);
+  background-attachment:fixed;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+  min-height:100vh;
+}
+
+/* faint dotted butter texture */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background-image:radial-gradient(rgba(11,10,8,0.08) 1px, transparent 1.2px);
+  background-size:22px 22px;
+  opacity:0.45;
+  pointer-events:none;
+  z-index:0;
+}
+
+main, header, footer{ position:relative; z-index:1; }
+
+h1,h2,h3,h4{
+  font-family:var(--t-display);
+  color:var(--ink);
+  letter-spacing:-0.01em;
+  line-height:1.08;
+  margin:0 0 0.4em;
+}
+h1{ font-weight:800; font-size:clamp(2.4rem, 5.6vw, 4.6rem); }
+h2{ font-weight:700; font-size:clamp(1.7rem, 3.2vw, 2.6rem); }
+h3{ font-weight:700; font-size:clamp(1.2rem, 1.8vw, 1.55rem); }
+h4{ font-weight:600; font-size:1.05rem; }
+
+p{ margin:0 0 1em; }
+a{ color:inherit; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:4px; }
+a:hover{ text-decoration-style:wavy; }
+
+.wrap{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 clamp(20px, 4vw, 40px);
+}
+
+/* ---------- Clay primitives ---------- */
+.clay{
+  border:var(--stroke);
+  border-radius:var(--radius-a);
+  box-shadow:var(--shadow-clay);
+  background:var(--paper);
+}
+.clay-b{ border-radius:var(--radius-b); }
+.clay-c{ border-radius:var(--radius-c); }
+.clay-pill{
+  border:var(--stroke);
+  border-radius:var(--radius-pill);
+  box-shadow:var(--shadow-clay);
+  background:var(--paper);
+  display:inline-flex; align-items:center; gap:10px;
+  padding:10px 20px;
+  font-family:var(--t-display);
+  font-weight:600;
+  font-size:0.98rem;
+}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  font-family:var(--t-display);
+  font-weight:700;
+  font-size:1.05rem;
+  padding:16px 26px;
+  border:var(--stroke-fat);
+  border-radius:var(--radius-pill);
+  box-shadow:var(--shadow-clay);
+  color:var(--ink);
+  text-decoration:none;
+  background:var(--peach);
+  transition:transform .15s ease, box-shadow .15s ease;
+  cursor:pointer;
+}
+.btn:hover{ transform:translateY(-2px); box-shadow:var(--shadow-clay-lift); text-decoration:none; }
+.btn:active{ transform:translateY(1px); box-shadow:var(--shadow-press); }
+.btn--sky{ background:var(--sky); }
+.btn--mint{ background:var(--mint); }
+.btn--butter{ background:var(--butter-2); }
+.btn--lilac{ background:var(--lilac); }
+.btn--alert{ background:var(--peach-2); }
+.btn--small{ font-size:0.9rem; padding:10px 16px; }
+
+.tag{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 14px;
+  border:2.5px solid var(--ink);
+  border-radius:var(--radius-pill);
+  box-shadow:var(--shadow-clay);
+  background:var(--paper);
+  font-family:var(--t-display);
+  font-weight:600;
+  font-size:0.85rem;
+}
+.tag--peach{ background:var(--peach); }
+.tag--sky{ background:var(--sky); }
+.tag--mint{ background:var(--mint); }
+.tag--butter{ background:var(--butter-2); }
+.tag--lilac{ background:var(--lilac); }
+
+.mono{ font-family:var(--t-mono); font-weight:500; letter-spacing:-0.01em; }
+
+/* ---------- Topbar ---------- */
+.topbar{
+  padding:22px 0 6px;
+}
+.topbar__inner{
+  display:flex; align-items:center; gap:18px;
+  flex-wrap:wrap;
+  padding:14px 18px;
+  background:var(--paper);
+  border:var(--stroke);
+  border-radius:var(--radius-pill);
+  box-shadow:var(--shadow-clay);
+}
+.wordmark{
+  display:flex; align-items:center; gap:12px;
+  font-family:var(--t-display);
+  font-weight:800;
+  font-size:1.25rem;
+  letter-spacing:-0.02em;
+  padding-right:6px;
+}
+.wordmark__dot{
+  width:34px; height:34px;
+  border:var(--stroke);
+  border-radius:var(--radius-c);
+  background:var(--peach);
+  box-shadow:var(--shadow-clay);
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:var(--t-display);
+  font-weight:800;
+}
+.topbar__spacer{ flex:1; }
+.topbar__phone{
+  background:var(--sky);
+}
+.topbar__emergency{
+  background:var(--peach-2);
+  border:var(--stroke);
+  border-radius:var(--radius-pill);
+  box-shadow:var(--shadow-clay);
+  padding:10px 16px;
+  font-family:var(--t-display);
+  font-weight:700;
+  font-size:0.92rem;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.pulse-dot{
+  width:10px; height:10px; border-radius:50%;
+  background:var(--ink);
+  display:inline-block;
+  animation:pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{ transform:scale(1); opacity:1; }
+  50%{ transform:scale(1.35); opacity:0.5; }
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  padding:44px 0 28px;
+}
+.hero__grid{
+  display:grid;
+  grid-template-columns:1.25fr 1fr;
+  gap:clamp(22px, 3vw, 42px);
+  align-items:stretch;
+}
+.hero__kicker{
+  display:inline-flex; align-items:center; gap:10px;
+  margin-bottom:22px;
+}
+.hero h1{
+  font-size:clamp(2.5rem, 5.6vw, 4.4rem);
+  margin-bottom:18px;
+}
+.hero h1 .squiggle{
+  display:inline-block;
+  position:relative;
+}
+.hero h1 .squiggle::after{
+  content:"";
+  position:absolute;
+  left:-4px; right:-4px;
+  bottom:-6px;
+  height:10px;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12'><path d='M0 6 Q 10 0 20 6 T 40 6 T 60 6 T 80 6 T 100 6 T 120 6' fill='none' stroke='%230b0a08' stroke-width='3' stroke-linecap='round'/></svg>") repeat-x;
+  background-size:60px 10px;
+  opacity:0.85;
+}
+.hero__tagline{
+  font-size:clamp(1.05rem, 1.4vw, 1.2rem);
+  max-width:52ch;
+  margin-bottom:28px;
+  color:var(--ink-soft);
+}
+.hero__cta{ display:flex; gap:14px; flex-wrap:wrap; }
+.hero__aside{
+  background:var(--paper);
+  border:var(--stroke);
+  border-radius:var(--radius-b);
+  box-shadow:var(--shadow-clay);
+  padding:26px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.hero__aside h3{ margin-bottom:4px; }
+.hero__aside .row{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:14px;
+  padding:12px 16px;
+  border:2.5px solid var(--ink);
+  border-radius:var(--radius-c);
+  background:var(--butter);
+  box-shadow:var(--shadow-clay);
+}
+.hero__aside .row + .row{ margin-top:2px; }
+.hero__aside .row strong{ font-family:var(--t-display); }
+.hero__aside .row.note{ background:var(--mint); }
+.hero__aside .row.alert{ background:var(--peach-2); }
+
+/* ---------- Section heading block ---------- */
+.section{
+  padding:60px 0;
+}
+.section__head{
+  display:flex; align-items:flex-end; gap:18px;
+  margin-bottom:30px;
+  flex-wrap:wrap;
+}
+.section__head .tag{ margin-bottom:6px; }
+.section__head p.lead{
+  font-size:1.05rem;
+  color:var(--ink-soft);
+  max-width:64ch;
+  margin:8px 0 0;
+}
+
+/* ---------- "Call us for:" ---------- */
+.callfor__grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+.callfor__card{
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  background:var(--paper);
+  border:var(--stroke);
+  border-radius:var(--radius-b);
+  box-shadow:var(--shadow-clay);
+  position:relative;
+  overflow:hidden;
+}
+.callfor__card--small{ background:linear-gradient(180deg, var(--peach) 0%, var(--sky) 100%); }
+.callfor__card--farm { background:linear-gradient(180deg, var(--butter-2) 0%, var(--mint) 100%); }
+
+.callfor__card h3{ font-size:1.5rem; }
+.callfor__card ul.species{
+  list-style:none; padding:0; margin:0;
+  display:flex; flex-wrap:wrap; gap:8px;
+}
+.callfor__card ul.species li{
+  background:var(--paper);
+  border:2.5px solid var(--ink);
+  border-radius:var(--radius-pill);
+  padding:6px 14px;
+  font-family:var(--t-display);
+  font-weight:600;
+  font-size:0.9rem;
+  box-shadow:var(--shadow-clay);
+}
+.callfor__card .tags{
+  display:flex; flex-wrap:wrap; gap:8px;
+  margin-top:6px;
+}
+.callfor__card .callout{
+  margin-top:auto;
+  padding:14px 16px;
+  border:2.5px solid var(--ink);
+  border-radius:var(--radius-c);
+  background:var(--paper);
+  font-family:var(--t-display);
+  font-weight:600;
+  font-size:0.96rem;
+  box-shadow:var(--shadow-clay);
+}
+.callfor__blob{
+  position:absolute;
+  width:130px; height:130px;
+  border:var(--stroke);
+  box-shadow:var(--shadow-clay);
+  pointer-events:none;
+}
+.callfor__blob.a{
+  right:-30px; top:-30px;
+  background:var(--sky-2);
+  border-radius:40% 60% 50% 50%;
+}
+.callfor__blob.b{
+  left:-34px; bottom:-34px;
+  background:var(--mint-2);
+  border-radius:50% 50% 60% 40%;
+}
+
+/* ---------- Meet the vets ---------- */
+.vets__grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+.vet-card{
+  display:grid;
+  grid-template-columns:140px 1fr;
+  gap:22px;
+  padding:26px;
+  background:var(--paper);
+  border:var(--stroke);
+  border-radius:var(--radius-b);
+  box-shadow:var(--shadow-clay);
+  align-items:start;
+}
+.vet-card__avatar{
+  width:140px; height:140px;
+  border:var(--stroke);
+  box-shadow:var(--shadow-clay);
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.vet-card__avatar--a{
+  border-radius:50% 50% 60% 40%;
+  background:linear-gradient(160deg, var(--lilac) 0%, var(--peach) 100%);
+}
+.vet-card__avatar--b{
+  border-radius:60% 40% 50% 50%;
+  background:linear-gradient(160deg, var(--butter-2) 0%, var(--mint-2) 100%);
+}
+.vet-card h3{ margin:0 0 4px; }
+.vet-card .role{
+  display:inline-block;
+  margin-bottom:10px;
+  font-family:var(--t-display);
+  font-weight:600;
+  font-size:0.92rem;
+}
+.vet-card .creds{
+  font-family:var(--t-mono);
+  font-size:0.82rem;
+  color:var(--ink-soft);
+  margin-bottom:10px;
+}
+.vet-card .bio{
+  font-size:0.98rem;
+  margin:0;
+}
+
+/* ---------- Prices ---------- */
+.prices__grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 28px;
+  align-items:start;
+}
+.prices__col{
+  background:var(--paper);
+  border:var(--stroke);
+  border-radius:var(--radius-b);
+  box-shadow:var(--shadow-clay);
+  padding:12px 22px;
+  margin-bottom:24px;
+}
+.prices__row{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px;
+  padding:14px 4px;
+  border-bottom:2px dashed rgba(11,10,8,0.22);
+}
+.prices__row:last-child{ border-bottom:none; }
+.prices__row .name{
+  font-family:var(--t-display);
+  font-weight:600;
+  font-size:1.02rem;
+}
+.prices__row .note{
+  display:block;
+  font-family:var(--t-body);
+  font-weight:400;
+  font-style:italic;
+  font-size:0.86rem;
+  color:var(--ink-soft);
+}
+.prices__row .price{
+  font-family:var(--t-mono);
+  font-weight:600;
+  font-size:1.1rem;
+  padding:6px 14px;
+  border:2.5px solid var(--ink);
+  border-radius:var(--radius-pill);
+  background:var(--peach);
+  box-shadow:var(--shadow-clay);
+  white-space:nowrap;
+}
+.prices__row .price.sky{ background:var(--sky); }
+.prices__row .price.mint{ background:var(--mint); }
+.prices__row .price.lilac{ background:var(--lilac); }
+.prices__footnote{
+  background:var(--paper);
+  border:var(--stroke);
+  border-radius:var(--radius-c);
+  box-shadow:var(--shadow-clay);
+  padding:16px 20px;
+  font-size:0.94rem;
+  color:var(--ink-soft);
+}
+
+/* ---------- Farm call-out ---------- */
+.farm{
+  background:linear-gradient(180deg, var(--mint) 0%, var(--butter-2) 100%);
+  border:var(--stroke);
+  border-radius:var(--radius-b);
+  box-shadow:var(--shadow-clay);
+  padding:40px 36px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:30px;
+  align-items:stretch;
+  position:relative;
+  overflow:hidden;
+}
+.farm__copy h2{ margin-bottom:14px; }
+.farm__copy p.lead{
+  font-size:1.08rem;
+  color:var(--ink-soft);
+  max-width:52ch;
+  margin-bottom:18px;
+}
+.farm__bullets{
+  list-style:none; padding:0; margin:0;
+  display:grid; gap:10px;
+}
+.farm__bullets li{
+  display:flex; align-items:flex-start; gap:12px;
+  padding:12px 16px;
+  background:var(--paper);
+  border:2.5px solid var(--ink);
+  border-radius:var(--radius-c);
+  box-shadow:var(--shadow-clay);
+  font-family:var(--t-display);
+  font-weight:600;
+  font-size:0.98rem;
+}
+.farm__bullets li::before{
+  content:"";
+  flex:none;
+  width:14px; height:14px;
+  border:2.5px solid var(--ink);
+  border-radius:50%;
+  background:var(--mint-2);
+  margin-top:4px;
+  box-shadow:var(--shadow-clay);
+}
+.farm__pricebox{
+  background:var(--paper);
+  border:var(--stroke);
+  border-radius:var(--radius-b);
+  box-shadow:var(--shadow-clay);
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.farm__pricebox h3{ font-size:1.25rem; margin:0 0 4px; }
+.farm__pricebox .row{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:14px;
+  padding:10px 12px;
+  background:var(--butter);
+  border:2.5px solid var(--ink);
+  border-radius:var(--radius-c);
+  box-shadow:var(--shadow-clay);
+}
+.farm__pricebox .row strong{ font-family:var(--t-display); }
+.farm__pricebox .row .mono{ font-size:0.98rem; }
+.farm__pricebox .small{
+  font-size:0.86rem;
+  color:var(--ink-soft);
+  margin-top:6px;
+}
+.farm__shape{
+  position:absolute;
+  pointer-events:none;
+  border:var(--stroke);
+  box-shadow:var(--shadow-clay);
+}
+.farm__shape.one{
+  width:180px; height:180px;
+  right:-60px; top:-60px;
+  background:var(--butter-2);
+  border-radius:46% 54% 60% 40%;
+  opacity:0.8;
+}
+.farm__shape.two{
+  width:130px; height:130px;
+  left:32%; bottom:-55px;
+  background:var(--peach);
+  border-radius:60% 40% 50% 50%;
+  opacity:0.65;
+}
+
+/* ---------- After-hours ---------- */
+.emerg{
+  background:linear-gradient(180deg, var(--peach) 0%, var(--peach-2) 100%);
+  border:var(--stroke);
+  border-radius:var(--radius-b);
+  box-shadow:var(--shadow-clay);
+  padding:40px 36px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  align-items:center;
+}
+.emerg h2{ margin-bottom:10px; }
+.emerg p{ font-size:1.04rem; max-width:48ch; }
+.emerg .rota{
+  display:grid; gap:12px;
+}
+.emerg .rota .row{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:14px;
+  padding:14px 18px;
+  background:var(--paper);
+  border:2.5px solid var(--ink);
+  border-radius:var(--radius-c);
+  box-shadow:var(--shadow-clay);
+  font-family:var(--t-display);
+  font-weight:600;
+  font-size:0.98rem;
+}
+.emerg .bigphone{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:20px 24px;
+  background:var(--butter-2);
+  border:var(--stroke);
+  border-radius:var(--radius-pill);
+  box-shadow:var(--shadow-clay);
+  margin-top:12px;
+}
+.emerg .bigphone .num{
+  font-family:var(--t-mono);
+  font-weight:600;
+  font-size:clamp(1.4rem, 2.4vw, 1.9rem);
+}
+.emerg .bigphone .label{
+  font-family:var(--t-display);
+  font-weight:700;
+  font-size:0.98rem;
+}
+
+/* ---------- End-of-life ---------- */
+.eol{
+  background:linear-gradient(180deg, var(--lilac) 0%, var(--sky) 100%);
+  border:var(--stroke);
+  border-radius:var(--radius-b);
+  box-shadow:var(--shadow-clay);
+  padding:40px 36px;
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:28px;
+  align-items:center;
+}
+.eol h2{ margin-bottom:12px; }
+.eol p{ font-size:1.04rem; max-width:50ch; color:var(--ink-soft); }
+.eol .box{
+  background:var(--paper);
+  border:var(--stroke);
+  border-radius:var(--radius-c);
+  box-shadow:var(--shadow-clay);
+  padding:22px;
+  display:grid; gap:10px;
+}
+.eol .box .row{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px;
+  padding:10px 14px;
+  background:var(--lilac);
+  border:2.5px solid var(--ink);
+  border-radius:var(--radius-c);
+  font-family:var(--t-display);
+  font-weight:600;
+  font-size:0.96rem;
+}
+.eol .box .row .mono{ font-size:0.98rem; }
+
+/* ---------- Visit / call ---------- */
+.visit{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+.visit__block{
+  padding:28px;
+  background:var(--paper);
+  border:var(--stroke);
+  border-radius:var(--radius-b);
+  box-shadow:var(--shadow-clay);
+}
+.visit__block.address{ background:linear-gradient(180deg, var(--sky) 0%, var(--paper) 100%); }
+.visit__block.hours  { background:linear-gradient(180deg, var(--peach) 0%, var(--paper) 100%); }
+.visit__block h3{ margin-bottom:10px; }
+.visit__block .line{
+  padding:10px 14px;
+  background:var(--paper);
+  border:2.5px solid var(--ink);
+  border-radius:var(--radius-c);
+  box-shadow:var(--shadow-clay);
+  margin-bottom:8px;
+  font-family:var(--t-display);
+  font-weight:600;
+  font-size:0.98rem;
+  display:flex; justify-content:space-between; gap:12px;
+}
+.visit__block .line .mono{ font-size:0.95rem; }
+.visit__block .line.alt{ background:var(--mint); }
+.visit__cta{
+  display:flex; flex-wrap:wrap; gap:10px;
+  margin-top:14px;
+}
+
+/* ---------- Footer ---------- */
+footer{
+  margin-top:60px;
+  padding:40px 0 80px;
+}
+.footer__card{
+  padding:28px 30px;
+  background:var(--paper);
+  border:var(--stroke);
+  border-radius:var(--radius-b);
+  box-shadow:var(--shadow-clay);
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:22px;
+  align-items:start;
+}
+.footer__card h4{ margin-bottom:10px; font-size:1rem; }
+.footer__card p, .footer__card li{
+  font-size:0.92rem; color:var(--ink-soft); margin:0 0 6px;
+}
+.footer__card ul{ list-style:none; padding:0; margin:0; }
+.footer__badges{
+  display:flex; flex-wrap:wrap; gap:8px;
+  margin-top:12px;
+}
+.footer__copy{
+  text-align:center;
+  font-family:var(--t-mono);
+  font-size:0.82rem;
+  color:var(--ink-soft);
+  margin-top:22px;
+}
+
+/* ---------- Utilities ---------- */
+.soft{ color:var(--ink-soft); }
+.tight{ margin:0; }
+.spread{ display:flex; justify-content:space-between; align-items:center; gap:14px; }
+
+/* ---------- Mobile fit safety net ---------- */
+/* <!-- mobile-fit-safety --> */
+@media (max-width: 960px){
+  .hero__grid,
+  .callfor__grid,
+  .vets__grid,
+  .prices__grid,
+  .farm,
+  .emerg,
+  .eol,
+  .visit,
+  .footer__card{
+    grid-template-columns:1fr;
+  }
+  .vet-card{ grid-template-columns:1fr; }
+  .vet-card__avatar{ margin:0 auto; }
+  .farm__shape.one{ width:140px; height:140px; right:-50px; top:-50px; }
+  .farm__shape.two{ display:none; }
+  .topbar__inner{ justify-content:space-between; }
+  .topbar__spacer{ flex-basis:100%; height:0; }
+}
+@media (max-width: 620px){
+  body{ font-size:0.98rem; }
+  .section{ padding:44px 0; }
+  .hero{ padding:28px 0 16px; }
+  .hero h1{ font-size:clamp(2rem, 8vw, 2.6rem); }
+  .btn{ font-size:0.98rem; padding:14px 20px; }
+  .topbar__inner{ padding:12px 14px; border-radius:26px; }
+  .wordmark{ font-size:1.08rem; }
+  .callfor__card, .vet-card, .prices__col,
+  .farm, .emerg, .eol, .visit__block, .footer__card{
+    padding:22px;
+  }
+  .prices__row{ flex-direction:column; align-items:flex-start; gap:6px; }
+  .prices__row .price{ align-self:flex-end; }
+}
+@media (max-width: 420px){
+  h1{ font-size:2rem; }
+  h2{ font-size:1.45rem; }
+  .btn{ width:100%; }
+  .hero__cta{ flex-direction:column; }
+  .hero__cta .btn{ width:100%; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .pulse-dot{ animation:none; }
+  .btn{ transition:none; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     1. Topbar
+     ========================================================= -->
+<header class="topbar">
+  <div class="wrap">
+    <div class="topbar__inner">
+      <div class="wordmark">
+        <span class="wordmark__dot">M</span>
+        Main Street Vets
+      </div>
+      <div class="topbar__spacer"></div>
+      <a class="btn btn--small topbar__phone" href="tel:+353715550298">
+        <span aria-hidden="true">&#9742;</span>
+        071 555 0298
+      </a>
+      <span class="topbar__emergency">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        After-hours emergency · 087 555 0429
+      </span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- =========================================================
+     2. Hero
+     ========================================================= -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <div class="hero__kicker">
+          <span class="tag tag--mint">Carrick-on-Shannon · Co. Leitrim</span>
+          <span class="tag tag--sky">Est. 2019</span>
+        </div>
+        <h1>
+          Your village vet —<br />
+          for the pets at the fireside<br />
+          and the <span class="squiggle">animals in the field</span>.
+        </h1>
+        <p class="hero__tagline">
+          A village vet in Carrick-on-Shannon for the pets that share your home
+          and the animals that earn your living.
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--sky" href="#visit">
+            Routine appointment
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="btn btn--alert" href="tel:+353875550429">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            Emergency — call now
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero__aside">
+        <h3>Today at the practice</h3>
+        <div class="row">
+          <span><strong>Monday</strong> walk-ins</span>
+          <span class="mono">08:30 — 10:30</span>
+        </div>
+        <div class="row">
+          <span><strong>Appointments</strong></span>
+          <span class="mono">11:00 — 18:30</span>
+        </div>
+        <div class="row note">
+          <span><strong>Farm call-outs</strong></span>
+          <span class="mono">within ~30 km</span>
+        </div>
+        <div class="row alert">
+          <span><strong>After-hours</strong> rota</span>
+          <span class="mono">24 hr · shared</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     3. Call us for:
+     ========================================================= -->
+<section class="section" id="callfor">
+  <div class="wrap">
+    <div class="section__head">
+      <div>
+        <span class="tag tag--butter">Call us for:</span>
+        <h2 class="tight">Two very different kinds of patient,<br />one phone number.</h2>
+        <p class="lead">
+          Dial <a href="tel:+353715550298">071 555 0298</a> during the day and tell us
+          briefly what&rsquo;s going on &mdash; we&rsquo;ll tell you straight away whether
+          it&rsquo;s a visit to the Main Street practice or a call-out to the yard.
+        </p>
+      </div>
+    </div>
+
+    <div class="callfor__grid">
+      <!-- SMALL ANIMALS -->
+      <div class="callfor__card callfor__card--small">
+        <span class="callfor__blob a" aria-hidden="true"></span>
+        <h3>Small animals</h3>
+        <p class="tight">
+          Dogs, cats, rabbits, hamsters, caged birds &mdash; all seen at the practice on
+          Main Street. Quiet waiting area, separate cat entrance on Saturdays.
+        </p>
+        <ul class="species">
+          <li>Dogs</li>
+          <li>Cats</li>
+          <li>Rabbits</li>
+          <li>Hamsters &amp; guinea pigs</li>
+          <li>Caged birds</li>
+        </ul>
+        <div class="tags">
+          <span class="tag tag--peach">Vaccinations</span>
+          <span class="tag tag--sky">Neutering</span>
+          <span class="tag tag--sky">Dental scale &amp; polish</span>
+          <span class="tag tag--peach">Microchipping</span>
+          <span class="tag tag--sky">Wound &amp; lameness checks</span>
+        </div>
+        <div class="callout">
+          Book routine visits by phone &mdash; we like to hear the background before you come in.
+        </div>
+      </div>
+
+      <!-- FARM ANIMALS -->
+      <div class="callfor__card callfor__card--farm">
+        <span class="callfor__blob b" aria-hidden="true"></span>
+        <h3>Farm animals</h3>
+        <p class="tight">
+          Cattle, sheep and horses, seen on the yard. Leitrim is farming country, and
+          this is a working vet &mdash; not a pet boutique. Tom does most of the farm work.
+        </p>
+        <ul class="species">
+          <li>Cattle (beef &amp; dairy)</li>
+          <li>Sheep</li>
+          <li>Horses</li>
+        </ul>
+        <div class="tags">
+          <span class="tag tag--butter">TB testing (DAFM)</span>
+          <span class="tag tag--mint">Calving assistance</span>
+          <span class="tag tag--mint">Herd health plans</span>
+          <span class="tag tag--butter">Lameness &amp; footbathing</span>
+          <span class="tag tag--mint">Drug ranges on the truck</span>
+        </div>
+        <div class="callout">
+          Farm call-outs 7 days a week &mdash; ring before 10am where possible so we can plan the route.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     4. Meet the vets
+     ========================================================= -->
+<section class="section" id="team">
+  <div class="wrap">
+    <div class="section__head">
+      <div>
+        <span class="tag tag--lilac">Meet the vets</span>
+        <h2 class="tight">Two vets &mdash; one small animal, one large.</h2>
+        <p class="lead">
+          Between them, &Oacute;rla and Tom cover nearly everything Leitrim brings through
+          the door or out into the yard. If something is outside what we do, we&rsquo;ll tell
+          you plainly and point you to a vet we trust.
+        </p>
+      </div>
+    </div>
+
+    <div class="vets__grid">
+      <!-- ORLA -->
+      <article class="vet-card">
+        <div class="vet-card__avatar vet-card__avatar--a" aria-hidden="true">
+          <svg viewBox="0 0 120 120" width="100%" height="100%" role="img" aria-label="Abstract clay avatar">
+            <circle cx="60" cy="50" r="22" fill="#fff2b3" stroke="#0b0a08" stroke-width="3.5"/>
+            <rect x="34" y="70" width="52" height="34" rx="18" fill="#ffbfa3" stroke="#0b0a08" stroke-width="3.5"/>
+            <circle cx="52" cy="48" r="3" fill="#0b0a08"/>
+            <circle cx="68" cy="48" r="3" fill="#0b0a08"/>
+            <path d="M52 58 Q60 64 68 58" fill="none" stroke="#0b0a08" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <h3>&Oacute;rla Redmond</h3>
+          <span class="role">Principal &middot; small animal</span>
+          <div class="creds">MVB &middot; UCD 2014 &middot; VCI-R-4821</div>
+          <p class="bio">
+            Grew up just outside Carrick-on-Shannon. Spent five years in a busy
+            Dublin-suburb practice before moving home to open Main Street Vets in 2019.
+            Special interest in small-animal dentistry and soft-tissue surgery. Órla
+            takes most of the routine small-animal consults and does all of the surgical
+            work at the practice.
+          </p>
+          <div class="tags" style="margin-top:10px;">
+            <span class="tag tag--peach">Dentistry</span>
+            <span class="tag tag--sky">Soft-tissue surgery</span>
+            <span class="tag tag--peach">Rabbits &amp; exotics</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- TOM -->
+      <article class="vet-card">
+        <div class="vet-card__avatar vet-card__avatar--b" aria-hidden="true">
+          <svg viewBox="0 0 120 120" width="100%" height="100%" role="img" aria-label="Abstract clay avatar">
+            <rect x="24" y="32" width="72" height="48" rx="24" fill="#c8f0d7" stroke="#0b0a08" stroke-width="3.5"/>
+            <circle cx="48" cy="56" r="3" fill="#0b0a08"/>
+            <circle cx="72" cy="56" r="3" fill="#0b0a08"/>
+            <path d="M46 68 Q60 76 74 68" fill="none" stroke="#0b0a08" stroke-width="3" stroke-linecap="round"/>
+            <rect x="34" y="80" width="52" height="22" rx="11" fill="#ffe077" stroke="#0b0a08" stroke-width="3.5"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Tom Costigan</h3>
+          <span class="role">Farm vet &middot; large animal</span>
+          <div class="creds">MVB &middot; UCD 2017 &middot; VCI-R-5116</div>
+          <p class="bio">
+            Grew up on a suckler-beef farm in north Leitrim. Does all of our TB testing,
+            herd health plans, calving assistance and sheep work, and covers the horses
+            that we take on. Tom lives 10 minutes from the practice, which matters at
+            3am on a calving.
+          </p>
+          <div class="tags" style="margin-top:10px;">
+            <span class="tag tag--butter">DAFM TB tests</span>
+            <span class="tag tag--mint">Calving &amp; lambing</span>
+            <span class="tag tag--butter">Herd health plans</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     5. Routine services & prices
+     ========================================================= -->
+<section class="section" id="prices">
+  <div class="wrap">
+    <div class="section__head">
+      <div>
+        <span class="tag tag--peach">Routine services &amp; prices</span>
+        <h2 class="tight">Plain prices. No surprises on the consulting-room desk.</h2>
+        <p class="lead">
+          These are our standard prices for the most common small-animal work. Anything
+          non-routine we&rsquo;ll quote on the phone or in the room before we start.
+          Prices include VAT; card and Revolut accepted.
+        </p>
+      </div>
+    </div>
+
+    <div class="prices__grid">
+      <!-- LEFT COLUMN -->
+      <div class="prices__col">
+        <div class="prices__row">
+          <div class="name">
+            Dog annual vaccination + health check
+            <span class="note">DHPPi + lepto-4 boosters</span>
+          </div>
+          <span class="price mono">&euro;65</span>
+        </div>
+        <div class="prices__row">
+          <div class="name">
+            Cat annual vaccination + health check
+            <span class="note">Tricat &middot; FeLV on request</span>
+          </div>
+          <span class="price sky mono">&euro;55</span>
+        </div>
+        <div class="prices__row">
+          <div class="name">
+            Rabbit vaccination (VHD + myxo combined)
+            <span class="note">Single annual shot</span>
+          </div>
+          <span class="price lilac mono">&euro;60</span>
+        </div>
+        <div class="prices__row">
+          <div class="name">
+            Neuter dog &mdash; under 10 kg
+            <span class="note">Incl. anaesthesia &amp; take-home pain relief</span>
+          </div>
+          <span class="price mono">&euro;240</span>
+        </div>
+        <div class="prices__row">
+          <div class="name">
+            Neuter dog &mdash; 10&ndash;30 kg
+            <span class="note">Over 30 kg quoted on weigh-in</span>
+          </div>
+          <span class="price mono">&euro;310</span>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="prices__col">
+        <div class="prices__row">
+          <div class="name">
+            Neuter cat &mdash; female (spay)
+            <span class="note">Day procedure, home same evening</span>
+          </div>
+          <span class="price sky mono">&euro;95</span>
+        </div>
+        <div class="prices__row">
+          <div class="name">
+            Neuter cat &mdash; male (castration)
+            <span class="note">Day procedure</span>
+          </div>
+          <span class="price sky mono">&euro;75</span>
+        </div>
+        <div class="prices__row">
+          <div class="name">
+            Dental scale &amp; polish
+            <span class="note">From &euro;180 &mdash; quoted after exam</span>
+          </div>
+          <span class="price mint mono">from &euro;180</span>
+        </div>
+        <div class="prices__row">
+          <div class="name">
+            Microchip (ISO, lifetime registration)
+            <span class="note">Incl. registration on Fido</span>
+          </div>
+          <span class="price mono">&euro;45</span>
+        </div>
+        <div class="prices__row">
+          <div class="name">
+            Nail clip
+            <span class="note">Free during a routine consult</span>
+          </div>
+          <span class="price mint mono">&euro;22</span>
+        </div>
+        <div class="prices__row">
+          <div class="name">
+            General consultation
+            <span class="note">Single-animal, 15 minutes</span>
+          </div>
+          <span class="price mono">&euro;55</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="prices__footnote">
+      <strong>A note on quotes:</strong> we&rsquo;d rather tell you the likely cost before we
+      start than surprise you at the desk. If a consultation is heading toward X-rays,
+      bloods or a procedure, we&rsquo;ll pause and give you a range first.
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     6. Farm call-out
+     ========================================================= -->
+<section class="section" id="farm">
+  <div class="wrap">
+    <div class="farm">
+      <span class="farm__shape one" aria-hidden="true"></span>
+      <span class="farm__shape two" aria-hidden="true"></span>
+
+      <div class="farm__copy">
+        <span class="tag tag--butter">Farm call-out</span>
+        <h2>Leitrim is a farming county.<br />We work like one.</h2>
+        <p class="lead">
+          Tom runs farm call-outs across Leitrim and the near end of Roscommon. The
+          truck carries standard drug ranges so most visits are one-trip, and we try
+          to route calls in the same parish on the same morning to keep mileage fair.
+        </p>
+        <ul class="farm__bullets">
+          <li>DAFM-approved for herd-test TB testing</li>
+          <li>Calving assistance &mdash; 24/7 via the emergency phone</li>
+          <li>Sheep lameness &amp; footbathing advice on-yard</li>
+          <li>Herd health plans &amp; routine fluke/worming scheduling</li>
+          <li>Standard antibiotics, anti-inflammatories and calcium on the truck</li>
+        </ul>
+      </div>
+
+      <aside class="farm__pricebox">
+        <h3>Farm call-out fees</h3>
+        <div class="row">
+          <span><strong>Call-out fee</strong> within 15 km</span>
+          <span class="mono">&euro;45</span>
+        </div>
+        <div class="row">
+          <span><strong>Mileage</strong> beyond 15 km</span>
+          <span class="mono">&euro;1.50 / km</span>
+        </div>
+        <div class="row">
+          <span><strong>TB test</strong> starting fee</span>
+          <span class="mono">from &euro;95</span>
+        </div>
+        <div class="row">
+          <span><strong>Calving</strong> assistance</span>
+          <span class="mono">quoted on call</span>
+        </div>
+        <p class="small">
+          Drugs, consumables and any surgical work are charged on top of the call-out
+          fee. Invoices monthly by post or email, whichever you prefer.
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     7. After-hours & emergencies
+     ========================================================= -->
+<section class="section" id="emergency">
+  <div class="wrap">
+    <div class="emerg">
+      <div>
+        <span class="tag tag--peach">After-hours &amp; emergencies</span>
+        <h2>We share the rota &mdash; so the phone is always live.</h2>
+        <p>
+          Two vets can&rsquo;t cover a county on their own, and we&rsquo;d rather be honest
+          about that than pretend. Outside practice hours we share a 24-hour emergency
+          rota with two other VCI-registered practices &mdash; one in Sligo and one in
+          Roscommon &mdash; so there is always a real vet on call for our clients.
+        </p>
+        <div class="rota">
+          <div class="row">
+            <span>Mon &mdash; Thu evenings</span>
+            <span class="mono">Main Street / Sligo rota</span>
+          </div>
+          <div class="row">
+            <span>Fri &mdash; Sun, public holidays</span>
+            <span class="mono">Roscommon rota shared</span>
+          </div>
+          <div class="row">
+            <span>Calving / lambing</span>
+            <span class="mono">Tom first, backup second</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <a class="bigphone" href="tel:+353875550429">
+          <span class="label">
+            <span class="pulse-dot" aria-hidden="true"></span> Emergency line
+          </span>
+          <span class="num">087 555 0429</span>
+        </a>
+        <div class="eol" style="margin-top:18px; grid-template-columns:1fr; padding:22px; background:var(--paper); box-shadow:var(--shadow-clay); border-radius:var(--radius-c);">
+          <div class="box" style="background:transparent; border:none; box-shadow:none; padding:0;">
+            <div class="row">
+              <span><strong>Emergency call-out fee</strong></span>
+              <span class="mono">&euro;150</span>
+            </div>
+            <div class="row">
+              <span><strong>Treatment</strong></span>
+              <span class="mono">on top, quoted on scene</span>
+            </div>
+            <div class="row">
+              <span><strong>Mileage</strong></span>
+              <span class="mono">&euro;1.50 / km</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     8. Home visits for end-of-life
+     ========================================================= -->
+<section class="section" id="eol">
+  <div class="wrap">
+    <div class="eol">
+      <div>
+        <span class="tag tag--lilac">Home visits &middot; end-of-life</span>
+        <h2>When the time comes, we prefer to travel to them.</h2>
+        <p>
+          A vet&rsquo;s waiting room is the wrong last room. If you&rsquo;d rather your
+          pet&rsquo;s last hour be in their own bed, by the fire, with you on the floor
+          beside them &mdash; we&rsquo;ll come to you. Appointments are booked quietly and
+          can usually be made within 24&ndash;48 hours.
+        </p>
+        <p class="soft">
+          We carry everything we need for a calm sedation first, then the procedure.
+          Cremation is arranged on your behalf with Pet Haven Crematorium in Sligo &mdash;
+          group or private, your choice.
+        </p>
+      </div>
+
+      <div class="box">
+        <div class="row">
+          <span><strong>Home visit</strong> within 20 km</span>
+          <span class="mono">&euro;120</span>
+        </div>
+        <div class="row">
+          <span><strong>Procedure</strong> (sedation + euthanasia)</span>
+          <span class="mono">from &euro;95</span>
+        </div>
+        <div class="row">
+          <span><strong>Group cremation</strong></span>
+          <span class="mono">arranged via Pet Haven</span>
+        </div>
+        <div class="row">
+          <span><strong>Private cremation</strong></span>
+          <span class="mono">from &euro;220</span>
+        </div>
+        <p class="soft" style="margin:4px 2px 0; font-size:0.88rem;">
+          Beyond 20 km we add &euro;1.50 / km. We&rsquo;ll stay as long as you need &mdash;
+          there is no rushed clock on this visit.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     9. Visit / call
+     ========================================================= -->
+<section class="section" id="visit">
+  <div class="wrap">
+    <div class="section__head">
+      <div>
+        <span class="tag tag--sky">Visit or call</span>
+        <h2 class="tight">Where we are, when we&rsquo;re open, and how to reach us.</h2>
+      </div>
+    </div>
+
+    <div class="visit">
+      <div class="visit__block address">
+        <h3>Main Street Vets</h3>
+        <div class="line">
+          <span>Address</span>
+          <span class="mono">Main Street, Carrick-on-Shannon</span>
+        </div>
+        <div class="line">
+          <span>County</span>
+          <span class="mono">Co. Leitrim, N41 F5N2</span>
+        </div>
+        <div class="line alt">
+          <span>Day phone</span>
+          <span class="mono">071 555 0298</span>
+        </div>
+        <div class="line">
+          <span>Emergency phone</span>
+          <span class="mono">087 555 0429</span>
+        </div>
+        <div class="line">
+          <span>Email</span>
+          <span class="mono">info@mainstreetvets.ie</span>
+        </div>
+        <div class="visit__cta">
+          <a class="btn btn--sky btn--small" href="tel:+353715550298">Call day phone</a>
+          <a class="btn btn--butter btn--small" href="mailto:info@mainstreetvets.ie">Email us</a>
+        </div>
+      </div>
+
+      <div class="visit__block hours">
+        <h3>Opening hours</h3>
+        <div class="line">
+          <span>Mon &mdash; Fri</span>
+          <span class="mono">08:30 &ndash; 18:30</span>
+        </div>
+        <div class="line alt">
+          <span>Saturday</span>
+          <span class="mono">09:00 &ndash; 13:00</span>
+        </div>
+        <div class="line">
+          <span>Sunday</span>
+          <span class="mono">emergency rota only</span>
+        </div>
+        <div class="line alt">
+          <span>Bank holidays</span>
+          <span class="mono">emergency rota only</span>
+        </div>
+        <div class="line">
+          <span>Emergency line</span>
+          <span class="mono">always live &middot; 24 hr</span>
+        </div>
+        <p class="soft" style="margin:10px 2px 0; font-size:0.9rem;">
+          If the day phone is engaged during clinic, leave one short voicemail &mdash; we
+          return calls between appointments. For anything urgent, ring the emergency
+          line even during clinic hours and Órla or Tom will pick up.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =========================================================
+     10. Footer
+     ========================================================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer__card">
+      <div>
+        <h4>Main Street Vets</h4>
+        <p>
+          Family-run village veterinary practice in Carrick-on-Shannon, serving small
+          animals at the practice and farms across Leitrim and the near end of
+          Roscommon &amp; Sligo since 2019.
+        </p>
+        <div class="footer__badges">
+          <span class="tag tag--mint">VCI registered &middot; VCI-R-4821</span>
+          <span class="tag tag--butter">DAFM-approved TB testing</span>
+          <span class="tag tag--sky">GDPR compliant</span>
+        </div>
+      </div>
+      <div>
+        <h4>Find us</h4>
+        <ul>
+          <li>Main Street</li>
+          <li>Carrick-on-Shannon</li>
+          <li>Co. Leitrim, N41 F5N2</li>
+          <li class="mono" style="margin-top:6px;">071 555 0298 &middot; day</li>
+          <li class="mono">087 555 0429 &middot; 24 hr</li>
+        </ul>
+      </div>
+      <div>
+        <h4>On the site</h4>
+        <ul>
+          <li><a href="#callfor">Call us for&hellip;</a></li>
+          <li><a href="#team">Meet the vets</a></li>
+          <li><a href="#prices">Routine prices</a></li>
+          <li><a href="#farm">Farm call-out</a></li>
+          <li><a href="#emergency">After-hours</a></li>
+          <li><a href="#eol">End-of-life at home</a></li>
+          <li><a href="#visit">Visit or call</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer__copy">
+      &copy; Main Street Vets Ltd. Registered in Ireland. All veterinary services
+      provided under VCI regulation. &mdash; Site is a demonstration for Owl Studio.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Carroll Ó Súilleabháin Architects · Works &amp; Writings · Portobello, Dublin 8</title>
+<meta name="description" content="Carroll Ó Súilleabháin Architects — a nine-year Dublin 8 practice working across residential, conservation, education and civic projects. RIAI Chartered Practice." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    /* Palette — from samples/05-3d-hyperrealism.html */
+    --navy-900: #050B18;
+    --navy-800: #0A1628;
+    --navy-700: #0E1D33;
+    --burgundy: #5A1420;
+    --burgundy-bright: #7B1E2E;
+    --gold: #C9A86A;
+    --gold-bright: #E4C687;
+    --gold-deep: #8C7240;
+    --ivory: #F4EEDF;
+    --ink: #E8DFC9;
+    --rule: rgba(201, 168, 106, 0.22);
+    --rule-soft: rgba(232, 223, 201, 0.08);
+
+    /* Typography */
+    --f-display: "Archivo Black", "Fraunces", serif;
+    --f-body: "Fraunces", Georgia, serif;
+    --f-mono: "JetBrains Mono", ui-monospace, monospace;
+
+    /* Architectural tokens */
+    --gutter: clamp(20px, 4vw, 56px);
+    --shell: 1280px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  html { background: var(--navy-900); }
+  body{ font-family: var(--f-body); font-weight: 400; color: var(--ivory); background: var(--navy-900); line-height: 1.55; font-size: 17px; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: hidden; position: relative; }
+
+  /* Decorative construction-grid layer — fixed, very subtle, page-edge only */
+  body::before{ content:""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image: linear-gradient(90deg, rgba(201,168,106,0.035) 1px, transparent 1px), linear-gradient(180deg, rgba(201,168,106,0.035) 1px, transparent 1px);
+    background-size: 96px 96px, 96px 96px; background-position: -1px -1px; opacity: 0.55; mix-blend-mode: screen; }
+  /* Second layer — coloured haze */
+  body::after{ content:""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse 60% 40% at 82% 8%, rgba(201,168,106,0.06), transparent 60%), radial-gradient(ellipse 70% 50% at 12% 94%, rgba(90,20,32,0.10), transparent 60%); }
+
+  main, header, footer, section { position: relative; z-index: 1; }
+  a { color: inherit; text-decoration: none; }
+  p { margin: 0 0 1em 0; color: var(--ink); }
+  .shell{ max-width: var(--shell); margin: 0 auto; padding-inline: var(--gutter); }
+
+  /* ---------- Typographic primitives ---------- */
+  .mono-label{ font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 400; }
+  .mono-tag{ font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.08em; color: var(--gold); }
+  .rule-gold{ height: 1px; background: linear-gradient(90deg, transparent, var(--gold) 8%, var(--gold) 92%, transparent); opacity: 0.55; }
+  .rule-hair{ height: 1px; background: var(--rule-soft); }
+
+  /* =========================================================== TOPBAR */
+  .topbar{ position: sticky; top: 0; z-index: 20; background: rgba(5, 11, 24, 0.86);
+    backdrop-filter: saturate(140%) blur(6px); -webkit-backdrop-filter: saturate(140%) blur(6px);
+    border-bottom: 1px solid var(--rule-soft); }
+  .topbar__row{ display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 14px; }
+  .mark{ display: inline-flex; align-items: center; gap: 12px; }
+  .mark__glyph{ width: 30px; height: 30px; display: block; }
+  .mark__word{ font-family: var(--f-body); font-weight: 500; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ivory); }
+  .mark__word em{ font-style: italic; color: var(--gold); font-weight: 400; letter-spacing: 0; text-transform: none; }
+  .topbar__meta{ display: flex; align-items: center; gap: 22px; }
+  .topbar__phone{ font-family: var(--f-mono); font-size: 12px; color: var(--ink); letter-spacing: 0.06em; }
+  .topbar__phone span{ color: var(--gold); margin-right: 8px; }
+  .topbar__cta{ font-family: var(--f-body); font-weight: 500; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ivory); padding: 10px 18px; border: 1px solid var(--gold); transition: background 180ms ease, color 180ms ease; }
+  .topbar__cta:hover{ background: var(--burgundy); border-color: var(--burgundy); color: var(--ivory); }
+
+  /* ============================================================= COVER */
+  .cover{ padding-top: clamp(48px, 8vw, 96px); padding-bottom: clamp(48px, 8vw, 96px); }
+  .cover__ledger{ display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; padding-bottom: 28px; }
+  .cover__ledger-left{ max-width: 520px; }
+  .cover__ledger-right{ text-align: right; font-family: var(--f-mono); font-size: 11px; color: var(--ink);
+    letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.9; opacity: 0.8; }
+  .cover__headline{ font-family: var(--f-display); font-weight: 400; font-size: clamp(44px, 6vw, 78px);
+    line-height: 1.02; letter-spacing: -0.01em; color: var(--ivory); margin: 24px 0 0 0; max-width: 980px; }
+  .cover__headline em{ font-family: var(--f-body); font-style: italic; font-weight: 300; color: var(--gold); letter-spacing: 0; }
+  .cover__rule{ margin-top: 40px; margin-bottom: 36px; }
+  .cover__note{ max-width: 720px; font-size: 19px; line-height: 1.7; color: var(--ink); font-weight: 400; }
+  .cover__note em{ color: var(--gold); font-style: italic; }
+  .cover__foot{ margin-top: 48px; display: flex; gap: 48px; align-items: baseline; flex-wrap: wrap;
+    font-family: var(--f-mono); font-size: 11px; color: var(--gold); letter-spacing: 0.14em; text-transform: uppercase; }
+  .cover__foot span{ color: var(--ink); opacity: 0.75; }
+
+  /* =========================================================== PROJECTS */
+  .projects{ padding-top: clamp(64px, 9vw, 120px); padding-bottom: clamp(48px, 7vw, 88px); border-top: 1px solid var(--rule-soft); }
+  .projects__header{ display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; margin-bottom: 56px; }
+  .projects__title{ font-family: var(--f-body); font-weight: 300; font-style: italic; font-size: clamp(28px, 3.4vw, 40px);
+    color: var(--ivory); margin: 6px 0 0 0; letter-spacing: -0.005em; }
+  .projects__count{ font-family: var(--f-mono); font-size: 12px; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; }
+
+  /* Index — catalogue rows */
+  .index{ border-top: 1px solid var(--rule); }
+  .index__row{ display: grid; grid-template-columns: 88px 1fr 180px 200px 20px; gap: 24px; align-items: baseline;
+    padding: 22px 0; border-bottom: 1px solid var(--rule-soft); transition: background 200ms ease; }
+  .index__row:hover{ background: linear-gradient(90deg, transparent, rgba(201,168,106,0.04) 20%, rgba(201,168,106,0.04) 80%, transparent); }
+  .index__year{ font-family: var(--f-mono); font-size: 14px; font-weight: 500; color: var(--gold); letter-spacing: 0.06em; }
+  .index__title{ font-family: var(--f-body); font-size: 22px; font-weight: 400; color: var(--ivory); line-height: 1.3; }
+  .index__title em{ color: var(--gold-bright); font-style: italic; font-weight: 300; font-size: 15px;
+    display: block; margin-top: 4px; letter-spacing: 0.02em; }
+  .index__sector{ font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); opacity: 0.82; }
+  .index__award{ font-family: var(--f-body); font-style: italic; font-size: 14px; color: var(--gold); font-weight: 400; }
+  .index__award:empty::before{ content: "—"; opacity: 0.25; }
+  .index__arrow{ font-family: var(--f-mono); color: var(--gold); opacity: 0.6; font-size: 13px; text-align: right;
+    transition: transform 180ms ease, opacity 180ms ease; }
+  .index__row:hover .index__arrow{ opacity: 1; transform: translateX(4px); }
+  .index__row:last-child{ border-bottom: 1px solid var(--rule); }
+
+  /* Selected in depth */
+  .depth{ margin-top: clamp(64px, 9vw, 112px); padding-top: 48px; border-top: 1px solid var(--rule-soft); }
+  .depth__kicker{ display: flex; align-items: center; gap: 18px; margin-bottom: 40px; }
+  .depth__kicker .line{ flex: 1; height: 1px; background: var(--rule-soft); }
+  .depth__kicker-title{ font-family: var(--f-body); font-style: italic; font-size: 18px; color: var(--ivory); font-weight: 400; }
+  .depth__work{ display: grid; grid-template-columns: 180px 1fr; gap: 48px; padding: 44px 0; border-top: 1px solid var(--rule-soft); }
+  .depth__work:first-of-type{ border-top: none; }
+  .depth__meta{ font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); line-height: 2; }
+  .depth__meta strong{ color: var(--gold); display: block; font-weight: 500; margin-top: 6px; }
+  .depth__meta span{ display: block; opacity: 0.7; margin-top: 18px; font-size: 10px; letter-spacing: 0.14em; }
+  .depth__body h3{ font-family: var(--f-body); font-weight: 500; font-size: clamp(24px, 2.6vw, 32px); color: var(--ivory);
+    margin: 0 0 10px 0; letter-spacing: -0.005em; line-height: 1.2; position: relative;
+    display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap; }
+  .depth__body h3 em{ font-style: italic; font-weight: 300; color: var(--gold); }
+  .depth__body h3 .annotation{ font-family: var(--f-mono); font-size: 13px; font-weight: 400; color: var(--gold);
+    letter-spacing: 0.06em; opacity: 0.85; border-left: 1px solid var(--rule); padding-left: 14px; line-height: 1.3; }
+  .depth__subtitle{ font-family: var(--f-body); font-style: italic; color: var(--gold-bright); font-size: 16px; margin-bottom: 18px; font-weight: 400; }
+  .depth__prose{ font-size: 17px; line-height: 1.75; color: var(--ink); }
+  .depth__prose p + p{ margin-top: 1em; }
+
+  /* ============================================================ SECTORS */
+  .sectors{
+    padding-block: clamp(64px, 9vw, 112px);
+    border-top: 1px solid var(--rule-soft);
+  }
+  .sectors__head{
+    margin-bottom: 48px;
+  }
+  .sectors__title{
+    font-family: var(--f-body);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(28px, 3.4vw, 40px);
+    color: var(--ivory);
+    margin: 6px 0 0 0;
+    letter-spacing: -0.005em;
+  }
+  .sectors__grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .sector{
+    padding: 32px 26px;
+    border-right: 1px solid var(--rule-soft);
+  }
+  .sector:last-child{ border-right: none; }
+  .sector__num{
+    font-family: var(--f-mono);
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    margin-bottom: 16px;
+  }
+  .sector__name{
+    font-family: var(--f-body);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ivory);
+    margin: 0 0 10px 0;
+  }
+  .sector__detail{
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  /* =========================================================== PRACTICE */
+  .practice{
+    padding-block: clamp(64px, 9vw, 112px);
+    border-top: 1px solid var(--rule-soft);
+  }
+  .practice__head{ margin-bottom: 56px; }
+  .practice__title{
+    font-family: var(--f-body);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(28px, 3.4vw, 40px);
+    color: var(--ivory);
+    margin: 6px 0 0 0;
+    letter-spacing: -0.005em;
+  }
+  .partners{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .partner{
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+  }
+  .partner__role{
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .partner__name{
+    font-family: var(--f-body);
+    font-weight: 500;
+    font-size: 28px;
+    color: var(--ivory);
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+  }
+  .partner__post{
+    font-family: var(--f-mono);
+    font-size: 12px;
+    color: var(--gold-bright);
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+  }
+  .partner__bio{
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+  .partner__bio em{
+    color: var(--ivory);
+    font-style: italic;
+  }
+  .partner__facts{
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule-soft);
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 10px 18px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .partner__facts dt{ color: var(--gold); }
+  .partner__facts dd{ color: var(--ink); margin: 0; }
+
+  /* ========================================================== APPROACH */
+  .approach{
+    padding-block: clamp(64px, 9vw, 112px);
+    border-top: 1px solid var(--rule-soft);
+  }
+  .approach__grid{
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .approach__label{
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    line-height: 1.8;
+    padding-top: 10px;
+  }
+  .approach__prose{
+    font-family: var(--f-body);
+    font-size: clamp(19px, 1.9vw, 23px);
+    line-height: 1.65;
+    color: var(--ivory);
+    font-weight: 400;
+    max-width: 820px;
+  }
+  .approach__prose em{
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .approach__fees{
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .fee__tag{
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .fee__amount{
+    font-family: var(--f-body);
+    font-weight: 500;
+    font-size: 28px;
+    color: var(--ivory);
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+  .fee__amount em{
+    font-size: 14px;
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+    margin-left: 4px;
+  }
+  .fee__desc{
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  /* ============================================================= RIAI */
+  .riai{
+    padding-block: clamp(48px, 7vw, 88px);
+    border-top: 1px solid var(--rule-soft);
+    background: linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 100%);
+  }
+  .riai__grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+  .riai__seal{
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .riai__seal-mark{
+    flex: 0 0 72px;
+    width: 72px;
+    height: 72px;
+    border: 1px solid var(--gold);
+    display: grid;
+    place-items: center;
+    font-family: var(--f-display);
+    font-size: 20px;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    position: relative;
+  }
+  .riai__seal-mark::before{
+    content:"";
+    position: absolute;
+    inset: 4px;
+    border: 1px solid var(--rule);
+  }
+  .riai__seal-body h4{
+    font-family: var(--f-body);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ivory);
+    margin: 0 0 8px 0;
+  }
+  .riai__seal-body p{
+    font-size: 14px;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.65;
+  }
+  .riai__list{
+    font-family: var(--f-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    line-height: 2;
+    color: var(--ink);
+  }
+  .riai__list strong{ color: var(--gold); font-weight: 500; }
+
+  /* =========================================================== CONTACT */
+  .contact{
+    padding-block: clamp(64px, 9vw, 112px);
+    border-top: 1px solid var(--rule-soft);
+  }
+  .contact__grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+  .contact__title{
+    font-family: var(--f-body);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(32px, 4vw, 48px);
+    color: var(--ivory);
+    margin: 12px 0 28px 0;
+    letter-spacing: -0.01em;
+  }
+  .contact__lede{
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink);
+    max-width: 480px;
+    margin-bottom: 28px;
+  }
+  .contact__lede em{ color: var(--gold); font-style: italic; }
+  .contact__cta{
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px;
+    border: 1px solid var(--gold);
+    font-family: var(--f-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    transition: all 200ms ease;
+  }
+  .contact__cta:hover{
+    background: var(--burgundy);
+    border-color: var(--burgundy);
+    color: var(--ivory);
+  }
+  .contact__cta span{
+    font-family: var(--f-body);
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+  }
+  .visit{
+    border-left: 1px solid var(--rule);
+    padding-left: 48px;
+  }
+  .visit__label{
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .visit__addr{
+    font-family: var(--f-body);
+    font-size: 20px;
+    color: var(--ivory);
+    line-height: 1.5;
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+  .visit__addr em{
+    display: block;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gold-bright);
+    margin-top: 6px;
+    font-weight: 400;
+  }
+  .visit__lines{
+    font-family: var(--f-mono);
+    font-size: 12px;
+    line-height: 2;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+  }
+  .visit__lines strong{ color: var(--gold); font-weight: 500; }
+  .visit__bring{
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule-soft);
+    font-size: 14px;
+    color: var(--ink);
+    font-style: italic;
+    line-height: 1.7;
+    opacity: 0.9;
+  }
+
+  /* ============================================================== FOOT */
+  footer{
+    padding-block: 44px;
+    border-top: 1px solid var(--rule);
+    background: #020610;
+  }
+  .foot__grid{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .foot__mark{
+    font-family: var(--f-body);
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ivory);
+    margin-bottom: 6px;
+  }
+  .foot__mark em{ font-style: italic; color: var(--gold); letter-spacing: 0; text-transform: none; font-weight: 400; }
+  .foot__lede{
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    opacity: 0.6;
+    line-height: 1.9;
+  }
+  .foot__col h5{
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 12px 0;
+    font-weight: 400;
+  }
+  .foot__col ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    line-height: 2;
+    color: var(--ink);
+    opacity: 0.75;
+  }
+  .foot__bottom{
+    margin-top: 36px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    opacity: 0.55;
+    text-transform: uppercase;
+  }
+
+  /* ============================================================ RESPONSIVE */
+  @media (max-width: 1100px){
+    .depth__work{ grid-template-columns: 1fr; gap: 24px; }
+    .depth__meta{ padding-bottom: 20px; border-bottom: 1px solid var(--rule-soft); }
+    .partners{ grid-template-columns: 1fr; gap: 48px; }
+    .contact__grid{ grid-template-columns: 1fr; gap: 48px; }
+    .visit{ border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 40px; }
+    .riai__grid{ grid-template-columns: 1fr; gap: 32px; }
+    .foot__grid{ grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+  @media (max-width: 820px){
+    .sectors__grid{ grid-template-columns: 1fr 1fr; }
+    .sector{ border-right: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); }
+    .sector:nth-child(even){ border-right: none; }
+    .sector:nth-last-child(-n+2){ border-bottom: none; }
+    .approach__grid{ grid-template-columns: 1fr; gap: 20px; }
+    .approach__fees{ grid-template-columns: 1fr; gap: 24px; }
+    .index__row{ grid-template-columns: 64px 1fr 20px; row-gap: 8px; }
+    .index__sector, .index__award{ grid-column: 2 / 3; }
+    .index__award{ color: var(--gold); }
+    .topbar__meta{ gap: 12px; }
+    .topbar__phone{ display: none; }
+  }
+  @media (max-width: 560px){
+    .sectors__grid{ grid-template-columns: 1fr; }
+    .sector{ border-right: none; }
+    .foot__grid{ grid-template-columns: 1fr; }
+    .cover__ledger{ flex-direction: column; align-items: flex-start; }
+    .cover__ledger-right{ text-align: left; }
+    .cover__foot{ gap: 18px; }
+  }
+</style>
+
+<!-- mobile-fit-safety -->
+<style>
+html { overflow-x: hidden; }
+body { max-width: 100vw; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+* { min-width: 0; }
+img, video, iframe, svg, canvas { max-width: 100%; height: auto; display: block; }
+@media (max-width: 640px) {
+  [class*="grid"], [class*="cols"], [class*="row"], [class*="columns"] {
+    grid-template-columns: 1fr !important;
+    flex-direction: column !important;
+  }
+  [class*="container"] { max-width: 100% !important; padding-inline: 16px !important; }
+  section, header, main, footer, article, aside, nav {
+    max-width: 100% !important;
+    padding-inline: clamp(12px, 4vw, 24px) !important;
+  }
+  h1 { font-size: clamp(30px, 8vw, 44px) !important; line-height: 1.05 !important; }
+  h2 { font-size: clamp(24px, 6vw, 34px) !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ TOPBAR -->
+<header class="topbar">
+  <div class="shell topbar__row">
+    <a href="#cover" class="mark" aria-label="Carroll Ó Súilleabháin Architects">
+      <!-- C + Ó monogram: two intersecting ivory lines forming an architectural mark -->
+      <svg class="mark__glyph" viewBox="0 0 40 40" fill="none" stroke="#F4EEDF" stroke-width="1.25" aria-hidden="true">
+        <!-- C arc -->
+        <path d="M28 6 A16 16 0 1 0 28 34" />
+        <!-- Ó vertical + intersecting diagonal forming the fada -->
+        <line x1="20" y1="10" x2="20" y2="34" stroke="#C9A86A" />
+        <line x1="14" y1="4" x2="22" y2="10" stroke="#C9A86A" />
+      </svg>
+      <span class="mark__word">Carroll <em>Ó Súilleabháin</em> Architects</span>
+    </a>
+    <div class="topbar__meta">
+      <span class="topbar__phone"><span>T</span>01 555 0456</span>
+      <a class="topbar__cta" href="#contact">Discuss a project</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================== COVER -->
+<section class="cover shell" id="cover">
+  <div class="cover__ledger">
+    <div class="cover__ledger-left">
+      <div class="mono-label">Est. 2016 — Portobello, Dublin 8</div>
+    </div>
+    <div class="cover__ledger-right">
+      Vol. IX · Spring 2026<br />
+      Catalogue of works · No. 09 / 24
+    </div>
+  </div>
+
+  <h1 class="cover__headline">Carroll Ó Súilleabháin Architects <em>— Works &amp; Writings.</em></h1>
+
+  <div class="rule-gold cover__rule"></div>
+
+  <p class="cover__note">
+    A two-partner practice working across protected residential, education and civic briefs in Dublin and the surrounding counties. We hold the <em>conservation trades</em> close: stone, lime, oak, steel. New work is built to last a hundred years longer than the last planning cycle, and the drawings are prepared so the builder doesn't have to guess.
+  </p>
+
+  <div class="cover__foot">
+    <div>RIAI Chartered <span>No. CP-1284</span></div>
+    <div>BCAR compliant <span>Part 4</span></div>
+    <div>NZEB 2021 <span>all new builds</span></div>
+    <div>Nine years <span>— thirty-two completed works</span></div>
+  </div>
+</section>
+
+<!-- =========================================================== PROJECTS -->
+<section class="projects shell" id="projects">
+  <div class="projects__header">
+    <div>
+      <div class="mono-label">Section I</div>
+      <h2 class="projects__title">Projects, 2020 — 2025</h2>
+    </div>
+    <div class="projects__count">09 works · chronological</div>
+  </div>
+
+  <div class="index">
+
+    <a class="index__row" href="#projects">
+      <div class="index__year">2025</div>
+      <div class="index__title">Dún Laoghaire house extension<em>118m² rear extension to a protected structure — planning granted Jan '25, on site Q4</em></div>
+      <div class="index__sector">Residential</div>
+      <div class="index__award">Protected structure</div>
+      <div class="index__arrow">→</div>
+    </a>
+
+    <a class="index__row" href="#projects">
+      <div class="index__year">2024</div>
+      <div class="index__title">St Colmcille's NS classroom block<em>Two-classroom extension + SET room + play yard, County Wicklow</em></div>
+      <div class="index__sector">Education</div>
+      <div class="index__award">Dept. of Education</div>
+      <div class="index__arrow">→</div>
+    </a>
+
+    <a class="index__row" href="#projects">
+      <div class="index__year">2024</div>
+      <div class="index__title">Georgian terrace restoration, Ranelagh<em>Full fabric restoration — roof, sash windows, lime re-plastering, restored back-parlour joinery</em></div>
+      <div class="index__sector">Residential</div>
+      <div class="index__award">Conservation</div>
+      <div class="index__arrow">→</div>
+    </a>
+
+    <a class="index__row" href="#projects">
+      <div class="index__year">2023</div>
+      <div class="index__title">Custom House co-working fitout, Docklands<em>Adaptive reuse of a mid-century office floor for a 48-desk studio, exposed services, acoustic baffles</em></div>
+      <div class="index__sector">Commercial</div>
+      <div class="index__award"></div>
+      <div class="index__arrow">→</div>
+    </a>
+
+    <a class="index__row" href="#projects">
+      <div class="index__year">2023</div>
+      <div class="index__title">Ranelagh mews conversion<em>Disused coach-house to 2-bed dwelling, planning granted on appeal, constrained rear-lane access</em></div>
+      <div class="index__sector">Residential</div>
+      <div class="index__award"></div>
+      <div class="index__arrow">→</div>
+    </a>
+
+    <a class="index__row" href="#projects">
+      <div class="index__year">2022</div>
+      <div class="index__title">Liffey Valley community hub<em>260m² civic and community building for a newly formed neighbourhood association</em></div>
+      <div class="index__sector">Civic</div>
+      <div class="index__award">RIAI shortlist 2023</div>
+      <div class="index__arrow">→</div>
+    </a>
+
+    <a class="index__row" href="#projects">
+      <div class="index__year">2022</div>
+      <div class="index__title">Rathmines protected terrace<em>Sensitive two-storey rear extension to a mid-terrace Victorian, granted without conditions</em></div>
+      <div class="index__sector">Residential</div>
+      <div class="index__award">Conservation</div>
+      <div class="index__arrow">→</div>
+    </a>
+
+    <a class="index__row" href="#projects">
+      <div class="index__year">2021</div>
+      <div class="index__title">Ballsbridge apartment refurb<em>Full strip-out and refurbishment of a 1970s apartment for a returning client</em></div>
+      <div class="index__sector">Residential</div>
+      <div class="index__award"></div>
+      <div class="index__arrow">→</div>
+    </a>
+
+    <a class="index__row" href="#projects">
+      <div class="index__year">2020</div>
+      <div class="index__title">Stoneybatter house<em>Practice's first completed new build — a 94m² three-bed infill on a disused yard</em></div>
+      <div class="index__sector">Residential</div>
+      <div class="index__award">New build</div>
+      <div class="index__arrow">→</div>
+    </a>
+
+  </div>
+
+  <!-- Selected works in depth -->
+  <div class="depth">
+    <div class="depth__kicker">
+      <span class="depth__kicker-title"><em>Selected works in depth →</em></span>
+      <span class="line"></span>
+      <span class="mono-tag">02 projects</span>
+    </div>
+
+    <article class="depth__work">
+      <aside class="depth__meta">
+        <div>Project No.</div><strong>CÓS · 24-07</strong>
+        <div>Sector</div><strong>Education</strong>
+        <div>Client</div><strong>St Colmcille's NS</strong>
+        <div>Completed</div><strong>Q3 2024</strong>
+        <span>Location — Kilmacanogue, Co. Wicklow</span>
+      </aside>
+      <div class="depth__body">
+        <h3>St Colmcille's NS classroom block <span class="annotation">212m² · €1.14M</span></h3>
+        <div class="depth__subtitle">A two-classroom extension on Department of Education scale fee, completed Q3 2024.</div>
+        <div class="depth__prose">
+          <p>The brief was deceptively simple: two general-purpose classrooms, a special-education teaching room and a resurfaced play yard, delivered against the Department of Education's standard cost-metric (€5,385 / m² at the time of tender). What wasn't simple was the siting — the school sits on a drumlin, and the only level ground faced due north. We rotated the block four degrees off the principal axis to pick up morning light from the east gable and placed clerestories above the north-facing teaching wall.</p>
+          <p>The construction is a straightforward insulated cavity wall with brick outer leaf, chosen to sit calmly beside the 1961 main building. The roof is a warm-deck single-ply with PV-ready conduits run at first-fix. Services are routed in an acoustic ceiling void so that a future re-subdivision of the classrooms is a ceiling job, not a walls job. Project value <em>€1,142,400 incl. VAT</em>, delivered 1.8% under the tender cost plan.</p>
+          <p>Planning was straightforward; Part 8 consultation raised one valid concern about the existing boundary trees, which we resolved by moving the SEN room three metres north and holding the mature ash along the eastern boundary. The building was handed over in time for the September 2024 intake.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="depth__work">
+      <aside class="depth__meta">
+        <div>Project No.</div><strong>CÓS · 22-03</strong>
+        <div>Sector</div><strong>Residential · Conservation</strong>
+        <div>Client</div><strong>Private</strong>
+        <div>Completed</div><strong>Q3 2022</strong>
+        <span>Location — Rathmines, Dublin 6</span>
+      </aside>
+      <div class="depth__body">
+        <h3>Rathmines protected terrace <span class="annotation">118m² · €418k</span></h3>
+        <div class="depth__subtitle">A 118m² single-storey rear extension to a protected mid-terrace Victorian, granted without conditions.</div>
+        <div class="depth__prose">
+          <p>A protected-structure extension is an exercise in restraint. The existing house is a mid-terrace Victorian on the south side of Rathmines, four bays deep with a return that had been knocked out and poorly rebuilt in the 1970s. The client wanted a contemporary kitchen-dining room that read clearly as a new intervention — not a pastiche — while repairing the original fabric where it had been damaged.</p>
+          <p>The extension is <em>a single volume on a Portuguese limestone floor</em>, with a steel-and-oak roof structure left exposed overhead. The connection to the original house is a one-metre-deep glazed slot; from the hall you read the line where old meets new. The return masonry was stripped back to the original rubble stone, lime-repointed, and left exposed on the internal face. Project value <em>€418,000 incl. VAT</em>, completed Q3 2022 to a 14-month programme including conservation pre-works.</p>
+          <p>Planning was granted without conditions following a pre-application consultation with Dublin City Council's conservation officer — a process we recommend to every protected-structure client before a line is drawn. The drawings were issued in sets to the builder at shell, first-fix, second-fix and snag, which is more paperwork than a standard contract but is what a conservation brief deserves.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+
+</section>
+
+<!-- ============================================================ SECTORS -->
+<section class="sectors shell" id="sectors">
+  <div class="sectors__head">
+    <div class="mono-label">Section II</div>
+    <h2 class="sectors__title">Sectors we work in</h2>
+  </div>
+
+  <div class="sectors__grid">
+    <div class="sector">
+      <div class="sector__num">01 / Residential</div>
+      <h3 class="sector__name">Houses &amp; extensions</h3>
+      <p class="sector__detail">Rear and side extensions, protected-structure alterations, attic conversions, whole-house renovations, one-off new builds on infill sites.</p>
+    </div>
+    <div class="sector">
+      <div class="sector__num">02 / Education</div>
+      <h3 class="sector__name">DoE schemes</h3>
+      <p class="sector__detail">Classroom extensions, SEN rooms and school building works delivered to Department of Education scale fee and cost-metric.</p>
+    </div>
+    <div class="sector">
+      <div class="sector__num">03 / Civic</div>
+      <h3 class="sector__name">Community &amp; cultural</h3>
+      <p class="sector__detail">Community halls, neighbourhood hubs, and small civic projects — public-facing briefs that need to be generous with their limited budget.</p>
+    </div>
+    <div class="sector">
+      <div class="sector__num">04 / Commercial</div>
+      <h3 class="sector__name">Adaptive fit-out</h3>
+      <p class="sector__detail">Studio and co-working fitouts in older commercial stock — the kind of space where a full strip-back reveals the best bones.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================== PRACTICE -->
+<section class="practice shell" id="practice">
+  <div class="practice__head">
+    <div class="mono-label">Section III</div>
+    <h2 class="practice__title">Practice</h2>
+  </div>
+
+  <div class="partners">
+
+    <article class="partner">
+      <div class="partner__role">Founding Partner</div>
+      <h3 class="partner__name">Hugh Carroll</h3>
+      <div class="partner__post">MRIAI · BArch (UCD) · Dip Conservation Studies (DIT)</div>
+      <p class="partner__bio">
+        Hugh trained at UCD and graduated in 2008, the year before the market collapsed. He spent five years at <em>Grafton Architects</em> (2009–2014) working on the Università Luigi Bocconi competition and on the early stages of the Kingston University LSBU building. He took a Diploma in Conservation Studies at DIT in 2013 and has since worked almost exclusively on protected-structure briefs. He is a member of the RIAI Conservation Committee.
+      </p>
+      <dl class="partner__facts">
+        <dt>Registered</dt><dd>2012 · No. 7341</dd>
+        <dt>Conservation</dt><dd>Grade II accredited</dd>
+        <dt>Teaching</dt><dd>UCD, visiting critic 2019—</dd>
+        <dt>Sector lead</dt><dd>Residential · Conservation</dd>
+      </dl>
+    </article>
+
+    <article class="partner">
+      <div class="partner__role">Founding Partner</div>
+      <h3 class="partner__name">Aoibheann Ó Súilleabháin</h3>
+      <div class="partner__post">MRIAI · BArch (UCD) · MArch (UL)</div>
+      <p class="partner__bio">
+        Aoibheann graduated from UCD in 2011 and took her MArch at the <em>University of Limerick</em> in 2013, where her thesis on post-conflict civic reconstruction was published in the UL research annual. She spent four years at <em>Henchion Reuter Architects</em> before co-founding the practice in 2016. She leads the education sector and sits on the technical panel for the Department of Education's architectural framework.
+      </p>
+      <dl class="partner__facts">
+        <dt>Registered</dt><dd>2014 · No. 8122</dd>
+        <dt>DoE framework</dt><dd>Technical panel 2022—</dd>
+        <dt>Teaching</dt><dd>DIT Bolton St, design tutor 2018—2021</dd>
+        <dt>Sector lead</dt><dd>Education · Civic</dd>
+      </dl>
+    </article>
+
+  </div>
+</section>
+
+<!-- =========================================================== APPROACH -->
+<section class="approach shell" id="approach">
+  <div class="mono-label" style="margin-bottom:12px;">Section IV</div>
+  <div class="approach__grid">
+    <div class="approach__label">Fees &amp; approach</div>
+    <div>
+      <p class="approach__prose">
+        We charge percentage-of-construction-value fees from <em>8% on a new build over €500k</em> down to <em>14% on a conservation job under €150k</em>, because a small conservation project needs more drawings per square metre than almost anything we do. On Department of Education schemes we work to the fixed scale fee set out in the DoE's Architectural Services Agreement and we don't negotiate against it.
+      </p>
+      <p class="approach__prose" style="margin-top:1em;">
+        Planning permission on a residential extension typically runs <em>€4,500 — €7,500 incl. all drawings and submissions</em>, depending on site complexity and whether the structure is protected. We quote on a staged basis — RIAI Stages 1 through 7 — and the quote is itemised, not lump-sum.
+      </p>
+
+      <div class="approach__fees">
+        <div>
+          <div class="fee__tag">New build · over €500k</div>
+          <div class="fee__amount">8<em>%</em></div>
+          <div class="fee__desc">Standard percentage on construction value for RIAI Stages 1–7 inclusive.</div>
+        </div>
+        <div>
+          <div class="fee__tag">Extension · planning &amp; drawings</div>
+          <div class="fee__amount">€4.5 — 7.5<em>k</em></div>
+          <div class="fee__desc">Full planning submission incl. drawings, planning report, and any required conservation method statement.</div>
+        </div>
+        <div>
+          <div class="fee__tag">Conservation · under €150k</div>
+          <div class="fee__amount">14<em>%</em></div>
+          <div class="fee__desc">Higher percentage reflects the drawings-per-metre a protected-structure job honestly requires.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== RIAI -->
+<section class="riai">
+  <div class="shell">
+    <div class="mono-label" style="margin-bottom:18px;">Section V · RIAI &amp; regulation</div>
+    <div class="riai__grid">
+
+      <div class="riai__seal">
+        <div class="riai__seal-mark">CP</div>
+        <div class="riai__seal-body">
+          <h4>RIAI Chartered Practice · No. CP-1284</h4>
+          <p>We are a Chartered Practice of the <em>Royal Institute of the Architects of Ireland</em>. Both founding partners are MRIAI and on the Architects' Register maintained under the Building Control Act 2007. The practice holds current professional indemnity insurance at the RIAI-recommended level, renewed annually. We work to the RIAI Agreement between Client &amp; Architect (2024 edition) and issue assigned certifier certificates under Part 4 of the Building Control (Amendment) Regulations.</p>
+        </div>
+      </div>
+
+      <div class="riai__list">
+        <div><strong>Register</strong> — Architects' Register of Ireland</div>
+        <div><strong>PII Insurer</strong> — HDI Global Specialty SE · €2.5m each &amp; every claim</div>
+        <div><strong>BCAR</strong> — Part 4, SI 9 of 2014, Assigned Certifier role available</div>
+        <div><strong>NZEB</strong> — All new builds delivered to TGD-L 2021 NZEB standard</div>
+        <div><strong>BER</strong> — BER assessor panel, residential Type A</div>
+        <div><strong>Conservation</strong> — RIAI Grade II accredited (H. Carroll)</div>
+        <div><strong>Framework</strong> — DoE technical panel, lot 3 (A. Ó Súilleabháin)</div>
+        <div><strong>Company</strong> — CRO No. 589 221 · Registered in Ireland</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================== CONTACT -->
+<section class="contact shell" id="contact">
+  <div class="contact__grid">
+
+    <div>
+      <div class="mono-label">Section VI · Visit the studio</div>
+      <h2 class="contact__title">By appointment —<br />we meet properly, with drawings on the table.</h2>
+      <p class="contact__lede">
+        Most first meetings take about ninety minutes. We prefer <em>you come to the studio</em> rather than a site visit on round one — it's faster to read deeds, folio plans and existing drawings across a table than on a mobile screen at the front door.
+      </p>
+      <a class="contact__cta" href="mailto:studio@c-osuilleabhain.ie">
+        <span>Email the studio →</span>
+      </a>
+      <div style="margin-top:24px; font-family: var(--f-mono); font-size: 12px; color: var(--ink); letter-spacing: 0.06em; opacity: 0.75;">
+        studio@c-osuilleabhain.ie · 01 555 0456
+      </div>
+    </div>
+
+    <aside class="visit">
+      <div class="visit__label">Studio</div>
+      <div class="visit__addr">
+        4A Camden Place, Portobello<br />
+        Dublin 8 · D08 R6K9<br />
+        <em>First floor, over the framers</em>
+      </div>
+
+      <div class="visit__lines">
+        <div><strong>Hours</strong> — Mon–Thu 09:30–17:30 · Fri by appt.</div>
+        <div><strong>T</strong> — 01 555 0456</div>
+        <div><strong>E</strong> — studio@c-osuilleabhain.ie</div>
+        <div><strong>Parking</strong> — 2hr pay &amp; display on Harrington St</div>
+        <div><strong>Bikes</strong> — covered rack in the rear laneway</div>
+      </div>
+
+      <p class="visit__bring">
+        Bring your deeds, last planning grants if any, and the site/building folio number. If the property is a protected structure, a copy of the Record of Protected Structures entry speeds things up considerably.
+      </p>
+    </aside>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================== FOOTER -->
+<footer>
+  <div class="shell">
+    <div class="foot__grid">
+
+      <div>
+        <div class="foot__mark">Carroll <em>Ó Súilleabháin</em> Architects</div>
+        <div class="foot__lede">
+          4A Camden Place · Portobello · Dublin 8 · D08 R6K9<br />
+          RIAI Chartered Practice · No. CP-1284<br />
+          Company Registration · 589 221 · Reg. in Ireland
+        </div>
+      </div>
+
+      <div class="foot__col">
+        <h5>Practice</h5>
+        <ul>
+          <li>Projects</li>
+          <li>Sectors</li>
+          <li>Partners</li>
+          <li>Approach &amp; fees</li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h5>Regulation</h5>
+        <ul>
+          <li>Architects' Register</li>
+          <li>BCAR Part 4 compliant</li>
+          <li>RIAI Client Agreement 2024</li>
+          <li>PII — HDI Global Specialty SE</li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h5>Contact</h5>
+        <ul>
+          <li>studio@c-osuilleabhain.ie</li>
+          <li>01 555 0456</li>
+          <li>Mon–Thu · 09:30–17:30</li>
+          <li>By appointment</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="foot__bottom">
+      <div>© MMXXVI — Carroll Ó Súilleabháin Architects Ltd.</div>
+      <div>Part 4 Building Control (Amendment) Regs 2014 · BCAR compliant</div>
+      <div>Chartered · Registered · Insured</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

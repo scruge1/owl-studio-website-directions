@@ -526,6 +526,67 @@
         #070714;
     }
 
+
+    /* t-sol — Solicitor · Swiss Authority (ink base, cream reverse-out) */
+    .t-sol { background: #0b0a08; }
+    .t-sol::before {
+      content: "02";
+      position: absolute;
+      left: 12px; top: 14px;
+      font-family: var(--display);
+      font-weight: 900; font-size: 72px; line-height: 0.85;
+      letter-spacing: -0.05em;
+      color: #F5F1E8;
+    }
+    .t-sol::after {
+      content: "";
+      position: absolute;
+      left: 12px; right: 12px; top: 10px;
+      height: 3px; background: #F5F1E8;
+      box-shadow: 0 40px 0 0 #B38B6D;
+    }
+    .card-stage.t-sol::before { font-size: clamp(140px, 19vw, 220px); left: 24px; top: 30px; }
+    .card-stage.t-sol::after { left: 24px; right: 24px; top: 20px; height: 6px; box-shadow: 0 72px 0 0 #B38B6D; }
+
+    /* t-fin — Financial · Brutalism Editorial (cream paper, ink rules, burgundy) */
+    .t-fin { background: #F5F1E8; }
+    .t-fin::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, transparent 0 18%, #0b0a08 18% 19%, transparent 19% 100%),
+        linear-gradient(to bottom, transparent 0 52%, #0b0a08 52% 53%, transparent 53% 100%),
+        linear-gradient(to bottom, transparent 0 82%, #5A1420 82% 84%, transparent 84% 100%);
+    }
+    .t-fin::after {
+      content: "KW";
+      position: absolute;
+      left: 12px; bottom: 42%;
+      font-family: var(--display);
+      font-weight: 900; font-size: 40px; letter-spacing: -0.04em;
+      color: #0b0a08;
+      z-index: 2;
+    }
+    .card-stage.t-fin::after { font-size: clamp(60px, 9vw, 140px); bottom: 42%; left: 24px; }
+
+    /* t-aes — Aesthetic clinic · Aurora Luxe (deep ink + gold anchor) */
+    .t-aes {
+      background:
+        radial-gradient(ellipse 60% 40% at 18% 22%, rgba(124, 58, 255, 0.55) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 40% at 82% 18%, rgba(255, 0, 204, 0.45) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 45% at 50% 82%, rgba(255, 179, 71, 0.4) 0%, transparent 60%),
+        #0a0718;
+    }
+    .t-aes::before {
+      content: "";
+      position: absolute;
+      left: 42%; top: 34%;
+      width: 16%; height: 24%;
+      border: 1px solid rgba(255, 215, 0, 0.65);
+      box-shadow: 0 0 18px rgba(255, 215, 0, 0.25);
+    }
+
     /* 10 — Retro-Futurism (samples/10): #0B0B1A base + neon-blue/hot-pink/cyan/purple/gold */
     .t-10 {
       background: linear-gradient(to bottom, #FF006E 0%, #5D34D0 34%, #1A1A2E 64%, #0B0B1A 100%);
@@ -1204,27 +1265,27 @@
       <div class="section-label">How we work · in two panels</div>
       <h2 class="section-h2">Pick a style. We rebuild it around your business.</h2>
       <p class="section-sub">
-        The ten cards below are concrete starting directions, all real
-        working pages built in this repo. You pick one — or brief us on a
-        new direction entirely. We keep the structure and feel, then
-        replace every word, image, and link with yours.
+        The ten cards below are full working samples for ten Irish SMB
+        verticals — real businesses, real fees, real Irish context.
+        Pick the one closest to yours (we adapt it to your brand), or
+        brief us on a vertical not shown.
       </p>
       <div class="demo-grid">
         <div class="demo-panel">
           <div class="demo-num">01</div>
-          <div class="demo-title">Start with one of ten directions — or brief a new one</div>
+          <div class="demo-title">Ten Irish-SMB samples — or brief a fresh vertical</div>
           <p class="demo-sub">Each card is a real working page — typography, rhythm, colour system — built for a different kind of business. Want something not shown? On Pro and above we brief and build a bespoke direction at no extra cost.</p>
           <div class="demo-thumbs">
-            <a class="demo-thumb t-01" href="samples/01-minimalism-swiss.html" target="_blank" rel="noopener"><span class="meta"><span class="num">01</span><span class="name">Swiss Magazine</span><span class="aud">Editorial · content-led</span></span></a>
-            <a class="demo-thumb t-02" href="samples/02-neumorphism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">02</span><span class="name">Neumorphism</span><span class="aud">Wellness · meditation</span></span></a>
-            <a class="demo-thumb t-03" href="samples/03-glassmorphism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">03</span><span class="name">Glassmorphism</span><span class="aud">Fintech · dashboard</span></span></a>
-            <a class="demo-thumb t-04" href="samples/04-brutalism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">04</span><span class="name">Brutalism</span><span class="aud">Design agency · bold</span></span></a>
-            <a class="demo-thumb t-05" href="samples/05-3d-hyperrealism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">05</span><span class="name">3D Hyperrealism</span><span class="aud">Premium product</span></span></a>
-            <a class="demo-thumb t-06" href="samples/06-vibrant-block.html" target="_blank" rel="noopener"><span class="meta"><span class="num">06</span><span class="name">Vibrant Block</span><span class="aud">Startup · creative</span></span></a>
-            <a class="demo-thumb t-07" href="samples/07-dark-oled.html" target="_blank" rel="noopener"><span class="meta"><span class="num">07</span><span class="name">Dark OLED</span><span class="aud">Tech · gaming · dev</span></span></a>
-            <a class="demo-thumb t-08" href="samples/08-claymorphism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">08</span><span class="name">Claymorphism</span><span class="aud">Kids · education</span></span></a>
-            <a class="demo-thumb t-09" href="samples/09-aurora-ui.html" target="_blank" rel="noopener"><span class="meta"><span class="num">09</span><span class="name">Aurora UI</span><span class="aud">Music · lifestyle</span></span></a>
-            <a class="demo-thumb t-10" href="samples/10-retro-futurism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">10</span><span class="name">Retro-Futurism</span><span class="aud">Synthwave · podcast</span></span></a>
+            <a class="demo-thumb t-01" href="samples/industries/01-dental-swiss.html" target="_blank" rel="noopener"><span class="meta"><span class="num">01</span><span class="name">Dental Practice</span><span class="aud">Clinical · Swiss editorial</span></span></a>
+            <a class="demo-thumb t-sol" href="samples/industries/02-solicitor-swiss.html" target="_blank" rel="noopener"><span class="meta"><span class="num">02</span><span class="name">Solicitors</span><span class="aud">Legal · Swiss authority</span></span></a>
+            <a class="demo-thumb t-01" href="samples/industries/03-accountant-minimalism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">03</span><span class="name">Chartered Accountants</span><span class="aud">Numbers-forward minimalism</span></span></a>
+            <a class="demo-thumb t-02" href="samples/industries/04-physio-neumorphism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">04</span><span class="name">Physiotherapy</span><span class="aud">Wellness · soft neumorphism</span></span></a>
+            <a class="demo-thumb t-03" href="samples/industries/05-opticians-glassmorphism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">05</span><span class="name">Opticians</span><span class="aud">Premium · glassmorphism</span></span></a>
+            <a class="demo-thumb t-09" href="samples/industries/06-audiologist-aurora.html" target="_blank" rel="noopener"><span class="meta"><span class="num">06</span><span class="name">Audiology</span><span class="aud">Calm-tech · aurora</span></span></a>
+            <a class="demo-thumb t-08" href="samples/industries/07-vet-claymorphism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">07</span><span class="name">Veterinary</span><span class="aud">Village vet · claymorphism</span></span></a>
+            <a class="demo-thumb t-fin" href="samples/industries/08-financial-brutalism-editorial.html" target="_blank" rel="noopener"><span class="meta"><span class="num">08</span><span class="name">Wealth Advisor</span><span class="aud">Private wealth · editorial</span></span></a>
+            <a class="demo-thumb t-05" href="samples/industries/09-architects-3d.html" target="_blank" rel="noopener"><span class="meta"><span class="num">09</span><span class="name">Architects</span><span class="aud">Tactile · 3D hyperrealism</span></span></a>
+            <a class="demo-thumb t-aes" href="samples/industries/10-aesthetic-clinic-aurora-luxe.html" target="_blank" rel="noopener"><span class="meta"><span class="num">10</span><span class="name">Aesthetic Clinic</span><span class="aud">Medical · aurora luxe</span></span></a>
           </div>
           <p class="demo-sub" style="margin-top: 10px;">Each card opens the full sample in a new tab — all live, built in this repo.</p>
         </div>
@@ -1233,7 +1294,7 @@
           <div class="demo-title">We rebuild it around your business</div>
           <p class="demo-sub">Your name, your copy, your photos, your CTAs. The style stays — the content becomes yours.</p>
           <div class="demo-showcase">
-            <iframe src="samples/06-vibrant-block.html" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+            <iframe src="samples/industries/01-dental-swiss.html" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
           </div>
         </div>
       </div>
@@ -1494,7 +1555,7 @@
 
     <!-- ========== 6. GALLERY ========== -->
     <section class="shell gallery-intro" id="styles">
-      <div class="section-label">Ten starting directions · every card a real working page · bespoke on request</div>
+      <div class="section-label">Ten Irish industries · every card a real working sample · bespoke on request</div>
       <h2 class="section-h2">Pick the direction that feels closest. We adapt it to you.</h2>
       <p class="section-sub">
         Each card below is a full hand-built page — hover to open any one
@@ -1504,19 +1565,19 @@
       </p>
     </section>
 
-    <section class="shell gallery" aria-label="Ten website starting directions">
+    <section class="shell gallery" aria-label="Ten Irish industry samples">
 
       <!-- 1. MINIMALISM SWISS -->
       <article class="card">
         <header class="card-header">
-          <h2>Minimalism / Swiss</h2>
-          <span class="kicker">01 · Online magazine</span>
+          <h2>Dental Practice</h2>
+          <span class="kicker">01 · Swiss Editorial</span>
         </header>
         <div class="card-stage t-01">
           <div class="card-overlay">
             <div class="card-cta-row">
-              <a class="card-cta primary" href="samples/01-minimalism-swiss.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Minimalism%20Swiss%20style">Build this style</a>
+              <a class="card-cta primary" href="samples/industries/01-dental-swiss.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Dental%20practice%20website">Build this for me</a>
             </div>
           </div>
         </div>
@@ -1525,14 +1586,14 @@
       <!-- 2. NEUMORPHISM -->
       <article class="card">
         <header class="card-header">
-          <h2>Neumorphism</h2>
-          <span class="kicker">02 · Meditation app</span>
+          <h2>Solicitors</h2>
+          <span class="kicker">02 · Swiss Authority</span>
         </header>
-        <div class="card-stage t-02">
+        <div class="card-stage t-sol">
           <div class="card-overlay">
             <div class="card-cta-row">
-              <a class="card-cta primary" href="samples/02-neumorphism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Neumorphism%20style">Build this style</a>
+              <a class="card-cta primary" href="samples/industries/02-solicitor-swiss.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Solicitor%20practice%20website">Build this for me</a>
             </div>
           </div>
         </div>
@@ -1541,14 +1602,14 @@
       <!-- 3. GLASSMORPHISM -->
       <article class="card">
         <header class="card-header">
-          <h2>Glassmorphism</h2>
-          <span class="kicker">03 · Fintech dashboard</span>
+          <h2>Chartered Accountants</h2>
+          <span class="kicker">03 · Numbers-forward</span>
         </header>
-        <div class="card-stage t-03">
+        <div class="card-stage t-01">
           <div class="card-overlay">
             <div class="card-cta-row">
-              <a class="card-cta primary" href="samples/03-glassmorphism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Glassmorphism%20style">Build this style</a>
+              <a class="card-cta primary" href="samples/industries/03-accountant-minimalism.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Accountancy%20practice%20website">Build this for me</a>
             </div>
           </div>
         </div>
@@ -1557,14 +1618,14 @@
       <!-- 4. BRUTALISM -->
       <article class="card">
         <header class="card-header">
-          <h2>Brutalism</h2>
-          <span class="kicker">04 · Design agency portfolio</span>
+          <h2>Physiotherapy Clinic</h2>
+          <span class="kicker">04 · Soft Neumorphism</span>
         </header>
-        <div class="card-stage t-04">
+        <div class="card-stage t-02">
           <div class="card-overlay">
             <div class="card-cta-row">
-              <a class="card-cta primary" href="samples/04-brutalism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Brutalism%20style">Build this style</a>
+              <a class="card-cta primary" href="samples/industries/04-physio-neumorphism.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Physiotherapy%20clinic%20website">Build this for me</a>
             </div>
           </div>
         </div>
@@ -1573,14 +1634,14 @@
       <!-- 5. 3D / HYPERREALISM -->
       <article class="card">
         <header class="card-header">
-          <h2>3D &amp; Hyperrealism</h2>
-          <span class="kicker">05 · Premium headphones</span>
+          <h2>Opticians</h2>
+          <span class="kicker">05 · Glassmorphism</span>
         </header>
-        <div class="card-stage t-05">
+        <div class="card-stage t-03">
           <div class="card-overlay">
             <div class="card-cta-row">
-              <a class="card-cta primary" href="samples/05-3d-hyperrealism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%203D%20Hyperrealism%20style">Build this style</a>
+              <a class="card-cta primary" href="samples/industries/05-opticians-glassmorphism.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Opticians%20website">Build this for me</a>
             </div>
           </div>
         </div>
@@ -1589,14 +1650,14 @@
       <!-- 6. VIBRANT BLOCK -->
       <article class="card">
         <header class="card-header">
-          <h2>Vibrant &amp; Block</h2>
-          <span class="kicker">06 · Startup launch page</span>
+          <h2>Audiology · Hearing Care</h2>
+          <span class="kicker">06 · Aurora Calm</span>
         </header>
-        <div class="card-stage t-06">
+        <div class="card-stage t-09">
           <div class="card-overlay">
             <div class="card-cta-row">
-              <a class="card-cta primary" href="samples/06-vibrant-block.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Vibrant%20Block%20style">Build this style</a>
+              <a class="card-cta primary" href="samples/industries/06-audiologist-aurora.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Audiology%20clinic%20website">Build this for me</a>
             </div>
           </div>
         </div>
@@ -1605,14 +1666,14 @@
       <!-- 7. DARK OLED -->
       <article class="card">
         <header class="card-header">
-          <h2>Dark Mode (OLED)</h2>
-          <span class="kicker">07 · Gaming platform</span>
+          <h2>Veterinary Practice</h2>
+          <span class="kicker">07 · Claymorphism</span>
         </header>
-        <div class="card-stage t-07">
+        <div class="card-stage t-08">
           <div class="card-overlay">
             <div class="card-cta-row">
-              <a class="card-cta primary" href="samples/07-dark-oled.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Dark%20Mode%20OLED%20style">Build this style</a>
+              <a class="card-cta primary" href="samples/industries/07-vet-claymorphism.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Veterinary%20practice%20website">Build this for me</a>
             </div>
           </div>
         </div>
@@ -1621,14 +1682,14 @@
       <!-- 8. CLAYMORPHISM -->
       <article class="card">
         <header class="card-header">
-          <h2>Claymorphism</h2>
-          <span class="kicker">08 · Kids education app</span>
+          <h2>Wealth · Financial Advisors</h2>
+          <span class="kicker">08 · Editorial Brutalism</span>
         </header>
-        <div class="card-stage t-08">
+        <div class="card-stage t-fin">
           <div class="card-overlay">
             <div class="card-cta-row">
-              <a class="card-cta primary" href="samples/08-claymorphism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Claymorphism%20style">Build this style</a>
+              <a class="card-cta primary" href="samples/industries/08-financial-brutalism-editorial.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Wealth%20advisor%20website">Build this for me</a>
             </div>
           </div>
         </div>
@@ -1637,14 +1698,14 @@
       <!-- 9. AURORA UI -->
       <article class="card">
         <header class="card-header">
-          <h2>Aurora UI</h2>
-          <span class="kicker">09 · Music streaming</span>
+          <h2>Architects · Engineering</h2>
+          <span class="kicker">09 · 3D Hyperrealism</span>
         </header>
-        <div class="card-stage t-09">
+        <div class="card-stage t-05">
           <div class="card-overlay">
             <div class="card-cta-row">
-              <a class="card-cta primary" href="samples/09-aurora-ui.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Aurora%20UI%20style">Build this style</a>
+              <a class="card-cta primary" href="samples/industries/09-architects-3d.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Architects%20practice%20website">Build this for me</a>
             </div>
           </div>
         </div>
@@ -1653,14 +1714,14 @@
       <!-- 10. RETRO-FUTURISM -->
       <article class="card">
         <header class="card-header">
-          <h2>Retro-Futurism</h2>
-          <span class="kicker">10 · Synthwave podcast</span>
+          <h2>Aesthetic · Medical Clinic</h2>
+          <span class="kicker">10 · Aurora Luxe</span>
         </header>
-        <div class="card-stage t-10">
+        <div class="card-stage t-aes">
           <div class="card-overlay">
             <div class="card-cta-row">
-              <a class="card-cta primary" href="samples/10-retro-futurism.html" target="_blank" rel="noreferrer">Open full page ↗</a>
-              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Website%20in%20Retro-Futurism%20style">Build this style</a>
+              <a class="card-cta primary" href="samples/industries/10-aesthetic-clinic-aurora-luxe.html" target="_blank" rel="noreferrer">Open full sample ↗</a>
+              <a class="card-cta" href="mailto:callmeie@proton.me?subject=Aesthetic%20clinic%20website">Build this for me</a>
             </div>
           </div>
         </div>
@@ -1696,7 +1757,7 @@
         <details class="q">
           <summary>Can I see real examples before booking?</summary>
           <div class="a">
-            Yes. The ten directions in the gallery above are real hand-built pages — and they're a starting menu, not a ceiling (on Pro and above we brief and build a bespoke direction at no extra cost) — click any to open full-screen. They are the production-quality bar. If you want one built for <em>your</em> business before you decide, either book the free 20-min style-match call (we generate a preview on the call) or order the €99 audit (you get a written brief back in 48 hours).
+            Yes. The ten industry samples in the gallery above are real hand-built pages — and they're a starting menu, not a ceiling (on Pro and above we brief and build a bespoke direction at no extra cost) — click any to open full-screen. They are the production-quality bar. If you want one built for <em>your</em> business before you decide, either book the free 20-min style-match call (we generate a preview on the call) or order the €99 audit (you get a written brief back in 48 hours).
           </div>
         </details>
 
