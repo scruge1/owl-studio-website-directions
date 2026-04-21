@@ -379,6 +379,29 @@
       box-shadow: 0 40px 0 0 #B38B6D;
     }
 
+    /* t-acc — Accountant · Minimalism (samples/03): #FFF paper + thin #cfcfcf rules + taupe dot */
+    .t-acc { background: #FFFFFF; }
+    .t-acc::before {
+      content: "";
+      position: absolute;
+      left: 14%; right: 14%; top: 28%;
+      height: 36%;
+      background:
+        linear-gradient(to bottom, #cfcfcf 0 8%, transparent 8% 100%),
+        linear-gradient(to bottom, transparent 0 32%, #ebebeb 32% 34%, transparent 34% 100%),
+        linear-gradient(to bottom, transparent 0 56%, #ebebeb 56% 58%, transparent 58% 100%),
+        linear-gradient(to bottom, transparent 0 80%, #ebebeb 80% 82%, transparent 82% 100%);
+    }
+    .t-acc::after {
+      content: "03";
+      position: absolute;
+      right: 14px; top: 14px;
+      font-family: var(--mono);
+      font-weight: 700; font-size: 11px; letter-spacing: 0.18em;
+      color: #B38B6D;
+    }
+    .card-stage.t-acc::after { font-size: clamp(12px, 1.1vw, 16px); right: 24px; top: 22px; letter-spacing: 0.24em; }
+
     /* 02 — Neumorphism (samples/02): #dbe7f2 bluish pastel base + soft accents */
     .t-02 { background: #dbe7f2; }
     .t-02::before {
@@ -965,7 +988,7 @@
     /* Card-stage scale overrides (motifs sized for large canvas) */
     .card-stage.t-01::before { font-size: clamp(140px, 19vw, 220px); left: 24px; top: 30px; }
     .card-stage.t-01::after { left: 24px; right: 24px; top: 20px; height: 6px; box-shadow: 0 72px 0 0 #B38B6D; }
-    .card-stage.t-04::after { bottom: 32%; font-size: clamp(34px, 4.5vw, 56px); padding: 4px 12px; border-width: 4px; }
+    .card-stage.t-04::after { bottom: 32%; font-size: clamp(34px, 4.5vw, 56px); padding: 4px 12px; border-width: 4px; z-index: 0; }
     .card-stage.t-07::before { height: 12%; top: 42%; }
     .card-stage.t-07::after { height: 3px; top: 61%; }
     /* t-08 outlines thicken on large card for clay feel */
@@ -1388,7 +1411,7 @@
           <div class="demo-thumbs">
             <a class="demo-thumb t-01" href="samples/industries/01-dental-swiss.html" target="_blank" rel="noopener"><span class="meta"><span class="num">01</span><span class="name">Dental</span><span class="aud">Swiss editorial</span></span></a>
             <a class="demo-thumb t-sol" href="samples/industries/02-solicitor-swiss.html" target="_blank" rel="noopener"><span class="meta"><span class="num">02</span><span class="name">Solicitors</span><span class="aud">Swiss authority</span></span></a>
-            <a class="demo-thumb t-01" href="samples/industries/03-accountant-minimalism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">03</span><span class="name">Accountants</span><span class="aud">Minimalism</span></span></a>
+            <a class="demo-thumb t-acc" href="samples/industries/03-accountant-minimalism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">03</span><span class="name">Accountants</span><span class="aud">Minimalism</span></span></a>
             <a class="demo-thumb t-02" href="samples/industries/04-physio-neumorphism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">04</span><span class="name">Physio</span><span class="aud">Neumorphism</span></span></a>
             <a class="demo-thumb t-03" href="samples/industries/05-opticians-glassmorphism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">05</span><span class="name">Opticians</span><span class="aud">Glassmorphism</span></span></a>
             <a class="demo-thumb t-07" href="samples/industries/06-trade-pro-dark-oled.html" target="_blank" rel="noopener"><span class="meta"><span class="num">06</span><span class="name">Trade Pro</span><span class="aud">Dark OLED · Industrial</span></span></a>
@@ -1717,7 +1740,7 @@
           <h2>Chartered Accountants</h2>
           <span class="kicker">03 · Numbers-forward</span>
         </header>
-        <div class="card-stage t-01">
+        <div class="card-stage t-acc">
           <img src="renders/industries/03-accountant-minimalism.png" alt="Chartered Accountants — Owl Studio sample preview" loading="lazy" decoding="async" width="1440" height="900" class="card-preview">
           <div class="card-overlay">
             <div class="card-cta-row">
