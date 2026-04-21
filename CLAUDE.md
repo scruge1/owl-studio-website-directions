@@ -1,5 +1,40 @@
 # Owl Studio — Website Directions · Claude Routing Surface
 
+## ⚡ Read on entry — HIGHEST PRIORITY (session-boot load)
+
+Every session working anywhere in this repo or its sibling `callmeie-fix/`
+must load `INFRA.md` in this directory **before doing any infra work**.
+It is the single source of truth for:
+
+- Hetzner VPS (178.104.205.255) + root SSH creds location
+- Coolify API tokens (write + read) + API reference
+- Render FastAPI service (CallMeIE) + all `/owl/*` routes + DB tables
+- Stripe live-mode account + 7 Payment Links + webhook secret
+- Porkbun DNS + current records
+- 10+ registered Owl Studio client sites + admin tokens
+- `~/.claude/routes/.env` credential vault structure
+- Operational runbooks §9 (onboard client, provision Stripe, deploy Coolify service, redeploy Render)
+- Known workarounds (Coolify fqdn-cascade bug, Render `/tmp` wipe, etc.)
+- Active backlog + session-end log
+
+Without loading INFRA.md you will duplicate work, miss running services,
+or hit previously-solved blockers blind. **Load order:**
+
+1. `~/.claude/CLAUDE.md` (already loaded automatically)
+2. `C:/Users/a33_s/Desktop/claude MCPs/New repos/CLAUDE.md` (parent)
+3. `C:/Users/a33_s/Desktop/claude MCPs/New repos/NEW-REPOS-RUNNING-CONTEXT.md`
+4. **`INFRA.md`** ← THIS DIRECTORY — read cover to cover §1-§13
+5. This file (project-local CLAUDE.md)
+
+Sister-repo `C:/Users/a33_s/Desktop/callmeie-fix/INFRA.md` is an
+identical mirror of the above — update both in the same commit on any
+infra change.
+
+If you need details not in INFRA.md, escalate the gap by **adding them
+to INFRA.md before continuing work** so the next session has them.
+
+---
+
 ## What this is
 
 Sales-pitch static site for **Owl Studio**, a web design business being
