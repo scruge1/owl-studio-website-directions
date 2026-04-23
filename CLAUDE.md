@@ -215,6 +215,27 @@ for ethics). Track only `#samples` clicks, modal opens, and the
   hero images are confirmed to carry the message
 - No switching hosts — GitHub Pages is fine for v1
 
+## Demo client sites (`demos/`)
+
+Six demo builds live at `websites.owlzone.trade/demos/[slug]/`:
+`slaney-dental-wexford`, `aran-vets-galway`, `murphy-plumbing-cork`,
+`strand-road-dental`, `vetcare-limerick`, `curtin-electrical`.
+
+Source builds: `~/Desktop/design-hub/clients/[slug]/`
+Build tool: `/new-service-site` skill (`~/.claude/skills/new-service-site/SKILL.md`)
+
+**Image generation pipeline** (3-tier, documented in new-service-site SKILL.md §Image Generation):
+- Tier 1: Replicate FLUX.1 Dev — $0.025/image, best quality, needs account credit
+- Tier 2: HF ZeroGPU — shared quota, may queue
+- Tier 3: **Pollinations `model=turbo`** — always free, sequential requests, 35s delays, JPEG magic-byte check (`ffd8ff`)
+
+**Never deploy SVG placeholders to demo sites** — demos are live sales pitches.
+Working bash pattern lives in new-service-site SKILL.md §Image Generation › Tier 3.
+
+To update a demo: build in `design-hub/clients/[slug]/`, copy `dist/` → `demos/[slug]/`, commit + push main.
+
+---
+
 ## Where else to look
 
 - Live URL: http://websites.owlzone.trade/
