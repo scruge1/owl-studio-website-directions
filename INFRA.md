@@ -233,6 +233,7 @@ Seed data — each has its own admin token + dashboard.
 |---|---|---|---|---|---|
 | `owl-studio-sales` | Owl Studio · Sales | starter | — | https://websites.owlzone.trade | `OWL_ADMIN_TOKEN_OWL_STUDIO_SALES` |
 | `rathborne-dental-demo` | Rathborne Dental (demo) | pro | growth | https://websites.owlzone.trade/samples/industries/01-dental-swiss.html | `OWL_ADMIN_TOKEN_RATHBORNE_DENTAL_DEMO` |
+| `vetcare-limerick-preview` | Limerick Vet Clinic (preview) | — | — | https://websites.owlzone.trade/demos/vetcare-limerick/ | — (not yet registered as Owl client) |
 
 **Owner fleet dashboard:** `https://callmeie.onrender.com/owl/sites?token=$OWL_OWNER_TOKEN`
 
