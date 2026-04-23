@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 900" width="720" height="900" role="img" aria-labelledby="portraitTitle portraitDesc">
+  <title id="portraitTitle">Dr. Ciarán O'Sullivan, principal dentist (placeholder)</title>
+  <desc id="portraitDesc">Portrait placeholder — replace with real practice photography before launch.</desc>
+  <defs>
+    <linearGradient id="portBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fafaf8"/>
+      <stop offset="100%" stop-color="#edf2f4"/>
+    </linearGradient>
+    <radialGradient id="portBgWarmth" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#d8e9f1" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#d8e9f1" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="portFig" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7fb5cc"/>
+      <stop offset="100%" stop-color="#1a5272"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="900" fill="url(#portBg)"/>
+  <rect width="720" height="900" fill="url(#portBgWarmth)"/>
+  <!-- Silhouette head and shoulders -->
+  <ellipse cx="360" cy="330" rx="115" ry="140" fill="url(#portFig)" opacity="0.85"/>
+  <path d="M 200 900 Q 360 540 520 900 Z" fill="url(#portFig)" opacity="0.8"/>
+  <text x="40" y="860" font-family="Georgia, serif" font-size="18" fill="#4a6578" opacity="0.8">Dr. Ciarán O'Sullivan · BDentSc NUI, MFDS RCSI</text>
+</svg>
