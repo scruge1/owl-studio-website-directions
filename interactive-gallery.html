@@ -1412,6 +1412,70 @@
     }
     .contact-form .cf-status.ok { color: var(--accent-light); }
     .contact-form .cf-status.err { color: #ff9d7e; }
+
+    /* ── Demo Preview Overlay (#dpo) ───────────────────── */
+    #dpo {
+      display: none;
+      position: fixed; inset: 0; z-index: 99999;
+      background: #0b0a08;
+      flex-direction: column;
+    }
+    #dpo.open { display: flex; }
+    #dpo-close {
+      position: absolute; top: 14px; right: 16px; z-index: 2;
+      background: rgba(11,10,8,0.72); color: #F5F1E8;
+      border: 1px solid rgba(245,241,232,0.18);
+      border-radius: 2px;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 18px; line-height: 1; cursor: pointer;
+      padding: 6px 11px;
+      transition: background 130ms, color 130ms;
+    }
+    #dpo-close:hover { background: rgba(245,241,232,0.14); color: #f1c18e; }
+    #dpo-frame {
+      flex: 1; width: 100%; border: none;
+      display: block;
+    }
+    #dpo-nav {
+      flex: 0 0 auto;
+      display: flex; align-items: center; gap: 4px;
+      justify-content: center;
+      background: #0b0a08;
+      border-top: 1px solid rgba(245,241,232,0.1);
+      padding: 10px 14px;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+    }
+    #dpo-nav button, #dpo-nav a {
+      background: transparent; color: #F5F1E8;
+      border: 0; cursor: pointer;
+      font: inherit; letter-spacing: inherit;
+      text-decoration: none;
+      padding: 7px 12px; border-radius: 2px;
+      white-space: nowrap;
+      transition: color 130ms, background 130ms;
+    }
+    #dpo-nav button:hover, #dpo-nav a:hover { color: #f1c18e; }
+    #dpo-divider {
+      width: 1px; height: 18px;
+      background: rgba(245,241,232,0.18);
+      margin: 0 4px; flex: 0 0 auto;
+    }
+    #dpo-idx {
+      color: rgba(245,241,232,0.5);
+      font-weight: 400; padding: 0 8px;
+    }
+    #dpo-build {
+      background: #c96f32 !important; color: #fff !important;
+      padding: 7px 16px !important; border-radius: 2px;
+      font-weight: 700 !important;
+    }
+    #dpo-build:hover { background: #9a4e1e !important; }
+    @media (max-width: 600px) {
+      #dpo-nav { font-size: 10px; padding: 8px 8px; gap: 2px; }
+      #dpo-nav button, #dpo-nav a { padding: 6px 7px; }
+      #dpo-gallery-label { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -2491,6 +2555,123 @@
         submitBtn.textContent = submitBtn.dataset.oldText;
       }
     });
+
+    // Export so the demo preview overlay can open the modal pre-filled
+    window._owlOpenModal = openModal;
+  })();
+  </script>
+
+  <!-- ── Demo Preview Overlay ───────────────────────────── -->
+  <div id="dpo" role="dialog" aria-modal="true" aria-label="Demo preview">
+    <button id="dpo-close" aria-label="Close demo preview (Esc)">×</button>
+    <iframe id="dpo-frame" title="Demo site preview" allowfullscreen></iframe>
+    <nav id="dpo-nav" aria-label="Demo navigation">
+      <button id="dpo-gallery"><span id="dpo-gallery-label">Owl Studio · </span>← Gallery</button>
+      <div id="dpo-divider"></div>
+      <button id="dpo-prev">← Prev</button>
+      <span id="dpo-idx">01 / 10</span>
+      <button id="dpo-next">Next →</button>
+      <div id="dpo-divider"></div>
+      <button id="dpo-build">Build this →</button>
+    </nav>
+  </div>
+
+  <script>
+  (function () {
+    "use strict";
+
+    var DEMOS = [
+      { slug: "slaney-dental-wexford",   url: "/demos/slaney-dental-wexford/",                   name: "Slaney Dental",     style: "Typographic-First"      },
+      { slug: "strand-road-dental",      url: "/demos/strand-road-dental/",                      name: "Strand Road Dental",style: "Luxury Minimal"          },
+      { slug: "vetcare-limerick",        url: "/demos/vetcare-limerick/",                        name: "Vetcare Limerick",  style: "Warm & Approachable"    },
+      { slug: "murphy-plumbing-cork",    url: "/demos/murphy-plumbing-cork/",                    name: "Murphy Plumbing",   style: "Bold Utility"           },
+      { slug: "curtin-electrical",       url: "/demos/curtin-electrical/",                       name: "Curtin Electrical", style: "Technical Split-Panel"  },
+      { slug: "clancys-restaurant-cork", url: "/demos/clancys-restaurant-cork/",                 name: "Clancy's Cork",     style: "Fine Dining Cinematic"  },
+      { slug: "wildflour-bakery-galway", url: "/demos/wildflour-bakery-galway/",                 name: "Wildflour Bakery",  style: "Warm Craft"             },
+      { slug: "01-dental-swiss",         url: "/samples/industries/01-dental-swiss.html",        name: "Dental Practice",   style: "Swiss Editorial"        },
+      { slug: "02-solicitor-swiss",      url: "/samples/industries/02-solicitor-swiss.html",     name: "Solicitors",        style: "Swiss Authority"        },
+      { slug: "06-trade-pro-dark-oled",  url: "/samples/industries/06-trade-pro-dark-oled.html", name: "Trade Pro",         style: "Dark OLED"              }
+    ];
+
+    var dpo      = document.getElementById("dpo");
+    var frame    = document.getElementById("dpo-frame");
+    var idxEl    = document.getElementById("dpo-idx");
+    var prevBtn  = document.getElementById("dpo-prev");
+    var nextBtn  = document.getElementById("dpo-next");
+    var closeBtn = document.getElementById("dpo-close");
+    var galBtn   = document.getElementById("dpo-gallery");
+    var buildBtn = document.getElementById("dpo-build");
+
+    var currentIdx = 0;
+
+    function pad(n) { return String(n).padStart(2, "0"); }
+
+    function openPreview(idx) {
+      currentIdx = ((idx % DEMOS.length) + DEMOS.length) % DEMOS.length;
+      var d = DEMOS[currentIdx];
+      frame.src = d.url + (d.url.indexOf("?") === -1 ? "?" : "&") + "hide-nav=1";
+      idxEl.textContent = pad(currentIdx + 1) + " / " + pad(DEMOS.length);
+      prevBtn.title = "Previous: " + DEMOS[(currentIdx - 1 + DEMOS.length) % DEMOS.length].name;
+      nextBtn.title = "Next: " + DEMOS[(currentIdx + 1) % DEMOS.length].name;
+      buildBtn.title = "Build " + d.style + " for your business";
+      dpo.classList.add("open");
+      document.body.style.overflow = "hidden";
+      closeBtn.focus();
+    }
+
+    function closePreview() {
+      dpo.classList.remove("open");
+      document.body.style.overflow = "";
+      // Unload iframe to stop audio/video etc.
+      setTimeout(function () { if (!dpo.classList.contains("open")) frame.src = ""; }, 200);
+    }
+
+    closeBtn.addEventListener("click", closePreview);
+    galBtn.addEventListener("click", closePreview);
+
+    prevBtn.addEventListener("click", function () { openPreview(currentIdx - 1); });
+    nextBtn.addEventListener("click", function () { openPreview(currentIdx + 1); });
+
+    buildBtn.addEventListener("click", function () {
+      var slug = DEMOS[currentIdx].slug;
+      closePreview();
+      // Slight delay so overlay animates out before modal opens
+      setTimeout(function () {
+        if (typeof window._owlOpenModal === "function") {
+          window._owlOpenModal({ style: slug, first_step: "project" });
+        }
+      }, 80);
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (!dpo.classList.contains("open")) return;
+      if (e.key === "Escape") { closePreview(); }
+      else if (e.key === "ArrowLeft")  { openPreview(currentIdx - 1); }
+      else if (e.key === "ArrowRight") { openPreview(currentIdx + 1); }
+    });
+
+    // Intercept clicks on demo thumbs and large card "View demo" links
+    function slugFromHref(href) {
+      var s = href.replace(/\.html?$/i, "").replace(/\/+$/, "");
+      return s.substring(s.lastIndexOf("/") + 1);
+    }
+
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest("a.demo-thumb, a.card-cta.primary");
+      if (!a) return;
+      var href = a.getAttribute("href") || "";
+      // Only intercept internal demo/sample links (not mailto, not #, not Lab links)
+      if (!href || href.charAt(0) === "#" || href.indexOf("mailto:") === 0) return;
+      var slug = slugFromHref(href);
+      var idx = -1;
+      for (var i = 0; i < DEMOS.length; i++) {
+        if (DEMOS[i].slug === slug) { idx = i; break; }
+      }
+      if (idx === -1) return; // not in our list — let browser handle it
+      e.preventDefault();
+      openPreview(idx);
+    }, true); // capture phase so it fires before any other listeners
+
   })();
   </script>
 
