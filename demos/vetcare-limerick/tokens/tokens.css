@@ -1,0 +1,85 @@
+/*
+  tokens.css — vetcare-limerick
+  Generated from brand.json by token-author.
+  Display font: Fraunces Variable (hash("vetcare-limerick") % 5 = 4)
+  Do not edit manually — regenerate from brand.json + style.config.mjs.
+
+  Naming: --ds-[category]-[name]
+  All section components consume ONLY these vars — never hardcoded values.
+*/
+
+:root {
+  /* ── Colour ─────────────────────────────────────────────── */
+  --ds-color-brand:               #2d6a4f;
+  --ds-color-brand-light:         #52b788;
+  --ds-color-accent:              #b08d57;
+  --ds-color-surface:             #f8f5f0;
+  --ds-color-surface-alt:         #eef0ea;
+  --ds-color-surface-inverse:     #111d16;
+  --ds-color-surface-inverse-alt: #192519;
+  --ds-color-text:                #1c2b22;
+  --ds-color-text-muted:          #4a6358;
+  --ds-color-text-inverse:        #e8f2ec;
+  --ds-color-text-inverse-muted:  #7fa88e;
+  --ds-color-action:              #2d6a4f;
+  --ds-color-action-hover:        #1f5039;
+  --ds-color-border:              #c8d5c8;
+  --ds-color-border-inverse:      rgba(255,255,255,0.08);
+  --ds-color-emergency:           #c1440e;
+  --ds-color-hero-gradient-from:  #e8f2ec;
+  --ds-color-hero-gradient-to:    #f8f5f0;
+
+  /* ── Typography ─────────────────────────────────────────── */
+  --ds-font-family-display:      'Fraunces Variable', 'Fraunces', Georgia, serif;
+  --ds-font-family-body:         'Inter Variable', 'Inter', system-ui, sans-serif;
+  --ds-font-size-display:        clamp(2.25rem, 4vw + 1rem, 4rem);
+  --ds-font-size-h1:             clamp(2rem, 3vw + 1rem, 3rem);
+  --ds-font-size-h2:             clamp(1.5rem, 2vw + 0.75rem, 2.25rem);
+  --ds-font-size-h3:             clamp(1.125rem, 1vw + 0.5rem, 1.375rem);
+  --ds-font-size-body:           clamp(1.0625rem, 0.5vw + 0.875rem, 1.125rem);
+  --ds-font-size-small:          0.875rem;
+  --ds-font-size-label:          0.75rem;
+  --ds-font-weight-display:      700;
+  --ds-font-weight-body:         400;
+  --ds-font-weight-medium:       500;
+  --ds-font-weight-semibold:     600;
+  --ds-font-leading-display:     1.1;
+  --ds-font-leading-body:        1.65;
+  --ds-font-tracking-label:      0.1em;
+  --ds-font-measure-body:        65ch;
+
+  /* ── Spacing ─────────────────────────────────────────────── */
+  --ds-space-2xs: clamp(0.25rem, 0.5vw, 0.5rem);
+  --ds-space-xs:  clamp(0.5rem, 1vw, 0.75rem);
+  --ds-space-s:   clamp(0.75rem, 1.5vw, 1rem);
+  --ds-space-m:   clamp(1rem, 2vw, 1.5rem);
+  --ds-space-l:   clamp(1.5rem, 3vw, 2.5rem);
+  --ds-space-xl:  clamp(2.5rem, 5vw, 4rem);
+  --ds-space-2xl: clamp(4rem, 8vw, 7rem);
+
+  /* ── Motion ─────────────────────────────────────────────── */
+  --ds-duration-fast:    150ms;
+  --ds-duration-base:    300ms;
+  --ds-duration-slow:    600ms;
+  --ds-duration-kinetic: 900ms;
+  --ds-easing-enter:     cubic-bezier(0.22, 1, 0.36, 1);
+  --ds-easing-exit:      cubic-bezier(0.55, 0, 1, 0.45);
+  --ds-easing-bounce:    cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ds-stagger:          80ms;
+
+  /* ── Shape ───────────────────────────────────────────────── */
+  --ds-radius-card:        12px;
+  --ds-radius-card-large:  16px;
+  --ds-radius-button:      8px;
+  --ds-radius-badge:       4px;
+
+  /* ── Shadow ──────────────────────────────────────────────── */
+  --ds-shadow-card:         0 2px 8px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+  --ds-shadow-card-hover:   0 8px 24px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.06);
+  --ds-shadow-button-hover: 0 6px 16px rgba(45, 106, 79, 0.35);
+  --ds-shadow-drawer:       0 8px 32px rgba(0,0,0,0.22);
+
+  /* ── Layout ──────────────────────────────────────────────── */
+  --ds-content-max:  1200px;
+  --ds-content-wide: 1440px;
+}
