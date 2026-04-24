@@ -64,8 +64,7 @@ RECI Registered · Domestic &amp; Commercial · 24hr Emergency
 
     var tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.55 } });
     tl.from('[data-hero-eyebrow]', { opacity: 0, y: 12 })
-      .from('[data-hero-headline]', { opacity: 0, y: 20 }, '-=0.3')
-      .from('[data-hero-sub]', { opacity: 0, y: 16 }, '-=0.25')
+      .from('[data-hero-sub]', { opacity: 0, y: 16 }, '+=0.5')
       .from('[data-hero-cta]', { opacity: 0, y: 12 }, '-=0.2')
       .from('[data-hero-trust]', { opacity: 0 }, '-=0.1');
   }
@@ -248,4 +247,8 @@ Ireland
 VAT: IE8263010P · CRO: 427163
 </p> </div> <!-- Col 2: Services --> <div class="footer-col" data-astro-cid-5jp7rtjd> <h3 class="footer-col__title" data-astro-cid-5jp7rtjd>Services</h3> <nav aria-label="Footer services navigation" data-astro-cid-5jp7rtjd> <ul class="footer-links" role="list" data-astro-cid-5jp7rtjd> <li data-astro-cid-5jp7rtjd><a href="https://websites.owlzone.trade/" class="footer-link" data-astro-cid-5jp7rtjd>Domestic Rewiring</a></li> <li data-astro-cid-5jp7rtjd><a href="https://websites.owlzone.trade/" class="footer-link" data-astro-cid-5jp7rtjd>Commercial Electrical</a></li> <li data-astro-cid-5jp7rtjd><a href="https://websites.owlzone.trade/" class="footer-link" data-astro-cid-5jp7rtjd>Emergency Callouts</a></li> <li data-astro-cid-5jp7rtjd><a href="https://websites.owlzone.trade/" class="footer-link" data-astro-cid-5jp7rtjd>EV Chargers</a></li> <li data-astro-cid-5jp7rtjd><a href="https://websites.owlzone.trade/" class="footer-link" data-astro-cid-5jp7rtjd>Solar Connections</a></li> </ul> </nav> </div> <!-- Col 3: Hours + legal links --> <div class="footer-col" data-astro-cid-5jp7rtjd> <h3 class="footer-col__title" data-astro-cid-5jp7rtjd>Hours</h3> <ul class="footer-hours" role="list" data-astro-cid-5jp7rtjd> <li class="footer-hours__row" data-astro-cid-5jp7rtjd> <span class="footer-hours__day" data-astro-cid-5jp7rtjd>Mon–Fri</span> <span class="footer-hours__time" data-astro-cid-5jp7rtjd>7:30am – 6:00pm</span> </li> <li class="footer-hours__row" data-astro-cid-5jp7rtjd> <span class="footer-hours__day" data-astro-cid-5jp7rtjd>Saturday</span> <span class="footer-hours__time" data-astro-cid-5jp7rtjd>8:00am – 1:00pm</span> </li> <li class="footer-hours__row" data-astro-cid-5jp7rtjd> <span class="footer-hours__day footer-hours__day--accent" data-astro-cid-5jp7rtjd>Emergency</span> <span class="footer-hours__time footer-hours__time--accent" data-astro-cid-5jp7rtjd> <a href="tel:0610000001" class="footer-emergency-link" data-astro-cid-5jp7rtjd>24/7 · 061 000 0001</a> </span> </li> </ul> <nav aria-label="Footer legal navigation" class="footer-legal-nav" data-astro-cid-5jp7rtjd> <a href="/demos/curtin-electrical/privacy" class="footer-legal-link" data-astro-cid-5jp7rtjd>Privacy Policy</a> <span aria-hidden="true" data-astro-cid-5jp7rtjd>·</span> <a href="/demos/curtin-electrical/accessibility" class="footer-legal-link" data-astro-cid-5jp7rtjd>Accessibility</a> </nav> </div> </div> <div class="site-footer__bottom" data-astro-cid-5jp7rtjd> <p class="footer-copyright" data-astro-cid-5jp7rtjd>
 &copy; 2026 Curtin Electrical Services Ltd. All rights reserved.
-</p> </div> </footer>  </body></html>
+</p> </div> </footer>  <script>
+    window.addEventListener('load', function() {
+      if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+    });
+  </script> </body> </html>

@@ -18,7 +18,7 @@
 
     io.observe(sentinel);
   })();
-</script>  <main id="main"> <section class="hero" aria-label="Hero" data-astro-cid-dqvgpixz> <div class="hero__image-wrap" data-astro-cid-dqvgpixz> <img src="/demos/aran-vets-galway/images/hero-aran-vets.jpg" alt="Vet at eye level with a dog, warm natural light — Aran Veterinary Clinic, Salthill" class="hero__img" width="1200" height="800" fetchpriority="high" decoding="async" data-astro-cid-dqvgpixz> <div class="hero__overlay" aria-hidden="true" data-astro-cid-dqvgpixz></div> </div> <div class="hero__content" data-astro-cid-dqvgpixz> <p class="hero__eyebrow" id="hero-eyebrow" data-hero-eyebrow data-astro-cid-dqvgpixz>Galway&#39;s Trusted Vet Since 2001</p> <h1 class="hero__headline" id="hero-headline" data-hero-headline aria-label="Where Galway animals come first" data-astro-cid-dqvgpixz> <span class="hero__word" data-word-idx="0" data-astro-cid-dqvgpixz>Where&nbsp;</span><span class="hero__word" data-word-idx="1" data-astro-cid-dqvgpixz>Galway&nbsp;</span><span class="hero__word" data-word-idx="2" data-astro-cid-dqvgpixz>animals&nbsp;</span><span class="hero__word" data-word-idx="3" data-astro-cid-dqvgpixz>come&nbsp;</span><span class="hero__word" data-word-idx="4" data-astro-cid-dqvgpixz>first&nbsp;</span> </h1> <p class="hero__sub" id="hero-sub" data-hero-sub data-astro-cid-dqvgpixz>RCVS accredited · Open six days a week · Emergency line always open</p> <div class="hero__actions" id="hero-ctas" data-hero-cta data-astro-cid-dqvgpixz> <a href="tel:+35391524877" class="hero__cta" data-magnetic data-astro-cid-dqvgpixz>Book an Appointment</a> <span class="hero__rating" id="hero-proof" aria-label="Google rating 4.9 stars, 312 reviews" data-astro-cid-dqvgpixz> <span class="hero__rating-stars" aria-hidden="true" data-astro-cid-dqvgpixz>★</span> <span class="hero__rating-num" data-astro-cid-dqvgpixz>4.9</span> <span class="hero__rating-label" data-astro-cid-dqvgpixz>312 reviews</span> </span> </div> </div> </section> <script>
+</script>  <main id="main"> <section class="hero" aria-label="Hero" data-astro-cid-dqvgpixz> <div class="hero__image-wrap" data-astro-cid-dqvgpixz> <img src="/demos/aran-vets-galway/images/hero-aran-vets.jpg" alt="Vet at eye level with a dog, warm natural light — Aran Veterinary Clinic, Salthill" class="hero__img" width="1200" height="800" fetchpriority="high" decoding="async" data-astro-cid-dqvgpixz> <div class="hero__overlay" aria-hidden="true" data-astro-cid-dqvgpixz></div> </div> <div class="hero__content" data-astro-cid-dqvgpixz> <p class="hero__eyebrow" id="hero-eyebrow" data-hero-eyebrow data-astro-cid-dqvgpixz>Galway&#39;s Trusted Vet Since 2001</p> <h1 class="hero__headline" id="hero-headline" data-hero-headline data-astro-cid-dqvgpixz>Where Galway animals come first</h1> <p class="hero__sub" id="hero-sub" data-hero-sub data-astro-cid-dqvgpixz>RCVS accredited · Open six days a week · Emergency line always open</p> <div class="hero__actions" id="hero-ctas" data-hero-cta data-astro-cid-dqvgpixz> <a href="tel:+35391524877" class="hero__cta" data-magnetic data-astro-cid-dqvgpixz>Book an Appointment</a> <span class="hero__rating" id="hero-proof" aria-label="Google rating 4.9 stars, 312 reviews" data-astro-cid-dqvgpixz> <span class="hero__rating-stars" aria-hidden="true" data-astro-cid-dqvgpixz>★</span> <span class="hero__rating-num" data-astro-cid-dqvgpixz>4.9</span> <span class="hero__rating-label" data-astro-cid-dqvgpixz>312 reviews</span> </span> </div> </div> </section> <script>
   (function () {
     // ── §0. SplitText Mask Reveal — copied VERBATIM from gsap-section-reveals.js ──
     function initHeroSplitText() {
@@ -76,8 +76,7 @@
 
       var tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.55 } });
       tl.from('[data-hero-eyebrow]', { opacity: 0, y: 12 })
-        .from('[data-hero-headline]', { opacity: 0, y: 20 }, '-=0.3')
-        .from('[data-hero-sub]', { opacity: 0, y: 16 }, '-=0.25')
+        .from('[data-hero-sub]', { opacity: 0, y: 16 }, '+=0.5')
         .from('[data-hero-cta]', { opacity: 0, y: 12 }, '-=0.2')
         .from('[data-hero-trust]', { opacity: 0 }, '-=0.1');
     }
@@ -384,4 +383,9 @@ VAT: IE8473920B &nbsp;·&nbsp; CRO: 387214
     } else {
       setTimeout(revealHidden, 2000);
     }
+  </script> <script>
+    /* Recalculate all ScrollTrigger positions after fonts + SplitText DOM settle */
+    window.addEventListener('load', function() {
+      if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+    });
   </script> </body> </html>
