@@ -60,8 +60,7 @@ Request an appointment <span class="hero__cta-arrow" aria-hidden="true" data-ast
 
     var tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.55 } });
     tl.from('[data-hero-eyebrow]', { opacity: 0, y: 12 })
-      .from('[data-hero-headline]', { opacity: 0, y: 20 }, '-=0.3')
-      .from('[data-hero-sub]', { opacity: 0, y: 16 }, '-=0.25')
+      .from('[data-hero-sub]', { opacity: 0, y: 16 }, '+=0.5')
       .from('[data-hero-cta]', { opacity: 0, y: 12 }, '-=0.2')
       .from('[data-hero-trust]', { opacity: 0 }, '-=0.1');
   }
@@ -254,4 +253,8 @@ Call 053 912 1988 </a> </div> </div> </section>  <script type="module">const r=w
 Slaney Dental operates in accordance with the Dental Council of Ireland.
 </p> </div> <!-- Right: hours + phone + links --> <div class="footer__info-col" data-astro-cid-5jp7rtjd> <dl class="footer__hours" aria-label="Opening hours" data-astro-cid-5jp7rtjd> <div class="footer__hours-row" data-astro-cid-5jp7rtjd> <dt class="footer__hours-day" data-astro-cid-5jp7rtjd>Mon &ndash; Fri</dt> <dd class="footer__hours-time" data-astro-cid-5jp7rtjd>8:30am &ndash; 6pm</dd> </div> <div class="footer__hours-row" data-astro-cid-5jp7rtjd> <dt class="footer__hours-day" data-astro-cid-5jp7rtjd>Saturday</dt> <dd class="footer__hours-time" data-astro-cid-5jp7rtjd>9am &ndash; 2pm</dd> </div> <div class="footer__hours-row" data-astro-cid-5jp7rtjd> <dt class="footer__hours-day" data-astro-cid-5jp7rtjd>Sunday</dt> <dd class="footer__hours-time" data-astro-cid-5jp7rtjd>Closed</dd> </div> </dl> <a class="footer__phone" href="tel:+353539121988" aria-label="Call Slaney Dental" data-astro-cid-5jp7rtjd> 053 912 1988 </a> <nav class="footer__nav" aria-label="Footer navigation" data-astro-cid-5jp7rtjd> <a class="footer__nav-link" href="/demos/slaney-dental-wexford/privacy" data-astro-cid-5jp7rtjd>Privacy Policy</a> <span class="footer__nav-sep" aria-hidden="true" data-astro-cid-5jp7rtjd>&middot;</span> <a class="footer__nav-link" href="/demos/slaney-dental-wexford/accessibility" data-astro-cid-5jp7rtjd>Accessibility</a> </nav> </div> </div> </div> <!-- Legal band --> <div class="footer__legal" data-astro-cid-5jp7rtjd> <div class="footer__legal-inner" data-astro-cid-5jp7rtjd> <p class="footer__legal-copy" data-astro-cid-5jp7rtjd>
 &copy; 2026 Slaney Dental. All rights reserved.
-</p> </div> </div> </footer>  </body></html>
+</p> </div> </div> </footer>  <script>
+    window.addEventListener('load', function() {
+      if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+    });
+  </script> </body> </html>
