@@ -1031,6 +1031,21 @@
       background: rgba(255,255,255,0.28);
       z-index: 1;
     }
+    /* ── Demo-thumb screenshot backgrounds ───────────────── */
+    /* Suppress decorative pseudo-elements on small thumbs */
+    .demo-thumb::before, .demo-thumb::after { display: none !important; }
+    /* Override gradient with real screenshot per slug */
+    .demo-thumbs .t-slaney    { background: url(renders/demos/slaney-dental-wexford.png) top center / cover no-repeat; }
+    .demo-thumbs .t-strand    { background: url(renders/demos/strand-road-dental.png) top center / cover no-repeat; }
+    .demo-thumbs .t-vetcare   { background: url(renders/demos/vetcare-limerick.png) top center / cover no-repeat; }
+    .demo-thumbs .t-murphy    { background: url(renders/demos/murphy-plumbing-cork.png) top center / cover no-repeat; }
+    .demo-thumbs .t-curtin    { background: url(renders/demos/curtin-electrical.png) top center / cover no-repeat; }
+    .demo-thumbs .t-clancys   { background: url(renders/demos/clancys-restaurant-cork.png) top center / cover no-repeat; }
+    .demo-thumbs .t-wildflour { background: url(renders/demos/wildflour-bakery-galway.png) top center / cover no-repeat; }
+    .demo-thumbs .t-01        { background: url(renders/industries/01-dental-swiss.png) top center / cover no-repeat; }
+    .demo-thumbs .t-sol       { background: url(renders/industries/02-solicitor-swiss.png) top center / cover no-repeat; }
+    .demo-thumbs .t-07        { background: url(renders/industries/06-trade-pro-dark-oled.png) top center / cover no-repeat; }
+
     /* LIVE badge */
     .live-badge {
       position: absolute; top: 12px; right: 12px; z-index: 3;
