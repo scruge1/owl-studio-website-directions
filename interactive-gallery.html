@@ -1456,7 +1456,7 @@
       transition: color 130ms, background 130ms;
     }
     #dpo-nav button:hover, #dpo-nav a:hover { color: #f1c18e; }
-    #dpo-divider {
+    .dpo-divider {
       width: 1px; height: 18px;
       background: rgba(245,241,232,0.18);
       margin: 0 4px; flex: 0 0 auto;
@@ -2172,6 +2172,7 @@
           headers: {'Content-Type':'application/json'},
           body: JSON.stringify({site_id: 'owl-studio-sales', form_data: fd, submitted_from: location.href})
         });
+        if (!r.ok) throw new Error('HTTP ' + r.status);
         const j = await r.json();
         if (j.ok) {
           f.reset();
@@ -2539,6 +2540,7 @@
             submitted_from: location.href,
           })
         });
+        if (!r.ok) throw new Error('HTTP ' + r.status);
         const j = await r.json();
         if (j.ok) {
           status.className = 'qm-status ok';
@@ -2567,11 +2569,11 @@
     <iframe id="dpo-frame" title="Demo site preview" allowfullscreen></iframe>
     <nav id="dpo-nav" aria-label="Demo navigation">
       <button id="dpo-gallery"><span id="dpo-gallery-label">Owl Studio · </span>← Gallery</button>
-      <div id="dpo-divider"></div>
+      <div class="dpo-divider"></div>
       <button id="dpo-prev">← Prev</button>
       <span id="dpo-idx">01 / 10</span>
       <button id="dpo-next">Next →</button>
-      <div id="dpo-divider"></div>
+      <div class="dpo-divider"></div>
       <button id="dpo-build">Build this →</button>
     </nav>
   </div>
@@ -2625,12 +2627,19 @@
       buildBtn.title = "Build " + d.style + " for your business";
       dpo.classList.add("open");
       document.body.style.overflow = "hidden";
+      // Focus trap: inert on page content so keyboard can't escape overlay
+      document.querySelectorAll("body > *:not(#dpo)").forEach(function (el) {
+        el.inert = true;
+      });
       closeBtn.focus();
     }
 
     function closePreview() {
       dpo.classList.remove("open");
       document.body.style.overflow = "";
+      document.querySelectorAll("body > *:not(#dpo)").forEach(function (el) {
+        el.inert = false;
+      });
       // Unload iframe to stop audio/video etc.
       setTimeout(function () { if (!dpo.classList.contains("open")) frame.src = ""; }, 200);
     }
