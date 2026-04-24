@@ -2038,13 +2038,13 @@
       <div class="lab-teaser__label">The Lab · Experimental Styles</div>
       <p class="lab-teaser__desc">Glassmorphism, claymorphism, neumorphism, editorial brutalism — push-the-envelope directions that suit creative brands, apps, and anything that needs to stand out differently from an Irish SMB site.</p>
       <div class="lab-thumbs">
-        <a class="demo-thumb t-02" href="samples/industries/04-physio-neumorphism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">L1</span><span class="name">Physio</span><span class="aud">Neumorphism</span></span></a>
-        <a class="demo-thumb t-03" href="samples/industries/05-opticians-glassmorphism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">L2</span><span class="name">Opticians</span><span class="aud">Glassmorphism</span></span></a>
-        <a class="demo-thumb t-08" href="samples/industries/07-vet-claymorphism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">L3</span><span class="name">Vet</span><span class="aud">Claymorphism</span></span></a>
-        <a class="demo-thumb t-fin" href="samples/industries/08-financial-brutalism-editorial.html" target="_blank" rel="noopener"><span class="meta"><span class="num">L4</span><span class="name">Wealth</span><span class="aud">Brutalism</span></span></a>
-        <a class="demo-thumb t-05" href="samples/industries/09-architects-3d.html" target="_blank" rel="noopener"><span class="meta"><span class="num">L5</span><span class="name">Architects</span><span class="aud">3D Hyperrealism</span></span></a>
-        <a class="demo-thumb t-acc" href="samples/industries/03-accountant-minimalism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">L6</span><span class="name">Accountants</span><span class="aud">Minimalism</span></span></a>
-        <a class="demo-thumb t-04" href="samples/industries/10-local-services-brutalism.html" target="_blank" rel="noopener"><span class="meta"><span class="num">L7</span><span class="name">Local Services</span><span class="aud">Mondrian</span></span></a>
+        <a class="demo-thumb t-02" href="samples/industries/04-physio-neumorphism.html"><span class="meta"><span class="num">L1</span><span class="name">Physio</span><span class="aud">Neumorphism</span></span></a>
+        <a class="demo-thumb t-03" href="samples/industries/05-opticians-glassmorphism.html"><span class="meta"><span class="num">L2</span><span class="name">Opticians</span><span class="aud">Glassmorphism</span></span></a>
+        <a class="demo-thumb t-08" href="samples/industries/07-vet-claymorphism.html"><span class="meta"><span class="num">L3</span><span class="name">Vet</span><span class="aud">Claymorphism</span></span></a>
+        <a class="demo-thumb t-fin" href="samples/industries/08-financial-brutalism-editorial.html"><span class="meta"><span class="num">L4</span><span class="name">Wealth</span><span class="aud">Brutalism</span></span></a>
+        <a class="demo-thumb t-05" href="samples/industries/09-architects-3d.html"><span class="meta"><span class="num">L5</span><span class="name">Architects</span><span class="aud">3D Hyperrealism</span></span></a>
+        <a class="demo-thumb t-acc" href="samples/industries/03-accountant-minimalism.html"><span class="meta"><span class="num">L6</span><span class="name">Accountants</span><span class="aud">Minimalism</span></span></a>
+        <a class="demo-thumb t-04" href="samples/industries/10-local-services-brutalism.html"><span class="meta"><span class="num">L7</span><span class="name">Local Services</span><span class="aud">Mondrian</span></span></a>
       </div>
       <a href="/lab/" class="lab-teaser__cta" target="_blank" rel="noopener">Browse all experimental styles in The Lab →</a>
     </aside>
@@ -2581,16 +2581,25 @@
     "use strict";
 
     var DEMOS = [
-      { slug: "slaney-dental-wexford",   url: "/demos/slaney-dental-wexford/",                   name: "Slaney Dental",     style: "Typographic-First"      },
-      { slug: "strand-road-dental",      url: "/demos/strand-road-dental/",                      name: "Strand Road Dental",style: "Luxury Minimal"          },
-      { slug: "vetcare-limerick",        url: "/demos/vetcare-limerick/",                        name: "Vetcare Limerick",  style: "Warm & Approachable"    },
-      { slug: "murphy-plumbing-cork",    url: "/demos/murphy-plumbing-cork/",                    name: "Murphy Plumbing",   style: "Bold Utility"           },
-      { slug: "curtin-electrical",       url: "/demos/curtin-electrical/",                       name: "Curtin Electrical", style: "Technical Split-Panel"  },
-      { slug: "clancys-restaurant-cork", url: "/demos/clancys-restaurant-cork/",                 name: "Clancy's Cork",     style: "Fine Dining Cinematic"  },
-      { slug: "wildflour-bakery-galway", url: "/demos/wildflour-bakery-galway/",                 name: "Wildflour Bakery",  style: "Warm Craft"             },
-      { slug: "01-dental-swiss",         url: "/samples/industries/01-dental-swiss.html",        name: "Dental Practice",   style: "Swiss Editorial"        },
-      { slug: "02-solicitor-swiss",      url: "/samples/industries/02-solicitor-swiss.html",     name: "Solicitors",        style: "Swiss Authority"        },
-      { slug: "06-trade-pro-dark-oled",  url: "/samples/industries/06-trade-pro-dark-oled.html", name: "Trade Pro",         style: "Dark OLED"              }
+      // ── Main 10 ───────────────────────────────────────────────────────────
+      { slug: "slaney-dental-wexford",           url: "/demos/slaney-dental-wexford/",                              name: "Slaney Dental",     style: "Typographic-First"      },
+      { slug: "strand-road-dental",              url: "/demos/strand-road-dental/",                                 name: "Strand Road Dental",style: "Luxury Minimal"          },
+      { slug: "vetcare-limerick",                url: "/demos/vetcare-limerick/",                                   name: "Vetcare Limerick",  style: "Warm & Approachable"    },
+      { slug: "murphy-plumbing-cork",            url: "/demos/murphy-plumbing-cork/",                               name: "Murphy Plumbing",   style: "Bold Utility"           },
+      { slug: "curtin-electrical",               url: "/demos/curtin-electrical/",                                  name: "Curtin Electrical", style: "Technical Split-Panel"  },
+      { slug: "clancys-restaurant-cork",         url: "/demos/clancys-restaurant-cork/",                            name: "Clancy's Cork",     style: "Fine Dining Cinematic"  },
+      { slug: "wildflour-bakery-galway",         url: "/demos/wildflour-bakery-galway/",                            name: "Wildflour Bakery",  style: "Warm Craft"             },
+      { slug: "01-dental-swiss",                 url: "/samples/industries/01-dental-swiss.html",                   name: "Dental Practice",   style: "Swiss Editorial"        },
+      { slug: "02-solicitor-swiss",              url: "/samples/industries/02-solicitor-swiss.html",                name: "Solicitors",        style: "Swiss Authority"        },
+      { slug: "06-trade-pro-dark-oled",          url: "/samples/industries/06-trade-pro-dark-oled.html",            name: "Trade Pro",         style: "Dark OLED"              },
+      // ── The Lab ───────────────────────────────────────────────────────────
+      { slug: "04-physio-neumorphism",           url: "/samples/industries/04-physio-neumorphism.html",             name: "Physio Clinic",     style: "Soft Neumorphism"       },
+      { slug: "05-opticians-glassmorphism",      url: "/samples/industries/05-opticians-glassmorphism.html",        name: "Opticians",         style: "Glassmorphism"          },
+      { slug: "07-vet-claymorphism",             url: "/samples/industries/07-vet-claymorphism.html",               name: "Vet Practice",      style: "Claymorphism"           },
+      { slug: "08-financial-brutalism-editorial",url: "/samples/industries/08-financial-brutalism-editorial.html",  name: "Wealth Advisors",   style: "Editorial Brutalism"    },
+      { slug: "09-architects-3d",                url: "/samples/industries/09-architects-3d.html",                  name: "Architects",        style: "3D Hyperrealism"        },
+      { slug: "03-accountant-minimalism",        url: "/samples/industries/03-accountant-minimalism.html",          name: "Accountants",       style: "Numbers Minimalism"     },
+      { slug: "10-local-services-brutalism",     url: "/samples/industries/10-local-services-brutalism.html",       name: "Local Services",    style: "Mondrian Brutalism"     }
     ];
 
     var dpo      = document.getElementById("dpo");
