@@ -1,59 +1,51 @@
 /**
  * Owl Studio sample-preview nav bar.
- * Loaded from every samples/industries/*.html via <script src="_owl-nav.js" defer></script>.
+ * Loaded from every demo/sample page via:
+ *   - demos/*/index.html  →  <script src="/samples/industries/_owl-nav.js" defer></script>
+ *   - samples/industries/*.html  →  <script src="_owl-nav.js" defer></script>
  *
- * Injects a fixed bottom-centre bar so the prospect can:
- *   - go back to the main gallery (no browser-back required)
- *   - page prev/next across all 10 samples without returning first
- *   - click "Build this style" to jump back to pricing with the style pre-selected
- *   - dismiss the bar for the rest of the session if it's in the way
- *
- * Self-contained: one script tag, zero DOM prerequisites. The bar fails
- * silently if the page isn't one of the 10 industry samples.
+ * Fixed bottom-centre bar: back to gallery, ← Prev, 01/10, Next →, "Build this", ×
  */
 (function () {
   "use strict";
 
   var SAMPLES = [
-    { slug: "01-dental-swiss",                  name: "Dental Practice",       style: "Swiss Editorial" },
-    { slug: "02-solicitor-swiss",               name: "Solicitors",            style: "Swiss Authority" },
-    { slug: "03-accountant-minimalism",         name: "Chartered Accountants", style: "Numbers-forward" },
-    { slug: "04-physio-neumorphism",            name: "Physiotherapy",         style: "Soft Neumorphism" },
-    { slug: "05-opticians-glassmorphism",       name: "Opticians",             style: "Glassmorphism" },
-    { slug: "06-trade-pro-dark-oled",           name: "Trade Pro",             style: "Dark OLED · Industrial" },
-    { slug: "07-vet-claymorphism",              name: "Veterinary",            style: "Claymorphism" },
-    { slug: "08-financial-brutalism-editorial", name: "Wealth Advisor",        style: "Editorial Brutalism" },
-    { slug: "09-architects-3d",                 name: "Architects",            style: "3D Hyperrealism" },
-    { slug: "10-local-services-brutalism",      name: "Local Services",        style: "Mondrian Brutalism" }
+    { slug: "slaney-dental-wexford",   url: "/demos/slaney-dental-wexford/",                    name: "Slaney Dental",     style: "Typographic-First"     },
+    { slug: "strand-road-dental",      url: "/demos/strand-road-dental/",                       name: "Strand Road Dental",style: "Luxury Minimal"         },
+    { slug: "vetcare-limerick",        url: "/demos/vetcare-limerick/",                         name: "Vetcare Limerick",  style: "Warm & Approachable"   },
+    { slug: "murphy-plumbing-cork",    url: "/demos/murphy-plumbing-cork/",                     name: "Murphy Plumbing",   style: "Bold Utility"          },
+    { slug: "curtin-electrical",       url: "/demos/curtin-electrical/",                        name: "Curtin Electrical", style: "Technical Split-Panel" },
+    { slug: "clancys-restaurant-cork", url: "/demos/clancys-restaurant-cork/",                  name: "Clancy's Cork",     style: "Fine Dining Cinematic" },
+    { slug: "wildflour-bakery-galway", url: "/demos/wildflour-bakery-galway/",                  name: "Wildflour Bakery",  style: "Warm Craft"            },
+    { slug: "01-dental-swiss",         url: "/samples/industries/01-dental-swiss.html",         name: "Dental Practice",   style: "Swiss Editorial"       },
+    { slug: "02-solicitor-swiss",      url: "/samples/industries/02-solicitor-swiss.html",      name: "Solicitors",        style: "Swiss Authority"       },
+    { slug: "06-trade-pro-dark-oled",  url: "/samples/industries/06-trade-pro-dark-oled.html",  name: "Trade Pro",         style: "Dark OLED"             }
   ];
 
   var GALLERY_URL = "https://websites.owlzone.trade/#styles";
+  var BUILD_URL   = "https://websites.owlzone.trade/#pricing";
 
-  // Resolve current sample from the pathname
-  var path = (location.pathname || "").split("?")[0].split("#")[0];
-  var fname = path.substring(path.lastIndexOf("/") + 1).replace(/\.html?$/i, "");
+  // Resolve current entry from pathname — works for both
+  //   /demos/slaney-dental-wexford/     (last non-empty segment = slug)
+  //   /samples/industries/01-dental-swiss.html  (filename without .html = slug)
+  var path = (location.pathname || "").replace(/\.html?$/i, "").replace(/\/+$/, "");
+  var fname = path.substring(path.lastIndexOf("/") + 1);
   var idx = -1;
   for (var i = 0; i < SAMPLES.length; i++) {
     if (SAMPLES[i].slug === fname) { idx = i; break; }
   }
   if (idx === -1) return;
 
-  // Allow a previously-dismissed bar to stay dismissed for the session
-  try {
-    if (sessionStorage.getItem("owl-nav-hidden")) return;
-  } catch (e) { /* ignore */ }
+  // Session-level dismiss
+  try { if (sessionStorage.getItem("owl-nav-hidden")) return; } catch (e) {}
 
-  // Escape hatch for screenshot/snapshot rendering — e.g. ?hide-nav=1
+  // Screenshot/snapshot escape hatch
   if (/[?&]hide-nav=1\b/.test(location.search)) return;
 
   var current = SAMPLES[idx];
-  var prev = SAMPLES[(idx - 1 + SAMPLES.length) % SAMPLES.length];
-  var next = SAMPLES[(idx + 1) % SAMPLES.length];
-  var buildUrl = "https://websites.owlzone.trade/#pricing";
+  var prev    = SAMPLES[(idx - 1 + SAMPLES.length) % SAMPLES.length];
+  var next    = SAMPLES[(idx + 1) % SAMPLES.length];
 
-  // Shadow-DOM avoided on purpose — some samples (3D, glass) play heavy with
-  // CSS; a plain root-level div with scoped selectors is enough and respects
-  // the sample's aesthetic without competing fonts. All styles inline + scoped.
   var css = [
     "#owl-sample-nav{",
     "  position:fixed;z-index:2147483647;",
@@ -95,22 +87,22 @@
   var bar = document.createElement("div");
   bar.id = "owl-sample-nav";
   bar.setAttribute("role", "navigation");
-  bar.setAttribute("aria-label", "Owl Studio sample preview navigation");
+  bar.setAttribute("aria-label", "Owl Studio demo navigation");
   bar.innerHTML =
-    '<a href="' + GALLERY_URL + '" title="Back to all 10 samples">' +
+    '<a href="' + GALLERY_URL + '" title="Back to all 10 demos">' +
       '<span class="owl-label">Owl Studio · </span>← Gallery</a>' +
     '<span class="owl-div"></span>' +
-    '<a href="' + prev.slug + '.html" title="Previous sample: ' + prev.name + ' (' + prev.style + ')">← Prev</a>' +
+    '<a href="' + prev.url + '" title="Previous: ' + prev.name + ' — ' + prev.style + '">← Prev</a>' +
     '<span class="owl-idx">' + String(idx + 1).padStart(2, "0") + ' / 10</span>' +
-    '<a href="' + next.slug + '.html" title="Next sample: ' + next.name + ' (' + next.style + ')">Next →</a>' +
+    '<a href="' + next.url + '" title="Next: ' + next.name + ' — ' + next.style + '">Next →</a>' +
     '<span class="owl-div"></span>' +
-    '<a class="owl-build" href="' + buildUrl + '" title="Build this direction for your business">Build this →</a>' +
+    '<a class="owl-build" href="' + BUILD_URL + '" title="Build this direction for your business">Build this →</a>' +
     '<button type="button" class="owl-close" aria-label="Hide preview bar" title="Hide preview bar">×</button>';
 
   document.body.appendChild(bar);
 
   bar.querySelector(".owl-close").addEventListener("click", function () {
     bar.remove();
-    try { sessionStorage.setItem("owl-nav-hidden", "1"); } catch (e) { /* ignore */ }
+    try { sessionStorage.setItem("owl-nav-hidden", "1"); } catch (e) {}
   });
 })();
