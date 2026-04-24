@@ -1,0 +1,60 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --ds-color-brand: #8b3a2a;
+  --ds-color-brand-light: #c07060;
+  --ds-color-accent: #c4882a;
+  --ds-color-surface: #faf5ee;
+  --ds-color-surface-alt: #f0e8d8;
+  --ds-color-surface-inverse: #1c1008;
+  --ds-color-surface-inverse-alt: #2a1c10;
+  --ds-color-text: #1c1410;
+  --ds-color-text-muted: #5a4a38;
+  --ds-color-text-inverse: #f0e8d8;
+  --ds-color-text-inverse-muted: #a89070;
+  --ds-color-action: #8b3a2a;
+  --ds-color-action-hover: #7a2e1e;
+  --ds-color-border: #d4c4a8;
+  --ds-color-border-inverse: rgba(255, 255, 255, 0.08);
+  --ds-color-emergency: #c4882a;
+  --ds-font-family-display: 'Playfair Display Variable', 'Playfair Display', Georgia, serif;
+  --ds-font-family-body: 'Inter Variable', 'Inter', system-ui, sans-serif;
+  --ds-font-size-display: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+  --ds-font-size-h1: clamp(2rem, 3.5vw + 1rem, 3.25rem);
+  --ds-font-size-h2: clamp(1.5rem, 2.5vw + 0.75rem, 2.25rem);
+  --ds-font-size-h3: clamp(1.125rem, 1vw + 0.5rem, 1.375rem);
+  --ds-font-size-body: clamp(1.0625rem, 0.5vw + 0.875rem, 1.125rem);
+  --ds-font-size-small: 0.875rem;
+  --ds-font-size-label: 0.75rem;
+  --ds-font-weight-display: 700;
+  --ds-font-weight-body: 400;
+  --ds-font-weight-medium: 500;
+  --ds-font-weight-semibold: 600;
+  --ds-font-leading-display: 1.1;
+  --ds-font-leading-heading: 1.2;
+  --ds-font-leading-body: 1.7;
+  --ds-font-tracking-label: 0.12em;
+  --ds-space-2xs: clamp(0.25rem, 0.5vw, 0.5rem);
+  --ds-space-xs: clamp(0.5rem, 1vw, 0.75rem);
+  --ds-space-s: clamp(0.75rem, 1.5vw, 1rem);
+  --ds-space-m: clamp(1rem, 2vw, 1.5rem);
+  --ds-space-l: clamp(1.5rem, 3vw, 2.5rem);
+  --ds-space-xl: clamp(2.5rem, 5vw, 4rem);
+  --ds-space-2xl: clamp(4rem, 8vw, 7rem);
+  --ds-motion-duration-fast: 200ms;
+  --ds-motion-duration-base: 400ms;
+  --ds-motion-duration-slow: 700ms;
+  --ds-motion-easing-enter: cubic-bezier(0.22, 1, 0.36, 1);
+  --ds-motion-easing-exit: cubic-bezier(0.55, 0, 1, 0.45);
+  --ds-motion-stagger: 80ms;
+  --ds-shape-radius-card: 16px;
+  --ds-shape-radius-card-large: 20px;
+  --ds-shape-radius-button: 10px;
+  --ds-shape-radius-badge: 6px;
+  --ds-shadow-card: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.03);
+  --ds-shadow-card-hover: 0 8px 28px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.05);
+  --ds-layout-content-max: 1200px;
+  --ds-layout-content-wide: 1440px;
+}
