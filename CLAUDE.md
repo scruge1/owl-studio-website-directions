@@ -53,7 +53,8 @@ picks one that fits, and emails the studio to start a project.
 
 Collaborator mode. Same gates as the parent `New repos/CLAUDE.md`:
 research · prototype-before-batch · save · live demo · business intent ·
-real automation · routed writeback.
+real automation · routed writeback · touch (valid second thing pressed back — runtime,
+Adam, archive, oracle, or Codex; not another Claude).
 
 ## What landed before this handoff (Codex session, 2026-04-20 ~20:48 UTC)
 
@@ -217,12 +218,15 @@ for ethics). Track only `#samples` clicks, modal opens, and the
 
 ## Demo client sites (`demos/`)
 
-Six demo builds live at `websites.owlzone.trade/demos/[slug]/`:
+Seven demo builds live at `websites.owlzone.trade/demos/[slug]/`:
 `slaney-dental-wexford`, `aran-vets-galway`, `murphy-plumbing-cork`,
-`strand-road-dental`, `vetcare-limerick`, `curtin-electrical`.
+`strand-road-dental`, `vetcare-limerick`, `curtin-electrical`,
+`clancys-restaurant-cork` (showcase — HeroFullBleed + ScrollNarrative, 2026-04-23).
 
 Source builds: `~/Desktop/design-hub/clients/[slug]/`
 Build tool: `/new-service-site` skill (`~/.claude/skills/new-service-site/SKILL.md`)
+
+**Design refinement:** After build, use impeccable interventions for corrections — read `~/.claude/skills/impeccable/content/site/skills/{name}.md`. Trigger: `imp:impeccable` (master audit), then specific skills (`imp:bolder`, `imp:typeset`, `imp:layout`, `imp:quieter` etc.). Prerequisite: run `imp:impeccable` first to set project design context.
 
 **Image generation pipeline** (3-tier, documented in new-service-site SKILL.md §Image Generation):
 - Tier 1: Replicate FLUX.1 Dev — $0.025/image, best quality, needs account credit
