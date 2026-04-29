@@ -197,6 +197,7 @@ Owl Studio: `owl_sites`, `owl_leads`, `owl_tickets`, `owl_payments`
 | `vault` | A | 178.104.205.255 | Vaultwarden (added 2026-04-21) |
 | `uptime` | A | 178.104.205.255 | Uptime Kuma (added 2026-04-21) |
 | `analytics` | A | 178.104.205.255 | Umami (added 2026-04-21) |
+| `*.websites` | A | 178.104.205.255 | Lead sites wildcard — `{slug}.websites.owlzone.trade` → VPS nginx container (added 2026-04-25) |
 
 ### 5.2 Porkbun API reference
 
@@ -452,9 +453,16 @@ User said *"I know a lot of people in rubbish removal, man-with-a-van, powerwash
 
 Executed by two parallel agents (skill dispatch per `feedback_parallel-skill-dispatch.md`) -- not one template × recolour. Atomic migration via `scripts/swap-trade-samples.py` updated `_owl-nav.js`, `_owl-form.js`, `provision-sample-sites.py`, and `interactive-gallery.html` in one pass.
 
-New admin tokens in vault:
-- `OWL_ADMIN_TOKEN_MURPHY_PLUMBING=REVOKED_2026-04-29_AUD-001`
-- `OWL_ADMIN_TOKEN_CLEAR_OUT_LIMERICK=REVOKED_2026-04-29_AUD-001`
+New admin tokens in vault — values redacted, see `~/.claude/routes/.env`:
+- `OWL_ADMIN_TOKEN_MURPHY_PLUMBING=${OWL_ADMIN_TOKEN_MURPHY_PLUMBING}`
+- `OWL_ADMIN_TOKEN_CLEAR_OUT_LIMERICK=${OWL_ADMIN_TOKEN_CLEAR_OUT_LIMERICK}`
+
+> **Token rotation history (AUD-001, 2026-04-29):** original values were committed
+> in plaintext here and exposed via the public GitHub mirror. Rotated via
+> `POST /owl/sites/{site_id}/rotate-admin-token` on 2026-04-29 21:55 UTC; old
+> values now return 401. Going forward, NEVER commit literal tokens — env-var
+> placeholder syntax only. See `AUDIT-2026-04-29.md` AUD-001 for the full
+> remediation runbook.
 
 Old tokens suffixed `_RETIRED` in vault; `hear-clear-demo` + `molyneux-aesthetics-demo` rows set `status='off'` in Postgres (paper trail kept, admin URLs 401 cleanly). PNGs re-rendered at 2x retina (2880×1800) via Playwright.
 
