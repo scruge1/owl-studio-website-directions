@@ -162,6 +162,8 @@ Owl Studio: `owl_sites`, `owl_leads`, `owl_tickets`, `owl_payments`
 | `care-essential` | Owl Studio · Essential care plan | `care-essential-monthly`, `care-essential-yearly` | €45/mo · €450/yr |
 | `care-growth` | Owl Studio · Growth care plan | `care-growth-monthly`, `care-growth-yearly` | €95/mo · €950/yr |
 | `care-concierge` | Owl Studio · Concierge care plan | `care-concierge-monthly`, `care-concierge-yearly` | €195/mo · €1,950/yr |
+| `site-starter-deposit` | Owl Studio · Starter site deposit (€348) | `site-starter-deposit` | €348 one-off (AUD-019) |
+| `site-pro-deposit` | Owl Studio · Pro site deposit (€798) | `site-pro-deposit` | €798 one-off (AUD-019) |
 
 ### 4.2 Payment Links (saved in `~/.claude/routes/.env`)
 
@@ -174,6 +176,32 @@ Owl Studio: `owl_sites`, `owl_leads`, `owl_tickets`, `owl_payments`
 | `care-growth-yearly` | `OWL_STRIPE_LINK_CARE_GROWTH_YEARLY` |
 | `care-concierge-monthly` | `OWL_STRIPE_LINK_CARE_CONCIERGE_MONTHLY` |
 | `care-concierge-yearly` | `OWL_STRIPE_LINK_CARE_CONCIERGE_YEARLY` |
+| `site-starter-deposit` | `OWL_STRIPE_LINK_SITE_STARTER_DEPOSIT` (AUD-019 — pending provisioner run) |
+| `site-pro-deposit` | `OWL_STRIPE_LINK_SITE_PRO_DEPOSIT` (AUD-019 — pending provisioner run) |
+
+#### AUD-019 — site-build deposit Payment Links runbook
+
+After running `python scripts/provision-stripe.py` to mint the two new
+deposit Payment Links:
+
+1. Vault: paste output URLs into `~/.claude/routes/.env`:
+   ```
+   OWL_STRIPE_LINK_SITE_STARTER_DEPOSIT=https://buy.stripe.com/...
+   OWL_STRIPE_LINK_SITE_PRO_DEPOSIT=https://buy.stripe.com/...
+   ```
+2. Edit `interactive-gallery.html`:
+   - Line ~1636 (Starter CTA): replace
+     `href="mailto:callmeie@proton.me?subject=Starter%20website%20%E2%80%94%20%E2%82%AC695"`
+     with the Starter Payment Link URL.
+   - Line ~1655 (Pro CTA): replace
+     `href="mailto:callmeie@proton.me?subject=Pro%20website%20%E2%80%94%20%E2%82%AC1595"`
+     with the Pro Payment Link URL.
+   - Line ~1671 (Custom CTA): replace `mailto:` with the existing
+     `OWL_STRIPE_LINK_AUDIT` URL (€99 audit, credited against final Custom invoice).
+3. Commit + push to `main` (GitHub Pages auto-deploys in ~30s).
+4. Stripe webhook (`/owl/stripe/webhook`) already handles
+   `checkout.session.completed` for these new prices — payment lands in
+   `owl_payments` table with the deposit amount.
 
 **Provisioner:** `C:/Users/a33_s/Desktop/callmeie-fix/scripts/provision-stripe.py` — idempotent, re-run safe.
 
