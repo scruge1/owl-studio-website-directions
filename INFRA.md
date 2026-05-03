@@ -582,11 +582,13 @@ Secret stored in outes/.env as DOPS_STRIPE_WEBHOOK_SECRET. All Document Ops Str
 
 ## 15 · docs.callmeie.ie (Document Ops sales site — GitHub Pages)
 
+> **SUPERSEDED 2026-05-03:** subdomain `docs.callmeie.ie` retired. Sales surface folded into the path-based monorepo at `https://callmeie.ie/docs/` (scruge1/callmeie-hub). Cloudflare CNAME deleted, GH Pages custom-domain config cleared on `scruge1/docs-callmeie` (now serves only at `https://scruge1.github.io/docs-callmeie/`). Reason: LE cert never provisioned (`https_enforced: false`) — broken HTTPS state during transition window flagged by Codex peer review as P0 blocker. Faster to drop than fix-then-drop. Old GSC URL-prefix property submission should be removed by Adam at Search Console. Section kept for historical reference only.
+
 | Field | Value |
 |---|---|
 | Repo | https://github.com/scruge1/docs-callmeie (public) |
 | Local repo | C:\Users\a33_s\Desktop\claude MCPs\New repos\docs-callmeie |
-| Public URL | https://docs.callmeie.ie (built 2026-05-02, cert auto-issuing) |
+| Public URL | ~~https://docs.callmeie.ie~~ → DROPPED 2026-05-03 (was: built 2026-05-02, cert never provisioned) |
 | Hosting | GitHub Pages, `main` branch, `/` root, custom CNAME |
 | DNS | callmeie.ie GoDaddy zone — CNAME `docs` → `scruge1.github.io` TTL 600 (created 2026-05-02 via GoDaddy API) |
 | Cert | Let's Encrypt (auto-issued by GitHub Pages once DNS verified, ~15-60 min) |
@@ -645,13 +647,13 @@ gh api /repos/scruge1/docs-callmeie/pages -X PUT --input - <<<'{"https_enforced"
 
 ### 16.1 Companion product surfaces (4-product family)
 
-| Surface | Domain | Hosting | Repo |
+| Surface | Domain / path | Hosting | Repo |
 |---|---|---|---|
-| Parent hub | callmeie.ie | GH Pages | scruge1/callmeie-hub |
-| AI Receptionist | receptionist.callmeie.ie | GH Pages | scruge1/CallMeIE (post-2026-05-03 cutover) |
-| Document Ops sales | docs.callmeie.ie | GH Pages | scruge1/docs-callmeie |
+| Parent hub | callmeie.ie/ | GH Pages | scruge1/callmeie-hub |
+| AI Receptionist | callmeie.ie/receptionist/ (was receptionist.callmeie.ie, retired 2026-05-03) | GH Pages | scruge1/callmeie-hub (folded from scruge1/CallMeIE) |
+| Document Ops sales | callmeie.ie/docs/ (was docs.callmeie.ie, retired 2026-05-03) | GH Pages | scruge1/callmeie-hub (folded from scruge1/docs-callmeie) |
 | Document Ops portal | portal.callmeie.ie | Coolify Hetzner | scruge1/document-ops-portal (private) |
-| AI-First Websites | websites.owlzone.trade (TBD migrate to websites.callmeie.ie at H4) | GH Pages | scruge1/owl-studio-website-directions |
+| AI-First Websites | callmeie.ie/websites/ (curated subset; deep client demos still on websites.owlzone.trade) | GH Pages | scruge1/callmeie-hub (folded from scruge1/owl-studio-website-directions) |
 
 All five surfaces share the same brand contract — paper #f8f5f0 + ink #1c1f24 + indigo #1d3557 + amber #c08a3f + Fraunces + Inter + JetBrains Mono. Tokens lifted verbatim from `document-ops-portal/app/static/portal.css` lines 1–58.
 
@@ -691,8 +693,8 @@ TXT   callmeie.ie  google-site-verification=YdiX8OOpq1...
 ### 16.5 Outstanding follow-ups
 
 - **Cloudflare Bulk Redirects** — 9 legacy URLs redirect via meta-refresh stubs in callmeie-hub for now (Google honors as redirect, treats as 302). For 301 SEO transfer, configure Bulk Redirects via dashboard (token scope needs Account Rules Lists:Edit which current `CLOUDFLARE_ZONE_CALLMEIE_TOKEN` lacks). After Bulk Redirects active, delete the 9 meta-refresh stubs from callmeie-hub.
-- **GSC Change-of-Address** — Adam's hands required at Search Console. Add `receptionist.callmeie.ie` as new property + verify + run Change-of-Address tool from old → new. Resubmit sitemap from new property.
-- **receptionist.callmeie.ie HTTPS** — LE cert auto-issuing post-DNS resolve. Typically <60min from CNAME add. If stalls >24h, drop+re-add CNAME via gh API per §15.4 recovery recipe.
+- ~~**GSC Change-of-Address**~~ — OBSOLETE. Subdomains retired 2026-05-03; path-based callmeie.ie/* handled by domain-property GSC entry. Old `receptionist.callmeie.ie` URL-prefix property should be DELETED by Adam at Search Console (data-only, no behavior change).
+- ~~**receptionist.callmeie.ie HTTPS**~~ — RESOLVED via subdomain drop 2026-05-03 (cert never provisioned; faster to drop than fix-then-drop).
 - **Lighthouse + Core Web Vitals scan** at 375 / 768 / 1180 / 1440 — run via gstack browse Playwright. Targets per BUILD-SPEC: LCP ≤1.2s, CLS <0.05, TBT <50ms.
 - **Adam visual review on real device** — touch gate.
 - **websites.callmeie.ie migration (H4)** — defer until web-design product is ready for Callmeie-branded shipping.
