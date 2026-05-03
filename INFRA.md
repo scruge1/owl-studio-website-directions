@@ -696,3 +696,30 @@ TXT   callmeie.ie  google-site-verification=YdiX8OOpq1...
 - **Lighthouse + Core Web Vitals scan** at 375 / 768 / 1180 / 1440 — run via gstack browse Playwright. Targets per BUILD-SPEC: LCP ≤1.2s, CLS <0.05, TBT <50ms.
 - **Adam visual review on real device** — touch gate.
 - **websites.callmeie.ie migration (H4)** — defer until web-design product is ready for Callmeie-branded shipping.
+
+### 16.6 Email Routing (Cloudflare → Proton, 2026-05-03)
+
+| Surface | Address shown | Routes to |
+|---|---|---|
+| Parent hub mailto CTAs (15 refs in `index.html` + `about.html`) | `hello@callmeie.ie` | Cloudflare Email Routing → `callmeie@proton.me` |
+| Document Ops portal templates (`base.html`, `login.html`, `magic_link_sent.html`) | `hello@callmeie.ie` | same routing |
+| Receptionist niche pages (35+ refs, GDPR/contact/footer) | `callmeie@proton.me` (direct, no CF hop) | Proton inbox |
+| Receptionist privacy/terms (4 refs) | `hello@callmeie.ie` | same routing |
+| Owl Studio sales (`/websites/index.html`, 14 mailto CTAs) | `callmeie@proton.me` (direct) | Proton inbox |
+
+**DNS records added at Cloudflare zone callmeie.ie (2026-05-03):**
+- `MX` route1.mx.cloudflare.net (priority 81)
+- `MX` route2.mx.cloudflare.net (priority 12)
+- `MX` route3.mx.cloudflare.net (priority 23)
+- `TXT` callmeie.ie — `v=spf1 include:_spf.mx.cloudflare.net ~all`
+- `TXT` cf2024-1._domainkey.callmeie.ie — DKIM RSA-SHA256 public key
+
+**Routing rule:** custom address `hello@callmeie.ie` → action `Send to email` → destination `callmeie@proton.me` (verified 2026-05-03). Status: Active.
+
+**Proton plan limitation:** Free plan — incoming forward only. Adam REPLIES from `callmeie@proton.me`, not `hello@callmeie.ie`. For reply-from-brand, upgrade to Proton Mail Plus + add callmeie.ie as Proton custom domain. Acceptable for current revenue stage.
+
+**Token scope used:** `CLOUDFLARE_ZONE_CALLMEIE_TOKEN` (Zone DNS:Edit + Zone Settings:Edit) handled DNS records + zone-level routing enable. Account-scope endpoints (Account:Email Routing Addresses + Zone:Email Routing Rules) needed dashboard-driven setup — Claude in Chrome automated.
+
+**Verification ritual:** Cloudflare sends one-click link to destination address; recipient must click within ~24h for routing rule save to succeed. Re-trying save before verify yields "Verification email has been sent too recently" banner.
+
+**Recovery recipe (if mail stops landing):** check zone status `GET /client/v4/zones/<zone>/email/routing` returns `enabled=true status=ready`; verify destination not deleted from `/accounts/<acct>/email/routing/addresses`; verify routing rule still active in `/zones/<zone>/email/routing/rules`. If MX records missing, re-create from §16.6 list.
