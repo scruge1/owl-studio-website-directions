@@ -247,10 +247,13 @@ curl -X POST https://api.porkbun.com/api/json/v3/dns/retrieve/$DOMAIN \
 
 ## 6 · GitHub Pages (client + sales sites)
 
+> **SUPERSEDED 2026-05-03:** Owl Studio brand retired, web design merged into Callmeie Technologies as the AI-First Websites product (per BRAND-DOMAIN-CONSOLIDATION-PRD §0.3, executed 2026-05-03). New canonical sales surface: `https://callmeie.ie/websites/` (folded into scruge1/callmeie-hub). Old `https://websites.owlzone.trade` repo serves redirect stubs at `/` and `/interactive-gallery.html` to new URL. 7 demo dirs + 12 industry sample HTMLs copied into callmeie-hub on commit aa3d819 with brand sweep. Section kept for historical reference.
+
 | Site | Repo | URL | Notes |
 |---|---|---|---|
-| Owl Studio sales | `scruge1/owl-studio-website-directions` | `https://websites.owlzone.trade` | main → Pages, custom domain CNAME |
-| CallMeIE | `scruge1/CallMeIE` | `https://callmeie.ie` | HTTPS pending IEDR DNS control |
+| AI-First Websites (sales) | `scruge1/callmeie-hub` | `https://callmeie.ie/websites/` | path-based monorepo (active 2026-05-03) |
+| ~~Owl Studio sales~~ | `scruge1/owl-studio-website-directions` | ~~https://websites.owlzone.trade~~ → redirect to callmeie.ie/websites/ | RETIRED 2026-05-03; repo carries redirect stubs only |
+| CallMeIE | `scruge1/CallMeIE` | ~~https://callmeie.ie~~ → folded into `scruge1/callmeie-hub` at `/receptionist/` | RETIRED 2026-05-03 (path-based monorepo cutover) |
 
 **PAT:** `$GITHUB_TOKEN` in `~/.claude/routes/.env` (verify name — may be `GITHUB_PAT` or similar).
 
@@ -258,13 +261,15 @@ curl -X POST https://api.porkbun.com/api/json/v3/dns/retrieve/$DOMAIN \
 
 ## 7 · Owl Studio registered sites (client fleet)
 
+> **SUPERSEDED 2026-05-03:** site_id values KEPT for backend continuity per BRAND-DOMAIN-CONSOLIDATION-PRD §0.6 ("existing Owl Studio Stripe products keep their owl_tag: owl-studio metadata for billing continuity; future products tag callmeie. No retagging churn"). Display names + URLs updated to new path-based scheme. Admin tokens unchanged.
+
 Seed data — each has its own admin token + dashboard.
 
 | site_id | display_name | tier | care_tier | live_url | admin token env var |
 |---|---|---|---|---|---|
-| `owl-studio-sales` | Owl Studio · Sales | starter | — | https://websites.owlzone.trade | `OWL_ADMIN_TOKEN_OWL_STUDIO_SALES` |
-| `rathborne-dental-demo` | Rathborne Dental (demo) | pro | growth | https://websites.owlzone.trade/samples/industries/01-dental-swiss.html | `OWL_ADMIN_TOKEN_RATHBORNE_DENTAL_DEMO` |
-| `vetcare-limerick-preview` | Limerick Vet Clinic (preview) | — | — | https://websites.owlzone.trade/demos/vetcare-limerick/ | — (not yet registered as Owl client) |
+| `owl-studio-sales` | AI-First Websites · Sales (was Owl Studio · Sales) | starter | — | https://callmeie.ie/websites/ (was websites.owlzone.trade) | `OWL_ADMIN_TOKEN_OWL_STUDIO_SALES` |
+| `rathborne-dental-demo` | Rathborne Dental (demo) | pro | growth | https://callmeie.ie/websites/samples/industries/01-dental-swiss.html | `OWL_ADMIN_TOKEN_RATHBORNE_DENTAL_DEMO` |
+| `vetcare-limerick-preview` | Limerick Vet Clinic (preview) | — | — | https://callmeie.ie/websites/demos/vetcare-limerick/ | — (not yet registered as client) |
 
 **Owner fleet dashboard:** `https://callmeie.onrender.com/owl/sites?token=$OWL_OWNER_TOKEN`
 
@@ -653,7 +658,7 @@ gh api /repos/scruge1/docs-callmeie/pages -X PUT --input - <<<'{"https_enforced"
 | AI Receptionist | callmeie.ie/receptionist/ (was receptionist.callmeie.ie, retired 2026-05-03) | GH Pages | scruge1/callmeie-hub (folded from scruge1/CallMeIE) |
 | Document Ops sales | callmeie.ie/docs/ (was docs.callmeie.ie, retired 2026-05-03) | GH Pages | scruge1/callmeie-hub (folded from scruge1/docs-callmeie) |
 | Document Ops portal | portal.callmeie.ie | Coolify Hetzner | scruge1/document-ops-portal (private) |
-| AI-First Websites | callmeie.ie/websites/ (curated subset; deep client demos still on websites.owlzone.trade) | GH Pages | scruge1/callmeie-hub (folded from scruge1/owl-studio-website-directions) |
+| AI-First Websites | callmeie.ie/websites/ (full gallery + 7 demos + 12 industry samples self-contained, post-2026-05-03 brand merge) | GH Pages | scruge1/callmeie-hub (folded from scruge1/owl-studio-website-directions) |
 
 All five surfaces share the same brand contract — paper #f8f5f0 + ink #1c1f24 + indigo #1d3557 + amber #c08a3f + Fraunces + Inter + JetBrains Mono. Tokens lifted verbatim from `document-ops-portal/app/static/portal.css` lines 1–58.
 
