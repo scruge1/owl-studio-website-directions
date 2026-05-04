@@ -1,4 +1,4 @@
-# INFRA · Owl Studio + CallMeIE — canonical reference
+﻿# INFRA · Owl Studio + CallMeIE — canonical reference
 
 > Authoritative source of truth for every piece of Owl Studio + CallMeIE
 > infrastructure. If anything is NOT in this file, it doesn't exist yet.
@@ -565,15 +565,40 @@ LE certs issue automatically after force-deploy (~60s in M1 test).
 |---|---:|---|---|
 | Pilot Entry | EUR 500 one-time | prod_URIOoFD2CKSupL / price_1TSPnpCEqG2AuI1zwjKLxK9A | https://buy.stripe.com/dRm00i0Y3gdgbbCgypaIM09 |
 | Pilot Standard | EUR 1500 one-time | prod_URIOiA6cPqsMLv / price_1TSPnqCEqG2AuI1zZAcghb91 | https://buy.stripe.com/14A3cueOTbX04NeeqhaIM0a |
-| Operations Monthly Starter | EUR 250/mo | prod_URIOilIdo12zXe / price_1TSPnsCEqG2AuI1zS5rFSMNJ | https://buy.stripe.com/14AfZg4afaSW5Rici9aIM0b |
+| ~~Operations Monthly Starter~~ | ~~EUR 250/mo~~ | ~~prod_URIOilIdo12zXe / price_1TSPnsCEqG2AuI1zS5rFSMNJ~~ | ~~https://buy.stripe.com/14AfZg4afaSW5Rici9aIM0b~~ |
+
+> **RETIRED 2026-05-04** — Operations Monthly Starter superseded by Self-serve Auto / Auto Plus / Rescue+Export ladder (§14.1b below). Product KEPT active in Stripe; existing subscribers grandfathered indefinitely. Removed from /docs/ public pricing block. Audit trail only.
 
 Webhook: we_1TSPoBCEqG2AuI1zWijrXFhI -> https://portal.owlzone.trade/webhooks/stripe
 Events: checkout.session.completed, customer.subscription.created, customer.subscription.deleted, invoice.payment_failed
 Secret stored in outes/.env as DOPS_STRIPE_WEBHOOK_SECRET. All Document Ops Stripe IDs saved under DOPS_STRIPE_* keys.
 
+### 14.1b Document Ops Re-spec — D22 LOCKED (provisioned 2026-05-04 via Stripe API)
+
+Per `document-ops-portal/STRIPE-MIGRATION-SPEC.md` §2 + locked D11-D14. Created via `document-ops-portal/scripts/stripe-d22-execute.ps1` (idempotent, re-runnable). Source-of-truth result file: `document-ops-portal/scripts/stripe-d22-results.json`.
+
+| Tier | Price | Product ID | Price ID | Payment Link |
+|---|---:|---|---|---|
+| Self-serve Auto | EUR 99/mo | prod_US352mGEO8iaHW | price_1TT8zmCEqG2AuI1zfNupnSjP | https://buy.stripe.com/28EfZggX16CG5Ri3LDaIM0c |
+| Self-serve Auto Plus | EUR 249/mo | prod_US36KZjPHRR1Mw | price_1TT8zoCEqG2AuI1zqpYEvsR9 | https://buy.stripe.com/4gMeVccGL7GKdjK95XaIM0d |
+| Rescue + Export | EUR 499/mo | prod_US36vqRR6YUvbg | price_1TT8zqCEqG2AuI1zTNhJTbGh | https://buy.stripe.com/28EcN4ayD5yC0wY2HzaIM0e |
+| Managed Bespoke (low) | EUR 1500/mo | prod_US36MsoGM8YTwn | price_1TT8zsCEqG2AuI1zFuDj6Bks | (no public link — per-customer Checkout) |
+| Managed Bespoke (high) | EUR 2500/mo | prod_US36MsoGM8YTwn | price_1TT8zsCEqG2AuI1z84nYWT8W | (no public link — per-customer Checkout) |
+
+All subscription Payment Links: `tax_behavior=exclusive` (IE VAT applied at checkout), `billing_address_collection=required`, `tax_id_collection.enabled=true`. **`after_completion.hosted_confirmation.custom_message` NOT yet populated via API in 2026-05-04 run** — Adam can edit each Payment Link in Dashboard to paste D14-locked copy (see STRIPE-MIGRATION-SPEC.md §8 D14).
+
+Webhook handler additions for new `tier_slug` metadata routing — see `document-ops-portal/STRIPE-MIGRATION-SPEC.md` §4. Bespoke flow: Adam scopes via email → per-customer Stripe Checkout session against the appropriate Price ID. Slot allocation tracked in this INFRA.md.
+
+**Bespoke slot allocation** (cap=2 active engagements, waitlist when full):
+- Slot 1-of-2: OPEN
+- Slot 2-of-2: OPEN
+
+Update each slot when an engagement signs.
+
 ### 14.2 Migration history
 
 - **2026-05-01:** Initial Coolify provisioning + LE issuance for `portal.owlzone.trade`. Token mint via SSH+tinker (Sanctum personal access). DB + app deployed. AUD-001 token rotation handled.
+- **2026-05-04 (D22):** Document Ops re-spec — 4 new products + 5 prices + 3 Payment Links via Stripe API (idempotent script). Operations Monthly Starter retired (grandfather only). New tier ladder: Auto €99/mo, Auto Plus €249/mo, Rescue+Export €499/mo, Bespoke €1500/€2500/mo. /docs/ wiring + `after_completion` copy still pending.
 - **2026-05-02 (M1):** Brand-domain consolidation — added `portal.callmeie.ie` as primary URL via GoDaddy DNS API + Coolify multi-FQDN PATCH. Both URLs live, Traefik routing both. 30-day overlap until ~2026-06-02 then strip `portal` from `owlzone.trade` Porkbun zone.
 
 ### 14.3 Phase 2 backlog (Document Ops Portal)
