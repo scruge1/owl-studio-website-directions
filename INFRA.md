@@ -554,13 +554,40 @@ Invoke-RestMethod -Uri "https://api.godaddy.com/v1/domains/callmeie.ie/records/A
 Coolify v4 PATCH `/api/v1/applications/{uuid}` rejects field `fqdn` with 422 ("This field is not allowed.") but accepts field `domains` instead — internally maps to the same `applications.fqdn` column. Use comma-separated values to attach multiple domains to one app.
 
 ```powershell
-$body = '{"domains":"https://portal.owlzone.trade,https://portal.callmeie.ie"}'
+$body = '{"domains":"https://portal.owlzone.trade,https://portal.callmeie.ie,https://books.callmeie.ie"}'
 Invoke-WebRequest -Uri "$api/applications/$uuid" -Headers $h -Method PATCH -Body $body
 # Then force-deploy to regenerate Traefik labels + LE certs
 Invoke-RestMethod -Uri "$api/deploy?uuid=$uuid&force=true" -Headers $h
 ```
 
 LE certs issue automatically after force-deploy (~60s in M1 test).
+
+### 14.1a Coolify env-sync gotcha (resolved 2026-05-08 — `LS_WEBHOOK_SECRET` incident)
+
+**Pattern:** code adds a new required Settings field; vault has the secret; Coolify env DOESN'T → container crashloops on next restart, all hostnames return 503 silently.
+
+**2026-05-08 timeline:**
+- 2026-05-07: security commit `805d7a6` made `LS_WEBHOOK_SECRET` REQUIRED in `app/config.py`
+- 2026-05-08 ~12:37 UTC: portal.callmeie.ie status `restarting:unknown` — container has been crashlooping for ~24h, undetected
+- 2026-05-08 ~13:30 UTC: Phase 5 books.callmeie.ie FQDN PATCH triggered redeploy, exposed the bug
+- 2026-05-08 ~14:55 UTC: pushed `LS_WEBHOOK_SECRET` from vault to Coolify env, all 3 hostnames came healthy
+
+**Permanent fix:** `document-ops-portal/scripts/coolify_env_check.py`. Run BEFORE every redeploy. Introspects `app.config.Settings` for required `Field(alias=...)` keys, diffs against Coolify env via `GET /applications/{uuid}/envs`, blocks deploy if any required field is missing. `--sync` mode interactively pushes vault values to Coolify.
+
+```bash
+cd document-ops-portal
+export DOPS_COOLIFY_APP_UUID="rs0jyp5cj24hutaxijacye6r"
+export COOLIFY_API_ROOT_TOKEN="<vault>"
+python3 scripts/coolify_env_check.py        # exits 1 if any required missing
+python3 scripts/coolify_env_check.py --sync # interactive push
+```
+
+Add this to the deploy runbook in `document-ops-portal/PHASE-5-BOOKS-DEPLOYMENT.md` §0.
+
+**Coolify env API quirks:**
+- `POST /api/v1/applications/{uuid}/envs` body: `{"key", "value", "is_preview", "is_literal"}` — note: `is_build_time` field rejected with 422; use only the 4 fields listed
+- `GET /api/v1/applications/{uuid}/envs` returns a list of `{uuid, key, value, ...}` rows
+- Updates take effect on next deploy (Coolify does NOT auto-restart on env-only change — must `POST /api/v1/deploy?uuid=...&force=true`)
 
 ### 14.1 Stripe live (provisioned 2026-05-01)
 
