@@ -1,6 +1,18 @@
 # Owl Studio — Running Context
 
-## Status (2026-04-26)
+## Status (2026-05-08)
+
+Active. Phase 5 books module live; portal recovered from 24h silent outage. Cockpit + onboarding feature shipped. Adam-keyboard reduced to Revenue/VAT items.
+
+### 2026-05-08 — Phase 5 books module + 24h portal outage resolved
+
+- **books.callmeie.ie LIVE** — CNAME at Cloudflare (id `9bffe51891f3ecbc9e95a0e15c09a475`), DNS-only / grey cloud, target `portal.callmeie.ie`. Coolify FQDN list updated to `https://portal.owlzone.trade,https://portal.callmeie.ie,https://books.callmeie.ie`. LE cert auto-issued post force-deploy.
+- **24h silent outage discovered + fixed.** Root cause: security commit `805d7a6` (2026-05-07) made `LS_WEBHOOK_SECRET` REQUIRED in `app/config.py` Settings; Coolify env never had it set; container crashlooped on every restart; both portal.callmeie.ie + portal.owlzone.trade returned 503 silently for ~24h before noticed during Phase 5 FQDN flip. Pushed `LS_WEBHOOK_SECRET` from `~/.claude/routes/.env` to Coolify env via API (env_uuid `oxzed6n6jk8wc53y3nrv8g69`); force-redeploy; all 3 hostnames now 200 healthz.
+- **Permanent prevention shipped:** `document-ops-portal/scripts/coolify_env_check.py` (~210 lines) introspects `app.config.Settings.model_fields` for required `Field(alias=...)` keys, diffs against `GET /applications/{uuid}/envs`, exits 1 if any required missing. `--sync` mode interactively pushes vault values via `POST /envs`. PHASE-5-BOOKS-DEPLOYMENT.md gained §0 mandatory pre-deploy step. INFRA.md §14.1a documents the gotcha + Coolify env API quirks (`is_build_time` field rejected with 422; env-only changes do NOT auto-restart container, must `POST /deploy?force=true`).
+- **Verified live:** portal.callmeie.ie/healthz · portal.owlzone.trade/healthz · books.callmeie.ie/healthz all `200 {"ok":true,"env":"production"}`.
+- Commits: portal `fed03ac` (env-check script + PHASE-5 §0), this repo `4fa7342` (INFRA §14.1a + Phase 5 CNAME entry).
+
+### 2026-04-26 — original status
 
 Active client agency project. Gallery + 7 demo sites live.
 
