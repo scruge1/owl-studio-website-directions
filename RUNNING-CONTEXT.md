@@ -12,6 +12,26 @@ Active. Phase 5 books module live; portal recovered from 24h silent outage. Cock
 - **Verified live:** portal.callmeie.ie/healthz · portal.owlzone.trade/healthz · books.callmeie.ie/healthz all `200 {"ok":true,"env":"production"}`.
 - Commits: portal `fed03ac` (env-check script + PHASE-5 §0), this repo `4fa7342` (INFRA §14.1a + Phase 5 CNAME entry).
 
+### 2026-05-08 (later) — Books module + Cockpit code DEPLOYED to production
+
+- 10 portal commits pushed to `scruge1/document-ops-portal:main` (e0023cb..fed03ac). GitHub Action triggered Coolify auto-deploy (deploy_uuid `lp35q3p14k47lqy66f4bv9gy`). Container rebuilt + healthy.
+- Alembic auto-runs at container start (Coolify entrypoint). Live Postgres now at `0005_customers (head)`. Books module 18 tables + cockpit `customers` table all created. Verified via `docker exec rs0jyp5cj24hutaxijacye6r-160631392188 alembic current`.
+- Live routes confirmed:
+  - `/healthz` 200 (both portal.callmeie.ie + books.callmeie.ie)
+  - `/books/dashboard` GET → 401 (admin-gated, books module router LIVE)
+  - `/cockpit` GET → 401 (admin-gated, cockpit router LIVE)
+  - `books.callmeie.ie/` GET → 303 → `/books/dashboard` (subdomain middleware LIVE — commit b38f856)
+- Books module Phase 1+2+3+4+5 + cockpit-onboarding R1+R2+R3+R4 are now production-live + accessible to Adam after magic-link login. Tests 199 green; live-side smoke confirms all routes respond as designed.
+- This repo: pushed `4fa7342` + `6cb8b48` to `scruge1/owl-studio-website-directions:main`.
+
+### Adam-keyboard remaining (4 items)
+
+1. ~~Phase 5 books DNS + Coolify FQDN~~ ✓ DONE 2026-05-08
+2. ~~PIT cert email~~ ✓ DONE 2026-05-07 (auto-reply received; awaits human reply)
+3. Confirm Revenue VAT basis (cash vs invoice) — code defaulted to invoice basis, runtime-switchable; check ROS portal or send MyEnquiries.
+4. Q2-2026 VAT3 dry-run via ROS Off-line Upload after Jul 1 (calendar wait).
+5. ROS XML decimal format decision on first submission (1-line switch in `app/books/ros_xml.py` if Revenue rejects 2dp).
+
 ### 2026-04-26 — original status
 
 Active client agency project. Gallery + 7 demo sites live.
