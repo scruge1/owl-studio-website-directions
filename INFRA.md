@@ -848,11 +848,41 @@ docs-callmeie/
 
 ### 15.3 Stripe Payment Links wired
 
-| CTA on page | Link |
-|---|---|
-| Buy Pilot · €500 (Entry) | `https://buy.stripe.com/dRm00i0Y3gdgbbCgypaIM09` |
-| Buy Standard Pilot · €1,500 | `https://buy.stripe.com/14A3cueOTbX04NeeqhaIM0a` |
-| Start at €250/mo (Operations Monthly) | `https://buy.stripe.com/14AfZg4afaSW5Rici9aIM0b` |
+**Canonical pricing = `PRICING-SSOT.md` (this dir).** Reconciled 2026-05-15 to match the live `callmeie-hub` site. Stripe is **live mode**.
+
+**Websites (one-off, full all-in — D1 reconciliation 2026-05-15):**
+
+| CTA | Price | Link |
+|---|---|---|
+| Start a Starter | €695 `price_1TXOiTCEqG2AuI1zZzAGb44I` | `https://buy.stripe.com/cNi14mbCH2mq93ube5aIM0k` |
+| Start a Pro | €1,595 `price_1TXOiTCEqG2AuI1zlW1NC8ZK` | `https://buy.stripe.com/5kQ28q6in8KO7ZqgypaIM0l` |
+| Book €99 scoping audit (Custom entry) | €99 | `https://buy.stripe.com/bJe6oGbCH7GK0wY4PHaIM00` |
+
+> ⚠️ OLD 50%-deposit links `cNicN40Y31imenO2HzaIM07` (€348) + `bJe28qeOTf9c5RidmdaIM08` (€798) are **still active pending site redeploy** — deactivate them ONCE callmeie.ie is redeployed with the new links above (do not deactivate before deploy or live buy buttons break).
+
+**Receptionist (monthly + setup — D3, created 2026-05-15):**
+
+| CTA | Price | Link |
+|---|---|---|
+| Starter €149/mo | `price_1TXOiVCEqG2AuI1zGWDwhEJG` (prod `prod_UWRbvcwglnsgON`) | `https://buy.stripe.com/3cI7sK36b4uy6Vm81TaIM0m` |
+| Professional €249/mo | `price_1TVxwgCEqG2AuI1zPZzlP7q3` | `https://buy.stripe.com/dRmaEW5ej8KO2F6dmdaIM0n` |
+| Growth €397/mo | `price_1TVxwgCEqG2AuI1zzsCH9YG1` | `https://buy.stripe.com/eVqbJ0dKP7GKcfGci9aIM0o` |
+| Setup €297 (Starter/Pro) | `price_1TVxwgCEqG2AuI1zkxlRvISY` | `https://buy.stripe.com/14A9AS6in6CGenO0zraIM0j` |
+| Setup €497 (Growth) | `price_1TXOiVCEqG2AuI1zF7raG6Gr` | `https://buy.stripe.com/00waEWbCH5yCgvW6XPaIM0p` |
+
+**Document Ops (canonical — links already correctly priced):**
+
+| CTA | Price | Link |
+|---|---|---|
+| Entry Pilot | €500 one-off | `https://buy.stripe.com/dRm00i0Y3gdgbbCgypaIM09` |
+| Standard Pilot | €1,500 one-off | `https://buy.stripe.com/14A3cueOTbX04NeeqhaIM0a` |
+| Auto | €99/mo | `https://buy.stripe.com/14A9AS9uzgdggvW95XaIM0f` |
+| Auto Plus | €249/mo | `https://buy.stripe.com/eVq6oG8qvaSW0wYgypaIM0g` |
+| Rescue + Export | €499/mo | `https://buy.stripe.com/4gM14m2273qufrS3LDaIM0h` |
+| Bespoke | from €1,500/mo | `mailto:` (no link by design) |
+| Operations Monthly Starter €250/mo | *(grandfathered — keep, unadvertised)* | `https://buy.stripe.com/14AfZg4afaSW5Rici9aIM0b` |
+
+> Duplicate "Document Ops — Self-serve" links (`…IM0c/d/e`) DEACTIVATED 2026-05-15. Obsolete 4-tier ladder products (`prod_UQowfvaBTt487e/GVxn6bpMeg/BGv7jwRdpb/zW8jkmW9kX`, CallMeIE Starter/Growth/Pro/Concierge €99/299/699/1500) ARCHIVED 2026-05-15. Owl Studio Essential/Growth/Concierge care plans left untouched (legacy — confirm separately).
 
 Same Stripe webhook handler at `https://portal.callmeie.ie/webhooks/stripe` covers checkouts.
 
