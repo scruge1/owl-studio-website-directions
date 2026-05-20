@@ -21,7 +21,7 @@ Frozen snapshot of tier readiness + gap list for the `/audit-fulfillment-gap` sk
 | Tier (PRICING-SSOT.md anchor) | Sell? | Deliver? | Repeatability | Evidence |
 |---|---|---|---|---|
 | Receptionist Starter / Professional | yes | semi-auto via `setup-new-client.py` + admin portal | 5 / 10 | INFRA.md §9.1, receptionist/CLAUDE.md |
-| Receptionist Growth | yes | partial — inventory sync code EXISTS but flaky (Dockerfile / import bugs); no monthly optimisation call | 5 / 10 | claude-mem 10961-10963; `sync_inventory.py` + `/sync-inventory` endpoint |
+| Receptionist Growth | yes | inventory sync VERIFIED OPERATIONAL 2026-05-21 (Dockerfile `COPY *.py .` fix landed cm 10964; live endpoint returns 200 on real Dunne IDs); 30-min monthly optimisation call cadence in handoff template (manual until Cal.com) | 8 / 10 | cm 10964-10967 (fix + verify); 2026-05-21 inventory-hardening agent live re-test |
 | Doc Ops Pilots (€500 / €1500) | yes | yes, via portal | 7 / 10 | claude-mem 19620, 19619, 21833; magic-link onboarding chain |
 | Doc Ops Auto subs (€99 / €249 / €499 / €1500) | yes | site says "email us first" — manual gate | 3 / 10 | claude-mem 18576; PRICING-SSOT D5 |
 | Own-it-outright websites (€695 / €1595 / from €2950) | yes | `new-service-site` skill works; no Stripe → skill trigger | 3 / 10 | new-service-site SKILL.md; no webhook→skill wiring observed |
@@ -39,7 +39,7 @@ Frozen snapshot of tier readiness + gap list for the `/audit-fulfillment-gap` sk
 | 4 | Edit-budget meter design | PDR-style spec needed | ~2h design |
 | 5 | SLA timer design | Could combine with #4 | ~2h design |
 | 6 | Cancellation-export script | Scope unknown | unknown |
-| 7 | Receptionist Growth inventory sync HARDENING (code exists, fix import) | Engineer + per-customer scoping | ~1h fix + unknown per-vertical |
+| 7 | Receptionist Growth inventory sync — VERIFIED OPERATIONAL 2026-05-21 (per-vertical adapter scoping at first Growth customer only) | per-customer scoping at intake | unknown per-vertical |
 | 8 | Receptionist Growth monthly optimisation call | Add to handoff template + calendar | <30min |
 | 9 | Order form solicitor-review | Adam + solicitor (Ltd pending) | external |
 | 10 | Stripe meter-event reporting (€0.20-0.22/min live-posting unverified) | Engineer | ~1h |
