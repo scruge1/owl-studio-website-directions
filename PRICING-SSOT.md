@@ -65,20 +65,22 @@ Sales flow is `onboard.html` (form → per-client Vapi provisioning), so per-tie
 
 Source: `callmeie-hub/docs/index.html` §`#pricing` (line 1618 — a full, explicit pricing section with price cards; this is firm advertised pricing, not illustrative).
 
-| Tier | Advertised price | Includes | On-site CTA link |
-|---|---|---|---|
-| **Entry Pilot** | **€500** one-time | 25 docs, 1 doc type, CSV, 14-day | `dRm00i0Y3gdgbbCgypaIM09` |
-| **Standard Pilot** *(featured)* | **€1,500** one-time | 100 docs, schema mapping, review queue, run report | `14A3cueOTbX04NeeqhaIM0a` |
-| **Auto** | **€99/mo** | 200 docs/mo, 98%-auto-post, self-serve | `14A9AS9uzgdggvW95XaIM0f` |
-| **Auto Plus** *(featured)* | **€249/mo** | 600 docs/mo, multi-tenant, 2 seats incl. | `eVq6oG8qvaSW0wYgypaIM0g` |
-| **Rescue + Export** | **€499/mo** | 250 docs/mo, 10 human rescues, 3-biz-day SLA | `4gM14m2273qufrS3LDaIM0h` |
-| **Bespoke** | **from €1,500/mo** | custom schema/export, 5-day SLA, ≤2 slots | `mailto:` ("Talk to us" — no Stripe link by design) |
+| Tier | Advertised price | Includes | Overage (€/doc) | On-site CTA link |
+|---|---|---|---|---|
+| **Entry Pilot** | **€500** one-time | 25 docs, 1 doc type, CSV, 14-day | N/A (one-off, cap-bounded) | `dRm00i0Y3gdgbbCgypaIM09` |
+| **Standard Pilot** *(featured)* | **€1,500** one-time | 100 docs, schema mapping, review queue, run report | N/A (one-off, cap-bounded) | `14A3cueOTbX04NeeqhaIM0a` |
+| **Auto** | **€99/mo** | 200 docs/mo, 98%-auto-post, self-serve | **€0.05/doc** above 200 | `14A9AS9uzgdggvW95XaIM0f` |
+| **Auto Plus** *(featured)* | **€249/mo** | 600 docs/mo, multi-tenant, 2 seats incl. | **€0.05/doc** above 600 | `eVq6oG8qvaSW0wYgypaIM0g` |
+| **Rescue + Export** | **€499/mo** | 250 docs/mo, 10 human rescues, 3-biz-day SLA | **€0.05/doc** above 250 docs **+** **€15/rescue** above 10 (two-axis split: machine docs vs human-reviewer time) | `4gM14m2273qufrS3LDaIM0h` |
+| **Bespoke** | **from €1,500/mo** | custom schema/export, 5-day SLA, ≤2 slots | per-engagement (no published rate) | `mailto:` ("Talk to us" — no Stripe link by design) |
 
 **Doc Ops add-ons / notes:**
 - Auto Plus: 2 tenant seats included, **+€40/mo per extra seat**.
-- Fineprint: existing **Operations Monthly Starter €250/mo** subscribers are **grandfathered** — that legacy link/price stays active but unadvertised (do NOT archive it).
+- **Overage billing model:** monthly tiers (Auto / Auto Plus / Rescue+Export) bill metered doc overage above included volume at the rate in the table. Pass-through model: overage rate ≈ marginal LLM+OCR+storage cost (per Adam financial-model 2026-05-19; ~zero margin on overage, margin = subscription − included-volume cost). Stripe Billing Meter wiring TBD (Receptionist `vapi_minutes` precedent — see §2).
+- Fineprint: existing **Operations Monthly Starter €250/mo** subscribers are **grandfathered** — that legacy link/price stays active but unadvertised (do NOT archive it). No overage on the legacy plan.
 - The €95–275/mo figure on the docs page is **competitor pricing** (Klippa/AutoEntry "Cheap OCR"), not ours.
 - The site's Doc Ops links already resolve to correctly-priced Stripe objects (€500/€1,500/€99/€249/€499). Drift here is duplicate product *generations* + product *names/caps* in Stripe, **not** wrong amounts.
+- **Machine-readable export** for backend wiring: see `tier_overages_eur_per_doc.json` companion in this directory (`auto: 0.05`, `auto_plus: 0.05`, `rescue_export.docs: 0.05`, `rescue_export.extra_rescue: 15.00`). Rates set 2026-05-20 to cost-pass-through aligned with `callmeie-financials/build_model.py` "Document-Ops marginal cost negligible" assumption (L292) and MEMORY.md "overage ≈ cost ∴ pass-through" doctrine; raw per-doc cost ≈ €0.01 (Grok-4 in+out + Hetzner storage); €0.05 = 5× cost buffer. Rescue extra at €15/rescue prices Adam reviewer-minute at the €60-120/hr range; ~10 min per rescue.
 
 ---
 

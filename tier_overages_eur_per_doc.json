@@ -1,0 +1,53 @@
+{
+  "_source": "owl-studio-website-directions/PRICING-SSOT.md §3 Document Ops",
+  "_updated": "2026-05-20",
+  "_authority": "PRICING-SSOT.md is canonical; this file is a machine-readable mirror for document-ops-portal billing wiring (do NOT hand-edit; regenerate from SSOT on tier price change).",
+  "_model": "Pass-through: rate ~= marginal LLM+OCR+storage cost. Margin lives in subscription (sub - included-volume cost), not in overage. Aligned with callmeie-financials/build_model.py L292 'negligible marginal cost' assumption and MEMORY.md 'overage ~= cost' doctrine. Raw per-doc cost ~= 0.01 EUR (Grok-4 in+out + Hetzner Object Storage). 0.05 EUR rate = 5x cost buffer for retry + ops headroom.",
+  "_rescue_split_rationale": "Rescue+Export has two distinct overage axes: machine docs above 250/mo cap (priced same as Auto/Auto Plus at 0.05 EUR/doc) AND human-reviewer rescues above 10/mo cap (priced at 15 EUR/rescue, sized to Adam reviewer-minute at 60-120 EUR/hr * ~10 min). Backend billing meter MUST track these as two separate metered events to avoid the WBC 'human rescue unit-undefined' dispute risk surfaced in 2026-05-20 audit.",
+  "doc_ops_monthly_tiers": {
+    "auto": {
+      "plan_slug": "doc_ops_auto",
+      "monthly_eur": 99,
+      "included_docs_per_month": 200,
+      "overage_eur_per_doc": 0.05
+    },
+    "auto_plus": {
+      "plan_slug": "doc_ops_auto_plus",
+      "monthly_eur": 249,
+      "included_docs_per_month": 600,
+      "overage_eur_per_doc": 0.05
+    },
+    "rescue_export": {
+      "plan_slug": "doc_ops_rescue_export",
+      "monthly_eur": 499,
+      "included_docs_per_month": 250,
+      "included_rescues_per_month": 10,
+      "overage_eur_per_doc_above_250": 0.05,
+      "overage_eur_per_rescue_above_10": 15.00,
+      "_note": "TWO metered axes. Backend Stripe Billing Meter MUST track docs_extracted AND human_rescues_consumed as separate event streams. Combined billing breaks unit attribution; resolves WBC 'human rescue unit-undefined' (2026-05-20 audit)."
+    },
+    "bespoke": {
+      "plan_slug": "doc_ops_bespoke",
+      "monthly_eur_from": 1500,
+      "included_docs_per_month": null,
+      "overage_eur_per_doc": null,
+      "_note": "Per-engagement quote. No published overage rate."
+    }
+  },
+  "doc_ops_oneoff_tiers": {
+    "entry_pilot": {
+      "plan_slug": "doc_ops_entry_pilot",
+      "oneoff_eur": 500,
+      "cap_docs": 25,
+      "overage_eur_per_doc": null,
+      "_note": "One-off, cap-bounded - no overage."
+    },
+    "standard_pilot": {
+      "plan_slug": "doc_ops_standard_pilot",
+      "oneoff_eur": 1500,
+      "cap_docs": 100,
+      "overage_eur_per_doc": null,
+      "_note": "One-off, cap-bounded - no overage."
+    }
+  }
+}
