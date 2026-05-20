@@ -4,7 +4,7 @@
 > audit verdict, decision record, out-of-workspace gaps with owners,
 > and merge map for existing artifacts. Composes with `PRICING-SSOT.md`,
 > `INFRA.md`, and `~/.claude/rules/common/icm-workspace-standard.md`.
-> Status: `draft` — Adam to press back before promotion to `accepted`.
+> Status: `accepted` — Adam pressed back 2026-05-20: "scope is good, PRD is good". 5 edits applied post-press-back (2 fact-check + 3 press-back-agent corrections). Push: `a26f86e` on origin/main.
 
 ---
 
@@ -33,7 +33,7 @@ Fulfillment path: a spectrum from 0/10 (D5 Managed Websites — sold 2026-05-19,
 | Tier (price authority `PRICING-SSOT.md`) | Sell? | Deliver? | Repeatability |
 |---|---|---|---|
 | Receptionist Starter / Professional | yes | semi-auto via `setup-new-client.py` + admin portal | 5 / 10 |
-| Receptionist Growth | yes | partial — inventory sync code exists but flaky (Dockerfile / import bugs per claude-mem 10961–10963), no monthly optimisation call | 5 / 10 |
+| Receptionist Growth | yes | inventory sync VERIFIED OPERATIONAL 2026-05-21 (Dockerfile `COPY *.py .` fix landed cm 10964; `/sync-inventory` returns 200 on real Dunne IDs); 30-min monthly optimisation call cadence now in handoff template (manual until Cal.com integration) | 8 / 10 |
 | Doc Ops Pilots (€500 / €1,500) | yes | yes, via portal | 7 / 10 |
 | Doc Ops Auto subs (€99 / €249 / €499 / €1,500) | yes | site says "email us first" — manual gate | 3 / 10 |
 | Own-it-outright websites (€695 / €1,595 / from €2,950) | yes | `new-service-site` skill works; no Stripe → skill trigger | 3 / 10 |
@@ -105,7 +105,7 @@ The workspace alone does not close every fulfillment gap. Each gap below has an 
 | 4 | **Edit-budget meter design** (0.5h / 2h / 6h-90d cap promised across Managed + Care; no counter) | Cross-cutting product-feature design needed before code; not a per-customer artefact | PDR-style spec | ~2h design |
 | 5 | **SLA timer design** (2-biz-day / 1-biz-day / same-day / 3-biz-day across Managed + Care + Rescue Doc Ops; no timer) | Same as #4 — cross-cutting, design-first | Could be combined doc with #4 | ~2h design |
 | 6 | **Cancellation-export script** (7-day export promised across all Managed tiers; no automation) | Scope unknown — design needed before code | Design + scope | unknown |
-| 7 | **Receptionist Growth inventory-catalogue sync HARDENING** (`sync_inventory.py` + `/sync-inventory` endpoint EXIST per claude-mem 10961–10963; Dockerfile / module-import bugs make it flaky — per-vertical adapters still needed) | Audit + fix import path first; per-vertical scoping needs first Growth-tier customer | Engineer (fix) + per-customer scoping at intake | ~1h fix + unknown per-vertical |
+| 7 | **Receptionist Growth inventory-catalogue sync — VERIFIED 2026-05-21** (`sync_inventory.py` + `/sync-inventory` endpoint live + 200-OK on real IDs; Dockerfile `COPY *.py .` fix landed cm 10964 ~7-8mo ago. Only outstanding work = per-vertical adapter pattern, gated on first paying Growth-tier customer) | Per-customer scoping at intake — no code-fix needed today | per-customer scoping at intake | unknown per-vertical |
 | 8 | **Receptionist Growth monthly optimisation call** (promised, no booking cadence) | Calendar + handoff template — simple, but not the workspace's job | Add to handoff template + calendar template | <30min |
 | 9 | **Order-form solicitor-review** (Managed-website min-term enforcement) | Adam-keyboard, blocking on solicitor — pre-revenue / Ltd pending | Adam | external |
 | 10 | **Stripe meter-event reporting** for receptionist overage (€0.20-0.22 / min promised; live-posting unverified) | Code audit + test in `setup-new-client.py` + receptionist server | Engineer | ~1h |
