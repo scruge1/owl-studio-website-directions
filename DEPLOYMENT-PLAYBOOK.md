@@ -9,6 +9,8 @@
 > If any step fails here and you can't recover it in 10 minutes,
 > update this playbook with the fix — it's a living document.
 
+> **⚠ HOST MIGRATION (2026-05-30).** The CallMeIE FastAPI moved **off Render onto Hetzner/Coolify** (`178.104.205.255`). Everywhere below that says `callmeie.onrender.com`, the live host is now **`api.callmeie.ie`** (owl/stripe routes) / **`admin.callmeie.ie`** (admin). `callmeie.onrender.com` is **dead/stale** — do not deploy to or curl it. Env vars + redeploy are now done in **Coolify** (not the Render dashboard). DB is Coolify Postgres (persistent). Canonical: `INFRA.md` §3 banner. The onrender URLs in the commands below are retained for the decommission task; swap host before running.
+
 ---
 
 ## 0 · One-time Owl Studio setup (done once, then every client follows §1-§7)
