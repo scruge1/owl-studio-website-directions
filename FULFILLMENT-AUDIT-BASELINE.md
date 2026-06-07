@@ -22,8 +22,8 @@ Frozen snapshot of tier readiness + gap list for the `/audit-fulfillment-gap` sk
 |---|---|---|---|---|
 | Receptionist Starter / Professional | yes | semi-auto via `setup-new-client.py` + admin portal | 5 / 10 | INFRA.md §9.1, receptionist/CLAUDE.md |
 | Receptionist Growth | yes | inventory sync VERIFIED OPERATIONAL 2026-05-21 (Dockerfile `COPY *.py .` fix landed cm 10964; live endpoint returns 200 on real Dunne IDs); 30-min monthly optimisation call cadence in handoff template (manual until Cal.com) | 8 / 10 | cm 10964-10967 (fix + verify); 2026-05-21 inventory-hardening agent live re-test |
-| Doc Ops Pilots (€500 / €1500) | yes | yes, via portal | 7 / 10 | claude-mem 19620, 19619, 21833; magic-link onboarding chain |
-| Doc Ops Auto subs (€99 / €249 / €499 / €1500) | yes | site says "email us first" — manual gate | 3 / 10 | claude-mem 18576; PRICING-SSOT D5 |
+| Doc Ops Pilots (€500 / €1500) | **WITHDRAWN 2026-06-07** | n/a — not sold (Stripe live, de-listed) | n/a | FULFILLMENT-AUDIT-LOG.md 2026-06-07; PRICING-SSOT §3 banner |
+| Doc Ops Auto subs (€99 / €249 / €499 / €1500) | **WITHDRAWN 2026-06-07** | n/a — not sold; removed the 98%-overclaim integrity exposure | n/a | FULFILLMENT-AUDIT-LOG.md 2026-06-07; PRICING-SSOT §3 banner |
 | Own-it-outright websites (€695 / €1595 / from €2950) | yes | `new-service-site` skill works; no Stripe → skill trigger | 3 / 10 | new-service-site SKILL.md; no webhook→skill wiring observed |
 | **D5 Managed Websites (€69 / €100 / €149)** — launched 2026-05-19 | **yes** (Stripe links live) | **NO build pipeline, NO SLA timer, NO edit-budget meter, NO order form, NO cancel export** | **0 / 10** | PRICING-SSOT §6a; absent in all scripts |
 | Local SEO (€245 / €495 + €99 audit) | mailto only — BLOCKS SALE | n/a — no Stripe product | n/a | claude-mem 21086 (Stripe product list shows only €99 audit, no €245/€495 SEO) |
