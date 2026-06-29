@@ -114,6 +114,34 @@ Source: `callmeie-hub/local-seo/index.html`. Sold via `mailto:hello@callmeie.ie`
 
 ---
 
+## 4b. Social + Paid-Ads Management (advertised add-on — NEW 2026-06-12, NOT yet on site/Stripe)
+
+**Status: pricing codified here (internal, reversible). Site page + Stripe links = GATED, not yet built** (live-pricing Adam-gate, same rule as D5 Phase B). First real lead = Leonard Mullins / Irish Roofing & Sealing (hooked, asked for a quote 2026-06-12).
+
+**What it is:** managed social presence + paid-ads management. Distinct lane from §4 Local SEO (that = *organic* search/GBP/citations; this = *paid* social/search campaigns + content creative). Do NOT conflate in copy.
+
+| Tier | Recurring | Includes | Ad spend |
+|---|---|---|---|
+| **Social Starter** | **€149/mo** | FB + IG page management, 8 posts/mo incl. in-house video/Kling creative, monthly report. **No paid ads.** | n/a |
+| **Social + Ads** *(most popular)* | **€249/mo** | Everything in Starter + Meta & Google campaigns built, run + managed, ad creative incl., audience setup + conversion tracking, monthly performance report | **separate, client-paid (see clause)** |
+| **Growth** | **€397/mo** | Everything in Social+Ads + multi-platform, lead funnel/landing page, weekly review + adjustment, priority SLA | **separate, client-paid** |
+
+> **Copy rule (Adam 2026-06-12): NO "optimise" / "guarantee" / ROAS-promise wording** in site copy, quotes, or ads until we've run profitable campaigns and can prove it. Sell "managed — built, run, reported", not "optimised". Honest-scope guard (Doc Ops precedent).
+>
+> **DELIVERY — manual-first, zero tooling-spend until a sale + volume justify it (Adam 2026-06-12):** posts (8/mo = trivial manual) and ad campaigns are **managed by hand to start** — Adam has already run his own FB ad campaigns, so the skill exists. **No paid subscription (Ayrshare etc.) bought until (a) a sale is confirmed and (b) client count makes the tool pay for itself.** The first client's €249 is margin, NOT spent on tooling. Automation (`PRD-SOCIAL-ADS-AUTOMATION.md`) layers in later; manual is the v0 delivery, not a placeholder.
+
+- **Price rationale:** snaps to the house mid-anchor — €249 = Receptionist Pro = Doc Ops Auto Plus = ≈ Local SEO Growth €245. Ladder mirrors the Receptionist 149/249/397 exactly. In-line with the whole catalog by construction.
+- **AD SPEND IS PASS-THROUGH, NEVER ABSORBED IN THE FEE.** The management fee is our labour (strategy, creative, run, optimise, report). Media spend (Meta/Google auction reach) is the client's money: client pays the platform **directly** (preferred — full transparency) OR we bill it through **at cost with receipts**. Client controls budget up/down anytime. Recommend **€300/mo minimum media** to be effective; below that, ads underperform — say so up front.
+- **Creative is our edge / bundled:** we produce ad video in-house (Kling etc.). Most agencies charge €300–800/ad or outsource. We include creative in the fee at no per-ad charge — a real differentiator, lead with it.
+- **% -of-spend alternative (large spenders only):** clients running >€1,500/mo media → switch management to **15% of ad spend, floor = tier price**. Industry-standard. Default for SMB stays flat retainer (simpler).
+- **Trade-specific routing (tell the client):** high-intent trades (roofing, plumbing, fallen-stock) → **Google Search / Local Services Ads out-pull Meta** for leads. Pitch Google-first, Meta for brand/retargeting. €300–600/mo Google can land real county-level leads.
+- **Scope/boundary (single-source, REUSE the proven rule):** out-of-scope = quoted, never billed silently — same `care-plans-scope.md` "simple rule" used by managed websites + care plans. Posts/campaigns above tier budget = quoted before doing. Pause/cancel = end of paid month; no lock-in proposed (cancel-anytime, matches Local SEO §4). Canonical scope doc to create at `callmeie-hub/social-ads-scope.md` (GATED, with the site page).
+- **Stripe:** 3 recurring prices to create via idempotent `provision-stripe.py` (CATALOGUE extend, same pattern as D5). NOT created yet — gated.
+- **Delivery-automation plan:** `PRD-SOCIAL-ADS-AUTOMATION.md` (this dir, 2026-06-12). The €249/€397 tiers sell "campaigns built/run" which today = manual labour, NOT a system capability (same overclaim that withdrew Doc Ops). PRD = phased build to make it real: n8n spine + Ayrshare (social publish, skips Meta app-review) + Google Ads API (Basic token, MCC). **Until Phase 1-2 ship, sell honest:** creative+social+GBP is deliverable today; ads = one-off setup or hands-on manual, no "optimise/guarantee" wording.
+- **Sold via:** `mailto:hello@callmeie.ie` quote initially (like §4 Local SEO), Stripe links once validated.
+
+---
+
 ## 5. Canonical → Stripe binding (what each price ID/link MUST be)
 
 | Canonical item | Correct amount | Stripe price (live) | Status vs canonical |
@@ -218,4 +246,5 @@ Plain monthly recurring EUR, no setup price (€0 onboarding). 12/12/18 min term
 - 2026-05-19 — **D5: website offer repositioned to LEAD with a 3-tier recurring build+maintain ladder** (Launch €69/12-mo · Business €100/12-mo · Premium €149/18-mo · €0 onboarding). One-off ladder demoted to secondary "own it outright" alternative. Legacy care plans (€45/€95/€195) resolved → kept as separate advertised maintenance-only add-on (§4a), not folded/archived. §1/§4a/§5/§6a rewritten; callmeie-fix mirror updated. Phase B (Stripe create + site restructure + INFRA/.env ID-fill + one commit) staged in §7 "Pending Adam (gated) — D5" — not yet executed (live-pricing Adam-gate).
 - 2026-05-19 — **D5 Phase B EXECUTED (Adam "run now"):** 3 live Stripe recurring prices+links created (Launch `…qvAc1w2B` €69 / Business `…Dn31aEM1` €100 / Premium `…SmCBhi0f` €149) via idempotent `provision-stripe.py`; IDs filled into §1/§5 + mirror + INFRA §15.3 + routes/.env. Side-effects caught+corrected: 2 stale €348/€798 deposit links deactivated; stray onrender webhook disabled (canonical api.callmeie.ie webhook untouched); script default URL fixed. Site `#pricing` restructure + ONE commit in same pass; **git push HELD for explicit Adam confirm** (live callmeie.ie). Detail = §7 "Phase B execution log — D5".
 - 2026-05-19 — **D5 fully closed LIVE (Adam "push"):** 3 commits pushed (callmeie-hub `e81a692`, owl-studio-website-directions `f70bb7e`, callmeie-fix `b3c2d04`), callmeie.ie rebuilt + verified serving the new managed ladder within ~45s. 2026-05-15 §7 pending items 1+2 both resolved in same wave (item 1 = the push; item 2 = verified-already-inactive at check time). New repos parent writeback commit `64159c2` (local-only, no remote). Nothing D5-open.
+- 2026-06-12 — **§4b Social + Paid-Ads Management add-on codified** (Social Starter €149 / Social+Ads €249 most-popular / Growth €397; mirrors Receptionist 149/249/397, snaps to house mid-anchor €249). Ad spend = pass-through clause (client-paid, never absorbed). Creative bundled (in-house Kling = differentiator). Trigger = Irish Roofing & Sealing lead asked for a quote. **Internal/reversible only** — site page + `social-ads-scope.md` + 3 Stripe links GATED (live-pricing Adam-gate, same as D5 Phase B). callmeie-fix mirror NOT yet synced (do on next infra commit).
 - 2026-05-19 — **D5.1: scope/contract clauses built (Phase A.5).** Research-first found the anti-scope-creep formula already exists (`care-plans-scope.md`); reused it, did not duplicate. Created `callmeie-hub/websites/managed-plans-scope.md` (D5 customer-facing scope) + `order-form-template.md` §B1b (Managed engagement type, OVERRIDES §C2/§F2/§H1/§H2 for managed). Clauses locked: early exit → remaining-min-term fees; managed IP = retained, want-to-own → one-off offer. §1 "unlimited reasonable edits" trap fixed → proven 6hr/8hr fair-use cap; §1 tier cells aligned to scope doc; §6a D5.1 + §7 Phase A.5 recorded. Site `#pricing`/ad copy single-sources from `managed-plans-scope.md` (Phase B). callmeie-fix mirror re-synced.
