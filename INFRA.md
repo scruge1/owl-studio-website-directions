@@ -149,9 +149,9 @@ The table is `service_applications` (NOT `services_applications`). `custom_label
 - Revert: set VoiceUrl back to `https://api.vapi.ai/twilio/inbound_call`.
 - NOTE: Vapi has NO serverUrl set on number/squad/assistants → end-of-call webhooks not landing (`/admin/api/events` frozen 2026-04-26, leads-unified=0). Lead-loss bug, separate from the screen. See `callmeie-fix/KNOWN-ISSUES.md` BUG-04.
 
-**Outbound SMS to Ireland — alpha sender status (verified 2026-06-02, ticket #27259801):**
+**Outbound SMS to Ireland — alpha sender status (updated 2026-07-03, ticket #27259801):**
 - IE Local numbers (`+35361788870`, `+35361788120`) are **voice-only** (sms=False). IE SMS only via alphanumeric sender ID.
-- Alpha sender `CALLMEIE` is **configured** on Messaging Service `MG5773dd9d6b3b577d9517361ebcb758d0` ("CallMeIE Ireland Outbound") but **NOT regulatory-registered** → carrier overstamps "Likely Scam" (confirmed on a live message).
+- Alpha sender `CALLMEIE` is **configured** on Messaging Service `MG5773dd9d6b3b577d9517361ebcb758d0` ("CallMeIE Ireland Outbound"). **ComReg registration APPROVED (Reg Date 17/06/2026)** — but **Twilio-side OPA acceptance is STILL PENDING** (ticket #27259801; Twilio must accept the CALLMEIE→Twilio OPA before traffic flows). Until then carrier still overstamps "Likely Scam" → **NOT yet sendable end-to-end.**
 - **Not self-serve:** REST `messaging/v1/AlphaSenderRegistrations` → 404; the Trust-Hub "Registrations > Alphanumeric Sender IDs" console flow is NOT present in this US1 account (Senders = Short codes/WhatsApp only; Reg-Compliance = A2P-10DLC/US). Path = Twilio support (ticket #27259801) submits to ComReg as Participating Aggregator, OR register direct at comreg.ie/senderid. Proof doc = **CRO 816273** cert (NOT DUNS — DUNS is the separate A2P-10DLC blocker).
 - **Interim outbound SMS** = US `TWILIO_FROM_NUMBER +16624397271` (Likely-Scam risk on Three IE), or prefer email via Resend `hello@callmeie.ie`. See MEMORY.md `project_ie-alpha-sender-not-registered` + `callmeie-hub/_internal/PILOT-PROGRAM.md` SMS section.
 
