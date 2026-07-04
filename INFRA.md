@@ -1104,9 +1104,16 @@ TXT   callmeie.ie  google-site-verification=YdiX8OOpq1...
 
 **Verification ritual:** Cloudflare sends one-click link to destination address; recipient must click within ~24h for routing rule save to succeed. Re-trying save before verify yields "Verification email has been sent too recently" banner.
 
-## 17 · Cal.com (lab rig + Cloudflare Tunnel — LIVE 2026-06-01)
+## 17 · Cal.com (Cloudflare Tunnel — LIVE 2026-06-01; MIGRATED to EPYC 2026-07-03)
 
-Self-hosted Cal.com booking on the **lab rig** (`pop-os`, Tailscale `100.78.148.106`, amd64, 24/7) — NOT the Hetzner box. Public at **https://cal.callmeie.ie** via Cloudflare Tunnel (rig has no public IP; tunnel is outbound).
+> **MIGRATED 2026-07-03 — now on EPYC, NOT the ZBook lab-rig.** The ZBook (`pop-os`, `100.78.148.106`) developed a hardware charge-circuit fault (AC-plug hard-kills it, any adapter — see memory `reference_lab-rig-hardware-ec-latchup`) and is now a battery-only spare. Cal.com + its tunnel were migrated to **EPYC `adam@100.84.3.33`** (24/7 server, dual-3090). NEW facts (supersede the lab-rig lines below):
+> - **Host:** EPYC, dir `/mnt/data/zbook-migration/restore/calcom/` — `calcom-db-1` + `calcom-calcom-1` (pg dump restored, verified 1 user `adam` / 0 bookings). App on host `:3000`.
+> - **Tunnel:** SAME UUID `bba50ca4…` relocated to EPYC as docker container `cf-tunnel` (`--network host`, creds `/mnt/data/zbook-migration/cloudflared/`). No DNS change (same cfargotunnel CNAME). ZBook's `cloudflared` was `systemctl disable --now`'d to prevent split-brain.
+> - **Ops (EPYC):** restart `cd /mnt/data/zbook-migration/restore/calcom && docker compose restart`; tunnel `docker restart cf-tunnel`.
+> - Verified 2026-07-03: `https://cal.callmeie.ie`→307, `/adam` booking page→200, served by EPYC alone.
+> - **NOTE:** the restore dir under `zbook-migration/restore/` is a migration landing path; consider relocating to `~/calcom/` on EPYC at leisure (cosmetic).
+
+_Historical (pre-2026-07-03, ZBook lab-rig — superseded by banner above):_ Self-hosted Cal.com booking on the **lab rig** (`pop-os`, Tailscale `100.78.148.106`, amd64, 24/7) — NOT the Hetzner box. Public at **https://cal.callmeie.ie** via Cloudflare Tunnel (rig has no public IP; tunnel is outbound).
 
 | Item | Value |
 |---|---|
@@ -1158,7 +1165,16 @@ Site **deployed + live**: https://truthchristianclothing.com (+ www, +https redi
 
 **Redeploy:** just `git push` to `scruge1/truth-store` main → Action rebuilds + republishes production (~4½ min). Manual fallback from this machine: `cd truth-brand/website/site && npm run build:site && npx wrangler pages deploy dist --project-name=truth-store --branch=main --commit-dirty=true` (needs `npx wrangler login` if OAuth expired). Node-20 actions deprecate 2026-09-16 → workflow already on node24. Custom-domain re-add (if ever): `POST /accounts/<acct>/pages/projects/truth-store/domains {"name":"<domain>"}` with the wrangler OAuth bearer (zone token is 403 on Pages).
 
-### 18.2 · Truth CMS editor — self-hosted TinaCMS on the lab rig (LIVE 2026-06-01; live-preview + font picker 2026-06-02)
+### 18.2 · Truth CMS editor — self-hosted TinaCMS (LIVE 2026-06-01; MIGRATED to EPYC 2026-07-03)
+
+> **MIGRATED 2026-07-03 — now on EPYC, NOT the ZBook lab-rig** (same reason as §17). NEW facts (supersede the lab-rig lines below):
+> - **Host:** EPYC `adam@100.84.3.33`, dir `/mnt/data/zbook-migration/restore/truth-editor/` — `truth-editor-mongo-1` + `truth-editor-editor-1`. Site re-cloned from `scruge1/truth-store`; Tina+Astro build OK.
+> - **Port remap:** editor published on host **`:8081`** on EPYC (`:8080` was already taken) — the shared `cf-tunnel` config's `cms.callmeie.ie` ingress was repointed to `http://localhost:8081`.
+> - **Git-sync cron:** the 2-min `origin/main` rebase re-established on EPYC as `/mnt/data/zbook-migration/restore/truth-editor/sync-epyc.sh` (crontab `*/2`), restarts the editor container on change.
+> - **Ops (EPYC):** restart `cd /mnt/data/zbook-migration/restore/truth-editor && docker compose restart editor`; logs `docker logs truth-editor-editor-1`.
+> - Verified 2026-07-03: `https://cms.callmeie.ie`→302 (cookie-login), served by EPYC alone.
+
+_Historical (pre-2026-07-03, ZBook lab-rig — superseded by banner above):_ Truth CMS editor — self-hosted TinaCMS on the lab rig (LIVE 2026-06-01; live-preview + font picker 2026-06-02)
 
 Kate self-edits the site at **https://cms.callmeie.ie/admin** (cookie-login: password = vault `TRUTH_EDITOR_PASS`). Edits commit to `scruge1/truth-store` → the GitHub Action (§18.1) republishes the live site. As of 2026-06-02 the editor ALSO serves a **live preview pane** (Tina contextual editing — updates as she types) + a **live font picker** (renders each of 27 fonts in its own typeface).
 

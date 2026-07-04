@@ -141,3 +141,11 @@ pointers only; INFRA.md untouched and out of scope). Prose-only
 otherwise (MF-07: ~4-session drift without a gate); standing gates are
 the oracle frontmatter read every staleness scan plus the 20-session
 re-audit cadence in `refresh_cadence`.
+
+## 2026-07-03 (eve) — cal.com + Truth CMS editor MIGRATED off ZBook lab-rig → EPYC
+ZBook lab-rig (`100.78.148.106`) developed a hardware charge-circuit fault (AC-plug hard-kills it, any adapter). Both self-hosted CallMeIE services it hosted were migrated to EPYC `adam@100.84.3.33` and VERIFIED live from the public URLs (served by EPYC alone):
+- **cal.com** → `https://cal.callmeie.ie`→307, `/adam`→200. EPYC `/mnt/data/zbook-migration/restore/calcom/`, host :3000, pg dump restored.
+- **Truth CMS editor** → `https://cms.callmeie.ie`→302. EPYC `/mnt/data/zbook-migration/restore/truth-editor/`, host :8081 (remapped from :8080), site re-cloned from scruge1/truth-store, 2-min git-sync cron re-established.
+- **Cloudflare tunnel** `bba50ca4…` relocated to EPYC docker `cf-tunnel` (same UUID → no DNS change); ZBook cloudflared `disable --now`'d to kill split-brain.
+- `cartel.owlzone.trade`→302 confirmed unaffected (independent tunnel).
+**INFRA.md §17 + §18.2 updated with MIGRATED banners in BOTH mirrors** (this dir + `callmeie-fix/INFRA.md`), old lab-rig lines annotated-in-place as historical. Full migration forensics + ZBook hardware verdict in `New repos/NEW-REPOS-RUNNING-CONTEXT.md` (2026-07-03 eve sections) + memory `reference_lab-rig-hardware-ec-latchup`.
