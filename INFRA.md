@@ -1221,3 +1221,31 @@ Magic-link-gated public viewer for the Gold Cartel copier dashboard. Lets Adam s
 **Runbook — add/remove a guest:** edit `ALLOWLIST` in `/opt/cartel-dash/run.sh` (or `docker rm -f cartel-dash` + re-run with new `-e ALLOWLIST=`), then `bash /opt/cartel-dash/run.sh`. **Redeploy app:** `scp cartel-dash/app.py root@178.104.205.255:/opt/cartel-dash/ && ssh ... 'bash /opt/cartel-dash/run.sh'`. **Logs:** `docker logs --tail 50 cartel-dash`. **Restart pusher (laptop):** kill the `cartel_push.py` python proc — `CartelPush.vbs` relaunches in 8s.
 
 **Verified live 2026-06-15:** healthz 200, valid LE cert, `/login` serves, `/aurum-live.json` 401 unauthed, authed (session cookie) returns real snapshot + full dashboard, `/ingest` 200 from the laptop loop, magic-link email dispatched via Brevo. Pending: Adam/friend visual click-through of the emailed link.
+
+
+## 19 . K O'Brien Heating demo + client Voice Picker (LIVE 2026-08-17)
+
+Client: **Gas Pro Heating Ltd t/a K O'Brien Heating and Plumbing**, owner **Keith** (callback +353 85 706 3027).
+
+| Field | Value |
+|---|---|
+| Vapi assistant | demo-obrien-heating = 15b84033-bb08-48ff-9d95-c0d17035b5e6 (cloned from demo-dunne-accountants) |
+| Voice | Gerry (eyuCA3LWMylRajljTeOo, Irish); PSTN settings inherited (stab .5/sim .75/style .45, flash_v2_5, cache off) |
+| Reached | demo line +35361788120 -> Claire (adee3d89) -> keyword heating/plumbing/gas/O'Brien -> handoff; Demo Squad ff47df7a (7 members) |
+| serverUrl/analysis | /vapi/call-ended; analysisPlan = structuredDataPlan (category/urgency/gas_emergency/customer) + summaryPlan (urgency-first) |
+| Client dashboard | https://client.callmeie.ie/?token=ct_obrien_heating_p8o6br724syxirakpo1ea1fg (client_tokens slug obrien-heating) |
+| Dashboard patch | urgency/GAS/category badges + All/Urgent/New/Existing filters (structured_data surfaced in /client/api/calls) |
+
+Client Voice Picker (Voice tab in client.html; endpoints in server.py):
+- GET /client/api/voices -- Vapi /voice-library/11labs (21) + 4 Irish (Gerry/Conor/Cillian/Maeve, preview URLs hardcoded), current flag.
+- GET /client/api/voice-preview -- ElevenLabs TTS of greeting with tone sliders -> audio (needs ELEVENLABS_API_KEY).
+- POST /client/api/voice -- body voice_id+stability+style+similarity OR reset:true -> _vapi_safe_patch tenant assistant voice (tools preserved) + Telegram ping. OBRIEN_DEFAULT_VOICE = Gerry.
+- UX: Preview / Set live (confirm-gated) / Revert to default (confirm-gated). Bounded to tenant assistant_ids.
+
+Coolify env change (2026-08-17): ELEVENLABS_API_KEY ADDED to callmeie-api app (uuid xml9wji6109b1kergfz05665) -- was ABSENT (70 vars, none was it), cause of el-voices/tts-preview/voice-preview 502s. Set via API + redeployed; verified live (voice-preview -> 200 audio/mpeg).
+
+Vapi Test Suite 1e3d8181-f20f-4305-a1eb-8bfcc3208d17 -- 7 scenario tests, AI-scored. Targets US demo line +16617643212 (840fe7d0, same squad) because Vapi tester only calls US numbers. Run: POST /test-suite/{id}/run.
+
+Reversible: scripts/build-obrien-demo.py --rollback ; apply-obrien-dashboard.py --rollback ; apply-obrien-voicepicker.py --rollback. Commits (scruge1/CallMeIE main): 2581ae3, c370600, 2137f44.
+
+OPEN before handover to Keith: (1) set assistant owner_phone=+353857063027 (currently default owner=Adam, fine for testing); (2) confirm CONFIRM business facts (hours/area/services) with Keith; (3) IE-SMS alpha sender pending (Twilio #27259801) -- owner alert sends from US number, Telegram reliable.
