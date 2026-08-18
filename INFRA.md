@@ -1248,4 +1248,4 @@ Vapi Test Suite 1e3d8181-f20f-4305-a1eb-8bfcc3208d17 -- 7 scenario tests, AI-sco
 
 Reversible: scripts/build-obrien-demo.py --rollback ; apply-obrien-dashboard.py --rollback ; apply-obrien-voicepicker.py --rollback. Commits (scruge1/CallMeIE main): 2581ae3, c370600, 2137f44.
 
-OPEN before handover to Keith: (1) set assistant owner_phone=+353857063027 (currently default owner=Adam, fine for testing); (2) confirm CONFIRM business facts (hours/area/services) with Keith; (3) IE-SMS alpha sender pending (Twilio #27259801) -- owner alert sends from US number, Telegram reliable.
+RESOLVED 2026-08-18: assistant owner_phone SET to Keith +353857063027 (via POST /admin/api/assistant-owner). OPEN: (2) confirm CONFIRM business facts (hours/area/services) with Keith; (3) IE-SMS alpha sender pending (Twilio #27259801) -- owner alert sends from US number, Telegram reliable.
