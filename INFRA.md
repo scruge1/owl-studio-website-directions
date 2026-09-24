@@ -872,7 +872,9 @@ Then curl `https://portal.callmeie.ie/healthz/corrections` — expect `{"ok": tr
 
 **Customer-facing runbook stance until live:** welcome-email + onboarding runbook still say "browser upload at /portal/{slug}/extract" — flip to "forward to inbox-{slug}@callmeie.ie" only once smoke test in §14.7 passes.
 
-### 14.7 Mailcow Mail Stack (callmeie.ie self-host, cax21 — provisioned 2026-05-20)
+### 14.7 Mailcow Mail Stack (callmeie.ie self-host, cax21 — planned, not live as verified 2026-09-07)
+
+**Current-state correction 2026-09-07:** Mailcow is not currently handling CallMeIE mail. The live Coolify service list contains no Mailcow service; public DNS currently points `callmeie.ie` MX records to Cloudflare Email Routing; and ports 25, 465, 587, 993, and 4190 on the Hetzner server are closed. Treat the deployment details below as a retained plan/history record, not proof of an active installation. Do not keep the server at `cax21` for Mailcow until a live deployment is verified. No Mailcow files were deleted during this check.
 
 Mailcow Dockerized takes over `*@callmeie.ie` mail flow. Replaces Cloudflare Email Routing (§16.6). One mailbox `inbox@callmeie.ie` + catch-all alias `*@callmeie.ie → inbox@callmeie.ie` collects all `inbox-{slug}@callmeie.ie` forwards; `inbox_poller.py` daemon polls + dispatches per-slug. `hello@callmeie.ie` becomes a Mailcow alias forwarding to `Scruge@pm.me` (preserves existing UX).
 
