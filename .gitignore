@@ -1,0 +1,8 @@
+
+
+# Keep browser captures and local test output out of Git.
+/renders/
+/.playwright-cli/
+/output/playwright/
+/test-results/
+/playwright-report/

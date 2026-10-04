@@ -1235,7 +1235,7 @@ Client: **Gas Pro Heating Ltd t/a K O'Brien Heating and Plumbing**, owner **Keit
 | Voice | Gerry (eyuCA3LWMylRajljTeOo, Irish); PSTN settings inherited (stab .5/sim .75/style .45, flash_v2_5, cache off) |
 | Reached | demo line +35361788120 -> Claire (adee3d89) -> keyword heating/plumbing/gas/O'Brien -> handoff; Demo Squad ff47df7a (7 members) |
 | serverUrl/analysis | /vapi/call-ended; analysisPlan = structuredDataPlan (category/urgency/gas_emergency/customer) + summaryPlan (urgency-first) |
-| Client dashboard | https://client.callmeie.ie/?token=REMOVED_EXPOSED_CREDENTIAL (client_tokens slug obrien-heating) |
+| Client dashboard | https://client.callmeie.ie/?token=SET_LOCALLY (client_tokens slug obrien-heating) |
 | Dashboard patch | urgency/GAS/category badges + All/Urgent/New/Existing filters (structured_data surfaced in /client/api/calls) |
 
 Client Voice Picker (Voice tab in client.html; endpoints in server.py):
